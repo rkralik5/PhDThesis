@@ -1,0 +1,117 @@
+%%% Title page of the thesis and other mandatory pages
+
+%%% Title page of the thesis
+
+\pagestyle{empty}
+\hypersetup{pageanchor=false}
+\begin{center}
+
+\centerline{\mbox{\includegraphics[width=100mm]{/home/robert/Templates/Images/sussex_logo_color_on_white.png}}}
+
+%\vspace{-8mm}
+\vfill
+
+{\LARGE\bfseries\ThesisTitle}
+
+\vfill
+
+{\LARGE\ThesisAuthor}
+
+\end{center}
+
+\vfill
+
+\begin{spacing}{2}
+\begin{large}
+\noindent
+Supervisor of the doctoral thesis: \Supervisor \\
+Second supervisor of the doctoral thesis: \SecondSupervisor \\
+Submitted for the degree of Doctor of Philosophy \\
+University of Sussex \\
+% Year
+Brighton, UK, \MonthAndYearSubmitted
+\end{large}
+\end{spacing}
+
+%Submitted for the degree of Doctor of Philosophy
+
+%University of Sussex
+
+% Year
+%Brighton, UK, \MonthAndYearSubmitted
+
+\newpage
+
+%%% A page with a solemn declaration to the master thesis
+
+\openright
+\hypersetup{pageanchor=true}
+\pagestyle{plain}
+\pagenumbering{roman}
+\vglue 0pt plus 1fill
+
+\noindent
+I hereby declare that I carried out this thesis independently, and only with the cited sources, literature and other professional sources.
+
+\medskip\noindent
+I also declare that this thesis has not been and will not be, submitted in whole or in part to another University for the award of any other degree.
+
+\vspace{15mm}
+
+\noindent Signature:\\
+
+\hbox{\hbox to 0.5\hsize{%
+In ................... date ..............	% FIXME!
+\hss}\hbox to 0.5\hsize{%
+\ThesisAuthor
+\hss}}
+
+\vspace{20mm}
+\newpage
+
+%%% Dedication
+
+\openright
+
+\noindent
+\Dedication
+
+\newpage
+
+%%% Mandatory information page of the thesis
+
+\openright
+
+\vbox to 0.5\vsize{
+\setlength\parindent{0mm}
+\setlength\parskip{0mm}
+
+Title:
+\ThesisTitle
+
+Author:
+\ThesisAuthor
+
+\DeptType:
+\Department
+
+Supervisor:
+\Supervisor
+
+Second supervisor:
+\SecondSupervisor
+
+Abstract:
+\Abstract
+
+Keywords:
+\Keywords
+
+\vss}
+
+\newpage
+
+\openright
+\pagestyle{plain}
+\pagenumbering{arabic}
+\setcounter{page}{1}
