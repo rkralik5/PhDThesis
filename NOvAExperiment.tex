@@ -1,0 +1,86 @@
+\chapter{NOvA experiment}\label{sec:NOvA}
+
+%%% OVERVIEW OF THE NOvA EXPERIMENT %%%
+
+What is NOvA and what is it trying to measure/detect? General overview and description of the following chapter.
+
+Where is it located and general dispositions. It has three detectors and uses a neutrino beam from the NuMI at Fermilab.
+
+Maybe timeline of NOvA or just a general overview
+
+\section{Source of neutrinos for NOvA}
+
+\subsection{Simulation of neutrino beam}
+
+\subsection{Package to Predict the FluX}
+Should I talk about this now or should I talk about the simulations (and their corrections) together? 
+%Good description of PPFX, beam transport and the principal components is in the NOvA-T2K technote for Flux (doc-db:54582) https://nova-docdb.fnal.gov/cgi-bin/sso/ShowDocument?docid=54582
+
+\subsection{Constraining the hadron production systematic uncertainty in NOvA}
+Again, should I discuss it here or somewhere else?
+
+\subsubsection{Systematic uncertainties related to the NOvA neutrino beam}
+
+Hadron production and focusing systematic uncertainties
+
+Principal component analysis
+
+Maybe briefly also mention the POT scaling normalization uncertainty.
+
+\section{NOvA detectors}
+
+General overview of the NOvA detector design and composition. List the percent-wise contribution of elements in the NOvA soup.
+
+Segmentations and general proportions of the detectors, fibers.
+
+The MIP energy loss for electrons (similarly to muons) can be found with a similar method as used in the AbsCal\_technote\_1stAna in TestBeam (page 2).
+
+\subsection{Data acquisition}
+
+APDs and how they work are pretty well described in the NOvA technical design report. For some reason the TDR I have downloaded doesn't have the full chapter 14. Full TDR can be found in docdb:2678 chapter by chapter.
+
+APD signal first needs to be converted to a digital format with ADC (is there anything before that?). Maybe take a look at docdb:353.
+
+This digital signal is then passed to the FPGA, which does the correlated sampling and time stamping [docdb:353].
+
+TDR:
+Major components are the carrier board connector location at the left, which brings the APD signals to the NOvA ASIC, which performs integration, shaping, and multiplexing. The chip immediately to the right is the ADC to digitize the signals, and FPGA for control, signal processing, and communication.
+The front end electronics has the responsibility of amplifying and integrating the signals from the APD arrays, determining the amplitude of the signals and their arrival time and presenting that information to the data acquisition system (DAQ).
+Data from the ADC is sent to an FPGA where multiple correlated sampling is used to remove low frequency noise. This type of Digital Signal Processing (DSP) also reduces the noise level and increases the time resolution.
+
+We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
+
+"The chip will be used in its “Analog” mode in NOvA. In this mode, eight channels of integrator/shaper outputs are fed onto a multiplexer and driven by a differential amplifier onto the output pads. The multiplexer runs at 16 MHz, sending its signal output to the quad ADC. The ADC outputs, in turn, are sent in a continuous stream to an FPGA which processes the data and outputs it onto a data link. In these tests, the data link is standard USB 2.0" [docdb:1904]
+
+DAQ Software (what happens to the signal after the FEBs) is described in docdb:1233. Not sure if this is the final design though. 
+
+\subsection{Data processing}
+Basic description of the process from raw data to final predictions (or just cafs?)
+
+Reconstruction - describe the reconstruction tools used to get the final products, focusing on the electron reconstruction.
+
+\subsection{Detector calibration}
+
+How much should I describe the detector calibration here? Probably quite a lot. I should probably just use the entire NOvA calibration section from my Test Beam calibration technote.
+
+\subsection{NOvA Test Beam}
+Should this even be here? Maybe I should just mention TB in the beginning but leave the description of Test Beam to the special chapter.
+
+\subsection{Simulation of neutrino interaction}
+
+\subsubsection{NOvA reweight of the neutrino interaction predictions}
+
+\subsection{Simulation of detector response}
+Should I join this with the other simulation subsection?
+
+\subsection{Systematic uncertainties for NOvA detectors}
+
+\subsubsection{Neutrino interaction systematic uncertainties}
+
+\subsubsection{Energy scale systematic uncertainty}
+
+\subsubsection{Cell edge calibration systematic uncertainty}
+
+\subsubsection{Detector ageing systematic uncertainty}
+
+%Also include Chenerkov and light level tune uncertainties
