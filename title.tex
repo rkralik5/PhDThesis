@@ -6,7 +6,7 @@
 \hypersetup{pageanchor=false}
 \begin{center}
 
-\centerline{\mbox{\includegraphics[width=100mm]{/home/robert/Templates/Images/sussex_logo_color_on_white.png}}}
+\centerline{\mbox{\includegraphics[width=60mm]{/home/robert/Templates/Images/sussex_logo_color_on_white.png}}}
 
 %\vspace{-8mm}
 \vfill
@@ -17,21 +17,19 @@
 
 {\LARGE\ThesisAuthor}
 
-\end{center}
+\vfill
+
+
+\begin{large}
+\textit{Supervisor:} \Supervisor
 
 \vfill
 
-\begin{spacing}{2}
-\begin{large}
-\noindent
-Supervisor of the doctoral thesis: \Supervisor \\
-Second supervisor of the doctoral thesis: \SecondSupervisor \\
-Submitted for the degree of Doctor of Philosophy \\
-University of Sussex \\
-% Year
-Brighton, UK, \MonthAndYearSubmitted
+\textit{A thesis submitted in fulfilment of the requirements for the degree of Doctor of Philosophy to the} \\[0.3cm]
+\textcolor{sussexColour}{\Department \\\University}\\[0.6cm]
+\DeptLocation \\\today
 \end{large}
-\end{spacing}
+\end{center}
 
 %Submitted for the degree of Doctor of Philosophy
 
@@ -58,23 +56,22 @@ I also declare that this thesis has not been and will not be, submitted in whole
 
 \vspace{15mm}
 
-\noindent Signature:\\
-
-\hbox{\hbox to 0.5\hsize{%
-In ................... date ..............	% FIXME!
-\hss}\hbox to 0.5\hsize{%
-\ThesisAuthor
-\hss}}
+\noindent
+\begin{tabularx}{\textwidth}{Xr}
+  \textit{\DeptLocation,} & \rule{4cm}{1pt} \\
+  \textit{\today} & \ThesisAuthor
+\end{tabularx}
 
 \vspace{20mm}
 \newpage
 
-%%% Dedication
+%%% Acknowledgements
 
 \openright
 
 \noindent
-\Dedication
+\chapwithtoc{Acknowledgements}
+\Acknowledgements
 
 \newpage
 
@@ -86,29 +83,49 @@ In ................... date ..............	% FIXME!
 \setlength\parindent{0mm}
 \setlength\parskip{0mm}
 
-Title:
+\begin{center}
+\Department, \University
+
+DOCTORAL THESIS
+
+\hrulefill
+
 \ThesisTitle
 
-Author:
-\ThesisAuthor
+\hrulefill
 
-\DeptType:
-\Department
+by \ThesisAuthor
 
-Supervisor:
-\Supervisor
+with supervision from \Supervisor\ and secondary supervision from \SecondSupervisor
 
-Second supervisor:
-\SecondSupervisor
+\vspace{15mm}
 
-Abstract:
+\textbf{ABSTRACT}
+\end{center}
 \Abstract
 
+\vspace{15mm}
 Keywords:
 \Keywords
 
 \vss}
 
+\newpage
+
+%%% A page with automatically generated table of contents
+\openright
+\tableofcontents
+\newpage
+
+%%% Figures used in the thesis (consider if this is needed)
+\openright
+\listoffigures
+\newpage
+
+%%% Tables used in the thesis (consider if this is needed)
+%%% In mathematical theses, it could be better to move the list of tables to the beginning of the thesis.
+\openright
+\listoftables
 \newpage
 
 \openright

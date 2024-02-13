@@ -58,7 +58,8 @@
 \usepackage{dcolumn}        % improved alignment of table columns
 \usepackage{booktabs}       % improved horizontal lines in tables
 \usepackage{paralist}       % improved enumerate and itemize
-\usepackage{xcolor}  % typesetting in color
+\usepackage{xcolor}         % typesetting in color
+\usepackage{tabularx}       % for title setting
 
 \bibliographystyle{unsrtnat}
 %unsrtnat
@@ -78,23 +79,28 @@
 % Author of the thesis
 \def\ThesisAuthor{Róbert Králik}
 
+% Loaction of the University
+\def\DeptLocation{Brighton, United Kingdom}
+
 % Year when the thesis is submitted
 \def\MonthAndYearSubmitted{April 2024}
 
 % Name of the University
-\def\Department{University of Sussex}
+\def\Department{School of Mathematical and Physical Sciences}
+\def\University{University of Sussex}
 
 % Is it a department (katedra), or an institute (ústav)?
 \def\DeptType{Institute}
 
 % Thesis supervisor: name, surname and titles
-\def\Supervisor{Dr Lily Asquith}
-\def\SecondSupervisor{Prof Jeffrey Hartnell}
+\def\Supervisor{Dr~Lily~Asquith}
+\def\SecondSupervisor{Prof~Jeffrey~Hartnell}
 
 % An optional dedication: you can thank whomever you wish (your supervisor,
 % consultant, a person who lent the software, etc.)
-\def\Dedication{%
-Dedication
+\def\Acknowledgements{%
+%In the introduction to your thesis, you should set out the sources of your information, such as particular libraries, archives, organisational records, private papers and department files
+%You should also set out the plan of your research procedures, indicating what general categories of persons you interviewed and you should indicate any special conditions of access to information.
 }
 
 % Abstract (recommended length around 80-200 words; this is not a copy of your thesis assignment!)
@@ -116,23 +122,40 @@ Abstract
 % Definitions of macros (see description inside)
 \include{macros}
 
+% Set the PDF's information  
+\AtBeginDocument{
+\hypersetup{pdftitle=\ThesisTitle} % Set the PDF's title to your title
+\hypersetup{pdfauthor=\ThesisAuthor} % Set the PDF's author to your name
+\hypersetup{pdfkeywords=\Keywords} % Set the PDF's keywords to your keywords
+}
+
 % Title page and various mandatory informational pages
 \begin{document}
 \include{title}
 
 %%% A page with automatically generated table of contents of the master thesis
-\tableofcontents
+%\tableofcontents
 
 %%% Figures used in the thesis (consider if this is needed)
-\listoffigures
+%\listoffigures
 
 %%% Tables used in the thesis (consider if this is needed)
 %%% In mathematical theses, it could be better to move the list of tables to the beginning of the thesis.
-\listoftables
+%\listoftables
+
+%%% Each chapter is kept in a separate file
+\include{Introduction}
+\include{NeutrinoTheory}
+\include{NOvAExperiment}
+\include{TestBeamCalibration}
+\include{NeutrinoMagMoment}
+\include{Conclusion}
+
+%\include{epilog}
 
 %%% Abbreviations used in the thesis, if any, including their explanation
 %%% In mathematical theses, it could be better to move the list of abbreviations to the beginning of the thesis.
-\chapwithtoc{List of Abbreviations}
+\chapwithtoc{Glossary}
 \begin{table}[H]
 \begin{tabular}{ll}
 PMNS       & Pontecorvo-Maki-Nakagawa-Sakata (matrix)          \\
@@ -165,16 +188,6 @@ CMS        & Center of Mass (frame)                            \\
 BENDecomp  & Beam Electron Neutrino Decomposition              
 \end{tabular}
 \end{table}
-
-%%% Each chapter is kept in a separate file
-\include{Introduction}
-\include{NeutrinoTheory}
-\include{NOvAExperiment}
-\include{TestBeamCalibration}
-\include{NeutrinoMagMoment}
-\include{Conclusion}
-
-%\include{epilog}
 
 %%% Bibliography
 \include{bibliography}
