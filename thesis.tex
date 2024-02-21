@@ -8,8 +8,9 @@
 \setlength\textheight{247mm}
 \setlength\oddsidemargin{10mm}
 \setlength\evensidemargin{10mm}
-\setlength\topmargin{0mm}
-\setlength\headsep{0mm}
+\setlength\topmargin{-10mm}
+%\setlength\headsep{0mm}
+\setlength\headsep{10mm}
 \setlength\headheight{0mm}
 % \openright makes the following text appear on a right-hand page
 \let\openright=\clearpage
@@ -32,7 +33,10 @@
 \usepackage[utf8]{inputenc}
 
 %% Prefer Latin Modern fonts
-\usepackage{lmodern}
+%\usepackage{lmodern}
+%\usepackage[sc]{mathpazo}
+\usepackage{libertine}
+%\usepackage[libertine,cmintegrals,cmbraces,vvarbb]{newtxmath}
 
 %% Further useful packages (included in most LaTeX distributions)
 \usepackage{amsmath}        % extensions for typesetting of math
@@ -60,21 +64,31 @@
 \usepackage{paralist}       % improved enumerate and itemize
 \usepackage{xcolor}         % typesetting in color
 \usepackage{tabularx}       % for title setting
+\usepackage{placeins}       % for FloatBarrier
+\usepackage{tikz}           % for tikz pictures
+\usetikzlibrary{calc}       % for coloured header
+\usetikzlibrary{decorations.pathreplacing} % for curly braces
 
-\bibliographystyle{unsrtnat}
-%unsrtnat
-\newcommand*{\ovnu}[1]{%
-  $\mathsurround=0pt\overline{\raisebox{0pt}[1.2\height]{#1}}$%
-}
+%\bibliographystyle{unsrtnat}
+%\bibliographystyle{Highlander}
+%unsrtnat, apalike
 
 \setstretch{1.5}            % Set line spacing
+
+%% Set page numbers and section titles in the header
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \chead{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
 
 %\hfuzz=99pt  %Removing warning messages and ugly black rectangles at overflown text
 
 %%% Basic information on the thesis
 
 % Thesis title in English (exactly as in the formal assignment)
-\def\ThesisTitle{Thesis title}
+\def\ThesisTitle{Measuring the Neutrino Magnetic Moment in the NOvA Near Detector}
 
 % Author of the thesis
 \def\ThesisAuthor{Róbert Králik}
@@ -93,8 +107,8 @@
 \def\DeptType{Institute}
 
 % Thesis supervisor: name, surname and titles
-\def\Supervisor{Dr~Lily~Asquith}
-\def\SecondSupervisor{Prof~Jeffrey~Hartnell}
+\def\Supervisor{Dr.~Lily~Asquith}
+\def\SecondSupervisor{Prof.~Jeffrey~Hartnell}
 
 % An optional dedication: you can thank whomever you wish (your supervisor,
 % consultant, a person who lent the software, etc.)
@@ -118,6 +132,13 @@ Abstract
 \hypersetup{unicode}
 \hypersetup{breaklinks=true}
 \hypersetup{hidelinks}        %hides those boxes around references
+\hypersetup{
+    colorlinks,
+    citecolor=sussexBlueCol,
+    filecolor=black,
+    linkcolor=sussexBlueCol,
+    urlcolor=sussexBlueCol
+}
 
 % Definitions of macros (see description inside)
 \include{macros}
@@ -144,12 +165,12 @@ Abstract
 %\listoftables
 
 %%% Each chapter is kept in a separate file
-\include{Introduction}
-\include{NeutrinoTheory}
+%\include{Introduction}
+%\include{NeutrinoTheory}
 \include{NOvAExperiment}
-\include{TestBeamCalibration}
-\include{NeutrinoMagMoment}
-\include{Conclusion}
+%\include{TestBeamCalibration}
+%\include{NeutrinoMagMoment}
+%\include{Conclusion}
 
 %\include{epilog}
 
