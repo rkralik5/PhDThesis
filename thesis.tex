@@ -55,7 +55,7 @@
 \usepackage{hyphenat}       % for allowing automatic hyphenation of hyphenated words
 \usepackage{setspace}       % for setting line spacing
 \usepackage{fancyvrb}       % improved verbatim environment
-\usepackage[numbers]{natbib}% citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
+\usepackage[numbers,sort&compress]{natbib}% citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
 \usepackage[nottoc]{tocbibind} % makes sure that bibliography and the lists
 			                   % of figures/tables are included in the table
 			                   % of contents
@@ -142,13 +142,6 @@ Abstract
 
 % Definitions of macros (see description inside)
 \include{macros}
-
-% Set the PDF's information  
-\AtBeginDocument{
-\hypersetup{pdftitle=\ThesisTitle} % Set the PDF's title to your title
-\hypersetup{pdfauthor=\ThesisAuthor} % Set the PDF's author to your name
-\hypersetup{pdfkeywords=\Keywords} % Set the PDF's keywords to your keywords
-}
 
 % Title page and various mandatory informational pages
 \begin{document}

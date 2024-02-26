@@ -1,34 +1,15 @@
 \chapter{The NOvA experiment}\label{sec:NOvA}
-%{Plots/NOvAExperiment/NOvAChapterLogo.jpeg}
 %%% OVERVIEW OF THE NOvA EXPERIMENT %%%
-%% Need to mention: NOvA, Fermilab, NuMI beam, two plus one detectors, location, time of data taking, maybe plan for future data taking, Main aims and important results with references, collaboration, matter effect of nova beam
 
-The NuMI Off-axis $\nu_e$ Appearance (NOvA) experiment \cite{NOvAWebsite} is a long-baseline neutrino oscillation experiment based at the Fermi National Accelerator Laboratory (Fermilab) \cite{FNALWebsite}. NOvA receives a muon neutrino and antineutrino beam from the Fermilab's NuMI neutrino source measures kinematically-dependent event counts in a Fermilab-based Near Detector (ND), and an $\sim\unit[810]{km}$ away Far Detector (FD).
+The NuMI Off-axis $\nu_e$ Appearance (NOvA) experiment \cite{NOvAWebsite} is a long-baseline neutrino oscillation experiment based at the Fermi National Accelerator Laboratory (Fermilab) \cite{FNALWebsite}. NOvA receives an off-axis $\nu_\mu$ and $\overline{\nu}_\mu$ beam from Fermilab's NuMI neutrino source, described in Sec.~\ref{fig:NOvANuMI}, and measures $\nu_e$/$\overline{\nu}_e$ appearance and $\nu_\mu$/$\overline{\nu}_\mu$ disappearance between its two highly active and finely segmented detectors, described in Sec.~\ref{fig:NOvADetectors} \cite{PhysicsOfNOvA.pdf}. 
 
-% Maybe talk here about what makes NOvA so special - detecting both electron neutrinos and antineutrinos, large matter effect...
+The capability to measure both $\nu_e$ and $\overline{\nu}_e$ appearance, coupled with a significant matter effect induced by the long baseline, allows NOvA to address some of the most important questions in neutrino physics to date, such as the neutrino mass ordering, the octant of $\theta_{23}$, and the possible CP violation in the neutrino sector \cite{PhysicsOfNOvA.pdf,NOvAStatusAndOutlook.pdf,FirstNOvAResult.pdf,2019NOvAFHCRHCResults.pdf,NOvAResults2021.pdf}. NOvA also measures the values of $\theta_{13}$, $\theta_{23}$ and $\left|\Delta m^2_{atm}\right|$ \cite{PhysicsOfNOvA.pdf}, but also measures neutrino differential cross sections in the near detector \cite{NOvANCPi0XSecMeasurement2019.pdf, NOvANumuCCXSexMeasurement2023.pdf, NOvANueCCXSecMeasurement2023.pdf, NOvANuMuCCPi0XSecMeasurement2023.pdf}, provides constraint on the possible sterile neutrino models \cite{NOvASterilesFHCResults2017.pdf, NOvASterilesFHCRHCResults2021.pdf}, monitors for supernova neutrino activity \cite{NOvASupernovaMeasurements2020.pdf, NOvASupernovaCoincidenceMeasurements2021.pdf}, searches for magnetic monopoles \cite{NOvASlowMagMonopoles2021.pdf}, or constrains neutrino electromagnetic properties (this thesis) amongst other topics. Using two functionally identical detectors mitigates the systematic uncertainties of neutrino oscillation measurements, describe in Sec.~\ref{sec:NOvASystematics}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% From master's thesis on NOvA introduction
-The NuMI Off-axis $\nu_e$ Appearance (NOvA) experiment is a two detector, long-baseline neutrino oscillation experiment designed for a precision measurement of $\nu_{\mu}\rightarrow\nu_e$, $\overline{\nu}_{\mu}\rightarrow\overline{\nu}_e$, $\nu_{\mu}\rightarrow\nu_{\mu}$ and $\overline{\nu}_{\mu}\rightarrow\overline{\nu}_{\mu}$ oscillations \cite{NOvAStatusAndOutlook.pdf}. 
-
-NOvA's primary scientific goals are to determine the neutrino mass hierarchy (normal or inverse ordering of the neutrino masses), determine whether $\theta_{23}>\unit[45]{\degree}$ or $\theta_{23}<\unit[45]{\degree}$ (whether the $\nu_{3}$ state has more $\nu_{\mu}$ or $\nu_{\tau}$ respectively) and get information on the amount of the CP violation in the neutrino sector (if there is any) \cite{PhysicsOfNOvA.pdf}. NOvA's physics capability however includes also searching for light sterile neutrinos by studying disappearance of the neutral current (NC) events, measuring different neutrino cross-sections, observing supernova events, slow magnetic monopoles or light dark matter particles, investigating non-standard interactions and seasonal variations of cosmic-originated muons and more \cite{Exotic2012.pdf,NOvAStatusAndOutlook.pdf}.
-
-The experiment is managed by Fermi National Accelerator Laboratory (commonly known as Fermilab) with most of NOvA's components located on Fermilabs premises in Batavia, Illinois, near Chicago, including the near detector (ND) located $\unit[1]{km}$ from the NuMI target hall and $\unit[105]{m}$ below ground. Only the Far Detector (FD) is located in Ash River, Minnesota, $\unit[810.5]{km}$ from Fermilab, partially below ground, covered with granite rock (see sec.\ref{SecDetectors}) \cite{NOvATechreport.pdf,NOvAWebsite}.
-
-NOvA started collecting data in 2013, periodically switching between neutrino and antineutrino modes, with first results published in 2016 \cite{FirstNOvAResult.pdf}.
-
-NOvA experiment has currently more than 240 scientists and engineers from 51 institutions in six countries \cite{NOvAWebsite}.
-
-%%%% End of master's on NOvA introduction
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-What is NOvA and what is it trying to measure/detect? General overview and description of the following chapter.
-
-Where is it located and general dispositions. It has three detectors and uses a neutrino beam from the NuMI at Fermilab.
-
-Maybe timeline of NOvA or just a general overview
+\note{Should I mention here when did NOvA start taking data and how long is it planning to run for? Maybe future analysis? Size of the collaboration?}
 
 \section{The Neutrino Beam}\label{sec:NuMI}
+
+The neutrino beam for NOvA comes from the Fermilab-based \textit{Neutrinos at the Main Injector} (NuMI) neutrino source \cite{NuMI.pdf}. The schematic description of NuMI is shown on Fig.~\ref{fig:NOvANuMI}, starting on the left hand side with $\unit[120]{GeV}$ protons from the Main Injector accelerator, part of Fermilab's accelerator complex.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Master's thesis on the neutrino beam
@@ -54,14 +35,14 @@ A hadron monitor is placed just before the $\unit[5]{m}$ thick absorber to recor
 %is pdf-a
 \includegraphics[width=.8\textwidth]{Plots/NOvAExperiment/BeamlineAlternative.jpg}
 \caption[The schematic of the NuMI beam facility]{
-The schematic description of the Neutrinos at the Main Injector (NuMI) facility’s beam line with a description of individual stages. The beam travels from left to right. Only the option where $\nu$ originated from $p\rightarrow\pi\rightarrow\mu +\nu_{\mu}$ interaction chain is shown, but there are other options, notably $p\rightarrow K\rightarrow\mu + \nu_{\mu}$ or $p\rightarrow\pi\rightarrow\mu\rightarrow e +\nu_{e}+\nu_{\mu}$. Figure is from NOvA's internal database.
+The NuMI neutrino beam starts on the left hand side with protons from the Main Injector impinged on a graphite target producing mainly pions and kaons. These are then focused and charge-selected by two focusing horns, after which they decay inside the decay pipe into a high-purity muon neutrino, or antineutrino beam. The residual hadrons are stopped and monitored in the hadron absorber and the remaining muons are recorded with muon monitors and absorbed inside the rock.
 %The schematic of the NuMI beam facility. The beam travels from left to right. The individual components shown are not to scale. Protons originate as $H^-$ ions, which are converted into protons in the Booster, sent to the main injector, where they are finally accelerated to $120\,\si{\giga\electronvolt}$, bent downward by $58\,\si{\milli\radian}$ and transported $350\,\si{\meter}$ to the $1.2\,\si{\meter}$ long NuMI target. The protons are incident on the graphite target and the produced hadrons are focused by two magnetic horns, located in about $40\,\si{\meter}$ long target hall, with about $19\,\si{\meter}$ separation between the two horns. Hadrons then enter a $675\,\si{\meter}$ long decay pipe made of steel, with $2\,\si{\meter}$ diameter, which serves as vacuum or low density environment for the mesons to propagate and decay into tertiary mesons, charged leptons and neutrinos. A hadron monitor is located at the end of the decay volume just in front of the $5\,\si{\meter}$ thick aluminium, steel and concrete absorber to record the profile of the residual hadrons. Of the particles interacting in the absorber, the principal component (approximately $80\%$) is the proton beam that has not interacted. The remainder are mainly mesons which have not decayed in the pipe or secondary protons. The absorber not only stops most of the particles still remaining in the beam but also acts as a shield against radiation. Muons and neutrinos deposit little or no energy in the absorber and continue into unexcavated rock with three muon monitors allowing measurement of the residual muon flux. The $240\,\si{\meter}$ of rock following the absorber stops the muons remaining in the beam but allows the neutrinos to pass\cite{numi}. 
 }
 \label{fig:NOvANuMI}
 \end{sidewaysfigure}
 
 \iffalse
-\subsection{Off-axis concept}
+\subsection{Off-axis concept}\label{sec:OffAxisConcept}
 Both NOvA detectors are positioned $\unit[14.6]{mrad}$ ($\approx\unit[0.8]{\degree}$) off the NuMI beam axis, giving NOvA a neutrino flux with narrow energy distribution and about 5 times more neutrinos at $\unit[2]{GeV}$, than in a case of on-axis position, as shown on fig.\ref{off-axis} \cite{NOvATechreport.pdf}.
  
 This is caused by kinematics of hadron and lepton decays into neutrinos. In the rest frame, the decay is isotropic and the neutrinos are mono energetic. Boosting hadrons into laboratory frame gives neutrinos an angle-dependent energy \cite{NOvATechreport.pdf,MiniBooNENuMI.pdf}:
@@ -81,7 +62,7 @@ This relationship between energy of neutrino and it's parent hadron is shown on 
   \includegraphics*[width=.48\textwidth]{Plots/NOvAExperiment/PionOffAxis.pdf}
   \noindent\centering
   \includegraphics*[width=.51\textwidth]{Plots/NOvAExperiment/OffAxisFluxPionEmbedded.pdf}
-  \caption[Energy dependencies of the neutrino on the parent pion for off-axis angles]{Left: Dependence of the neutrino intensity on its energy for four different angles off the main axis. The case for NOvA (shown here in red) shows a narrow peak around $\unit[2]{GeV}$, ideal for studying "atmospheric" oscillations driven by $\Delta_{31}^2$ at the NOvA far detector, with still enough intensity. Figure is from NOvA's internal database. Right: Energy dependencies of neutrino on its parent pion for 4 different angles from the main axis. The angle coloured red is the one used in the NOvA experiment where the energy of neutrinos coming from pions flattens to almost a constant close to $\unit[2]{GeV}$ giving NOvA the desired narrow energy peak.}
+  \caption[The NOvA off-axis beam concept]{Dependence of the neutrino energy on the parent pion's energy and a neutrino energy distribution for an on-axis beam and three different off-axis beam designs. The case for NOvA is shown here in red and results in a narrow neutrino energy distribution around $\unit[2]{GeV}$, independent on the parent pion's energy.}
  \label{fig:NOvAOffAxis}
 \end{figure}
 
@@ -90,7 +71,7 @@ This relationship between energy of neutrino and it's parent hadron is shown on 
   \includegraphics*[width=.495\textwidth]{Plots/NOvAExperiment/NuMIBeamComponentsCCEvtsFHC.pdf}
   \noindent\centering
   \includegraphics*[width=.495\textwidth]{Plots/NOvAExperiment/NuMIBeamComponentsCCEvtsRHC.pdf}
-  \caption[Beam components as CC event rates]{CC event rates at the ND in FHC (left) and RHC (right). The events are corrected by kPPFXFluxCVWgtST and kXSecCVWgt2018\_NT..}
+  \caption[Beam components as CC event rates]{The charge current event rates for different neutrino flavours, as measured at the NOvA Near Detector in the FHC regime shown on the left, or the RHC regime on the right. The contribution of neutrino flavours to the event rates is also displayed, showing the high purity of the neutrino beam for NOvA.}
  \label{fig:NOvABeamComponents}
 \end{figure}
 
@@ -121,6 +102,9 @@ The off axis concept
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Master's thesis on NOvA detectors:
 \iffalse
+
+The experiment is managed by Fermi National Accelerator Laboratory (commonly known as Fermilab) with most of NOvA's components located on Fermilabs premises in Batavia, Illinois, near Chicago, including the near detector (ND) located $\unit[1]{km}$ from the NuMI target hall and $\unit[105]{m}$ below ground. Only the Far Detector (FD) is located in Ash River, Minnesota, $\unit[810.5]{km}$ from Fermilab, partially below ground, covered with granite rock \cite{NOvATechreport.pdf,NOvAWebsite}.
+
 The two NOvA detectors are highly-segmented, highly-active functionally\hyp{}identical tracking calorimeters. They consist of PVC cells ($\unit[5.6]{cm}\times\unit[3.6]{cm}$ in cross-section), extending the full width or hight of the detector ($\approx\unit[4]{m}$ for ND and $\approx\unit[15]{m}$ for FD), containing liquid scintillator and a wavelength-shifting fibre connected to an avalanche photodiode (APD) \cite{NOvAStatusAndOutlook.pdf,NOvATechreport.pdf}. Cells are connected into planes which are layered perpendicular to the neutrino beam direction, alternating between horizontal and vertical orientations. There are 384 cells in one plane and 896 planes in the FD and in the ND there are 32 cells per module, 3$\times$3 modules per plane and 192 planes in the active part. ND also contains the muon catcher, which has 3 modules per vertical plane, 2 modules per horizontal plane and 22 planes with interleaving steel plates. This makes the size of the FD $\unit[15.23]{m}\times\unit[15.14]{m}\times\unit[59.62]{m}$ and of the ND $\unit[3.83]{m}\times\unit[3.81]{m}\times\unit[15.87]{m}$ corresponding to $horizontal\times vertical \times longitudinal$ orientation with respect to the neutrino beam direction respectively \cite{NOvAStatusAndOutlook.pdf}\footnote{All of the values for detector, planes and cells size and number were adjusted to the most precise detector specification from a private uncited document for NOvA users.}. The size of the detectors and their layout can be seen in fig.\ref{detectors}.
 
 The liquid scintillator amounts for about $63\%$ of the total detector mass (the rest being the PVC structure) \cite{NeutrinoDetectorsForOscExp.pdf} and consists primarily of mineral oil with $4.1\%$ pseudocumene [1,2,4-Trimethybenzene] as the scintillant \cite{NOvATechreport.pdf}. The radiation length in the detector ($\unit[38]{cm}$) is many times larger than the cell dimensions, which allows for a good reconstruction and separation of electromagnetic and hadronic showers, identification of muons and neutral pions \cite{NOvAStatusAndOutlook.pdf}.
@@ -153,7 +137,7 @@ Description of the Near Detector, including the Muon Catcher. Maybe a nice graph
 
 Also include a brief description of the Test Beam detector here, but probably talk more about it in the NOvA Test Beam detector calibration chapter
 
-\section{Data Acquisition}
+\section{Data Acquisition}\label{sec:DAQ}
 
 APDs and how they work are pretty well described in the NOvA technical design report. For some reason the TDR I have downloaded doesn't have the full chapter 14. Full TDR can be found in docdb:2678 chapter by chapter.
 
@@ -175,7 +159,7 @@ This digital signal is then passed to the FPGA, which does the correlated sampli
   \centering
   \includegraphics*[width=\textwidth]{Plots/NOvAExperiment/NOvAFEBWithLabels.jpg}
   \caption[NOvA Front End Board]{The Front End Board for NOvA}
- \label{fig:NOvAAPD}
+ \label{fig:NOvAFEB}
 \end{figure}
 
 TDR:
@@ -204,7 +188,7 @@ Clustering into slices - how is that done?
 
 Reconstruction of prongs and tracks. Electron showers
 
-\section{Simulation}
+\section{Simulation}\label{sec:NOvASimulation}
 
 \subsection{Neutrino Beam Simulation}
 Should I mention that in the past we used Fluka, but now we're using Geant4
@@ -290,7 +274,7 @@ Should I join this with the other simulation subsection?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                   Detector calibration                     %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Detector Calibration}
+\section{Detector Calibration}\label{sec:NOvACalibration}
 %%% General introduction to calibration
 The purpose of calibration is to make sure that we get the same amount of energy wherever or whenever it's deposited in whichever of NOvA's detectors and to express this amount of energy in physical units. The NOvA calibration uses cosmic ray muons, which provide a consistent, abundant, and well-understood source of energy deposition.
 
@@ -502,7 +486,7 @@ As part of the absolute calibration we also produce validation plots that show t
 %\FloatBarrier
 %\newpage
 
-\section{Source of systematic uncertainties at NOvA}
+\section{Systematic Uncertainties at NOvA}\label{sec:NOvASystematics}
 
 \subsection{Systematic Uncertainties Related to the NOvA Neutrino Beam}
 
