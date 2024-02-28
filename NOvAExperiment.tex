@@ -53,28 +53,74 @@ The resulting neutrino beam is peaked $\sim\unit[7]{GeV}$ with a wide energy ban
 
 \section{The NOvA Detectors}\label{sec:NOvADetectors}
 
+\note{Lot of this information is just from the TDR, only rarely from other sources. I don't want to reference the TDR after every information/sentence. Should I just put the reference somewhere into each paragraph (like it is now), or would it be enough to reference it less, assuming the reader will figure out where does most of this info come from?}
+
 The two main NOvA detectors are the Near Detector (ND), located in Fermilab $\sim\unit[1]{km}$ from the NuMI target and $\sim\unit[100]{m}$ under ground, and the Far Detector (FD), located $\sim\unit[810]{km}$ from Fermilab at Ash River in north Minnesota, partially underground with a rock overburden \cite{NOvATechreport.pdf}. NOvA also operated a detector prototype called Near Detector on the Surface (NDOS) used for an early research and development of detector components and analysis \cite{NOvAStatusAndOutlook.pdf}. Additionally, NOvA operated a NOvA Test Beam detector (TB), described in detail in Sec.~\ref{sec:TBDetector}. The scale of the near and far detectors are shown on Fig.~\ref{fig:NOvADetectors}.
 
 \begin{figure}[ht]
 \centering
 %is pdf-a
 \includegraphics[width=1\textwidth]{Plots/NOvAExperiment/NOvADetectors.png}
-\caption[NOvA detectors]{Schematic description of scale and composition of the NOvA detectors. Inset showing the orthogonal planes of PVC cells. One cell containing liquid scintillator and a loop of wavelength sifting fibre attached to an avalanche photodiode is also shown \cite{NeutrinoDetectorsForOscExp.pdf}. The length of the cell corresponds to a far detector cell.}
+\caption[NOvA detectors]{Schematic description of scale and composition of the NOvA detectors. Inset is showing a photo of the orthogonal planes made out of PVC cells. An example of a far detector cell containing liquid scintillator and a loop of wavelength sifting fibre attached to an avalanche photodiode is shown on the right \cite{NeutrinoDetectorsForOscExp.pdf}.}
 \label{fig:NOvADetectors}
 \end{figure}
 
-All NOvA detectors are highly segmented, highly active, functionally identical tracking calorimeters made up of polyvinyl chloride (PVC) cells filled with liquid scintillator. Each cell is a hollow cuboid with cross section of $\unit[5.6]{cm}\times\unit[3.6]{cm}$ (with some variations) and extending to the full width/height of each detector, which is $\approx\unit[4]{m}$ for the ND and $\approx\unit[15]{m}$ for the FD \cite{NOvATechreport.pdf}. An example of a FD cell is shown on the right of Fig.~\ref{fig:NOvADetectors}.
+All NOvA detectors are highly segmented, highly active, functionally identical tracking calorimeters made up of polyvinyl chloride (PVC) cells filled with liquid scintillator. Each cell is a cuboid with depth of $\unit[5.9]{cm}$ (along the depth of the detector) and width of $\unit[3.8]{cm}$ (with some variations), with cell length extending to the full width/height of each detector, which is $\approx\unit[4]{m}$ for the ND and $\approx\unit[15]{m}$ for the FD \cite{NOvATechreport.pdf}. An example of a FD cell is shown on the right of Fig.~\ref{fig:NOvADetectors}.
 
-Cells are connected side-by-side in a 16 cell-wide extrusions with $\unit[3.7]{mm}$-wide walls between cells and $\unit[5.1]{mm}$-wide walls on the outsides of the extrusions. The first and last cell of each extrusion are $\sim\unit[3]{mm}$ narrower than the rest of the cells\footnote{All of the values for detector, planes and cells size and number were adjusted to the most recent detector specification from an internal NOvA documentation.}. Two extrusions are connected side-by-side to form a 32 cell-wide \textit{module}, with each module having a separate readout. In the FD, 12 modules are connected side-by-side to form a \textit{plane}, whereas in the ND only 3 modules make up a plane. Planes are positioned one after another, alternating between vertical and horizontal orientation, and grouped into diblocks, each containing 64 planes. The FD contains 14 diblocks, totalling 896 planes, whereas the ND contains 3 diblocks totalling 192 planes. However, the ND also consists of a Muon Catcher region, positioned right after the active region, consisting of 22 planes of the normal NOvA detector design, 2 modules high and 3 modules wide, sandwiched with 10 steel plates to help range out muons from $\nu_\mu$ charge current interactions \cite{NOvAStatusAndOutlook.pdf,NOvATechreport.pdf}.
+Cells are connected side-by-side into a 16 cell-wide extrusions with $\unit[3.3]{mm}$-wide walls between cells and $\unit[4.9]{mm}$-wide walls on the outsides of the extrusions. The first and last cell of each extrusion are $\sim\unit[3]{mm}$ narrower than the rest of the cells. Two extrusions are connected side-by-side to form a 32 cell-wide module, with each module having a separate readout (see Sec.~\ref{sec:DAQ}). In the FD, 12 modules are connected side-by-side to form one plane of the detector. In the ND only 3 modules make up a plane. Planes are positioned one after another, alternating between vertical and horizontal orientation, and grouped into diblocks, each containing 64 planes. The FD contains 14 diblocks, totalling 896 planes, whereas the ND contains 3 diblocks totalling 192 planes. However, the ND also consists of a Muon Catcher region, positioned right after the active region, consisting of 22 planes of the normal NOvA detector design, 2 modules high and 3 modules wide, sandwiched with 10 steel plates to help range out muons mainly from the $\nu_\mu$ charge current interactions \cite{NOvAStatusAndOutlook.pdf,NOvATechreport.pdf}.
 
-Each cell is filled with a liquid scintillator, with a single wavelength shifting fibre $2\times$ the length of the cell, looped at the end. The liquid scintillator consists of mineral oil with $4.1\%$ pseudocumene as the scintillant, producing light with wavelength between $\unit[360-390]{nm}$, and additives to shift the initial light to $\unit[400-450]{nm}$ to match the absorption spectrum of the fibres.
+Each cell is filled with a liquid scintillator consisting of mineral oil with a mixed in $4.1\%$ pseudocumene as the scintillant \cite{NOvAScintillators.pdf}. Each cell contains a single wavelength shifting fibre with double the length of the cell, looping at one end and connecting to the readout at the other. As light travels through the fibre, it is attenuated by about a fraction of ten for the FD cells. The PVC walls of the detector cells are loaded with highly reflective titanium dioxide, with light typically bouncing off the PVC walls about 8 times before being captured by the fibre \cite{NOvATechreport.pdf}. 
+
+The total mass of the FD is about $\unit[14]{kT}$ and of the ND about $\unit[0.3]{kT}$, with active volume, consisting of the liquid scintillator, making up about $70\%$ of the total detector volume \cite{NOvATechreport.pdf}.
+
+The NOvA detectors are specifically designed for electromagnetic shower identification, with radiation length of $\unit[38]{cm}$, which amounts to $\sim 7$ planes for particles travelling perpendicular to the detector planes \cite{NOvAStatusAndOutlook.pdf}. This is particularly useful to distinguish electrons and $\pi^0$s.
+
+\note{The MIP energy loss for electrons (similarly to muons) can be found with a similar method as used in the AbsCal\_technote\_1stAna in TestBeam (page 2).}
+
+\section{Data Acquisition}\label{sec:DAQ}
+
+The signal from the wavelength shifting fibres is read out by an Avalanche Photodiode (APD), converting the scintillation light into electrical signal, with a high quantum efficiency of $\sim 85\%$ and a gain of $100$ \cite{NOvATechreport.pdf}. An example APD is shown on Fig.~\ref{fig:NOvAAPD}. Both ends of each fibre are connected to one of the 32 pixels on the APD, with each APD reading out signal from one module. To maximise the signal to noise ratio, the APDs are cooled to $\unit[-15]{\degree C}$ by a thermoelectric cooler, with head carried away by a water cooling system \cite{NOvATechreport.pdf}.
+
+The combination of the APD quantum efficiency and the light yield, determined by the PVC reflectivity and scintillator and fibre response, result in a signal requirement of at least 20 photoelectrons in response to minimum ionizing radiation at the far end of the FD cell \cite{NOvATechreport.pdf}.
+
+%TDR-12.2.1:"NOvA readout electronics requires, at minimum, a 20 photoelectron signal in response to minimum ionizing radiation at the far-end of a 15.5 m NOvA cell as discussed in Chapter 6. The signal strength is due to the APD quantum efficiency and the light yield in response to ionizing radiation. The light yield, in turn, is due to a combination of the PVC reflectivity, the scintillator and wavelength-shifting fiber responses."
+
+%For some reason the TDR I have downloaded doesn't have the full chapter 14. Full TDR can be found in docdb:2678 chapter by chapter.
+
+\begin{figure}[!htb]  
+  \centering
+  \includegraphics*[width=.495\textwidth]{Plots/NOvAExperiment/NOvAAPDMountedWithLabels.jpg}
+  \noindent\centering
+  \includegraphics*[width=.495\textwidth]{Plots/NOvAExperiment/NOvAAPDBottomWithLabels.jpg}
+  \caption[NOvA Avalanche Photo Diods]{The modules with Avalanche Photo Diods for NOvA mounted on top of the detector on the left picture, and shown from the bottom on the right. The individual components of the module are described. The left picture shows a disconnected ribbon cable and ground cable, which are normally connected to the front end board.}
+ \label{fig:NOvAAPD}
+\end{figure}
+
+Each APD is connected to a single Front End Board (FEB), shown on Fig.~\ref{fig:NOvAFEB}, which amplifies and integrates the APD signal, determines its amplitude and arrival time, before passing it to the data acquisition system (DAQ). The APD signal is first passed to a custom NOvA Application-Specific Integrated Circuit (ASIC), which is design to maximize the detector sensitivity to small signals. ASICs amplify, shape and combine the signal, before sending it to an Analog-to-Digital Converter (ADC). The combined noise from the APD and the amplifier is equivalent to about 4 photoelectrons, which, compared to an average photoelectron yield from the far end of the FD cell of 30, results in a good signal and noise separation \cite{NOvATechreport.pdf}. The digitized data from an ADC is sent to a Field Programmable Gate Array (FPGA), which extracts the time and amplitude of the ADC signals, while subtracting noise based on a settable threshold. FPGAs employ multiple correlated sampling method to reduce noise and increase time resolution of the signal \cite{NOvADAQ.pdf}.
+
+\begin{figure}[!htb]  
+  \centering
+  \includegraphics*[width=\textwidth]{Plots/NOvAExperiment/NOvAFEBWithLabels.jpg}
+  \caption[NOvA Front End Board]{An example of a NOvA Front End Board with individual components labelled.}
+ \label{fig:NOvAFEB}
+\end{figure}
+
+%TDR:Major components are the carrier board connector location at the left, which brings the APD signals to the NOvA ASIC, which performs integration, shaping, and multiplexing. The chip immediately to the right is the ADC to digitize the signals, and FPGA for control, signal processing, and communication. Data from the ADC is sent to an FPGA where multiple correlated sampling is used to remove low frequency noise. This type of Digital Signal Processing (DSP) also reduces the noise level and increases the time resolution.
+
+All of the NOvA front end electronic (APDs and FEBs) are operated in a continuous readout mode, without requiring any external triggers \cite{NOvATechreport.pdf}. Due to higher detector activity during beam spills, the ND FEBs work in a higher frequency of $\unit[8]{MHz}$, whereas the FD FEBs suffice with $\unit[2]{MHz}$ sampling frequency \cite{NOvADAQ.pdf}.
+
+%More information from docdb:353 
+
+DAQ Software (what happens to the signal after the FEBs) is described in docdb:1233. Not sure if this is the final design though. 
+
+Triggers
+
+%The NOvA calibration process technically also involves \textbf{timing calibration}, which corrects for the time differences of the signal to be processed \cite{NinerThesis}. However, this is done as a separate project to the relative and absolute calibrations and is out of scope of this technical note.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Master's thesis on NOvA detectors:
+%%% Master's thesis on NOvA DAQ:
 \iffalse
-The liquid scintillator amounts for about $63\%$ of the total detector mass (the rest being the PVC structure) \cite{NeutrinoDetectorsForOscExp.pdf} and consists primarily of mineral oil with $4.1\%$ pseudocumene [1,2,4-Trimethybenzene] as the scintillant \cite{NOvATechreport.pdf}. The radiation length in the detector ($\unit[38]{cm}$) is many times larger than the cell dimensions, which allows for a good reconstruction and separation of electromagnetic and hadronic showers, identification of muons and neutral pions \cite{NOvAStatusAndOutlook.pdf}.
-
-Charged particles in the detector produce a scintillator light captured by the wavelength-shifting fibre directing it to one pixel on an APD mounted at the top of each cell. APD converts the light into electrical signal, which is then amplified, digitized and consolidated by the Data Concentrate Module into $\unit[5]{ms}$ time slices, buffered for a minimum of $\unit[20]{s}$ waiting for a spill trigger and finally written to a file for storage or shared memory for monitoring \cite{NOvADAQ.pdf}.
+APD converts the light into electrical signal, which is then amplified, digitized and consolidated by the Data Concentrate Module into $\unit[5]{ms}$ time slices, buffered for a minimum of $\unit[20]{s}$ waiting for a spill trigger and finally written to a file for storage or shared memory for monitoring \cite{NOvADAQ.pdf}.
 
 We are using the minimum ionizing part of cosmic-ray muon tracks that stop in the detectors to calibrate the absolute energy scale to within $\pm 5\%$ \cite{2019NOvAFHCRHCResults.pdf}. GEANT4 \cite{GEANT4.pdf} simulation is used to calibrate the deposited energy of individual particles as well as the scintillation light, light transport and readout response \cite{NOvASimulationOld-Fluka.pdf}.
 
@@ -88,55 +134,13 @@ Since most of the primary goals of NOvA depend on successfully observing $\nu_e$
 \label{interactions}
 \end{figure}
 \fi
-%%%% End of master's thesis for detectors
+%%%% End of master's thesis for DAQ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\todo{List the percent-wise contribution of elements in the NOvA soup.}
-
-\note{The MIP energy loss for electrons (similarly to muons) can be found with a similar method as used in the AbsCal\_technote\_1stAna in TestBeam (page 2).}
-
-\section{Data Acquisition}\label{sec:DAQ}
-
-APDs and how they work are pretty well described in the NOvA technical design report. For some reason the TDR I have downloaded doesn't have the full chapter 14. Full TDR can be found in docdb:2678 chapter by chapter.
-
-APD signal first needs to be converted to a digital format with ADC (is there anything before that?). Maybe take a look at docdb:353.
-
-This digital signal is then passed to the FPGA, which does the correlated sampling and time stamping [docdb:353].
-\note{From docdb:353}
-
-\begin{figure}[!htb]  
-  \centering
-  \includegraphics*[width=.495\textwidth]{Plots/NOvAExperiment/NOvAAPDMountedWithLabels.jpg}
-  \noindent\centering
-  \includegraphics*[width=.495\textwidth]{Plots/NOvAExperiment/NOvAAPDBottomWithLabels.jpg}
-  \caption[NOvA Avalanche Photo Diods]{The Avalanche Photo Diods for NOvA}
- \label{fig:NOvAAPD}
-\end{figure}
-
-\begin{figure}[!htb]  
-  \centering
-  \includegraphics*[width=\textwidth]{Plots/NOvAExperiment/NOvAFEBWithLabels.jpg}
-  \caption[NOvA Front End Board]{The Front End Board for NOvA}
- \label{fig:NOvAFEB}
-\end{figure}
-
-TDR:
-Major components are the carrier board connector location at the left, which brings the APD signals to the NOvA ASIC, which performs integration, shaping, and multiplexing. The chip immediately to the right is the ADC to digitize the signals, and FPGA for control, signal processing, and communication.
-The front end electronics has the responsibility of amplifying and integrating the signals from the APD arrays, determining the amplitude of the signals and their arrival time and presenting that information to the data acquisition system (DAQ).
-Data from the ADC is sent to an FPGA where multiple correlated sampling is used to remove low frequency noise. This type of Digital Signal Processing (DSP) also reduces the noise level and increases the time resolution.
-
-We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
-
-"The chip will be used in its “Analog” mode in NOvA. In this mode, eight channels of integrator/shaper outputs are fed onto a multiplexer and driven by a differential amplifier onto the output pads. The multiplexer runs at 16 MHz, sending its signal output to the quad ADC. The ADC outputs, in turn, are sent in a continuous stream to an FPGA which processes the data and outputs it onto a data link. In these tests, the data link is standard USB 2.0" [docdb:1904]
-
-DAQ Software (what happens to the signal after the FEBs) is described in docdb:1233. Not sure if this is the final design though. 
-
-Triggers
-
-%The NOvA calibration process technically also involves \textbf{timing calibration}, which corrects for the time differences of the signal to be processed \cite{NinerThesis}. However, this is done as a separate project to the relative and absolute calibrations and is out of scope of this technical note.
 
 \section{Data Processing and Event Reconstruction}
 Basic description of the process from raw data to final predictions (or just cafs?)
+
+We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
 
 Maybe talk about data quality as well? Good runs and so on...
 
