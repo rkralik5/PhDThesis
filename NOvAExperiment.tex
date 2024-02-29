@@ -77,9 +77,9 @@ The NOvA detectors are specifically designed for electromagnetic shower identifi
 
 \note{The MIP energy loss for electrons (similarly to muons) can be found with a similar method as used in the AbsCal\_technote\_1stAna in TestBeam (page 2).}
 
-\section{Data Acquisition}\label{sec:DAQ}
+\section{Readout and Data Acquisition}\label{sec:DAQ}
 
-The signal from the wavelength shifting fibres is read out by an Avalanche Photodiode (APD), converting the scintillation light into electrical signal, with a high quantum efficiency of $\sim 85\%$ and a gain of $100$ \cite{NOvATechreport.pdf}. An example APD is shown on Fig.~\ref{fig:NOvAAPD}. Both ends of each fibre are connected to one of the 32 pixels on the APD, with each APD reading out signal from one module. To maximise the signal to noise ratio, the APDs are cooled to $\unit[-15]{\degree C}$ by a thermoelectric cooler, with head carried away by a water cooling system \cite{NOvATechreport.pdf}.
+The signal from the wavelength shifting fibres is read out by an Avalanche Photodiode (APD), converting the scintillation light into electrical signal, with a high quantum efficiency of $\sim 85\%$ and a gain of $100$ \cite{NOvATechreport.pdf}. An example APD is shown on Fig.~\ref{fig:NOvAAPD}. Both ends of each fibre are connected to one of the 32 pixels on the APD, with each APD reading out signal from one module. To maximise the signal to noise ratio, the APDs are cooled to $\unit[-15]{\degree C}$ by a thermoelectric cooler, with heat carried away by a water cooling system \cite{NOvATechreport.pdf}.
 
 The combination of the APD quantum efficiency and the light yield, determined by the PVC reflectivity and scintillator and fibre response, result in a signal requirement of at least 20 photoelectrons in response to minimum ionizing radiation at the far end of the FD cell \cite{NOvATechreport.pdf}.
 
@@ -96,7 +96,7 @@ The combination of the APD quantum efficiency and the light yield, determined by
  \label{fig:NOvAAPD}
 \end{figure}
 
-Each APD is connected to a single Front End Board (FEB), shown on Fig.~\ref{fig:NOvAFEB}, which amplifies and integrates the APD signal, determines its amplitude and arrival time, before passing it to the data acquisition system (DAQ). The APD signal is first passed to a custom NOvA Application-Specific Integrated Circuit (ASIC), which is design to maximize the detector sensitivity to small signals. ASICs amplify, shape and combine the signal, before sending it to an Analog-to-Digital Converter (ADC). The combined noise from the APD and the amplifier is equivalent to about 4 photoelectrons, which, compared to an average photoelectron yield from the far end of the FD cell of 30, results in a good signal and noise separation \cite{NOvATechreport.pdf}. The digitized data from an ADC is sent to a Field Programmable Gate Array (FPGA), which extracts the time and amplitude of the ADC signals, while subtracting noise based on a settable threshold. FPGAs employ multiple correlated sampling method to reduce noise and increase time resolution of the signal \cite{NOvADAQ.pdf}.
+Each APD is connected to a single Front End Board (FEB), shown on Fig.~\ref{fig:NOvAFEB}. FEB amplifies and integrates the APD signal, determines its amplitude and arrival time, before passing it to the data acquisition system (DAQ). On the FEB the APD signal is first passed to a custom NOvA Application-Specific Integrated Circuit (ASIC), which is design to maximize the detector sensitivity to small signals. ASICs amplify, shape and combine the signal, before sending it to an Analog-to-Digital Converter (ADC). The combined noise from the APD and the amplifier is equivalent to about 4 photoelectrons, which, compared to an average photoelectron yield from the far end of the FD cell of 30, results in a good signal and noise separation \cite{NOvATechreport.pdf}. The digitized data from an ADC is sent to a Field Programmable Gate Array (FPGA), which extracts the time and amplitude of the ADC signals, while subtracting noise based on a settable threshold. FPGAs employ multiple correlated sampling method to reduce noise and increase time resolution of the signal \cite{NOvADAQ.pdf}.
 
 \begin{figure}[!htb]  
   \centering
@@ -109,22 +109,24 @@ Each APD is connected to a single Front End Board (FEB), shown on Fig.~\ref{fig:
 
 All of the NOvA front end electronic (APDs and FEBs) are operated in a continuous readout mode, without requiring any external triggers \cite{NOvATechreport.pdf}. Due to higher detector activity during beam spills, the ND FEBs work in a higher frequency of $\unit[8]{MHz}$, whereas the FD FEBs suffice with $\unit[2]{MHz}$ sampling frequency \cite{NOvADAQ.pdf}.
 
-%More information from docdb:353 
+Data from up to 64 FEBs get concentrated in a Data Concentration Module (DCM), which concatenates and packages the data into $\unit[5]{ms}$ time slices, before sending it to the buffer nodes. DCMs are also connected to the timing system and pass a single unified timing information to the FEBs to maintain synchronization across the detector \cite{NOvADAQ.pdf}.
+%The timing information is calibration off-line to account for differences between fibre and cable distances and to achieve a superb timing resolution \cite{NinerThesis} - I don't think I need to talk about the timing calibration here tbh. The NOvA calibration process technically also involves \textbf{timing calibration}, which corrects for the time differences of the signal to be processed \cite{NinerThesis}.
 
-DAQ Software (what happens to the signal after the FEBs) is described in docdb:1233. Not sure if this is the final design though. 
+The buffer nodes cache the data for at least 20 seconds while receiving information from the trigger system. Each trigger is a time window based either on the time of the NuMI beam spill, on a periodic interval for readout of comic events for detector calibration and monitoring, or on a time of activity-based data-driven trigger \cite{NOvADAQ.pdf}. Data that fall within any of the triggers are sent to a data logger system, where they are merged to form events, before being written to files or sent to an online monitoring system.
 
-Triggers
+%Maybe I should write here what is the event rate?
 
-%The NOvA calibration process technically also involves \textbf{timing calibration}, which corrects for the time differences of the signal to be processed \cite{NinerThesis}. However, this is done as a separate project to the relative and absolute calibrations and is out of scope of this technical note.
+%Maybe write about what information do we have about each event at this stage: timing, peak ADC, cell, plane, run, subrun. Grouped into triggered windows?
+
+\section{Simulation}\label{sec:NOvASimulation}
+
+\todo{Describe the NOvA simulation}
+\note{It's probably enough to do one paragraph per simulation type, instead of subsections}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Master's thesis on NOvA DAQ:
+%%% Master's thesis on NOvA Sim:
 \iffalse
-APD converts the light into electrical signal, which is then amplified, digitized and consolidated by the Data Concentrate Module into $\unit[5]{ms}$ time slices, buffered for a minimum of $\unit[20]{s}$ waiting for a spill trigger and finally written to a file for storage or shared memory for monitoring \cite{NOvADAQ.pdf}.
-
 We are using the minimum ionizing part of cosmic-ray muon tracks that stop in the detectors to calibrate the absolute energy scale to within $\pm 5\%$ \cite{2019NOvAFHCRHCResults.pdf}. GEANT4 \cite{GEANT4.pdf} simulation is used to calibrate the deposited energy of individual particles as well as the scintillation light, light transport and readout response \cite{NOvASimulationOld-Fluka.pdf}.
-
-Since most of the primary goals of NOvA depend on successfully observing $\nu_e$ charged-current interaction, the reconstruction chain was tailored for this task \cite{NOvAReco.pdf}. Different interactions as seen in a NOvA detector are shown on fig.\ref{interactions}. Reconstruction begins by clustering hits into slices by time and space "density". Than a modified Hough transform identifies prominent features, which are used to determine the global 3D vertex for the slice. This vertex is used in the fuzzy k-means algorithm to produce prongs (a collection of cell hits with a start point and a direction) which are fed to a neural network to classify the degree to which the slice was like a $\nu_e$ CC (or other) interaction \cite{NOvAReco.pdf}. NOvA uses a convolutional neural network called Convolution Visual Network (CVN) originally based on the GoogLeNet architecture. CVN identifies neutrino interactions based on their topology and therefore without the need for detailed reconstruction \cite{CVN.pdf}.
 
 \begin{figure}[ht]
 \centering
@@ -134,31 +136,22 @@ Since most of the primary goals of NOvA depend on successfully observing $\nu_e$
 \label{interactions}
 \end{figure}
 \fi
-%%%% End of master's thesis for DAQ
+%%%% End of master's thesis for Sim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Data Processing and Event Reconstruction}
-Basic description of the process from raw data to final predictions (or just cafs?)
-
-We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
-
-Maybe talk about data quality as well? Good runs and so on...
-
-Reconstruction - describe the reconstruction tools used to get the final products, focusing on the electron reconstruction.
-
-Clustering into slices - how is that done?
-
-Reconstruction of prongs and tracks. Electron showers
-
-\section{Simulation}\label{sec:NOvASimulation}
-
 \subsection{Neutrino Beam Simulation}
-Should I mention that in the past we used Fluka, but now we're using Geant4
+
+
+%Should I mention that in the past we used Fluka, but now we're using Geant4
+
+%From NOvAResults2021.pdf: The neutrino flux delivered to the detectors is calculated using GEANT4-based simulations of particle production and transport through the beamline components [26,28] reweighted to incorporate external measurements using the package to predict the flux (PPFX) [29–48].
+
+%From NOvAResultsCombinedNuAnu2019.pdf: The flux of neutrinos delivered to the detectors is calculated using a simulation of the production and transport of particles through the beamline components [22,25] reweighted to incorporate external measurements [26–45].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Master's thesis on flux simulation
 \iffalse
-NOvA uses GEANT4-based \cite{GEANT4.pdf} Monte Carlo (MC) simulation called g4numi \cite{LEOFluxPredictionAtNuMI.pdf} to calculate the production and transportation of the neutrino flux through the beamline components and ends when a neutrino is created. From there GENIE event generator \cite{GENIE.pdf} simulates neutrino interactions in the detector \cite{2019NOvAFHCRHCResults.pdf} and another GEANT4 simulates the detector response \cite{NOvASimulationOld-Fluka.pdf}. 
+NOvA uses GEANT4-based \cite{GEANT4.pdf} Monte Carlo (MC) simulation called g4numi \cite{LEOFluxPredictionAtNuMI.pdf} to calculate the production and transportation of the neutrino flux through the beamline components and ends when a neutrino is created. From there GENIE event generator \cite{GENIE.pdf} simulates neutrino interactions in the detector \cite{2019NOvAFHCRHCResults.pdf} and another GEANT4 simulates the detector response \cite{NOvASimulationOld-Fluka.pdf}.
 
 The simulation starts with a $\unit[120]{GeV}$ kinetic energy primary proton beam entering the NuMI target \cite{NuMIFlux.pdf}. There are often multiple interactions within the target and in the materials downstream of it and since the hadron production process is governed by non-perturbative QCD and occurs in the nucleus, highly accurate theoretical predictions are not possible \cite{NuMIFlux.pdf,LEOFluxPredictionAtNuMI.pdf}. NOvA therefore tunes and corrects possible mismodeling of the model using external data in a package developed for MINERvA experiment called Package to Predict the Flux (PPFX) \cite{LEOFluxPredictionAtNuMI.pdf}. NOvA also tunes the cross-section model of the GENIE simulation to the ND data to reduce uncertainties in the extrapolation of measurements on the ND to the FD \cite{2019NOvAFHCRHCResults.pdf}.
 
@@ -172,10 +165,9 @@ The simulation starts with a $\unit[120]{GeV}$ kinetic energy primary proton bea
 
 
 \subsubsection{Package to Predict the FluX}
-Should I talk about this now or should I talk about the simulations (and their corrections) together? 
 %Good description of PPFX, beam transport and the principal components is in the NOvA-T2K technote for Flux (doc-db:54582) https://nova-docdb.fnal.gov/cgi-bin/sso/ShowDocument?docid=54582
 
-I did this in the beginning of my thesis so maybe I should mention this. Especially the possible improvements and what I've done for them (enough to say I looked at it?)
+\note{I did this in the beginning of my PhD so maybe I should mention this. Especially the possible improvements and what I've done for them (enough to say I looked at it?)}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% PPFX from master's thesis
@@ -224,19 +216,65 @@ For kaons with $x_{F}<0.2$ PPFX uses weights based on NA49 measurements\cite{NA4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Constraining the Hadron Production Systematic Uncertainty in NOvA}
-Again, should I discuss it here or somewhere else? Maybe not necessary as a full section. Not sure if I should include a discussion on nu-on-e, or low nu studies here, or just PPFX improvements.
+%Again, should I discuss it here or somewhere else? Maybe not necessary as a full section. Not sure if I should include a discussion on nu-on-e, or low nu studies here, or just PPFX improvements.
 
 \subsection{Simulation of the Neutrino Interactions}
+
+%From NOvAResults2021.pdf: Neutrino interactions are simulated using a custom model configuration of GENIE 3.0.6 [49,50] tuned to external and NOvA ND data.1 In this configuration, charged-current (CC) quasielastic (QE) scattering is simulated using the model of Nieves et al. [53], which includes the effects of long-range nucleon correlations calculated according to the random phase approximation (RPA) [53–55]. The CCQE axial vector form factor is a z-expansion parametrization tuned to neutrino-deuterium scattering data [56]. CC interactions with two nucleons producing two holes (2p2h) are given by the IFIC València model [57,58]. The initial nuclear state is represented by a local Fermi gas in both the QE and 2p2h models, and by a global relativistic Fermi gas for all other processes. Baryon resonance (RES) and coherent pion production are simulated using the Berger-Sehgal models with final-state mass effects taken into account [59,60]. Deep inelastic scattering (DIS) and nonresonant background below the DIS region are described using the Bodek-Yang model [61] with hadronization simulated by a data-driven parameterization [62] coupled to PYTHIA [63]. Bare nucleon cross sections for RES, DIS, and nonresonant background processes are tuned by GENIE to neutrino scattering data. Final-state interactions (FSI) are simulated by the GENIE hN semi-classical intranuclear cascade model in which pion interaction probabilities are assigned according to Oset et al. [64] and pion-nucleon scattering data. The 2p2h and FSI models in this GENIE configuration are adjusted to produce a NOvA-specific neutrino interaction model tune. The 2p2h model is fit to $\nu_\mu$CC inclusive scattering data from the NOvA ND. Inspired by Gran et al. [65], this 2p2h tune enhances the base model as a function of energy and momentum transfer to the nucleus and is applied to all CC 2p2h interactions for both the neutrino and antineutrino beams. The parameters governing $\pi^\pm$ and $\pi^0$ FSI are adjusted to obtain agreement with $\pi^+$ on $^{12}\textsf{C}$ scattering data [66–72].
+
+%From NOvAResultsCombinedNuAnu2019.pdf: Neutrino interactions in the detector are simulated using GENIE [46] tuned to improve agreement with external measurements and ND data, reducing uncertainties in the extrapolation of measurements in the ND to the FD. As in Ref. [21], we set MA in the quasielastic dipole form factor to 1.04 GeV/c2 [47] and use corrections to the charged-current (CC) quasielastic cross section derived from the random phase approximation [48,49]. In this analysis, we also apply this effect to baryon resonances as a placeholder for the unknown nuclear effect that suppresses rates at a low four-momentum transfer in our and other measurements [50–53]. Additionally, we increase the rate of deep-inelastic scattering with hadronic mass W > 1.7 GeV/c2 by 10\% to match our observed counts of short track-length $\nu_\mu$CC events. We model multinucleon ejection interactions following Ref. [54] and adjust the rates in bins of energy transfer, $q_0$, and three-momentum transfer, $\left|\overrightarrow{q}\right|$, for $\nu_\mu$ and $\overline{\nu}_\mu$ separately to maximize agreement in the ND. The calculation of the $\nu_e$ and $\overline{\nu}_e$ rates uses these same models.
 
 \subsubsection{NOvA Reweight of the Neutrino Interaction Predictions}
 
 \subsection{Simulation of the Detector Response}
-Should I join this with the other simulation subsection?
+
+%From NOvAResults2021.pdf: The propagation of final-state particles through the detectors is simulated by an updated version of GEANT4 (v10.4) [73], which provides the input for the detector response simulation [74]. In addition, a custom patch to the new version implements an exact calculation of the density effect correction to the Bethe equation using Sternheimer’s method [75] as opposed to the approximate parametrization used previously (a 1\% or less change to the
+muon range and energy lost in dead material).
+
+%From NOvAResultsCombinedNuAnu2019.pdf: The energy depositions of final-state particles are simulated with GEANT4 [25] and input to a custom simulation of the detector response [55].
+
+\section{Data Processing and Event Reconstruction}
+\todo{Write a basic description of the process from raw data to final predictions (or just cafs?)}
+
+%We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
+
+\note{Maybe talk about data quality as well? Good runs and so on...}
+
+\todo{Reconstruction - describe the reconstruction tools used to get the final products, focusing on the electron reconstruction.}
+
+%Clustering into slices - how is that done?
+
+%From NOvA results 2021: The first stage of reconstruction is to group hits, which are measurements of deposited energy in a cell above a preset threshold, into single-neutrino-interaction events. This clustering, performed based on hit proximity in time and space, now uses a new method that reduces the rate of misclustered hits in the high-occupancy environment of the ND [77]. Misclustering had previously led to differences in data-MC selection efficiency, which are now reduced to the subpercent level. The other reconstruction techniques remain unchanged from the previous analysis [NOvAResultsCombinedNuAnu2019.pdf].
+
+%From First NOvA results on FHC+RHC: Cells with activity above threshold (hits) are grouped based on their proximity in space and time to produce candidate neutrino events. Events are assigned a vertex, and clusters are formed from hits likely to be associated with particles produced there [NOvAReco.pdf]. These clusters are categorized as electromagnetic or hadronic in origin using a convolutional neural network (CNN) [Fernanda Psihas thesis]. Hits forming tracks are identified as muons by combining information on the track length, dE=dx, vertex activity, and scattering into a single particle identification (PID) score [Raddatz thesis]. The same reconstruction algorithms are applied to events from data and simulation in both detectors.
+
+%Reconstruction of prongs and tracks. Electron showers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Master's thesis on NOvA Reco:
+\iffalse
+Since most of the primary goals of NOvA depend on successfully observing $\nu_e$ charged-current interaction, the reconstruction chain was tailored for this task \cite{NOvAReco.pdf}. Different interactions as seen in a NOvA detector are shown on fig.\ref{interactions}. Reconstruction begins by clustering hits into slices by time and space "density". Than a modified Hough transform identifies prominent features, which are used to determine the global 3D vertex for the slice. This vertex is used in the fuzzy k-means algorithm to produce prongs (a collection of cell hits with a start point and a direction) which are fed to a neural network to classify the degree to which the slice was like a $\nu_e$ CC (or other) interaction \cite{NOvAReco.pdf}. NOvA uses a convolutional neural network called Convolution Visual Network (CVN) originally based on the GoogLeNet architecture. CVN identifies neutrino interactions based on their topology and therefore without the need for detailed reconstruction \cite{CVN.pdf}.
+
+\begin{figure}[ht]
+\centering
+%is pdf-a
+\includegraphics[width=1\textwidth]{/home/robo/Documents/S-cool/DIPLO/img/nova/eventtopology_embedded-page-001.jpg}
+\caption[NOvA detectors event topologies]{Different event topologies as seen in NOvAs detectors with corresponding feynman diagrams. Figure is from \cite{NOvAInteractionsPlot.pdf}.}
+\label{interactions}
+\end{figure}
+\fi
+%%%% End of master's thesis for Reco
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                   Detector calibration                     %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Detector Calibration}\label{sec:NOvACalibration}
+
+\todo{Reorganize the calibration section, ideally make it much shorter and more concise}
+
+%From NOvAResults2021.pdf: The absolute energy scale for both detectors is calibrated using the minimum ionizing portion of stopping cosmic-ray muon tracks [76]. The calibration procedure is now applied separately to the data in shorter time periods to account for an observed 0.3\% decrease in detected light per year.
+
 %%% General introduction to calibration
 The purpose of calibration is to make sure that we get the same amount of energy wherever or whenever it's deposited in whichever of NOvA's detectors and to express this amount of energy in physical units. The NOvA calibration uses cosmic ray muons, which provide a consistent, abundant, and well-understood source of energy deposition.
 
@@ -449,14 +487,16 @@ As part of the absolute calibration we also produce validation plots that show t
 %\newpage
 
 \section{Systematic Uncertainties at NOvA}\label{sec:NOvASystematics}
+\todo{Describe the general systematic uncertainties for NOvA}
+\note{These subsections below might end up just being paragraphs, depends how much I want to write about them}
 
 \subsection{Systematic Uncertainties Related to the NOvA Neutrino Beam}
 
-Hadron production and focusing systematic uncertainties
+\todo{Describe the Hadron production and focusing systematic uncertainties}
 
-Principal component analysis
+\todo{Principal component analysis}
 
-Maybe briefly also mention the POT scaling normalization uncertainty.
+\note{Maybe briefly also mention the POT scaling normalization uncertainty.}
 
 \subsection{Systematic uncertainties for NOvA detectors}
 
