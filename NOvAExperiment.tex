@@ -5,7 +5,15 @@ The NuMI Off-axis $\nu_e$ Appearance (NOvA) experiment \cite{NOvAWebsite} is a l
 
 The capability to measure both $\nu_e$ and $\overline{\nu}_e$ appearance, coupled with a significant matter effect induced by the long baseline, allows NOvA to address some of the most important questions in neutrino physics to date, such as the neutrino mass ordering, the octant of $\theta_{23}$, and the possible CP violation in the neutrino sector \cite{PhysicsOfNOvA.pdf,NOvAStatusAndOutlook.pdf,FirstNOvAResult.pdf,2019NOvAFHCRHCResults.pdf,NOvAResults2021.pdf}. NOvA also measures the values of $\theta_{13}$, $\theta_{23}$ and $\left|\Delta m^2_{atm}\right|$ \cite{PhysicsOfNOvA.pdf}, but also measures neutrino differential cross sections in the near detector \cite{NOvANCPi0XSecMeasurement2019.pdf, NOvANumuCCXSexMeasurement2023.pdf, NOvANueCCXSecMeasurement2023.pdf, NOvANuMuCCPi0XSecMeasurement2023.pdf}, provides constraint on the possible sterile neutrino models \cite{NOvASterilesFHCResults2017.pdf, NOvASterilesFHCRHCResults2021.pdf}, monitors for supernova neutrino activity \cite{NOvASupernovaMeasurements2020.pdf, NOvASupernovaCoincidenceMeasurements2021.pdf}, searches for magnetic monopoles \cite{NOvASlowMagMonopoles2021.pdf}, or constrains neutrino electromagnetic properties (this thesis) amongst other topics. Using two functionally identical detectors mitigates the systematic uncertainties of neutrino oscillation measurements, described in Sec.~\ref{sec:NOvASystematics}.
 
-\note{Should I mention here when did NOvA start taking data and how long is it planning to run for? Maybe future analysis? Size of the collaboration? - YES!}
+%\note{Should I mention here when did NOvA start taking data and how long is it planning to run for? Maybe future analysis? Size of the collaboration? - YES!}
+
+NOvA started taking data in February 2014 and is expected to run through 2026 \cite{NOvAHalfTimeOverview2022.pdf}.
+\note{Should probably expand on this point}
+
+%From NOvAHalfTimeOverview2022.pdf: NOvA started physics data-taking with the first 5 kt of the far detector in February 2014, and saw the completion of the near and far detectors completed later that year. Annual beam exposure, measured in protons-on-target (POT) to NuMI ramped up as the design beam power for NOvA of 700 kW was achieved in 2017. Further improvements to the NuMI target system now allow even higher power, with a record 1 hour average power of 843 kW. As of May 2021, the far detector has recorded data for nearly 17 × 1020 POT delivered to NuMI in neutrino mode, when weighting data collected during construction for the fraction of the detector active at the time, and 12.7 × 1020 POT delivered in antineutrino mode. NOvA expects to continue data-taking until 2026 and hopes to double the current exposure in both neutrinos and antineutrinos.
+%NOvA is expected to take data through 2026 [67], when the Fermilab accelerator complex is shutdown for construction of the Long-Baseline Neutrino Facility (LBNF) for DUNE. During the remaining running time, the beam power delivered to NuMI should increase. Following installation of additional beam dampers and collimators scheduled in 2023-4 as part of the PIP-II project [68], the Fermilab accelerator complex should be capable of delivering more than 900 kW to NuMI. The ultimate exposure delivered to NuMI will depend on the timeline of the remaining power improvements, other demands on beam from the Main Injector, and the total run length. The current projection is between 60 and 70 × 1020 protons on target.
+%With the NOvA test beam effort underway and ongoing improvements to neutrino interaction measurements and modeling, the sensitivity of NOvA to three-flavor oscillation parameters will remain statistics-limited through the end of the experiment [77]. The expected total beam exposure will bring additional compelling milestones into reach. For the Mass Hierarchy, NOvA will achieve 95\% a priori sensitivity for 40-60\% of possible δCP values and 4-5$\sigma$ a priori sensitivity for the most favorable combinations of the true values of the oscillation parameters. For CP-violation, a median, a priori sensitivity of 2-sigma is projected for 20-30\% of the $\delta$CP range. The physics reach of NOvA will be complimented by a joint analysis effort underway between NOvA and T2K [78].
+%NOvA has already informed the design of the next generation of neutrino experiments from the insights gained from the performance of its beamline and detectors, and from its experience in operations and development of analysis techniques. NOvA has also informed the neutrino interaction and oscillation landscape with results from across its full portfolio of physics topics, and will continue to do so until the onset of the DUNE and T2HK era.
 
 \section{The Neutrino Beam}\label{sec:NuMI}
 
@@ -56,6 +64,8 @@ The resulting neutrino beam is peaked $\sim\unit[7]{GeV}$ with a wide energy ban
 \note{Lot of this information is just from the TDR, only rarely from other sources. I don't want to reference the TDR after every information/sentence. Should I just put the reference somewhere into each paragraph (like it is now), or would it be enough to reference it less, assuming the reader will figure out where does most of this info come from?}
 
 The two main NOvA detectors are the Near Detector (ND), located in Fermilab $\sim\unit[1]{km}$ from the NuMI target and $\sim\unit[100]{m}$ under ground, and the Far Detector (FD), located $\sim\unit[810]{km}$ from Fermilab at Ash River in north Minnesota, partially underground with a rock overburden \cite{NOvATechreport.pdf}. NOvA also operated a detector prototype called Near Detector on the Surface (NDOS) used for an early research and development of detector components and analysis \cite{NOvAStatusAndOutlook.pdf}. Additionally, NOvA operated a NOvA Test Beam detector (TB), described in detail in Sec.~\ref{sec:TBDetector}. The scale of the near and far detectors are shown on Fig.~\ref{fig:NOvADetectors}.
+
+%The FD has an approximately 130kHz of cosmics
 
 \begin{figure}[ht]
 \centering
@@ -114,14 +124,17 @@ Data from up to 64 FEBs get concentrated in a Data Concentration Module (DCM), w
 
 The buffer nodes cache the data for at least 20 seconds while receiving information from the trigger system. Each trigger is a time window based either on the time of the NuMI beam spill, on a periodic interval for readout of comic events for detector calibration and monitoring, or on a time of activity-based data-driven trigger \cite{NOvADAQ.pdf}. Data that fall within any of the triggers are sent to a data logger system, where they are merged to form events, before being written to files or sent to an online monitoring system.
 
+%Data for calibration and non-beam physics channels is collected and a variety of data-driven triggers using real-time reconstruction algorithms run on data stored in an online buffer farm at each detector [26].  Beam events are collected in both detectors using a 550 μs time window centered on the 10 μs beam spill window, triggered by a signal derived from the accelerator controls system. The wide time window of data collection compared to the beam spill is used to sample cosmic-ray activity and noise under the precise detector conditions that apply to the beam data. [NOvAHalfTimeOverview2022.pdf]
+
 %Maybe I should write here what is the event rate?
 
 %Maybe write about what information do we have about each event at this stage: timing, peak ADC, cell, plane, run, subrun. Grouped into triggered windows?
+% "the time, location, and pulseheight of those signals are recorded as a hit" [NOvAHalfTimeOverview2022.pdf]
 
 \section{Simulation}\label{sec:NOvASimulation}
 
 \todo{Describe the NOvA simulation}
-\note{It's probably enough to do one paragraph per simulation type, instead of subsections}
+\note{It's probably enough to do one paragraph per simulation type, instead of subsections. But some parts will be longer than others (especially neutrino interaction simulation) if I wanna do everything properly}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Master's thesis on NOvA Sim:
@@ -147,6 +160,8 @@ We are using the minimum ionizing part of cosmic-ray muon tracks that stop in th
 %From NOvAResults2021.pdf: The neutrino flux delivered to the detectors is calculated using GEANT4-based simulations of particle production and transport through the beamline components [26,28] reweighted to incorporate external measurements using the package to predict the flux (PPFX) [29–48].
 
 %From NOvAResultsCombinedNuAnu2019.pdf: The flux of neutrinos delivered to the detectors is calculated using a simulation of the production and transport of particles through the beamline components [22,25] reweighted to incorporate external measurements [26–45].
+
+%From NOvAHalfTimeOverview2022.pdf: Neutrino interactions in NOvA are simulated with a chain of software packages. The neutrino flux is modeled using G4NuMI, a geant based description of the NuMI beam line [29]. The raw flux from G4NuMI is then modified using the PPFX package to better match the products of the interactions in the extended target to the world’s hadron production data [30].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Master's thesis on flux simulation
@@ -220,18 +235,23 @@ For kaons with $x_{F}<0.2$ PPFX uses weights based on NA49 measurements\cite{NA4
 
 \subsection{Simulation of the Neutrino Interactions}
 
+\todo{Maybe add a comprehensive plot of different neutrino interaction including nuclear effect?}
+
 %From NOvAResults2021.pdf: Neutrino interactions are simulated using a custom model configuration of GENIE 3.0.6 [49,50] tuned to external and NOvA ND data.1 In this configuration, charged-current (CC) quasielastic (QE) scattering is simulated using the model of Nieves et al. [53], which includes the effects of long-range nucleon correlations calculated according to the random phase approximation (RPA) [53–55]. The CCQE axial vector form factor is a z-expansion parametrization tuned to neutrino-deuterium scattering data [56]. CC interactions with two nucleons producing two holes (2p2h) are given by the IFIC València model [57,58]. The initial nuclear state is represented by a local Fermi gas in both the QE and 2p2h models, and by a global relativistic Fermi gas for all other processes. Baryon resonance (RES) and coherent pion production are simulated using the Berger-Sehgal models with final-state mass effects taken into account [59,60]. Deep inelastic scattering (DIS) and nonresonant background below the DIS region are described using the Bodek-Yang model [61] with hadronization simulated by a data-driven parameterization [62] coupled to PYTHIA [63]. Bare nucleon cross sections for RES, DIS, and nonresonant background processes are tuned by GENIE to neutrino scattering data. Final-state interactions (FSI) are simulated by the GENIE hN semi-classical intranuclear cascade model in which pion interaction probabilities are assigned according to Oset et al. [64] and pion-nucleon scattering data. The 2p2h and FSI models in this GENIE configuration are adjusted to produce a NOvA-specific neutrino interaction model tune. The 2p2h model is fit to $\nu_\mu$CC inclusive scattering data from the NOvA ND. Inspired by Gran et al. [65], this 2p2h tune enhances the base model as a function of energy and momentum transfer to the nucleus and is applied to all CC 2p2h interactions for both the neutrino and antineutrino beams. The parameters governing $\pi^\pm$ and $\pi^0$ FSI are adjusted to obtain agreement with $\pi^+$ on $^{12}\textsf{C}$ scattering data [66–72].
 
 %From NOvAResultsCombinedNuAnu2019.pdf: Neutrino interactions in the detector are simulated using GENIE [46] tuned to improve agreement with external measurements and ND data, reducing uncertainties in the extrapolation of measurements in the ND to the FD. As in Ref. [21], we set MA in the quasielastic dipole form factor to 1.04 GeV/c2 [47] and use corrections to the charged-current (CC) quasielastic cross section derived from the random phase approximation [48,49]. In this analysis, we also apply this effect to baryon resonances as a placeholder for the unknown nuclear effect that suppresses rates at a low four-momentum transfer in our and other measurements [50–53]. Additionally, we increase the rate of deep-inelastic scattering with hadronic mass W > 1.7 GeV/c2 by 10\% to match our observed counts of short track-length $\nu_\mu$CC events. We model multinucleon ejection interactions following Ref. [54] and adjust the rates in bins of energy transfer, $q_0$, and three-momentum transfer, $\left|\overrightarrow{q}\right|$, for $\nu_\mu$ and $\overline{\nu}_\mu$ separately to maximize agreement in the ND. The calculation of the $\nu_e$ and $\overline{\nu}_e$ rates uses these same models.
+
+%From NOvAHalfTimeOverview2022.pdf: Neutrino interactions and final state interactions are modeled using the GENIE neutrino interaction generator [31]
 
 \subsubsection{NOvA Reweight of the Neutrino Interaction Predictions}
 
 \subsection{Simulation of the Detector Response}
 
-%From NOvAResults2021.pdf: The propagation of final-state particles through the detectors is simulated by an updated version of GEANT4 (v10.4) [73], which provides the input for the detector response simulation [74]. In addition, a custom patch to the new version implements an exact calculation of the density effect correction to the Bethe equation using Sternheimer’s method [75] as opposed to the approximate parametrization used previously (a 1\% or less change to the
-muon range and energy lost in dead material).
+%From NOvAResults2021.pdf: The propagation of final-state particles through the detectors is simulated by an updated version of GEANT4 (v10.4) [73], which provides the input for the detector response simulation [74]. In addition, a custom patch to the new version implements an exact calculation of the density effect correction to the Bethe equation using Sternheimer’s method [75] as opposed to the approximate parametrization used previously (a 1\% or less change to the muon range and energy lost in dead material).
 
 %From NOvAResultsCombinedNuAnu2019.pdf: The energy depositions of final-state particles are simulated with GEANT4 [25] and input to a custom simulation of the detector response [55].
+
+%From NOvAHalfTimeOverview2022.pdf: the final state particles are tracked using GEANT. Finally, a custom simulation models the light readout and front-end electronics response.
 
 \section{Data Processing and Event Reconstruction}
 \todo{Write a basic description of the process from raw data to final predictions (or just cafs?)}
@@ -247,6 +267,8 @@ muon range and energy lost in dead material).
 %From NOvA results 2021: The first stage of reconstruction is to group hits, which are measurements of deposited energy in a cell above a preset threshold, into single-neutrino-interaction events. This clustering, performed based on hit proximity in time and space, now uses a new method that reduces the rate of misclustered hits in the high-occupancy environment of the ND [77]. Misclustering had previously led to differences in data-MC selection efficiency, which are now reduced to the subpercent level. The other reconstruction techniques remain unchanged from the previous analysis [NOvAResultsCombinedNuAnu2019.pdf].
 
 %From First NOvA results on FHC+RHC: Cells with activity above threshold (hits) are grouped based on their proximity in space and time to produce candidate neutrino events. Events are assigned a vertex, and clusters are formed from hits likely to be associated with particles produced there [NOvAReco.pdf]. These clusters are categorized as electromagnetic or hadronic in origin using a convolutional neural network (CNN) [Fernanda Psihas thesis]. Hits forming tracks are identified as muons by combining information on the track length, dE=dx, vertex activity, and scattering into a single particle identification (PID) score [Raddatz thesis]. The same reconstruction algorithms are applied to events from data and simulation in both detectors.
+
+%From NOvAHalfTimeOverview2022.pdf: To reconstruct neutrino events, hits are first grouped in time and space into slices. A slice is further analyzed to identify individual, final state particle tracks, called prongs. Flavor classification works on the group of hits in a slice and relies on versions of convolutional neural networks adapted from computer vision applications. Specifically, NOvA uses a convolutional visual network (CVN) trained on hit maps of simulated events to learn topological features that distinguish the flavors of neutrinos interacting in the detector [32]. The energy of charged current neutrino interactions is estimated from the sum of energies of the lepton and the hadronic recoil system. A Kalman-like algorithm is used with a BDT) based on energy loss, multiple scattering, and length parameters of a candidate track to identify muons and reconstruct their energy using track length. Electron showers are identified using a CVN trained to classify individual particle tracks within a neutrino event. The energy of electron neutrinos is estimated from a quadratic function of the calorimetric energies of the electron candidate and the hadronic recoil system derived from the simulation [33, 34].
 
 %Reconstruction of prongs and tracks. Electron showers
 
@@ -274,6 +296,8 @@ Since most of the primary goals of NOvA depend on successfully observing $\nu_e$
 \todo{Reorganize the calibration section, ideally make it much shorter and more concise}
 
 %From NOvAResults2021.pdf: The absolute energy scale for both detectors is calibrated using the minimum ionizing portion of stopping cosmic-ray muon tracks [76]. The calibration procedure is now applied separately to the data in shorter time periods to account for an observed 0.3\% decrease in detected light per year.
+
+%From NOvAHalfTimeOverview2022.pdf: The variations in light output between cells and those due to attenuation along the readout fiber, in both data and simulation, are calibrated using cosmic-ray muons. The overall energy response of the detectors is calibrated using stopping muon tracks along a window from 200 cm to 100 cm before the end of the track. The absolute energy scale is cross-checked and bench marked against simulation using beam-induced protons, muons, and neutral pions at the Near Detector.
 
 %%% General introduction to calibration
 The purpose of calibration is to make sure that we get the same amount of energy wherever or whenever it's deposited in whichever of NOvA's detectors and to express this amount of energy in physical units. The NOvA calibration uses cosmic ray muons, which provide a consistent, abundant, and well-understood source of energy deposition.
