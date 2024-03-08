@@ -132,15 +132,17 @@ The buffer nodes cache the data for at least 20 seconds while receiving informat
 %Maybe write about what information do we have about each event at this stage: timing, peak ADC, cell, plane, run, subrun. Grouped into triggered windows?
 % "the time, location, and pulseheight of those signals are recorded as a hit" [NOvAHalfTimeOverview2022.pdf]
 
+\note{Maybe talk about data quality as well? Probably should since I want to talk about good runs and bad channels in the TB calib chapter}
+
 \section{Simulation}\label{sec:NOvASimulation}
+
+\note{Should I divide the simulation into the individual stages? I had it like that originally, but for example the simulation of cosmics is only very short and not sure what section would I put it under}
 
 To extract neutrino oscillation parameters, or to test a hypothesis, NOvA uses a series of simulations to make predictions according to various physical models \cite{NOvASimulationOld-Fluka.pdf}.
 %To simulation the expected signal from the NOvA detectors,
 %To get a prediction of any possible signal events or their background in the NOvA detectors,
 % we use a series of simulations, tuned or corrected by both internal and external measurements to better match the current state of the art knowledge \cite{NOvASimulationOld-Fluka.pdf}.
 The simulation chain can be divided into four parts: simulation of the neutrino beam, simulation of neutrino interactions within the NOvA detectors, simulation of cosmic particles interacting in the NOvA detector and simulation of the detector response.
-
-\subsection{Neutrino Beam Simulation}
 
 To simulate the neutrino beam, NOvA uses the \texttt{GEANT4} v9.2.p03~\cite{GEANT4.pdf} based Monte Carlo (MC) simulation with a detailed model of the NuMI beamline \cite{ZPavlovicThesisG4NuMI_2008.pdf}, as it was described in Sec.~\ref{sec:NOvASimulation}. The simulation starts with MI protons interacting within the long carbon target and producing hadrons, mainly $\pi, K$ and $p$, followed by transport and possible further interaction of these hadrons within the focusing system, until finally ending with hadron decays producing the neutrino beam.
 
@@ -180,11 +182,10 @@ For kaons with $x_{F}<0.2$ PPFX uses weights based on NA49 measurements\cite{NA4
 
 %Good description of PPFX, beam transport and the principal components is in the NOvA-T2K technote for Flux (doc-db:54582) https://nova-docdb.fnal.gov/cgi-bin/sso/ShowDocument?docid=54582
 
-\subsection{Simulation of the Neutrino Interactions}
-\note{The description of neutrino interactions, including QE/Res/DIS scattering and nuclear effects will probably be in the theory chapter. If not I'll add it here. I'm also counting on having defined the QE, Res, DIS, FSI and MEC abbreviations in theory.}
+\note{The description of neutrino interactions, including QE/Res/DIS scattering and nuclear effects will probably be in the theory chapter. If not I'll add it here.}
 \note{Might have to describe some of these interaction models a bit more if any of the cross section uncertainty for the magnetic moment analysis turns up to be significant}
 
-Simulation of neutrinos inside the detectors is done with the GENIE v3.0.6~\cite{GENIE.pdf} neutrino MC generator. GENIE allows users to choose the particular models for different types of neutrino interactions and particle propagation within the nucleus, as well as possible tunes to external measurements. These are set by the Comprehensive Model Configurations (CMCs) and NOvA currently uses the \texttt{N1810j0000} CMC. Additionally, NOvA adds a tune to NOvA $\nu_\mu$CC data for the CCMEC interactions and a set of external $\pi$ interaction measurements to constrain the FSI model. Table~\ref{tab:NuIntSimulationModels} shows the list of models and tunes for different interaction modes in NOvA \cite{NOvAResults2021.pdf}.
+The output of the neutrino beam simulation is passed to the simulation of neutrino interactions inside the detectors, which is done with the GENIE v3.0.6~\cite{GENIE.pdf} neutrino MC generator. GENIE allows users to choose the particular models for different types of neutrino interactions and particle propagation within the nucleus, as well as possible tunes to external measurements. The four main interaction modes in GENIE are the quasielastic charged current scattering (CCQE), the resonant baryon production (Res.), the deep-inelastic scattering (DIS), and the coherent pion production (COH$\pi$). Special case of CC interaction with two nucleons producing two holes via meson exchange currents (MEC) is also considered. Particles created in these processes are then propagated inside the nucleus according to the final state interaction model (FSI). All of these are set by the Comprehensive Model Configurations (CMCs) and NOvA currently uses the \texttt{N1810j0000} CMC. Additionally, NOvA adds a tune to NOvA $\nu_\mu$CC data for the CCMEC interactions and a set of external $\pi$ interaction measurements to constrain the FSI model. Table~\ref{tab:NuIntSimulationModels} shows the list of models and tunes for different interaction modes in NOvA \cite{NOvAResults2021.pdf}.
 
 \begin{table}[!ht]
 \centering
@@ -195,14 +196,14 @@ Simulation of neutrinos inside the detectors is done with the GENIE v3.0.6~\cite
 Interaction & Model                  & Tune\\\hline
 CCQE & Val\`{e}ncia \cite{ValenciaModel_NOvACCQE_2004.pdf} & External $\nu-\textsf{D}$ data \cite{NuDeuteriumScattering_NOvACCQETune_2016.pdf}\\
 CCMEC       & Val\`{e}ncia \cite{ValenciaModel_NOvACCQEMEC_2011.pdf,ValenciaModel_NOvAMEC_2013.pdf} & NOvA $\nu_\mu$CC data\\
-Resonant    & Berger-Sehgal \cite{BergerSehgal_ResonancePionProd_2007.pdf,BergerSehgalModel_CohPionProd_2009.pdf}          & External $\nu-A$ data\\
+Res. \& COH$\pi$ & Berger-Sehgal \cite{BergerSehgal_ResonancePionProd_2007.pdf,BergerSehgalModel_CohPionProd_2009.pdf}          & External $\nu-A$ data\\
 DIS         & Bodek-Yang \cite{BodekYangModel_NOvADIS_2003.pdf,HadronizationModelForNuDIS_NOvADIS_1988.pdf}            & External $\nu-A$ data\\
 FSI         & Semi-classical cascade \cite{FSIModel_hNSemiClassicalCascade_1988.pdf} & External $\pi-^{12}\textsf{C}$ data\\\hline
 \end{tabular}
 \label{tab:NuIntSimulationModels}
 \end{table}
 
-%Where are the rock events simulated? Here as well?
+%NOvANuMuCCPi0XSecMeasurement2023.pdf: Neutrino interactions are simulated with GENIE [17] v2.10.2. The GENIE simulation generates interactions via its four default production processes: quasielastic scattering, resonant baryon production, deep-inelastic scattering, and coherent pion production. Particles created via these primary processes are subsequently propagated though the nuclear medium using GENIE’s hA effective cascade FSI model [18,19].
 
 % Describe that GENIE is highly costumizable and you can set up any generators you like. Ideally describe what parts are purely theoretical and what parts are tuned to external data. Also mention that NOvA is doing an internal tune to some of the parameters.
 
@@ -223,35 +224,16 @@ FSI         & Semi-classical cascade \cite{FSIModel_hNSemiClassicalCascade_1988.
 
 %From master thesis: From there GENIE event generator \cite{GENIE.pdf} simulates neutrino interactions in the detector \cite{2019NOvAFHCRHCResults.pdf} and another GEANT4 simulates the detector response \cite{NOvASimulationOld-Fluka.pdf}. NOvA also tunes the cross-section model of the GENIE simulation to the ND data to reduce uncertainties in the extrapolation of measurements on the ND to the FD \cite{2019NOvAFHCRHCResults.pdf}.
 
-\subsection{Simulation of cosmic rays}
+Since the FD is on the surface we also need to include a simulation of cosmic rays generated with the CRY \cite{CRY} MC generator. The simulated cosmic muons are also used to calibrate NOvA detectors \cite{NuMIFlux.pdf}. 
 
-\note{Should also include the overlays of rock muons and cosmics and how does it work}
-
-We generate cosmic rays with CRY [7] \cite{NuMIFlux.pdf} - should I describe this more?
-
-\subsection{Simulation of the Detector Response}
-
-To simulate the final state particles inside the NOvA detectors we use an updated version of \texttt{GEANT4} v10.4.p02~\cite{GEANT4.pdf}. This can also include creation of new particles and their propagation. This part ends with energy deposition.
-
-Interactions in rock would be very time and resource consuming if we did them every time, therefore we do them with single particles and then overlay them on top.
-
-The simulation of the light yield based on the deposited energy is based on a custom NOvA parametrized simulation, since every cell in NOvA is approximately the same and it would be unnecessary to simulate every cell individually \cite{NuMIFlux.pdf}. This consists of the light yield from the deposited energy, transport and attenuation of light in the fibre and the light collection in the APD. This is tuned to the cosmic data (?) - describe briefly the light level tune maybe
-
-Another custom NOvA simulation is for the electronics, which basically just adds simulated electronics noise based on some random distributions
-
-%NuMIFlux.pdf: The particle lists generated by either GENIE or CRY are then passed to GEANT4 [8, 9], which propagates particles through the detector and produces energy deposits in active material. Finally, the list of energy deposits in active material are passed to a parameterized front-end simulation which converts energy deposits into scintillation light, transports scintillation light to the APD, and simulates the readout electronics response. The final output is formatted like raw data.
-
-%NuMIFlux.pdf: Due to the high beam intensity at the near detector, many neutrinos interact in the rock in front of the detector. Simulating these interactions requires allowing GEANT4 to propagate muons through a very large rock volume which is a slow process, and only a few of these muons will make it into our detector. To correctly account for this, we simulate many neutrino interactions with the mother volume including a large rock volume in front of the detector, and only keep those that leave energy in the detector. During normal simulation, with the mother volume only including the detector and the immediate detector hall, we overlay these rock ’singles’ at a rate determined during the generation of flux files after the GEANT4 stage.
+Particles that are created from neutrino interactions and cosmic rays are propagated through the NOvA detectors using an updated version of \texttt{GEANT4} v10.4.p02~\cite{GEANT4.pdf}. The output of this simulation is the energy deposited in the scintillator, which is then passed to a custom NOvA simulation software \cite{NuMIFlux.pdf}. The scintillation light generated by the deposited energy is parametrized using the Birks-Chou model \cite{BirksChouParametrization_1952.pdf}, which corrects for recombination in organic scintillators at high deposited energies. The normalization factors for the produced scintillation light (the light yield), as well as for the Cherenkov light, which can affect the light readout, are tuned to NOvA cosmic data~\cite{NOvANumuCCXSexMeasurement2023.pdf}. The light collection by the WLS fibres and its transport to the APDs, as well as the APD response use a parametrized simulation, which makes use of the fact that all the NOvA cells and their readout are generally the same across the detectors \cite{NuMIFlux.pdf}. The simulation of the readout electronics is done by another custom NOvA parametrized model, which mainly account for a random electronics noise, with output in the same format as raw data.
 
 %NuMIFlux.pdf: While GEANT4 is capable of simulating optical photon processes, generating scintillation light and propagating it through the cell, up the fiber, and to the APD is very time consuming. Instead, we observe that the NOvA detectors are composed of many identical readout cells as shown in Fig. 6, so if we can generate templates to parameterize photon transport once, we can use them everywhere. The processes we must be able to parameterize are: the collection of scintillation photons by the fiber, the transport of light up the fiber, and the response of the APD to the captured light.
 
-%From NOvASimulationOld-Fluka.pdf:  To shorten generation time, the modeling of detector-specific aspects, such as photon transport, detector and electronics noise, and readout electronics, employs custom, parameterized simulation applications.
+Due to the high neutrino rate in the ND, there are neutrinos interacting in the surrounding rock creating particles that make it to the detector and act as background. To simulate these rock events we use the same simulation as for neutrino interactions inside the detector. However, since only a few particles make it into the detector, it would be very time consuming to run this simulation for every neutrino. Therefore, we create a separate simulation that includes the surrounding rock and then overlay the results into the normal NOvA simulation chain, which doesn't include the rock, so that the rate matches the NuMI neutrino rate \cite{NuMIFlux.pdf}.
 
-%From NOvAResults2021.pdf: The propagation of final-state particles through the detectors is simulated by an updated version of GEANT4 (v10.4) [73], which provides the input for the detector response simulation [74]. In addition, a custom patch to the new version implements an exact calculation of the density effect correction to the Bethe equation using Sternheimer’s method [75] as opposed to the approximate parametrization used previously (a 1\% or less change to the muon range and energy lost in dead material).
-
-%From NOvAResultsCombinedNuAnu2019.pdf: The energy depositions of final-state particles are simulated with GEANT4 [25] and input to a custom simulation of the detector response [55].
-
-%From NOvAHalfTimeOverview2022.pdf: the final state particles are tracked using GEANT. Finally, a custom simulation models the light readout and front-end electronics response.
+%%% Rock simulation and overlay
+%NuMIFlux.pdf: Due to the high beam intensity at the near detector, many neutrinos interact in the rock in front of the detector. Simulating these interactions requires allowing GEANT4 to propagate muons through a very large rock volume which is a slow process, and only a few of these muons will make it into our detector. To correctly account for this, we simulate many neutrino interactions with the mother volume including a large rock volume in front of the detector, and only keep those that leave energy in the detector. During normal simulation, with the mother volume only including the detector and the immediate detector hall, we overlay these rock ’singles’ at a rate determined during the generation of flux files after the GEANT4 stage.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Master's thesis on NOvA Sim:
@@ -273,8 +255,6 @@ GEANT4 \cite{GEANT4.pdf} simulation is used to calibrate the deposited energy of
 \todo{Write a basic description of the process from raw data to final predictions (or just cafs?)}
 
 %We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
-
-\note{Maybe talk about data quality as well? Good runs and so on...}
 
 \todo{Reconstruction - describe the reconstruction tools used to get the final products, focusing on the electron reconstruction.}
 
