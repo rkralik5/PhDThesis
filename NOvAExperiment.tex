@@ -235,28 +235,36 @@ Due to the high neutrino rate in the ND, there are neutrinos interacting in the 
 %%% Rock simulation and overlay
 %NuMIFlux.pdf: Due to the high beam intensity at the near detector, many neutrinos interact in the rock in front of the detector. Simulating these interactions requires allowing GEANT4 to propagate muons through a very large rock volume which is a slow process, and only a few of these muons will make it into our detector. To correctly account for this, we simulate many neutrino interactions with the mother volume including a large rock volume in front of the detector, and only keep those that leave energy in the detector. During normal simulation, with the mother volume only including the detector and the immediate detector hall, we overlay these rock ’singles’ at a rate determined during the generation of flux files after the GEANT4 stage.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Master's thesis on NOvA Sim:
-\iffalse
-GEANT4 \cite{GEANT4.pdf} simulation is used to calibrate the deposited energy of individual particles as well as the scintillation light, light transport and readout response \cite{NOvASimulationOld-Fluka.pdf}.
 
-\begin{figure}[ht]
-\centering
-%is pdf-a
-\includegraphics[width=1\textwidth]{/home/robo/Documents/S-cool/DIPLO/img/nova/eventtopology_embedded-page-001.jpg}
-\caption[NOvA detectors event topologies]{Different event topologies as seen in NOvAs detectors with corresponding feynman diagrams. Figure is from \cite{NOvAInteractionsPlot.pdf}.}
-\label{interactions}
-\end{figure}
-\fi
+
 %%%% End of master's thesis for Sim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Data Processing and Event Reconstruction}
 \todo{Write a basic description of the process from raw data to final predictions (or just cafs?)}
 
+Both data and simulation are passed through parallel event reconstruction, identification, calibration and energy estimation algorithms.
+
 %We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
 
 \todo{Reconstruction - describe the reconstruction tools used to get the final products, focusing on the electron reconstruction.}
+
+\begin{figure}[ht]
+\centering
+%is pdf-a
+\includegraphics[width=1\textwidth]{/home/robert/Documents/School/PhD/Thesis/Plots/NOvAExperiment/NOvAEventTopology.pdf}
+\caption[NOvA detectors event topologies]{Different event topologies as seen in the NOvA detectors with corresponding Feynman diagrams. Figure is from \cite{NOvAReco.pdf}.}
+\label{interactions}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+%is pdf-a
+\includegraphics[width=1\textwidth]{/home/robert/Documents/School/PhD/Thesis/Plots/NOvAExperiment/ElectronRecoEVD.png}
+\caption[NOvA reconstruction of a single electron]{Simulated single electron event in the NOvA ND with reconstruction applied. The red cross is the reconstructed vertex, the shaded area shows the cluster of hits into a shower and the dotted red line shows the estimated momentum of that shower. The blue dotted line shows the true momentum of the scattering neutrino and the solid red line the true momentum of the scattered electron. Figure from internal NOvA database.}
+\label{interactions}
+\end{figure}
+
 
 %Clustering into slices - how is that done?
 
@@ -320,7 +328,7 @@ Since energy deposition depends on the path length particle travels through a ce
 \includegraphics[width=0.6\textwidth]{Plots/NOvAExperiment/TricellConditionWithBadChannel.png}
 \caption{}
 \end{subfigure}
-\caption{Illustration of the tricell condition (a). We only use hits that have two surrounding hits in the same plane to be used in the NOvA calibration. This is to ensure a good quality of the path length (d) reconstruction, which is calculated from the known cell height (h) and the reconstructed track angle $\left(\varphi\right)$. In case the hit is next to a bad channel (b), we ignore this bad channel and require a hit in the next cell over.}
+\caption[Tricell condition for calibration hits in NOvA]{Illustration of the tricell condition. We only use hits that have two surrounding hits in the same plane to be used in the NOvA calibration. This is to ensure a good quality of the path length reconstruction (d), which is calculated from the known cell height (h) and the reconstructed track angle $\left(\varphi\right)$. In case the hit is next to a bad channel, as shown on the right plot, we ignore this bad channel and require a hit in the next cell over.}
 \label{figTricellCondition}
 \end{figure}
 
@@ -358,7 +366,7 @@ However, there are some variations in the detector response cell by cell that ca
 \centering
 \includegraphics[width=\textwidth]{Plots/NOvAExperiment/BrightnessIndexToValue.pdf}
 \end{subfigure}
-\caption{The Test Beam detector is (like the standard NOvA detectors) divided into 12 brightness bins (left plot), each representing a relative difference in energy response (right plot) due to different brightnesses of the fibres, scintillators, or readout.}
+\caption[Fibre Brightness bins for the NOvA calibration]{The Test Beam detector is (like the standard NOvA detectors) divided into 12 brightness bins (left plot), each representing a relative difference in energy response (right plot) due to different brightnesses of the fibres, scintillators, or readout.}
 \label{figFiberBrightnessBins}
 \end{figure}
 
