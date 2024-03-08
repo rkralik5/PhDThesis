@@ -66,14 +66,11 @@
 \usepackage{tabularx}       % for title setting
 \usepackage{placeins}       % for FloatBarrier
 \usepackage{tikz}           % for tikz pictures
+\usepackage{multirow}       % for multirows in tables (duh)
 \usepackage{doi}            % automatically link doi to hyperlinks
 \usepackage{url}            % use normal font for the URL in bibliography
 \usetikzlibrary{calc}       % for coloured header
 \usetikzlibrary{decorations.pathreplacing} % for curly braces
-
-%\bibliographystyle{unsrtnat}
-%\bibliographystyle{Highlander}
-%unsrtnat, apalike
 
 \setstretch{1.5}            % Set line spacing
 
@@ -172,6 +169,7 @@ Abstract
 %%% Abbreviations used in the thesis, if any, including their explanation
 %%% In mathematical theses, it could be better to move the list of abbreviations to the beginning of the thesis.
 \chapwithtoc{Glossary}
+\note{Should this be ordered by first appearance or alphabetically?}
 \begin{table}[H]
 \begin{tabular}{ll}
 %PMNS       & Pontecorvo-Maki-Nakagawa-Sakata (matrix)          \\
@@ -207,7 +205,9 @@ ASIC       & Application-Specific Integrated Circuit           \\
 ADC        & Analog-to-Digital Converter                       \\
 FPGA       & Field Programmable Gate Array                     \\
 DCM        & Data Concentration Module                         \\
+MC         & Monte Carlo                                       \\
 PPFX       & Package to Predict the Flux                       \\
+CMC        & Comprehensive Model Configuration                 \\
 %CVN        & Convolutional Neural Network                      \\
 %MC         & Monte Carlo                                       \\
 %PPFX       & Package to Predict the Flux                       \\
