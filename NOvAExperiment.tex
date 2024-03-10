@@ -32,7 +32,7 @@ The NuMI neutrino beam starts on the left hand side with protons from the Main I
 
 The proton beam passes through a collimating baffle before hitting a $\sim\unit[1.2]{m}$-long (equal to about two interaction lengths) graphite target \cite{LEOFluxPredictionAtNuMI.pdf}, producing hadrons, predominantly pions and kaons \cite{NuMI.pdf}. These are then focused and selected by two parabolic magnetic "horns". The focused hadrons pass through a $\unit[675]{m}$-long decay pipe filled with helium to create a low density environment for hadrons to propagate and decay in flight into either neutrinos or antineutrinos. High energy hadrons that do not decay in the decay pipe are absorbed within a massive aluminium, steel, and concrete hadron absorber and monitored with a hadron monitor. The leftover muons are ranged out in dolomite rock after the absorber and monitored using three muon monitors. The hadron and all the muon monitors are ionization chambers, used to monitor the quality, location and relative intensity of the beam.
 
-Using a positive current inside the horns focuses positively charged particles, which then decay into neutrinos, and removes negatively charged particles. Reversing the horn current focuses negatively charged particles, which decay into antineutrinos, and defocuses positively charged particles. The neutrino mode is therefore called Forward Horn Current (FHC) and the antineutrino mode is called Reverse Horn Current (RHC). The composition of the neutrino beam for both these modes at the NOvA near detector, shown as a rate of charged current events, is presented in Fig.~\ref{fig:NOvABeamComponents}, displaying the very high purity $\nu_\mu$ component in the FHC beam, and the high purity $\overline{\nu}_\mu$ component in the RHC mode \cite{NuMI.pdf}.
+Using a positive current inside the horns focuses positively charged particles, which then decay into neutrinos, and removes negatively charged particles. Reversing the horn current focuses negatively charged particles, which decay into antineutrinos, and defocuses positively charged particles. The neutrino mode is therefore called Forward Horn Current (FHC) and the antineutrino mode is called Reverse Horn Current (RHC). The composition of the neutrino beam for both these modes at the NOvA near detector, shown as a rate of charged current (CC) events, is presented in Fig.~\ref{fig:NOvABeamComponents}, displaying the very high purity $\nu_\mu$ component in the FHC beam, and the high purity $\overline{\nu}_\mu$ component in the RHC mode \cite{NuMI.pdf}.
 
 \begin{figure}[!htb]  
   \centering
@@ -185,7 +185,7 @@ For kaons with $x_{F}<0.2$ PPFX uses weights based on NA49 measurements\cite{NA4
 \note{The description of neutrino interactions, including QE/Res/DIS scattering and nuclear effects will probably be in the theory chapter. If not I'll add it here.}
 \note{Might have to describe some of these interaction models a bit more if any of the cross section uncertainty for the magnetic moment analysis turns up to be significant}
 
-The output of the neutrino beam simulation is passed to the simulation of neutrino interactions inside the detectors, which is done with the GENIE v3.0.6~\cite{GENIE.pdf} neutrino MC generator. GENIE allows users to choose the particular models for different types of neutrino interactions and particle propagation within the nucleus, as well as possible tunes to external measurements. The four main interaction modes in GENIE are the quasielastic charged current scattering (CCQE), the resonant baryon production (Res.), the deep-inelastic scattering (DIS), and the coherent pion production (COH$\pi$). Special case of CC interaction with two nucleons producing two holes via meson exchange currents (MEC) is also considered. Particles created in these processes are then propagated inside the nucleus according to the final state interaction model (FSI). All of these are set by the Comprehensive Model Configurations (CMCs) and NOvA currently uses the \texttt{N1810j0000} CMC. Additionally, NOvA adds a tune to NOvA $\nu_\mu$CC data for the CCMEC interactions and a set of external $\pi$ interaction measurements to constrain the FSI model. Table~\ref{tab:NuIntSimulationModels} shows the list of models and tunes for different interaction modes in NOvA \cite{NOvAResults2021.pdf}.
+The output of the neutrino beam simulation is passed to the simulation of neutrino interactions inside the detectors, which is done with the GENIE v3.0.6~\cite{GENIE.pdf} neutrino MC generator. GENIE allows users to choose the particular models for different types of neutrino interactions and particle propagation within the nucleus, as well as possible tunes to external measurements. The four main interaction modes in GENIE are the quasi elastic (QE) CC scattering, the resonant baryon production (Res), the deep-inelastic scattering (DIS), and the coherent pion production (COH$\pi$). Special case of CC interaction with two nucleons producing two holes via meson exchange currents (MEC) is also considered. Particles created in these processes are then propagated inside the nucleus according to the final state interaction model (FSI). All of these are set by the Comprehensive Model Configurations (CMCs) and NOvA currently uses the \texttt{N1810j0000} CMC. Additionally, NOvA adds a tune to NOvA $\nu_\mu$CC data for the CCMEC interactions and a set of external $\pi$ interaction measurements to constrain the FSI model. Table~\ref{tab:NuIntSimulationModels} shows the list of models and tunes for different interaction modes in NOvA \cite{NOvAResults2021.pdf}.
 
 \begin{table}[!ht]
 \centering
@@ -241,53 +241,45 @@ Due to the high neutrino rate in the ND, there are neutrinos interacting in the 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Data Processing and Event Reconstruction}
-\todo{Write a basic description of the process from raw data to final predictions (or just cafs?)}
+Both data and simulation events for all NOvA detectors are passed through the same event reconstruction and particle identification algorithms. The reconstruction was specifically developed with the $\nu_e$ appearance search in mind, focusing on identifying the $\nu_e$CC signal against the $\nu_\mu$CC and neutral current (NC) backgrounds. Each NOvA detector has to deal with a different challenges, with multiple neutrinos interacting in the ND during one beam spill, and a large cosmic background in the FD \cite{NOvAReco.pdf}.
 
-Both data and simulation are passed through parallel event reconstruction, identification, calibration and energy estimation algorithms.
-
-%We are saving all the ADC and TDC (Time Digital Converter I believe) values to the RawDigit. Then they are fitting in the Calibrator to a functional form and converted to PE by fitting for the peak ADC.
-
-\todo{Reconstruction - describe the reconstruction tools used to get the final products, focusing on the electron reconstruction.}
+The most common topologies for particles interacting in NOvA detectors are shown on Fig.~\ref{fig:NOvAEventTopologies}. Muons are easily identifiable as a single long track which decays into an electron (or positron) if it stops inside the detector. Both electrons and $\pi^0$'s produce electromagnetic showers, but thanks to the low-Z composition and high granularity of the detector, there is a gap between the interaction vertex and the electromagnetic shower.
 
 \begin{figure}[ht]
 \centering
 %is pdf-a
 \includegraphics[width=1\textwidth]{/home/robert/Documents/School/PhD/Thesis/Plots/NOvAExperiment/NOvAEventTopology.pdf}
-\caption[NOvA detectors event topologies]{Different event topologies as seen in the NOvA detectors with corresponding Feynman diagrams. Figure is from \cite{NOvAReco.pdf}.}
-\label{interactions}
+\caption[NOvA detectors event topologies]{Different event topologies as seen in the NOvA detectors with corresponding Feynman diagrams \cite{NOvAReco.pdf}. Each event is a simulated $\unit[2.15]{GeV}$ neutrino interacting in a NOvA detector producing a $\unit[0.78]{GeV}$ proton and a second $\unit[1.86]{GeV}$ particle depending on the interactions type. The figure show one view and the colouring represents the deposited energy.}
+\label{fig:NOvAEventTopologies}
 \end{figure}
+
+The readout from each cell from the DAQ (see Sec.~\ref{sec:DAQ}) is called a \textit{channel} and the DAQ output from each channel is called a \textit{raw hit}. DAQ groups hits into $\unit[550]{\mu s}$ windows and passes them to an offline reconstruction chain~\cite{NOvAReco.pdf}. Reconstruction starts by grouping hits into \textit{slices} based on their proximity to other hits in both time and space~\cite{DBSCAN.pdf}.
+\note{Maybe include rawhit to cellhit to calhit to recohit. Find out where this is described}
+
+For events that produce hadronic and electromagnetic showers, we first identify lines through major features using a modified Hough transform~\cite{HoughTransform.pdf}. These lines representing momentum directions are then passed to the Elastic Arms algorithm~\cite{ElasticArms.pdf} to identify \textit{vertex} candidates from their intersection points. Hits are then clustered into \textit{prongs}, group of hits with a start point and a direction, using a k-means algorithm called FuzzyK \cite{FuzzyKClustering.pdf,FuzzyKFuzzyness.pdf}. Here "fuzzy" means that each hit can belong to multiple prongs. Prongs are first created separately for each view (also called 2D prongs) and then, if possible, view-matched into 3D prongs (or just prongs)~\cite{NOvAReco.pdf}. Figure~\ref{fig:NOvARecoEVD} shows an example simulated electron shower with the reconstructed vertex (red cross) and prong (red shaded area) grouping all hits that should be a part of the shower together, while removing background hits in grey.
+
+For tracks with do kalman tracks. For cosmic muons we do window cosmictrack. We can also do break point fitter from the vertex and prong information.
 
 \begin{figure}[ht]
 \centering
 %is pdf-a
 \includegraphics[width=1\textwidth]{/home/robert/Documents/School/PhD/Thesis/Plots/NOvAExperiment/ElectronRecoEVD.png}
-\caption[NOvA reconstruction of a single electron]{Simulated single electron event in the NOvA ND with reconstruction applied. The red cross is the reconstructed vertex, the shaded area shows the cluster of hits into a shower and the dotted red line shows the estimated momentum of that shower. The blue dotted line shows the true momentum of the scattering neutrino and the solid red line the true momentum of the scattered electron. Figure from internal NOvA database.}
-\label{interactions}
+\caption[NOvA reconstruction of a single electron]{Reconstruction of a simulated single electron event in the NOvA ND. The red cross is the reconstructed vertex, the shaded area shows the cluster of hits into a shower and the dotted red line shows the estimated momentum of that shower. The blue dotted line shows the true momentum of the scattering neutrino and the solid red line the true momentum of the scattered electron. Figure from internal NOvA database.}
+\label{fig:NOvARecoEVD}
 \end{figure}
 
+NOvANumuCCXSexMeasurement2023.pdf: Hits in an event are then grouped into possible particle trajectories (tracks) via a Kalman filter-based algorithm in both the horizontal and vertical two-dimensional detector views [35]. Three-dimensional tracks are formed by combining tracks from the two views based on their overlap in the longitudinal direction. The track reconstruction algorithm assumes a start point at the most upstream hit, and requires a minimum of 4 hits in each detector view.
 
-%Clustering into slices - how is that done?
-
-%From NOvA results 2021: The first stage of reconstruction is to group hits, which are measurements of deposited energy in a cell above a preset threshold, into single-neutrino-interaction events. This clustering, performed based on hit proximity in time and space, now uses a new method that reduces the rate of misclustered hits in the high-occupancy environment of the ND [77]. Misclustering had previously led to differences in data-MC selection efficiency, which are now reduced to the subpercent level. The other reconstruction techniques remain unchanged from the previous analysis [NOvAResultsCombinedNuAnu2019.pdf].
+PID description. CVN and BDT and others...
 
 %From First NOvA results on FHC+RHC: Cells with activity above threshold (hits) are grouped based on their proximity in space and time to produce candidate neutrino events. Events are assigned a vertex, and clusters are formed from hits likely to be associated with particles produced there [NOvAReco.pdf]. These clusters are categorized as electromagnetic or hadronic in origin using a convolutional neural network (CNN) [Fernanda Psihas thesis]. Hits forming tracks are identified as muons by combining information on the track length, dE=dx, vertex activity, and scattering into a single particle identification (PID) score [Raddatz thesis]. The same reconstruction algorithms are applied to events from data and simulation in both detectors.
 
 %From NOvAHalfTimeOverview2022.pdf: To reconstruct neutrino events, hits are first grouped in time and space into slices. A slice is further analyzed to identify individual, final state particle tracks, called prongs. Flavor classification works on the group of hits in a slice and relies on versions of convolutional neural networks adapted from computer vision applications. Specifically, NOvA uses a convolutional visual network (CVN) trained on hit maps of simulated events to learn topological features that distinguish the flavors of neutrinos interacting in the detector [32]. The energy of charged current neutrino interactions is estimated from the sum of energies of the lepton and the hadronic recoil system. A Kalman-like algorithm is used with a BDT) based on energy loss, multiple scattering, and length parameters of a candidate track to identify muons and reconstruct their energy using track length. Electron showers are identified using a CVN trained to classify individual particle tracks within a neutrino event. The energy of electron neutrinos is estimated from a quadratic function of the calorimetric energies of the electron candidate and the hadronic recoil system derived from the simulation [33, 34].
 
-%Reconstruction of prongs and tracks. Electron showers
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Master's thesis on NOvA Reco:
 \iffalse
 Since most of the primary goals of NOvA depend on successfully observing $\nu_e$ charged-current interaction, the reconstruction chain was tailored for this task \cite{NOvAReco.pdf}. Different interactions as seen in a NOvA detector are shown in fig.\ref{interactions}. Reconstruction begins by clustering hits into slices by time and space "density". Than a modified Hough transform identifies prominent features, which are used to determine the global 3D vertex for the slice. This vertex is used in the fuzzy k-means algorithm to produce prongs (a collection of cell hits with a start point and a direction) which are fed to a neural network to classify the degree to which the slice was like a $\nu_e$ CC (or other) interaction \cite{NOvAReco.pdf}. NOvA uses a convolutional neural network called Convolution Visual Network (CVN) originally based on the GoogLeNet architecture. CVN identifies neutrino interactions based on their topology and therefore without the need for detailed reconstruction \cite{CVN.pdf}.
-
-\begin{figure}[ht]
-\centering
-%is pdf-a
-\includegraphics[width=1\textwidth]{/home/robo/Documents/S-cool/DIPLO/img/nova/eventtopology_embedded-page-001.jpg}
-\caption[NOvA detectors event topologies]{Different event topologies as seen in NOvAs detectors with corresponding feynman diagrams. Figure is from \cite{NOvAInteractionsPlot.pdf}.}
-\label{interactions}
-\end{figure}
 \fi
 %%%% End of master's thesis for Reco
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -513,6 +505,9 @@ As part of the absolute calibration we also produce validation plots that show t
 
 %\FloatBarrier
 %\newpage
+
+\section{Energy estimation}
+\note{Should I include this section or not?}
 
 \section{Systematic Uncertainties at NOvA}\label{sec:NOvASystematics}
 \todo{Describe the general systematic uncertainties for NOvA}
