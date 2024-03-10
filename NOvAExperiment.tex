@@ -243,22 +243,11 @@ Due to the high neutrino rate in the ND, there are neutrinos interacting in the 
 \section{Data Processing and Event Reconstruction}
 Both data and simulation events for all NOvA detectors are passed through the same event reconstruction and particle identification algorithms. The reconstruction was specifically developed with the $\nu_e$ appearance search in mind, focusing on identifying the $\nu_e$CC signal against the $\nu_\mu$CC and neutral current (NC) backgrounds. Each NOvA detector has to deal with a different challenges, with multiple neutrinos interacting in the ND during one beam spill, and a large cosmic background in the FD \cite{NOvAReco.pdf}.
 
-The most common topologies for particles interacting in NOvA detectors are shown on Fig.~\ref{fig:NOvAEventTopologies}. Muons are easily identifiable as a single long track which decays into an electron (or positron) if it stops inside the detector. Both electrons and $\pi^0$'s produce electromagnetic showers, but thanks to the low-Z composition and high granularity of the detector, there is a gap between the interaction vertex and the electromagnetic shower.
-
-\begin{figure}[ht]
-\centering
-%is pdf-a
-\includegraphics[width=1\textwidth]{/home/robert/Documents/School/PhD/Thesis/Plots/NOvAExperiment/NOvAEventTopology.pdf}
-\caption[NOvA detectors event topologies]{Different event topologies as seen in the NOvA detectors with corresponding Feynman diagrams \cite{NOvAReco.pdf}. Each event is a simulated $\unit[2.15]{GeV}$ neutrino interacting in a NOvA detector producing a $\unit[0.78]{GeV}$ proton and a second $\unit[1.86]{GeV}$ particle depending on the interactions type. The figure show one view and the colouring represents the deposited energy.}
-\label{fig:NOvAEventTopologies}
-\end{figure}
 
 The readout from each cell from the DAQ (see Sec.~\ref{sec:DAQ}) is called a \textit{channel} and the DAQ output from each channel is called a \textit{raw hit}. DAQ groups hits into $\unit[550]{\mu s}$ windows and passes them to an offline reconstruction chain~\cite{NOvAReco.pdf}. Reconstruction starts by grouping hits into \textit{slices} based on their proximity to other hits in both time and space~\cite{DBSCAN.pdf}.
 \note{Maybe include rawhit to cellhit to calhit to recohit. Find out where this is described}
 
 For events that produce hadronic and electromagnetic showers, we first identify lines through major features using a modified Hough transform~\cite{HoughTransform.pdf}. These lines representing momentum directions are then passed to the Elastic Arms algorithm~\cite{ElasticArms.pdf} to identify \textit{vertex} candidates from their intersection points. Hits are then clustered into \textit{prongs}, group of hits with a start point and a direction, using a k-means algorithm called FuzzyK \cite{FuzzyKClustering.pdf,FuzzyKFuzzyness.pdf}. Here "fuzzy" means that each hit can belong to multiple prongs. Prongs are first created separately for each view (also called 2D prongs) and then, if possible, view-matched into 3D prongs (or just prongs)~\cite{NOvAReco.pdf}. Figure~\ref{fig:NOvARecoEVD} shows an example simulated electron shower with the reconstructed vertex (red cross) and prong (red shaded area) grouping all hits that should be a part of the shower together, while removing background hits in grey.
-
-For tracks with do kalman tracks. For cosmic muons we do window cosmictrack. We can also do break point fitter from the vertex and prong information.
 
 \begin{figure}[ht]
 \centering
@@ -268,21 +257,27 @@ For tracks with do kalman tracks. For cosmic muons we do window cosmictrack. We 
 \label{fig:NOvARecoEVD}
 \end{figure}
 
-NOvANumuCCXSexMeasurement2023.pdf: Hits in an event are then grouped into possible particle trajectories (tracks) via a Kalman filter-based algorithm in both the horizontal and vertical two-dimensional detector views [35]. Three-dimensional tracks are formed by combining tracks from the two views based on their overlap in the longitudinal direction. The track reconstruction algorithm assumes a start point at the most upstream hit, and requires a minimum of 4 hits in each detector view.
+For particles that are represented by tracks rather than showers (especially muons) we take the slice hits and form the \textit{Kalman tracks} based on a Kalman filter~\cite{RaddatzNOvAThesis_KalmanTracks.pdf}. In addition to the start point and the direction, which exist also for prongs, tracks also contain information on the vector of trajectory points that make up the track and on the end point - and therefore on the track length. A parallel tracking algorithm takes in the Elastic Arms vertex and the Fuzzy-K 3D prongs and forms Break-Point-Fitter (BPF) tracks \cite{BairdNOvAThesis_BPFTracks.pdf,BreakPointFitterBasics.pdf}, using a model of Coulomb scattering and energy loss. BPF tracks also contain 4-momentum information based on various particle assumption, most notably muon assumption. Lastly, for cosmic particles, mostly muons, we use the window cosmic track algorithm~\cite{NOVA-doc-15977}, which uses a 5 plane-long window, starting from the end of the detector, in which it fits a straight line to the recorded hits, before sliding the window forward and repeating the process. This way it accounts for possible Coulomb scattering of cosmic muons.
 
-PID description. CVN and BDT and others...
+%%% PID
 
-%From First NOvA results on FHC+RHC: Cells with activity above threshold (hits) are grouped based on their proximity in space and time to produce candidate neutrino events. Events are assigned a vertex, and clusters are formed from hits likely to be associated with particles produced there [NOvAReco.pdf]. These clusters are categorized as electromagnetic or hadronic in origin using a convolutional neural network (CNN) [Fernanda Psihas thesis]. Hits forming tracks are identified as muons by combining information on the track length, dE=dx, vertex activity, and scattering into a single particle identification (PID) score [Raddatz thesis]. The same reconstruction algorithms are applied to events from data and simulation in both detectors.
+To identify individual particles and remove backgrounds, NOvA uses several Machine Learning (ML) algorithms, outputs of which are used in for particle identification (PID) in various NOvA analyses. The most common topologies for particles interacting in NOvA detectors are shown on Fig.~\ref{fig:NOvAEventTopologies}. Muons are easily identifiable as a single long track which decays into an electron (or positron) if it stops inside the detector. Both electrons and $\pi^0$'s produce electromagnetic showers, but thanks to the low-Z composition and high granularity of the detector, there is a gap between the interaction vertex and the electromagnetic shower.
 
-%From NOvAHalfTimeOverview2022.pdf: To reconstruct neutrino events, hits are first grouped in time and space into slices. A slice is further analyzed to identify individual, final state particle tracks, called prongs. Flavor classification works on the group of hits in a slice and relies on versions of convolutional neural networks adapted from computer vision applications. Specifically, NOvA uses a convolutional visual network (CVN) trained on hit maps of simulated events to learn topological features that distinguish the flavors of neutrinos interacting in the detector [32]. The energy of charged current neutrino interactions is estimated from the sum of energies of the lepton and the hadronic recoil system. A Kalman-like algorithm is used with a BDT) based on energy loss, multiple scattering, and length parameters of a candidate track to identify muons and reconstruct their energy using track length. Electron showers are identified using a CVN trained to classify individual particle tracks within a neutrino event. The energy of electron neutrinos is estimated from a quadratic function of the calorimetric energies of the electron candidate and the hadronic recoil system derived from the simulation [33, 34].
+%A Kalman-like algorithm is used with a BDT based on energy loss, multiple scattering, and length parameters of a candidate track to identify muons and reconstruct their energy using track length.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Master's thesis on NOvA Reco:
-\iffalse
-Since most of the primary goals of NOvA depend on successfully observing $\nu_e$ charged-current interaction, the reconstruction chain was tailored for this task \cite{NOvAReco.pdf}. Different interactions as seen in a NOvA detector are shown in fig.\ref{interactions}. Reconstruction begins by clustering hits into slices by time and space "density". Than a modified Hough transform identifies prominent features, which are used to determine the global 3D vertex for the slice. This vertex is used in the fuzzy k-means algorithm to produce prongs (a collection of cell hits with a start point and a direction) which are fed to a neural network to classify the degree to which the slice was like a $\nu_e$ CC (or other) interaction \cite{NOvAReco.pdf}. NOvA uses a convolutional neural network called Convolution Visual Network (CVN) originally based on the GoogLeNet architecture. CVN identifies neutrino interactions based on their topology and therefore without the need for detailed reconstruction \cite{CVN.pdf}.
-\fi
-%%%% End of master's thesis for Reco
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+%is pdf-a
+\includegraphics[width=1\textwidth]{/home/robert/Documents/School/PhD/Thesis/Plots/NOvAExperiment/NOvAEventTopology.pdf}
+\caption[NOvA detectors event topologies]{Different event topologies as seen in the NOvA detectors with corresponding Feynman diagrams \cite{NOvAReco.pdf}. Each event is a simulated $\unit[2.15]{GeV}$ neutrino interacting in a NOvA detector producing a $\unit[0.78]{GeV}$ proton and a second $\unit[1.86]{GeV}$ particle depending on the interactions type. The figure show one view and the colouring represents the deposited energy.}
+\label{fig:NOvAEventTopologies}
+\end{figure}
+
+NOvA employs a convolutional neural network (CNN) based on the GoogLeNet \cite{GoogLeNetArchitecture.pdf} architecture named Convolution Visual Network (CVN) \cite{CVN.pdf}, which uses slice hits to classify interactions into one of the four categories: $\nu_e$, $\nu_\mu$, $\nu_\tau$, or NC. The same architecture, but applied to the Fuzzy-K prongs and called ProngCVN \cite{PhihasNOvAThesis_ProngCVN.pdf}, is used to identify the individual prongs based on what particles they most likely correspond to. A special ML algorithm for identifying muons, based on a Boosted Decision Tree (BDT) with inputs from the Kalman track, is called Reconstructed Muon Identifier (ReMId)~\cite{RaddatzNOvAThesis_KalmanTracks.pdf}.
+
+%From First NOvA results on FHC+RHC: These clusters are categorized as electromagnetic or hadronic in origin using a convolutional neural network (CNN) [Fernanda Psihas thesis]. Hits forming tracks are identified as muons by combining information on the track length, dE=dx, vertex activity, and scattering into a single particle identification (PID) score [Raddatz thesis].
+
+%From NOvAHalfTimeOverview2022.pdf: The energy of charged current neutrino interactions is estimated from the sum of energies of the lepton and the hadronic recoil system. A Kalman-like algorithm is used with a BDT based on energy loss, multiple scattering, and length parameters of a candidate track to identify muons and reconstruct their energy using track length. The energy of electron neutrinos is estimated from a quadratic function of the calorimetric energies of the electron candidate and the hadronic recoil system derived from the simulation [33, 34].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                   Detector calibration                     %%%%%%%%%%
