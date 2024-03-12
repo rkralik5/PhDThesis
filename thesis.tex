@@ -69,8 +69,19 @@
 \usepackage{multirow}       % for multirows in tables (duh)
 \usepackage{doi}            % automatically link doi to hyperlinks
 \usepackage{url}            % use normal font for the URL in bibliography
+%\usepackage{cooltooltips}   % for links showing when hovering above
 \usetikzlibrary{calc}       % for coloured header
 \usetikzlibrary{decorations.pathreplacing} % for curly braces
+
+%\usepackage[xindy]{glossaries} % for automatic glossary
+\usepackage[acronym,toc,hyperfirst=false,nogroupskip]{glossaries} % for automatic glossary
+%\glossarystyle{list} % by order of appearance
+%\glossarystyle{listgroup} % alphabetically
+%\glossarystyle{listhypergroup} % alphabetically and adds links to the letters
+\setacronymstyle{long-sc-short}
+\input{glossary}
+\makeglossaries
+%\glsdisablehyper
 
 \setstretch{1.5}            % Set line spacing
 
@@ -141,11 +152,14 @@ Measuring an enhanced neutrino magnetic moment would be a clear indication of ph
 }
 
 % Definitions of macros (see description inside)
-\include{macros}
+\input{macros}
 
 % Title page and various mandatory informational pages
 \begin{document}
 \include{title}
+
+%\glsaddall
+%\glsresetall
 
 %%% A page with automatically generated table of contents of the master thesis
 %\tableofcontents
@@ -167,66 +181,7 @@ Measuring an enhanced neutrino magnetic moment would be a clear indication of ph
 
 %\include{epilog}
 
-%%% Abbreviations used in the thesis, if any, including their explanation
-%%% In mathematical theses, it could be better to move the list of abbreviations to the beginning of the thesis.
-\chapwithtoc{Glossary}
-\note{Should this be ordered by first appearance or alphabetically?}
-\begin{table}[H]
-\begin{tabular}{ll}
-%PMNS       & Pontecorvo-Maki-Nakagawa-Sakata (matrix)          \\
-%SNU        & Solar Neutrino Unit                               \\
-%CC         & Charged Current (interaction)                     \\
-%NC         & Neutral Current                                   \\
-%MSW        & Mikheyev-Smirnov-Wolfenstein (effect)             \\
-%SK         & Super-Kamiokande (experiment)                     \\
-%NO         & Normal Ordering (of masses)                       \\
-%IO         & Inverted Ordering (of masses)                     \\
-%SBL        & Short Baseline                                    \\
-%LBL        & Long Baseline                                     \\
-%LSND       & Liquid Scintillator Neutrino Detector             \\
-%MiniBooNE  & Mini Booster Neutrino Experiment                  \\
-%SBN        & Short Baseline Neutrino (program)                 \\
-CP         & Charge conjugation Parity (symmetry)              \\
-NOvA       & NuMI Off-axis $\nu_e$ Appearance (experiment)     \\
-NuMI       & Neutrinos from the Main Injector                  \\
-MI         & Main Injector                                     \\
-POT        & Protons On Target                                 \\
-FHC        & Forward Horn Current (neutrino mode)              \\
-RHC        & Reverse Horn Current (antineutrino mode)          \\'
-CC         & Charged current                                   \\
-ND         & Near Detector                                     \\
-FD         & Far Detector                                      \\
-NDOS       & Near Detector on the Surface                      \\
-TB         & Test Beam                                         \\
-PVC        & Polyvinyl chloride                                \\
-WLS        & Wavelength Shifting (fibre)                       \\
-APD        & Avalanche Photodiode                              \\
-FEB        & Front End Board                                   \\
-DAQ        & Data Acquisition                                  \\
-ASIC       & Application-Specific Integrated Circuit           \\
-ADC        & Analog-to-Digital Converter                       \\
-FPGA       & Field Programmable Gate Array                     \\
-DCM        & Data Concentration Module                         \\
-MC         & Monte Carlo                                       \\
-PPFX       & Package to Predict the Flux                       \\
-QE         & Quasi Elastic (interaction)                       \\
-Res        & Resonant (baryon prodcution)                      \\
-DIS        & Deep Inelastic Scattering                         \\
-COH$\pi$   & Coherent pion (production)                        \\
-MEC        & Meson Exchange Current                            \\
-FSI        & Final State Interaction                           \\
-CMC        & Comprehensive Model Configuration                 \\
-NC         & neutral current                                   \\
-BPF        & Break Point Fitter                                \\
-ML         & Machine Learning                                  \\
-PID        & Particle Identification                           \\
-CNN        & Convolutional Neural Network                      \\
-CVN        & Convolutional Visual Network                      \\
-BDT        & Boosted Decision Tree                             \\
-ReMId      & Reconstructed Muon Identifier                     \\
-%CMS        & Center of Mass (frame)                            
-\end{tabular}
-\end{table}
+\printglossaries
 
 %%% Bibliography
 \include{bibliography}
