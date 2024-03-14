@@ -26,6 +26,9 @@
 % \setlength\headheight{0mm}
 % \let\openright=\cleardoublepage
 
+% Need to load scolor before pdfx otherwise it complains
+\usepackage[dvipsnames,table,xcdraw]{xcolor} % typesetting in color
+
 %% Generate PDF/A-2u
 \usepackage[a-2u]{pdfx}
 
@@ -62,7 +65,7 @@
 \usepackage{dcolumn}        % improved alignment of table columns
 \usepackage{booktabs}       % improved horizontal lines in tables
 \usepackage{paralist}       % improved enumerate and itemize
-\usepackage{xcolor}         % typesetting in color
+%\usepackage[table]{xcolor}  % typesetting in color
 \usepackage{tabularx}       % for title setting
 \usepackage{placeins}       % for FloatBarrier
 \usepackage{tikz}           % for tikz pictures
@@ -72,6 +75,8 @@
 %\usepackage{cooltooltips}   % for links showing when hovering above
 \usetikzlibrary{calc}       % for coloured header
 \usetikzlibrary{decorations.pathreplacing} % for curly braces
+
+%\usepackage[dvipsnames,table,xcdraw]{xcolor} % typesetting in color
 
 %\usepackage[xindy]{glossaries} % for automatic glossary
 \usepackage[acronym,toc,hyperfirst=false,nogroupskip]{glossaries} % for automatic glossary
@@ -156,7 +161,7 @@ Measuring an enhanced neutrino magnetic moment would be a clear indication of ph
 
 % Title page and various mandatory informational pages
 \begin{document}
-\include{title}
+%\include{title}
 
 %\glsaddall
 %\glsresetall

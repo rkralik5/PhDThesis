@@ -77,7 +77,9 @@ The two main \gls{NOvA} detectors are the \gls{ND}, located in \gls{Fermilab} $\
 
 All \gls{NOvA} detectors are highly segmented, highly active, functionally identical tracking calorimeters made up of \gls{PVC} cells filled with liquid scintillator. Each cell is a long rectangular cuboid with depth of $\unit[5.9]{cm}$ and width of $\unit[3.8]{cm}$ (with some variations), with cell length extending to the full width/height of each detector, which is $\sim\unit[4.1]{m}$ for the \gls{ND} and $\sim\unit[15.6]{m}$ for the \gls{FD} \cite{NOvATechreport.pdf}. An example of a \gls{FD} cell is shown on the right of Fig.~\ref{fig:NOvADetectors}.
 
-Cells are connected side-by-side into a 16 cell-wide extrusions with $\unit[3.3]{mm}$-wide walls between cells and $\unit[4.9]{mm}$-wide walls on the outsides of the extrusions. The first and last cell of each extrusion are $\sim\unit[3]{mm}$ narrower than the rest of the cells. Two extrusions are connected side-by-side to form a 32 cell-wide module, with each module having a separate readout (see Sec.~\ref{sec:DAQ}). In the \gls{FD}, 12 modules are connected side-by-side to form one plane of the detector. In the \gls{ND} only 3 modules make up a plane. Planes are positioned one after another, alternating between vertical and horizontal orientation, and grouped into diblocks, each containing 64 planes. The \gls{FD} contains 14 diblocks, totalling 896 planes, whereas the \gls{ND} contains 3 diblocks totalling 192 planes. However, the \gls{ND} also consists of a Muon Catcher region, positioned right after the active region, consisting of 22 planes of the normal \gls{NOvA} detector design, 2 modules high and 3 modules wide, sandwiched with 10 steel plates to help range out muons mainly from the $\nu_\mu$ charged current interactions~\cite{NOvAStatusAndOutlook.pdf,NOvATechreport.pdf}. 
+Cells are connected side-by-side into a 16 cell-wide extrusions with $\unit[3.3]{mm}$-wide walls between cells and $\unit[4.9]{mm}$-wide walls on the outsides of the extrusions. The first and last cell of each extrusion are $\sim\unit[3]{mm}$ narrower than the rest of the cells. Two extrusions are connected side-by-side to form a 32 cell-wide module, with each module having a separate readout (see Sec.~\ref{sec:DAQ}). In the \gls{FD}, 12 modules are connected side-by-side to form one plane of the detector. In the \gls{ND} only 3 modules make up a plane. Planes are positioned one after another, alternating between vertical and horizontal orientation, and grouped into diblocks, each containing 64 planes. The \gls{FD} contains 14 diblocks, totalling 896 planes, whereas the \gls{ND} contains 3 diblocks totalling 192 planes. However, the \gls{ND} also consists of a Muon Catcher region, positioned right after the active region, consisting of 22 planes of the normal \gls{NOvA} detector design, 2 modules high and 3 modules wide, sandwiched with 10 steel plates to help range out muons mainly from the $\nu_\mu$ charged current interactions~\cite{NOvAStatusAndOutlook.pdf,NOvATechreport.pdf}.
+
+\todo{Describe the coordinate system in NOvA}
 
 Each cell is filled with a liquid scintillator consisting of mineral oil with $4.1\%$ pseudocumene as the scintillant \cite{NOvAScintillators.pdf}. Each cell contains a single wavelength shifting fibre with double the length of the cell, looping at one end and connecting to the readout at the other. As light travels through the fibre, it is attenuated by about a fraction of ten for the \gls{FD} cells \todo{Figure out what is the correct statement here}. The \gls{PVC} walls of the detector cells are loaded with highly reflective titanium dioxide, with light typically bouncing off the \gls{PVC} walls about 8 times before being captured by the fibre \cite{NOvATechreport.pdf}. 
 
@@ -237,11 +239,12 @@ Due to the high neutrino rate in the \gls{ND}, there are neutrinos interacting i
 %%% Rock simulation and overlay
 %NuMIFlux.pdf: Due to the high beam intensity at the near detector, many neutrinos interact in the rock in front of the detector. Simulating these interactions requires allowing GEANT4 to propagate muons through a very large rock volume which is a slow process, and only a few of these muons will make it into our detector. To correctly account for this, we simulate many neutrino interactions with the mother volume including a large rock volume in front of the detector, and only keep those that leave energy in the detector. During normal simulation, with the mother volume only including the detector and the immediate detector hall, we overlay these rock ’singles’ at a rate determined during the generation of flux files after the GEANT4 stage.
 
-\section{Data Processing and Event Reconstruction}
+\section{Data Processing and Event Reconstruction}\label{sec:NOvAReconstruction}
 Both data and simulation events for all \gls{NOvA} detectors are passed through the same event reconstruction and particle identification algorithms. The reconstruction was specifically developed with the $\nu_e$ appearance search in mind, focusing on identifying the $\nu_e$\gls{CC} signal against the $\nu_\mu$\gls{CC} and \gls{NC} backgrounds. Each \gls{NOvA} detector has to deal with a different challenges, with multiple neutrinos interacting in the \gls{ND} during one beam spill, and a large cosmic background in the \gls{FD} \cite{NOvAReco.pdf}.
 
 The readout from each cell from the \gls{DAQ} (see Sec.~\ref{sec:DAQ}) is called a \textit{channel} and the \gls{DAQ} output from each channel is called a \textit{raw hit}. \gls{DAQ} groups hits into $\unit[550]{\mu s}$ windows and passes them to an offline reconstruction chain~\cite{NOvAReco.pdf}. Reconstruction starts by grouping hits into \textit{slices} based on their proximity to other hits in both time and space~\cite{DBSCAN.pdf}.
-\note{Maybe include rawhit to cellhit to calhit to recohit. Find out where this is described}
+\note{Maybe include rawhit to cellhit to recohit}
+%[RelCal_technote_1stAna.pdf] CalHit transforms RawDigits into CellHits. This is a transformation of the channel numbering system to offline (plane/cell) coordinates, and the fine-timing fit. A RecoHit can by created from a CellHit by passing it and an estimated W position to Calibrator, or by asking one of the RecoBase objects, which calculate best-guess W positions for their constituent cells.
 
 For events that produce hadronic and electromagnetic showers, we first identify lines through major features using a modified Hough transform~\cite{HoughTransform.pdf}. These lines representing momentum directions are then passed to the Elastic Arms algorithm~\cite{ElasticArms.pdf} to identify \textit{vertex} candidates from their intersection points. Hits are then clustered into \textit{prongs}, group of hits with a start point and a direction, using a k-means algorithm called FuzzyK \cite{FuzzyKClustering.pdf,FuzzyKFuzzyness.pdf}. Here "fuzzy" means that each hit can belong to multiple prongs. Prongs are first created separately for each view (also called 2D prongs) and then, if possible, view-matched into 3D prongs (or just prongs)~\cite{NOvAReco.pdf}. Figure~\ref{fig:NOvARecoEVD} shows an example simulated electron shower with the reconstructed vertex (red cross) and prong (red shaded area) grouping all hits that should be a part of the shower together, while removing background hits in grey.
 
@@ -279,25 +282,26 @@ NOvA employs a \gls{CNN} based on the GoogLeNet \cite{GoogLeNetArchitecture.pdf}
 %%%%%%%%%                   Detector calibration                     %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Detector Calibration}\label{sec:NOvACalibration}
-
-\todo{Reorganize the calibration section, ideally make it much shorter and more concise}
-
-%From NOvAResults2021.pdf: The absolute energy scale for both detectors is calibrated using the minimum ionizing portion of stopping cosmic-ray muon tracks [76]. The calibration procedure is now applied separately to the data in shorter time periods to account for an observed 0.3\% decrease in detected light per year.
+%%% General introduction to calibration - why do we do calibration? What do we get from the DAQ?
+The energy deposited within the NOvA detectors is represented by the peak \gls{ADC} value obtained from the readout electronics, as described in Sec.~\ref{sec:DAQ}.
+To convert it into physical units, accounting for the attenuation of light along the \gls{WLS} fibres, or for differences between individual cell, we use calibration.
+%By doing this individually for each cell and for small periods at a time, we ensure that energy deposited in any detector, at any place within the detector and at any time, is recorded as the same value in physical units.
 
 %From NOvAHalfTimeOverview2022.pdf: The variations in light output between cells and those due to attenuation along the readout fiber, in both data and simulation, are calibrated using cosmic-ray muons. The overall energy response of the detectors is calibrated using stopping muon tracks along a window from 200 cm to 100 cm before the end of the track. The absolute energy scale is cross-checked and bench marked against simulation using beam-induced protons, muons, and neutral pions at the Near Detector.
 
-%%% General introduction to calibration
-The purpose of calibration is to make sure that we get the same amount of energy wherever or whenever it's deposited in whichever of NOvA's detectors and to express this amount of energy in physical units. The NOvA calibration uses cosmic ray muons, which provide a consistent, abundant, and well-understood source of energy deposition.
+%make sure that we get the same amount of energy wherever or whenever it's deposited in whichever of NOvA's detectors and to express this amount of energy in physical units. The NOvA calibration uses cosmic ray muons, which provide a consistent, abundant, and well-understood source of energy deposition.
 
-%. The main aims are to correct for the attenuation of light along fibers, to remove differences in energy deposition within the detector, and to provide an absolute energy scale from collected charge to physical energy units. [TB paper]
+%The main aims are to correct for the attenuation of light along fibers, to remove differences in energy deposition within the detector, and to provide an absolute energy scale from collected charge to physical energy units. [TB paper]
 
 %%% Calibration samples, trigger, reconstruction, and selection. Also simulation, fiber brightness and so on...
+\gls{NOvA} uses cosmic ray muons for calibration due to their abundance in the \gls{NOvA} detectors and a consistent energy deposition. We use hits from muons stopping inside the detectors, from a window when they are almost exactly \gls{MIP}, to calculate the absolute energy scale. The cosmic muons are collected using a periodic data-driven trigger, removing events with timestamps overlapping with the beam spill window. For the simulation of cosmic muons we use the CRY~\cite{CRY} \gls{MC} generator, as outlined in Sec.~\ref{sec:NOvASimulation}.
 
-\subsubsection*{Creating calibration samples}\label{secCreatingCalibrationSamples}
+\note{I talk about this selection later on in the Test Beam calibration chapter when I talk about the data-based simulation. Should I therefore elaborate more on this or is this enough?}
+We reconstruct the cosmic muon tracks using the window cosmic track algorithm explained in Sec.~\ref{sec:NOvAReconstruction}. To select good quality cosmic tracks we require that at least $80\%$ of all hits from the reconstructed slice contribute to the track \cite{NOVA-doc-13579-FACalorimetricEnergyScale}. Additionally, all tracks must cross at least $\unit[70]{cm}$ along the z axis and must have at least $20\%$ of their total track direction in the z axis, since very vertical tracks tend to not be reconstructed well. \note{There are additional selection criteria which are not as important, do I need to mention them}. To select stopping muons we look for Michel electrons at the end of their tracks, as can be seen on the top panel of Fig.~\ref{fig:NOvAEventTopologies}.
 
-We want to select good quality cosmic ray muons. First, we remove beam related events based on their time stamps relative to the time of the beam spill. Next we apply reconstruction to get the CellHit, slicer, and track information, followed by a track-based selection to remove misreconstructed and poor quality events.
+\todo{Also have to describe W calculation probably}
 
-Since energy deposition depends on the path length particle travels through a cell, we only use hits for which we can reliably calculate their path length. We call these hits \textbf{tricell} hits, as we require that all accepted hits are accompanied by a recorded hit in both neighbouring cells of the same plane, as shown in Fig. \ref{figTricellCondition}. In case there is a bad channel in a neighbouring cell, we ignore this channel and look one cell further. We can then calculate the path length simply as the cell width divided by the cosine of the direction angle \cite{NOVA-doc-13579,NOVA-doc-7410}.
+Energy deposited in a cell is proportional to the distance the particle travels through the cell. To ensure we use precise estimate of the path length, we only use hits that satisfy the \textit{tri-cell} condition, shown on the left of  Fig.~\ref{fig:NOvATricellCondition}. This means that each hit must have a corresponding hit in both of the surrounding cells in the same plane. This allows us to calculate the path length simply from the height of the cell and the angle of the reconstructed track. In case there is a bad channel in a neighbouring cell (right side of Fig.~\ref{fig:NOvATricellCondition}), we ignore this channel and look one cell further. We can then calculate the path length simply as the cell width divided by the cosine of the direction angle \cite{PrabhjotNOvAThesis_CalibrationAndOscResults2019.pdf}.
 
 \begin{figure}[hbtp]
 \centering
@@ -311,25 +315,17 @@ Since energy deposition depends on the path length particle travels through a ce
 \includegraphics[width=0.6\textwidth]{Plots/NOvAExperiment/TricellConditionWithBadChannel.png}
 \caption{}
 \end{subfigure}
-\caption[Tricell condition for calibration hits in NOvA]{Illustration of the tricell condition. We only use hits that have two surrounding hits in the same plane to be used in the NOvA calibration. This is to ensure a good quality of the path length reconstruction (d), which is calculated from the known cell height (h) and the reconstructed track angle $\left(\varphi\right)$. In case the hit is next to a bad channel, as shown on the right plot, we ignore this bad channel and require a hit in the next cell over.}
-\label{figTricellCondition}
+\caption[Tricell condition for calibration hits in NOvA]{Illustration of the tricell condition. We only use hits that have two surrounding hits in the same plane to be used in the NOvA calibration, shown on the left plot. This is to ensure a good quality of the path length (d) reconstruction, which is calculated from the known cell height (h) and the reconstructed track angle $\left(\varphi\right)$. In case the hit is next to a bad channel, as shown on the right plot, we ignore this bad channel and require a hit in the next cell over.}
+\label{fig:NOvATricellCondition}
 \end{figure}
 
 %The first step in the attenuation calibration is to select the suitable hits from tracks of cosmic ray muons. Because a reliable estimate of pathlength is required, not all hits are suitable for use.  If a cell has each of its neighbors in the same plane hit, then we know, for a Y view cell, that the track entered through the upper wall, and exited through the lower wall. The pathlength then is just the width of the cell divided by the direction cosine. This selection also significantly decreases the chance that the hit in question is a noise hit. Allowance is made for neighboring dead cells, so e.g. “hit, dead, hit, hit” would still lead the 3rd cell to be selected. The second best hit selection, in cases where there are too many dead neighboring cells on each side, is the so-called “z” estimator, where a hit is required at the same cell number in each of the neighboring planes in the same view. The pathlength is then the ratio of cell depth to cz.[docdb:13579 - SA The Attenuation and Threshold Calibration of the NOvA detector, copied from docdb:7410]
 
 %from docdb:7410: A requirement that the track be “throughgoing” (lowest endpoint outside the fiducial volume) was applied, but doesn’t make much difference. I think this selection was broken by the recent changes to StopperSelection anyway. (So it seems that it was required for the relative calibration that the muons are through-going, but I assume this was discarded somewhere down the line)
 
-For the absolute calibration we select muons that stop inside the detector, by identifying muons with a Michel electron at the end of their track \cite{NOVA-doc-13579-FACalorimetricEnergyScale}.
-
 %Stopping muon selection (from docdb:13579 - FA\_Calorimetric\_energy\_scale): There are two avenues for selecting stopping muons; i) selecting tracks whose reconstructed end point is contained within the detector and ii) selecting tracks that have a Michel electron at one end. Michel electrons are useful for both identifying muons and effective tagging of the end point of muon tracks. The stopping selection requires the reconstructed end point of the muon track to be at least 50 cm from the detector edge. The identification of a Michel electron at the end of a muon track has two stages of both temporal and spatial range requirements. Firstly, a candidate Michel electron hit is required to occur between 1 and 30 microseconds after the mean time of the hits on the track. Furthermore, the candidate Michel electron must be within a 30 cm sphere surrounding the reconstructed track end point. The candidate Michel electron hit for a muon track is the hit that produces the largest detector response among the hits that pass the above cuts. Secondly, cell hits surrounding the candidate Michel electron hit are associated with the Michel electron if they occur within a 30 cm sphere surrounding the Michel electron candidate. Furthermore, to be associated with the Michel electron the cell hits must occur between 0.5 microseconds before and 0.5 microseconds after the candidate Michel electron. Michel electrons at the end of muon tracks are reconstructed using the candidate and associated Michel electron hits. The stopping muon selection requires a Michel electron at the end of the muon track.
 
-For each data period or epoch and for each version of the simulation we create two calibration samples that are used as the input for the relative and absolute calibration. The samples are called \cite{NOVA-doc-13579-CalibrationMetaREADFIRST}
-\begin{itemize}
-\item pclist = \textbf{list} of \textbf{p}re-\textbf{c}alibrated hist; Contains all selected cosmic muon events and is used in the relative calibration;
-\item pcliststop = pclist files only containing stopping muons used for the absolute calibration 
-\end{itemize}
-
-\subsubsection*{Fibre brightness}
+\todo{Describe the fibre brightness}
 
 For data, the relative calibration is done for each individual cell in each plane to properly account for any potential variations, repeating the attenuation fit $N_{cell}\times N_{plane}$ times. However, generating enough simulated events turned out to be computationally expensive. Therefore, assuming the simulated detector is approximately uniform plane to plane, for simulation we can "consolidate" the detector planes and only consider variations in the two views. Therefore for simulation we would repeat the fit $N_{cell}\times N_{view}$ times \cite{NOVA-doc-13579-SAAttenuationAndThreshold,NOVA-doc-34909}.
 
@@ -356,8 +352,6 @@ However, there are some variations in the detector response cell by cell that ca
 To divide each detector into the 12 brightness bins, we use results from the relative calibration. Specifically we take the result of the attenuation fit (equal to the average response) in the centre of each cell to fill a 2D histogram. Then we normalize this histogram by dividing the response in each $\textsf{Cell}\times\textsf{View}\times\textsf{Plane}$ by the average response in the corresponding $\textsf{Cell}\times\textsf{View}$. All uncalibrated cells get assigned the average response (1 in normalized histogram). Then we make a 1D histogram filled with the normalized responses of each cell and divide this histogram into 12 equally populated bins (so each bin represents approximately the same number of detector cells, shown on the left plot of Fig. \ref{figFiberBrightnessBins}). The mean normalized response in each bin represents the relative brightness value of this bin (right plot of Fig. \ref{figFiberBrightnessBins}).
 
 
-
-%%% How do we divide the calibration. List the four parts (how about timing calibration? - talk about in DAQ)
 
 \todo{Describe the absolute and relative calibration just in text}
 The NOvA calibration consists of two parts \cite{NOVA-doc-7410}:
@@ -403,6 +397,10 @@ MeV & Estimated energy deposited in the scintillator calculated from PECorr usin
 \todo{Change this equation to be simpler and also include T/S corrections}
 The final result of the NOvA calibration is the deposited energy in terms of physical units, which is in effect calculated as:
 \begin{equation}
+E_{dep}\ \left[\unit{MeV}\right]=\textsf{Signal}\ \left[\unit{ADC}\right]\times S\times TS_i\times R_i\left(t\right)\times A_i\left(t\right).
+\end{equation}
+
+\begin{equation}
 \begin{tikzpicture}[baseline=(current  bounding  box.center)]
 \node {\(\displaystyle
 E_{dep} [\unit{MeV}]=\frac{\textsf{MEU}_{truth} [\unit{MeV/cm}]}{\textsf{MEU}_{reco} [\unit{PECorr/cm}]}\times \frac{\textsf{Average response} [\unit{PECorr}]}{\textsf{Fitted response} [\unit{PE}]}\times \left[\frac{\unit{PE}}{\unit{ADC}}\right] \times \textsf{Signal} [\unit{ADC}],
@@ -423,8 +421,11 @@ where both the relative calibration results (blue fraction) and the absolute cal
 
 %(Dividing data into periods and epochs) A new period is started for a major change to running conditions such as a horn current change, a long shutdown, target replacement, etc. Periods are divided into epochs. A new epoch is started whenever analysis or production reasons dictate. Calibration has been performed for all the periods separately and has used the data that are determined by the Data Quality group to be good. The effects of aging, temperature, partial filling, and cooling are neglected. The drift calibration should be able to account for all of these (but drift calibration doesn't really exist yet afaik). [docdb:13579 - SA The Attenuation and Threshold Calibration of the NOvA detector]
 
+\subsection{Scale}
+Describe the simple ADC to PE scaling (maybe not in a separate subsection?)
 
 \subsection{Threshold and shielding correction}
+%[CalibrationFirstTechnote2014.pdf] There are three main assumptions for calibration: response is stable in time (drift), the energy spectrum of cosmic rays is uniform in space (shielding), the ADC response to arriving photons is linear
 
 Energy deposited far away from the readout may get attenuated enough to be shifted below the threshold. These low energy depositions would be missing from the attenuation fit, biasing it towards larger light levels with increasing distance from the readout. Similar effect, specifically for the vertical cells, is caused by using cosmic muons for calibration and applying it to beam muons. The top of the detector effectively shields the bottom, skewing the energy distribution of cosmic muons. To correct for both of these effect, we use the simulation pclist sample to calculate the threshold and shielding (also called threshold and shadowing) correction by comparing the true and reconstructed information. We apply this correction before the attenuation fits \cite{NOVA-doc-13579-SAAttenuationAndThreshold}.
 
@@ -441,6 +442,14 @@ Energy deposited far away from the readout may get attenuated enough to be shift
 %Detailed description can be found in the "Instructions for the Attenuation Calibration Job" technote from Prabhjot from docdb:13579 (list of all calibration technotes) and on the relative calibration wiki page.
 
 Relative calibration corrects for the attenuation of the scintillator light by fitting the average detector response over the position in each cell (w), separately for every cell inside each detector. Dividing the "average response" of the detector by the result of the attenuation fit for each $\textsf{Plane}\times\textsf{Cell}\times\textsf{w}$ combination effectively removes relative differences within and between all cells across the entire detector. The average response is a single constant number chosen to approximately represent the average response in the middle of the cell. Its value is for the far detector and Test Beam 39.91~PE/cm and for the near detector 37.51~PE/cm. The value of the average response has no impact of the calibration results, as the absolute scale of the detector response is determined during the absolute calibration and relative calibration only serves to remove the relative differences \cite{NOVA-doc-7410,NOVA-doc-13579-SAAttenuationAndThreshold}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.7\textwidth]{Plots/NOvAExperiment/ExampleAttenuationFit.png}
+    \caption{Example attenuation fit for a single cell in the Test Beam detector across its full physical length, shown by the dashed lines. The red line shows the initial exponential fit and the blue line shows the full fit after the LOWESS correction, both described in text.\note{Plots copied from paper}}
+    \label{fig:NOvACalibrationAttenuationFit}
+    %HOW TO REPRODUCE: This plot is from /nova/ana/users/rkralik/TBCalib/RelativeCalibrationResults/Atten_Fit_Results_p4.root but I manually added legend and changed size
+\end{figure}
  
 To create the attenuation fit we use the following procedure \cite{NOVA-doc-7410}:
 \begin{enumerate}
@@ -485,6 +494,14 @@ For each calibrated data and simulation sample we take a mean of the corrected d
 We ignore the energy that is lost in the dead material (PVC extrusions) and deal with it separately. The absolute energy scale for each sample is then the ratio of $\textsf{MEU}_{truth}/\textsf{MEU}_{reco}$. We save these absolute energy scales in another csv table called \texttt{calib\_abs\_consts.csv} which stores the $\textsf{MEU}$ values and their errors.
 
 As part of the absolute calibration we also produce validation plots that show the effect of calibration on the distribution of the stopping muons. We analyse these plots and if everything looks all right we load all the csv tables into the database.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.49\textwidth]{Plots/NOvAExperiment/ExampleAbsCalib_P4_meu_y.pdf}
+    \includegraphics[width=0.49\textwidth]{Plots/NOvAExperiment/ExampleAbsCalib_Sim_mev_y.pdf}
+    \caption{To calculate the absolute energy scale we take the mean reconstructed energy response (left) for selected stopping muons for each view and each data period or simulation. We use it to divide the simulated mean true deposited energy (right).\note{Plots copied from paper}}
+    \label{fig:NOvACalibrationAbsoluteEnergyScale}
+\end{figure}
 
 %Stopping muons provide a good sample of known energy deposits. If we can collect a “golden” sample, they should provide the scale factor to convert PECorr to GeV. So far, the method used has been imperfect, and the absolute calibration constants are known to be off by approx. 10\%. Since a factor already has to be derived to correct for dead material, this is not significantly impeding current efforts, but work was recently gone into improving this area. [docdb:7410 - this was likely before the track window cut was introduced] (Here it says that it's not such a big a problem since we have to scale for the dead material anyway. But nowadays we have to account for a large systematic uncertainty in the absolute energy scale in our analyses. How is the dead material correction different from the energy scale uncertainty?)
 
