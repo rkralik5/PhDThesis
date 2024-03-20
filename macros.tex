@@ -31,6 +31,7 @@
 %}
 
 \def\thickhrulefill{\leavevmode \leaders \hrule height 1.2ex \hfill \kern \z@}
+
 \def\@makechapterhead#1{%  
 \thispagestyle{empty}%  
 %\vspace*{50\p@}%
@@ -47,11 +48,11 @@
     \begin{tikzpicture}[remember picture, overlay]
       \draw let \p1 = (current page.west), \p2 = (current page.east) in
       node (A) [minimum width=\x2-\x1, minimum height=2.7cm, draw, rectangle, fill=sussexFlintCol, anchor=north west] at ([yshift=-35mm]$(current page.north west)$) {}
-      node[anchor=west, align=flush left, text width=\x2-\x1-7cm, text=sussexGreyCol] at ([xshift=35mm]A.west) {\fontsize{27}{32}\bfseries #1};
+      node[anchor=west, align=flush left, text width=\x2-\x1-7cm, text=sussexGreyCol] at ([xshift=35mm]A.west) {\fontsize{27}{40}\textbf{#1}\par};
     \end{tikzpicture}
     \vspace*{100\p@}
     }
-    
+%\fontsize{27}{32}\bfseries #1   
 %\node[anchor=south east] (fig) at ([xshift=-10mm,yshift=-10mm]A.east) {\includegraphics[width=0.4\textwidth]{#2}};
 
 \def\@makeschapterhead#1{
