@@ -64,8 +64,7 @@ Majority of the Test Beam detector and its instrumentation is identical to the o
 %[docdb:15750 - NOvA Test Beam task force report]: The test beam program was included in the NOvA proposal [1] and was considered as an essential part of the experiment since its inception. The main tangible result of these initial plans and later discussions was a production of special small extrusion modules, made at the end of the modules production stage, as possible components of a future test beam detector. In fact, this production followed and was based on initial simulations of a possible test beam experiment [5].
 
 \subsubsection*{Beamline}
-\todo{Describe the TB beamline}
-\note{Do I need to discuss the beamline or not, since it doesn't affect the calibration...}
+The beam for the Test Beam experiment originates from the same $\unit[120]{GeV}$ Main Injector protons used in \gls{NuMI}, extracted once a minute in a continuous $\unit[4.2]{s}$ spill~\cite{NOvATestBeamWallbangProceedings2020.pdf}. The protons are impinged on a copper target producing mostly protons and pions, which are then directed towards a second target, producing the tertiary beam of particles used in the Test Beam detector. As can be seen on Fig.~\ref{fig:TBDetector}, we use two collimators to direct the tertiary beam and a magnet to select the desired momentum. Particle tracking is done using the four \gls{MWPC}s and particle identification is done with a combination of the \gls{ToF} detectors and the Cherenkov detector, which is set for electron detection. There was an additional \gls{ToF} detector installed ... during period ... \note{Where do I find the information on this?}
 
 \subsubsection*{Detector parameters}
 The \gls{NOvA} Test Beam detector consists of two 31-plane blocks, each beginning and ending with a vertical plane, with an additional horizontal plane glued in-between them to preserve the alternating pattern \cite{NOvA-doc-29543}. Each plane consists of 2 modules side-by-side, both made up of 32 cells. Each cell is $2.6\,\unit{m}$ long with an inner (without the PVC) depth and width of $5.9\,\unit{cm}$ and $3.8\,\unit{cm}$ respectively, same as for the other \gls{NOvA} detectors. This brings the final dimensions of the Test Beam detector to 63 planes $\times$ 64 cells, or $2.6\times 2.6\times 4.1\,\unit{m^3}$.
@@ -165,43 +164,23 @@ The Test Beam detector is slightly tilted around the z axis by about $0.7^{\circ
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data-based simulation of cosmic muons}\label{sec:DataBasedSimulation}
+As was described for the standard \gls{NOvA} calibration procedure in Sec.~\ref{sec:NOvACalibration}, we use the \gls{CRY} \gls{MC} generator (see Sec.~\ref{sec:NOvASimulation}) to create the simulated cosmic ray sample for calibration. However, the \gls{CRY} simulation proved to be highly inefficient, with only a small fraction of the simulated cosmic-ray activity resulting in selected calibration hits, and the majority of particles failing to even hit the detector. This inefficiency consumed significant CPU resources, disk space, and file usage. Moreover, the momentum and angle distributions in \gls{CRY} were not well suited to the \gls{NOvA} sites, potentially impacting the calibration accuracy.
 
-In NOvA we employ samples of stopping and through-going cosmic muons to calibrate our detectors. To validate the efficacy of this calibration procedure for both the simulated and real detectors, as well as to determine systematic uncertainties arising from calibration, we require a sample of simulated cosmic muons.
-
-Originally we used (or still use) the Cosmic-Ray Shower Generator (CRY) \cite{CRY} to create a large Monte-Carlo (MC) cosmic ray sample. However, the CRY simulation proved to be highly inefficient, with only a small fraction of the simulated cosmic-ray activity resulting in selected calibration hits, and the majority of particles failing to even hit the detector. This inefficiency consumed significant CPU resources, disk space, and file usage. Moreover, the momentum and angle distributions in CRY were not well suited to the NOvA sites, potentially impacting the calibration accuracy.
-
-To overcome these challenges, we have implemented a data-based simulation method that eliminates the need for the CRY MC generator. Instead, we use the data-driven activity trigger (DDActivity) data sample, which is passed through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic ray muon events are then being used in the \texttt{"Text File Generator"} simulation to create an equivalent cosmic ray sample.
+To overcome these challenges, we have implemented a data-based simulation method that eliminates the need for the \gls{CRY} \gls{MC} generator. Instead, we use a subset of the cosmic data sample and pass it through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic muon events are then being used a custom simulation to create an equivalent cosmic ray sample.
 
 This approach results in near-perfect efficiency, ensuring that almost every simulated muon contributes to the final calibration sample, thus saving processing time, file size, and storage. Additionally, the simulated muon distributions are inherently consistent with the data. Given that the calibration chain itself is a time and CPU intensive process, the reduction in simulation files and their sizes has significant benefits downstream of the file generation.
 
-\subsection{Introduction}
-The data-based simulation of cosmic muons was initially developed by Teresa Lackey \cite{LackeyThesis} in 2021 for Test Beam detector calibration. Teresa based the reconstruction and selection of data events on the \texttt{CerenkovSelection} module from light level tuning and created a simple Python script for event smearing and muon charge assignment. However, when tested by Robert Kralik in 2021 and 2022 \cite{NOVA-doc-54417-v1}, the simulation exhibited notable discrepancies when compared to the Test Beam data from period 2.
-
-To address these disparities, Robert made improvements to the simulation throughout 2022, ultimately completing it in 2023. The enhancements involved modifications to event selection, charge assignment and energy correction of the through-going muons. The revised simulation was then employed and tested during the calibration of the Test Beam detector in 2023.
-
-This technical note provides an explanation of the process to create simulation samples for calibration, with a primary focus on its application in Test Beam. However, the approach and underlying code have been designed to be easily adaptable for use for the Near and Far detectors, as well as to generate simulated samples of cosmic muons for purposes other than calibration.
-
-\subsection{How does it work?}
-
-The process of generating a new data-based simulation begins with a data sample containing information on \texttt{Raw Digits} hits. For Test Beam we use the artdaq-stage DDActivity samples, but the pid-stage samples should also contain all the necessary information. Pre-staging this sample can be the most time-consuming part of the data-based simulation process, so it is advised to select a data sample that is either already cached or that can be easily pre-staged. Section \ref{secNumEvents} provides insights into estimating the required data volume.
-
-It is necessary to choose a data sample that represents the detector in a fault-free state. For Test Beam, we use the full period 4 data sample, as other periods had issues such as faulty FEBs, underfilled cells, or similar complications. In the initial version of the data-based simulation, Teresa used the period 2 Test Beam data, as it was the only complete Test Beam data sample available. However, this data included the aforementioned effects, which could have had a non-trivial impact on the simulation.
-
-%The first iteration also used Test Beam data from period 2 as an input, which include some FEB issues as well as underfilled cells 31 and 63 for all horizontal planes. This can negatively affect the resulting simulation in a non-trivial way. To avoid this for the second iteration, Robert used period 4 Test Beam data samples, which don't have the aforementioned effects. For details about the various conditions of the Test Beam detector and their effect on calibration and simulation see the Test Beam calibration technote (cite doc-db).
-
-Once we have a selected data sample, we use the \texttt{cosmicgenanajob} ART job to apply a series of filtering, reconstruction, and selection steps to obtain a ROOT TTree with vertex positions and 4-momenta of selected good quality cosmic muon events. This is outlined in Sec. \ref{secCosmicGenAna} of this document.
+The process of generating a new data-based simulation begins with a data sample containing information on \texttt{Raw Digits} hits. It is necessary to choose a data sample that represents the detector in a fault-free state. For Test Beam, we use the full period 4 data sample, as other periods had issues such as faulty FEBs, underfilled cells, or similar complications.
 
 Subsequently, the reconstructed information of each event is processed by a Python script \texttt{GenerateHEPEVTFromROOT.py}. This script corrects the 4-momenta of the through-going muons to account for the missing energy that was not deposited in the detector. Furthermore, it assigns a charge to each cosmic muon based on a statistical distribution, smears the kinematic information to reduce bias from the input data and prints the \texttt{HEPEVT}-styled \cite{HEPEVTFormat} description of each event into a text file. The details of this process are elaborated in Sec. \ref{secPython}.
 
 The text file is then passed to the \texttt{Text File Generator}, which employs the information as a seed for a geant4-based \cite{GEANT4} detector simulation. By incorporating additional simulation and reconstruction steps, an artdaq-stage simulation sample of cosmic muons is generated. To create calibration samples for stopping and through-going cosmic muons, we apply the same reconstruction and selection criteria as for any data sample. Further details are provided in Sec. \ref{secGenerator}. 
 
-\subsubsection{Reconstruction and selection of cosmic muon events from data}\label{secCosmicGenAna}
+\subsection{Reconstruction and Selection of Cosmic Data Events}\label{sec:CosmicGenAna}
 
 Our goal is to examine the response of the \textbf{simulated detector} to realistic cosmic muons found in the \textbf{real data}. We therefore need to use well-reconstructed and selected cosmic muons from data to generate our simulation. If the selection of the reconstructed data does not accurately correspond to reality, either due to misreconstruction or incorrect selection criteria, it can introduce bias into our simulation.
 
 Additionally, we want the simulation to primarily consist of events that will make it into the final simulation calibration sample and reject those that will not. Therefore, it is useful to employ a similar reconstruction and selection process to that used to create the data calibration samples. We also require the distributions of the selected events to be well-understood and to resemble those of the data calibration samples.
-
-We use a single ART job located in \texttt{CosmicStudies/cosmicgenanajob.fcl} to filter, reconstruct, and select the desired events, which are then written to a ROOT TTree. The details of each step are described below.
 
 \subsubsection*{Remove Beam Spills}
 The first step is to remove beam spill events using the \texttt{RemoveBeamSpills.fcl} job for the Near and Far Detectors, or \texttt{RemoveTBSpills.fcl} for the Test Beam detector. This is done based on the event time relative to the time of the beam spill. For Test Beam the beam spill is 4.2 seconds long and we remove all events within a 5 seconds window from the start of the beam spill, as shown on Fig. \ref{figRemoveTBSpills}. This should leave us with mostly cosmic events.
@@ -226,7 +205,7 @@ The \texttt{Text File Generator} requires the vertex position and the initial 4-
 The first three steps are identical to the full reconstruction applied to get the calibration samples. Since we do not need a 4-momentum information for calibration, we do not need to use Cosmic Ray Vertex, FuzzyK Vertex, or the Break Point Fitter to create calibration samples.
 
 \subsubsection*{Selection}\label{secSelection}
-After the reconstruction process, we proceed to select events based on their slice and \textbf{BreakPointFitter (BPF) track} properties, saving them in a Root TTree. This step is done using the\\ \texttt{CosmicStudies/CosmicGenAna} module.
+After the reconstruction process, we proceed to select events based on their slice and \textbf{BreakPointFitter (BPF) track} properties.
 
 To select an event, the following conditions must be met (Tab. \ref{tabSelection} provides an overview of all cuts and their corresponding values):
 \begin{enumerate}
@@ -335,11 +314,7 @@ During the selection process, we determine whether the muon is stopping inside t
 
 \FloatBarrier
 \subsubsection{Energy correction, charge assignment and smearing}\label{secPython}
-Once we have the TTree with kinematic information for the selected events we run a python script \texttt{CosmicStudies/GenerateHEPEVTFromROOT.py}. This script performs several tasks, including correcting energies of the through-going muons, assigning a charge to each muon, and smearing and converting the information into a \texttt{HEPEVT} format (see Sec. \ref{secHEPEVTFormat}), which is required by the \texttt{Text File Generator}.
-
-To load the TTree ntuples into a dictionary of numpy arrays, the script utilizes the \texttt{uproot} library. If the machine being used does not have \texttt{uproot} installed, we can use \texttt{pip install --user uproot} to install the library.
-
-During a detector systematics planning session in Summer 2021, Mark Messier and Teresa Lackey presented an overview and a strategy for data-based simulation of cosmic muons for calibration \cite{NOVA-doc-51327-v3}. They discussed potential improvements to the energy estimation of through-going muons, charge assignment based on energy distribution and a plan to implement data-based simulation in the Near and Far detectors. Work discussed in this section directly follows this discussion.
+Once we have the kinematic information for the selected events performs several tasks, including correcting energies of the through-going muons, assigning a charge to each muon, and smearing and converting the information into the correct format required by the generator.
 
 \subsubsection*{Energy correction}
 Through-going muons do not deposit all of their energy inside the detector. From data we cannot reliably calculate their initial energies, but we can estimate an energy that would leave the same track. In general, the energy spectrum of cosmic muons can be approximately described by a power law $E^{-\alpha}$, with $\alpha\approx2.7$ \cite{NOVA-doc-51327-v3,rpp2022-rev-cosmic-rays.pdf}. The expectation value for the "true" initial energy of through-going muons can be therefore calculated as
@@ -375,7 +350,7 @@ The reconstructed data is influenced by the detector structure, reconstruction e
 The size of the smearing has been decided as the best estimate of variations of these variables for cosmic muons.
 
 \subsubsection*{Charge assignment}
-We need to tell the \texttt{Text File Generator} whether to simulate a muon or an anti-muon. However we do not reconstruct the charge of the muons, so we have to randomly assign it based on a statistical distribution from external measurements \cite{NOVA-doc-51327-v3}:
+We need to tell the \gls{MC} generator whether to simulate a muon or an anti-muon. However we do not reconstruct the charge of the muons, so we have to randomly assign it based on a statistical distribution from external measurements \cite{NOVA-doc-51327-v3}:
 
 %Figure out where are the plots and the equation Mark/Teresa quoted from (somewhere in PDG). Describe the basis of the measurement.
 %Here(p10): https://pdg.lbl.gov/2022/reviews/rpp2022-rev-cosmic-rays.pdf
@@ -385,62 +360,6 @@ We need to tell the \texttt{Text File Generator} whether to simulate a muon or a
 P_+ \simeq 0.539 + \frac{x}{34.5}-\left(\frac{x}{9.48}\right)^2 + \left(\frac{x}{8.27}\right)^3,
 \end{equation}
 where $x$ is the logarithm of total momentum in $\unit{GeV}$.
-
-\subsubsection*{Number of events to simulate}\label{secNumEvents}
-The \texttt{GenerateHEPEVTFromROOT.py} script offers options to adjust the statistics of the generated simulation. We can specify the number of iterations (niter) to loop each data event, or we can choose to skip events (stride). We want to avoid unnecessary computational and memory requirements by simulating too many events, but also require enough events for a successful calibration. Calibration is successful when there is sufficient number of through-going muons in each cell, view, and fibre brightness bin, so that each attenuation fit has a $\chi^2<0.2$. This is an external condition set for NOvA calibration.
-
-Here are our considerations, based purely on observation and experience. The intention is solely to help the reader avoid fine tuning the statistics when making a simulation of their own. Laid back reader can skip this section.
-
-Attenuation fits require approximately 50,000 calibration (tricell) hits per cell, view, and brightness bin. This Fig. remains the same for the near and far detectors, since the binning for position inside a cell (w) is identical for all detectors (100 bins per attenuation profile). However, we must consider the discrepancy between horizontal and vertical cells. Vertical cells, parallel to cosmic muons, receive approximately 5 times fewer hits than horizontal cells. To adequately populate the vertical cells, we multiply the original number (50,000) by 6 (1 for horizontal + 5 for vertical view), then by the number of fibre brightness bins (12). Finally, we multiply this by the number of cells: 390 for FD, 100 for ND, and 64 for TB. Thus, the minimum total tricell hits required is calculated as:
-\begin{center}
-\begin{tabular}{lr}
-Detector & $50,000\times 6\times 12\times$NCells\\\hline
-Test Beam & 230,400,000\\
-Near Detector & 360,000,000\\
-Far Detector & 1,404,000,000
-\end{tabular}
-\end{center}
-
-Since we are simulating events not hits and each event can have a vastly different number of successful tricell hits, we need to estimate the average number of tricell hits per event. This number will be different for each detector, with far detector events having many more hits than Test Beam events.
-
-From the calibration files we got that Test Beam events have on average 5 tricell hits (and 37 cell hits), so we need about $46\times10^6$ events in our simulation calibration sample. The simulation and calibration selection processes have about 90\% efficiency. So for Test Beam we need to simulate at least $51\times10^6$ events. From period 4 data we get 159,153,260 events after the selection. We decided to divide this sample in half with \texttt{stride 2} to get about $80\times10^6$ events, which was sufficient for a successful calibration. Originally we tried to divide the sample into a third, but this resulted in a few uncalibrated cells and a few days worth of work lost. We therefore recommend to rather use more events than less.
-
-\subsubsection*{Output format}\label{secHEPEVTFormat}
-For each event, we write the pdg code, the 4-momentum components and the vertex positions in a HEPEVT-format \cite{HEPEVTFormat} into a text file, which will then be used as an input for the \texttt{Text File Generator}.
-
-In the HEPEVT format each event is described in two lines. The header line contains the event number (which is ignored in ART) and a non-negative integer number of particles in the event. The second line contains 15 entries to describe each particle in the following order:
-\begin{enumerate}
-\item status code (set to 1 for any particle to be tracked)
-\item pdg code for this particle
-\item entry for the first mother of this particle in the event (0 means no mother)
-\item entry for the second mother of this particle in the event
-\item entry for the first daughter of this particle in the event
-\item entry for the second daughter of this particle in the event
-\item x component of the particle momentum 
-\item y component of the particle momentum
-\item z component of the particle momentum
-\item energy of the particle
-\item mass of the particle
-\item x position of the particle initial position (vertex)
-\item y position of the particle initial position (vertex)
-\item z position of the particle initial position (vertex)
-\item time of the particle production (relative to the beginning of the event)
-\end{enumerate}
-
-The momenta and masses are in GeV, positions in centimetres and time in nanoseconds.
-
-Table \ref{tabSelection} shows an example description for a single anti-muon particle, with momentum $P_{x,y,z}=\left(0.15, -1.56, 0.65\right)\unit{GeV}$ and vertex position $V_{x,y,z}=\left(40.48,121.04,120.96\right)\unit{cm}$. The energy is calculated from the momentum and the mass. The time of the particle production is chosen to be $50\unit{\mu s}$  and is same for all particles. The second line of the description is divided into three rows in the table below to fit on this page, but needs to be in a single line inside the text file.
-\begin{table}
-\centering
-\begin{tabular}{llllllr}\hline
-26375015 & 1 & & & & &\\ \hline
-1 & -13 & 0 & 0 & 0 & 0 & (\textit{no newline})\\ 0.149320 & -1.561071 & 0.653841 & 1.702346 & 0.106 & & (\textit{no newline})\\ 40.476409 & 121.044924 & 120.964778 & 50000 & & &\\\hline
-\end{tabular}
-\caption{Example HEPEVT-style kinematic description of a single anti-muon particle.}
-\label{tabHEPEVTOutput}
-\end{table}
-
-More details can be found in the comment block of the Text File Generator module in \newline \href{https://github.com/novaexperiment/novasoft/blob/main/EventGenerator/TextFileGen\_module.cc}{novasoft/EventGenerator/TextFileGen\_module.cc}.
 
 \subsubsection{Submitting the simulation jobs}\label{secGenerator}
 The brightness file describes the relative differences in energy response across the different cells and planes. These differences mainly arise from the variability of each fibre's brightness, and specifically for Test Beam, also from the different scintillators used. Since we want the simulated detectors to be functional copies of the ideal versions of the real detectors, it is important to provide a correct brightness file without any defects.
@@ -533,8 +452,7 @@ In this section we describe the details of the Test Beam detector calibration as
 %From Teresa's thesis
 %Along with setting the energy scale of the detector, we need to calibrate the timing of the readout system for the detector. The Data Concentrator Modules (DCMs) responsible for collating the data from multiple FEBs get their timing information via a daisy chain originating at the detector TDU. Each DCM in the chain has a timing offset relative to the DCM before it, with the last DCM having the earliest ti. Following the procedure described in [66], I used timing information from hits on cosmic ray muon tracks that pass through multiple DCMs to determine the relative offsets between DCMs, shown in Figure 3.20.
 
-The calibration samples used as inputs for the Test Beam detector calibration are listed in Tab.~\ref{tabTBCalibrationDefinitions}. We are using data from one of the two Test Beam data-driven activity-based triggers (DDActivity1). To produce these samples we (or production) use the 
-\href{https://github.com/novaexperiment/novaprod/blob/main/novaproduction/fcl/testbeam/prod\_tb\_ddactivity1\_pclist\_job.fcl}{prod\_tb\_ddactivity1\_pclist\_job.fcl} job from the \texttt{novaprod/novaproduction/fcl/testbeam} repository, or the corresponding simulation ("mc") file. The calibration samples were originally created in keep-ups by the production, but most of them had to be reproduced in 2023 to fix a bug in the Test Beam geometry.
+The calibration samples used as inputs for the Test Beam detector calibration are listed in Tab.~\ref{tabTBCalibrationDefinitions}. We are using data from one of the two Test Beam data-driven activity-based triggers (DDActivity1).
 
 %From Teresa's thesis:
 %"For Test Beam, we have three beam-based triggers, one pulsed trigger, and two data-driven triggers. The data-driven triggers are both activity-based triggers. The first is intended to record cosmic ray induced events for use in calibrating the detector.
