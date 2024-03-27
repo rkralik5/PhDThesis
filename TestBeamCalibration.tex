@@ -39,7 +39,7 @@ The \gls{NOvA} Test Beam experiment~\cite{NOvA-doc-22172} consists of a scaled d
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.7\textwidth]{Plots/TBCalibration/TestBeamDetectorWithArrows.png}
-\caption{Comparison of Test Beam detector scale to the \acrshort{NOvA} \acrshort{ND} and \acrshort{FD} (and a man, giraffe, or Mary Poppins). Also shown are the Test Beam beamline detectors and components (not to scale), with arrows showing the direction of the beam. The three black arrows show the orientation of the detector coordinate system.}
+\caption[Comparison of Test Beam detector to the Near and Far Detectors]{Comparison of Test Beam detector scale to the \acrshort{NOvA} \acrshort{ND} and \acrshort{FD} (and a man, giraffe, or Mary Poppins). Also shown are the Test Beam beamline detectors and components (not to scale), with arrows showing the direction of the beam. The three black arrows show the orientation of the detector coordinate system.}
 \label{fig:TBDetector}
 \end{figure}
 
@@ -87,7 +87,7 @@ Test Beam used a combination of the leftover \gls{ND} and \gls{FD} production sc
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\textwidth]{Plots/TBCalibration/TestBeamScintillatorOils.png}
-\caption{Uncorrected energy response in the centre of cells across the Test Beam detector showing a clear distinction between the different scintillator oils, labelled with coloured boxes and descriptions.}
+\caption[Scintillator oils used in the Test Beam detector]{Uncorrected energy response in the centre of cells across the Test Beam detector showing a clear distinction between the different scintillator oils, labelled with coloured boxes and descriptions.}
 \label{fig:Scintillators}
 \end{figure}
 
@@ -164,45 +164,32 @@ The Test Beam detector is slightly tilted around the z axis by about $0.7^{\circ
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data-based simulation of cosmic muons}\label{sec:DataBasedSimulation}
-As was described for the standard \gls{NOvA} calibration procedure in Sec.~\ref{sec:NOvACalibration}, we use the \gls{CRY} \gls{MC} generator (see Sec.~\ref{sec:NOvASimulation}) to create the simulated cosmic ray sample for calibration. However, the \gls{CRY} simulation proved to be highly inefficient, with only a small fraction of the simulated cosmic-ray activity resulting in selected calibration hits, and the majority of particles failing to even hit the detector. This inefficiency consumed significant CPU resources, disk space, and file usage. Moreover, the momentum and angle distributions in \gls{CRY} were not well suited to the \gls{NOvA} sites, potentially impacting the calibration accuracy.
+The standard \gls{NOvA} calibration procedure described in Sec.~\ref{sec:NOvACalibration} uses the \gls{CRY} \gls{MC} generator (see Sec.~\ref{sec:NOvASimulation}) to create the simulated cosmic ray sample for calibration. However, the \gls{CRY} simulation proved to be highly inefficient, with only a small fraction of the simulated cosmic-ray activity resulting in selected calibration hits and the majority of particles failing to even hit the detector. This inefficiency consumed significant CPU resources, disk space, and file usage. Moreover, the momentum and angle distributions in \gls{CRY} were not well suited to the \gls{NOvA} sites, potentially impacting the calibration accuracy.
 
-To overcome these challenges, we have implemented a data-based simulation method that eliminates the need for the \gls{CRY} \gls{MC} generator. Instead, we use a subset of the cosmic data sample and pass it through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic muon events are then being used a custom simulation to create an equivalent cosmic ray sample.
+To overcome these challenges, we have implemented a data-based simulation that eliminates the need for the \gls{CRY} \gls{MC} generator. Instead, we use a subset of the cosmic data sample used in calibration and pass it through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic muon events are then used as inputs to the detector simulation to create a new simulated cosmic ray sample.
 
-This approach results in near-perfect efficiency, ensuring that almost every simulated muon contributes to the final calibration sample, thus saving processing time, file size, and storage. Additionally, the simulated muon distributions are inherently consistent with the data. Given that the calibration chain itself is a time and CPU intensive process, the reduction in simulation files and their sizes has significant benefits downstream of the file generation.
-
-The process of generating a new data-based simulation begins with a data sample containing information on \texttt{Raw Digits} hits. It is necessary to choose a data sample that represents the detector in a fault-free state. For Test Beam, we use the full period 4 data sample, as other periods had issues such as faulty FEBs, underfilled cells, or similar complications.
-
-Subsequently, the reconstructed information of each event is processed by a Python script \texttt{GenerateHEPEVTFromROOT.py}. This script corrects the 4-momenta of the through-going muons to account for the missing energy that was not deposited in the detector. Furthermore, it assigns a charge to each cosmic muon based on a statistical distribution, smears the kinematic information to reduce bias from the input data and prints the \texttt{HEPEVT}-styled \cite{HEPEVTFormat} description of each event into a text file. The details of this process are elaborated in Sec. \ref{secPython}.
-
-The text file is then passed to the \texttt{Text File Generator}, which employs the information as a seed for a geant4-based \cite{GEANT4} detector simulation. By incorporating additional simulation and reconstruction steps, an artdaq-stage simulation sample of cosmic muons is generated. To create calibration samples for stopping and through-going cosmic muons, we apply the same reconstruction and selection criteria as for any data sample. Further details are provided in Sec. \ref{secGenerator}. 
+This approach results in a near-perfect efficiency, ensuring that almost every simulated muon contributes to the final calibration sample, thus saving processing time, file size, and storage. Additionally, the simulated muon distributions are inherently consistent with the distributions from data. Given that the calibration chain itself is a time and CPU intensive process, the reduction in simulation files and their sizes has significant benefits downstream of the file generation. On the other hand, using real data to seed the simulation could introduce undesirable bias, if we do not carefully consider possible misreconstruction or selection bias.\note{Can I re-word the last sentence?}
+%Using real world data introduces bias from known and unknown effects, such as varying detector efficiency or readout faults... We need to carefully consider and mitigate these effects when creating the simulation to make sure of its validity
 
 \subsection{Reconstruction and Selection of Cosmic Data Events}\label{sec:CosmicGenAna}
+It is important to choose a data sample that represents the detector in an ideal state, with as few known issues as possible. For Test Beam, we used half of period 4 data sample (see Tab.~\ref{tab:TestBeamPeriods}), as the other periods had complications such as faulty \gls{FEB}s, or underfilled cells. We sampled through the entire period 4 by using every other sub-run for the simulation.
 
-Our goal is to examine the response of the \textbf{simulated detector} to realistic cosmic muons found in the \textbf{real data}. We therefore need to use well-reconstructed and selected cosmic muons from data to generate our simulation. If the selection of the reconstructed data does not accurately correspond to reality, either due to misreconstruction or incorrect selection criteria, it can introduce bias into our simulation.
+%Our goal is to examine the response of the \textbf{simulated detector} to realistic cosmic muons found in the \textbf{real data}. We therefore need to use well-reconstructed and selected cosmic muons from data to generate our simulation. If the selection of the reconstructed data does not accurately correspond to reality, either due to misreconstruction or incorrect selection criteria, it can introduce bias into our simulation.
 
-Additionally, we want the simulation to primarily consist of events that will make it into the final simulation calibration sample and reject those that will not. Therefore, it is useful to employ a similar reconstruction and selection process to that used to create the data calibration samples. We also require the distributions of the selected events to be well-understood and to resemble those of the data calibration samples.
+We design the reconstruction and selection criteria so that the majority of the simulated cosmic muons will make it into the final simulation calibration sample. Therefore, we employ a similar process to that used to create the data calibration samples. Additionally, we require all distributions of the selected events to be well-understood and to resemble those of the data calibration samples.
 
 \subsubsection*{Remove Beam Spills}
-The first step is to remove beam spill events using the \texttt{RemoveBeamSpills.fcl} job for the Near and Far Detectors, or \texttt{RemoveTBSpills.fcl} for the Test Beam detector. This is done based on the event time relative to the time of the beam spill. For Test Beam the beam spill is 4.2 seconds long and we remove all events within a 5 seconds window from the start of the beam spill, as shown on Fig. \ref{figRemoveTBSpills}. This should leave us with mostly cosmic events.
+The first step is to remove beam spill events based on the event time relative to the time of the beam spill. For Test Beam the beam spill is $\unit[4.2]{s}$ long and we remove all events within a $\unit[5]{s}$ window from the start of the beam spill, as shown on Fig.~\ref{fig:RemoveTBSpills}. This should leave us with mostly cosmic events.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/RemoveTBSpills.pdf}
-\caption{Test Beam beam spill events removed (blue) from the calibration samples. The remaining events (green) should mostly consist of cosmic particles. This example and the numbers of entries are for the full period 4 Test Beam sample.}
-\label{figRemoveTBSpills}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/RemoveTBSpills.pdf}
+\caption[Removing Test Beam beam spill]{Test Beam beam spill events removed (blue) from the calibration samples. The remaining events (green) should mostly consist of cosmic particles. This example and the numbers of entries are for the full period 4 Test Beam sample.}
+\label{fig:RemoveTBSpills}
 \end{figure}
 
 \subsubsection*{Reconstruction}
-The \texttt{Text File Generator} requires the vertex position and the initial 4-momentum for each event. For that we use:
-\begin{enumerate}
-\item \texttt{CalHit} to create Calibrated Cell Hits from Raw Digits,
-\item \texttt{Slicer} to group hits into slices,
-\item \texttt{Window CosmicTrack} - a tracking algorithm for cosmic particles \cite{NOVA-doc-15977-v1},
-\item \texttt{CosmicRayVertex} to identify vertices for cosmic particles,
-\item \texttt{FuzzyKVertex} to cluster hits into prongs and
-\item \texttt{BreakPointFitter (BPF)} to identify muons (or muon-like tracks) and get their initial 4-momenta by fitting to the FuzzyK prongs and CosmicRayVertex vertices \cite{NOVA-doc-32455-v1}.
-\end{enumerate}
-The first three steps are identical to the full reconstruction applied to get the calibration samples. Since we do not need a 4-momentum information for calibration, we do not need to use Cosmic Ray Vertex, FuzzyK Vertex, or the Break Point Fitter to create calibration samples.
+The \gls{MC} generator requires the vertex position and the initial 4-momentum for each simulated event. For that we use the standard reconstruction methods from \gls{NOvA}, described in Sec.~\ref{sec:NOvAReconstruction}. First we take the raw hits and group them into slices. Then we reconstruct cosmic tracks using the window cosmic track algorithm (used for calibration samples). Since we also require the 4-momentum information we have to use the \gls{BPF} algorithm to identify muons and assign their momenta. \gls{BPF} required a vertex and prong input information, which we get from a cosmic ray vertex and FuzzyK algorithms respectively. The first three steps are identical to the full reconstruction applied to get the calibration samples. Since we do not need a 4-momentum information for calibration, we do not need to use cosmic ray vertex, FuzzyK vertex, or the \gls{BPF} to create calibration samples.
 
 \subsubsection*{Selection}\label{secSelection}
 After the reconstruction process, we proceed to select events based on their slice and \textbf{BreakPointFitter (BPF) track} properties.
@@ -213,14 +200,9 @@ To select an event, the following conditions must be met (Tab. \ref{tabSelection
 \item As we aim to select cosmic events originating outside the detector, we apply a cut based on the distance of each track's start from the Top/Front/Back/Sides of the detector. This cut has a negligible impact on the BPF tracks, as indicated by the minimal difference between the red and the dotted azure lines in Fig. \ref{figCosZSelectionComparison};
 
 \begin{figure}[!ht]
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonCosZCut_CosY.pdf}
-}
-
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonCosZCut_TotLength.pdf}
-}
-\caption{Impact of track start and maximum track angle from the z axis (Cos$_Z$) cuts on the Test Beam data for the data-based simulation of cosmic muons. The track start cut has only negligible effect. The maximum Cos$_Z$ cut effectively removes sharp peaks in the total track length distribution and events perpendicular to the Y axis. These events are all parallel with the Z axes and are most likely leftover beam events. All of the distributions are made from the period 4 Test Beam data.}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonCosZCut_CosY.pdf}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonCosZCut_TotLength.pdf}
+\caption[Track start and $\textsf{Cos}_Z$ cut for data-based simulation selection]{Impact of track start and maximum track angle from the z axis (Cos$_Z$) cuts on the Test Beam data for the data-based simulation of cosmic muons. The track start cut has only negligible effect. The maximum $\textsf{Cos}_Z$ cut effectively removes sharp peaks in the total track length distribution and events perpendicular to the Y axis. These events are all parallel with the Z axes and are most likely leftover beam events. All of the distributions are made from the period 4 Test Beam data.}
 \label{figCosZSelectionComparison}
 \end{figure}
 
@@ -231,27 +213,15 @@ To select an event, the following conditions must be met (Tab. \ref{tabSelection
 \item First, to create calibration samples, we apply selection to tracks from the \textbf{Window cosmic track} algorithm instead of the Break Point Fitter algorithm, which yield different distributions as depicted on Fig. \ref{figTrackComparison}. Notably, the BPF tracks have a hard cut-off at the detector edges, whereas the Window cosmic tracks are allowed to start beyond these limits. Also, the BPF tracks have a rugged distribution in Cos$_Z$, which is not present for Window cosmic tracks. This is likely caused by the detector structure, as shown on Fig. \ref{figBPFPeaks}, but it is not clear how. We concluded that he rugged shape does not have any impact on the resulting simulation. Given these differences between the tracking algorithms, applying the calibration cuts on BPF tracks could mistakenly remove events that would pass the same selection when applied to the Window cosmic tracks.
 
 \begin{figure}[!ht]
-\centering
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/TrackAlgComparison_StartX.pdf}
-}
-
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/TrackAlgComparison_CosZ.pdf}
-}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/TrackAlgComparison_StartX.pdf}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/TrackAlgComparison_CosZ.pdf}
 \caption{Difference between the tracks reconstructed with the break point fitter and with the Window cosmic track algorithms. Both distributions are for the period 4 Test Beam data (with removed beam spill) without applying any selection.}
 \label{figTrackComparison}
 \end{figure}
 
 \begin{figure}[!ht]
-\centering
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/BPFPeaks_BPFTracks_dcosz_TotLength.pdf}
-}
-\vspace*{-4mm}
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/BPFPeaks_WTTracks_dcosz_TotLength.pdf}
-}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/BPFPeaks_BPFTracks_dcosz_TotLength.pdf}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/BPFPeaks_WTTracks_dcosz_TotLength.pdf}
 \caption{Investigating the origin of the rugged shape in the Cos$_Z$ distribution of Break Point Fitter tracks. The top plot is created with the loose calibration cuts and the bottom plot with full calibration cuts. This difference in selection shouldn't matter. The long lines on the 2D plots are likely the effects of the detector structure. We can see that for the Break Point Fitter tracks, each Cos$_Z$ angle corresponds to a specific track length, whereas for the Window cosmic tracks there is multiple track length for each angle. This could cause the resulting shape in the Cos$_Z$ distribution of Break Point Fitter tracks.}
 \label{figBPFPeaks}
 \end{figure}
@@ -278,8 +248,10 @@ The cuts are:
 
 \begin{table}[!ht]
 \centering
+\caption{Event selection for the data-based simulation (in green under Loose selection) and comparison to the Full calibration sample selection cuts in blue. The last two rows are not used for Test Beam, but are employed for the Near and Far detectors and should be studied before creating a data-based simulation for them.}
 \begin{tabular}{clcc}
-& \centering{\textbf{Cut}} & \cellcolor[HTML]{3166FF}\textbf{Full selection} & \cellcolor[HTML]{32CB00}\textbf{Loose selection} \\ \hline
+& \multirow{2}{*}{\centering{\textbf{Cut}}} & \multicolumn{2}{c}{\textbf{Selection}}\\
+& & \cellcolor[HTML]{3166FF}\textbf{Full} & \cellcolor[HTML]{32CB00}\textbf{Loose}\\\hline
                                    & Muon assumption and 3D track from BPF         &                                             &                                          \\
                                    & Max. track start distance from edge                       & \multicolumn{2}{c}{50 cm}                                                                 \\
                                    & Max. $Cos_{Z}$                                            & \multicolumn{2}{c}{0.98}                                                               \\ \hline
@@ -294,26 +266,20 @@ The cuts are:
                                    & \cellcolor[HTML]{C0C0C0}Max. vertex distance from edge    & \multicolumn{2}{c}{\cellcolor[HTML]{C0C0C0}10~cm}                                         \\
 \parbox[t]{2mm}{\multirow{-10}{*}{\rotatebox[origin=c]{90}{Calibration sample selection}}}& \cellcolor[HTML]{C0C0C0}Max. track end distance from edge & \multicolumn{2}{c}{\cellcolor[HTML]{C0C0C0}10 cm}
 \end{tabular}
-\caption{Event selection for the data-based simulation (in green under Loose selection) and comparison to the Full calibration sample selection cuts in blue. The last two rows are not used for Test Beam, but are employed for the Near and Far detectors and should be studied before creating a data-based simulation for them.}
 \label{tabSelection}
 \end{table}
 
 \begin{figure}[!h]
-\subfloat{
 \includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonPCHitsListCut_CosZ.pdf}
-}
-\vspace*{-4mm}
-\subfloat{
 \includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonPCHitsListCut_TotLength.pdf}
-}
 \caption{Comparison of event selections for the data-based simulation and of the corresponding data calibration sample in black. The green line represents the final selection used for the simulation, using the loosened calibration cuts, while the blue line shows the distributions with full calibration cuts. The data calibration sample was made with the same full calibration cuts as the blue line (without the track start cut and maximum Cos$_Z$ cuts), but applied to the window cosmic tracks instead of the Break Point Fitter tracks. All of the distributions are made from the period 4 Test Beam data.}
 \label{figPCHitsListCutsComparison}
 \end{figure}
 
 During the selection process, we determine whether the muon is stopping inside the detector or passing through, based on the reconstructed track's end position\footnote{For Test Beam we say it is a stopping muon if its track ends at least 20~cm from any edge of the detector. For the far and near detector this is 50~cm. This value was chosen by Kevin Mulder \cite{NOVA-doc-39244-v1} as 50~cm removed too many cosmic events from the Test Beam detector.}. This information assists in correcting the energy of through-going muons, as outlined in Sec. \ref{secPython}.
 
-\FloatBarrier
-\subsubsection{Energy correction, charge assignment and smearing}\label{secPython}
+%\FloatBarrier
+\subsection{Energy correction, charge assignment and smearing}\label{secPython}
 Once we have the kinematic information for the selected events performs several tasks, including correcting energies of the through-going muons, assigning a charge to each muon, and smearing and converting the information into the correct format required by the generator.
 
 \subsubsection*{Energy correction}
@@ -378,25 +344,15 @@ For the data-simulation comparisons we use the events from the calibration (pcli
 Figures \ref{figDataMCComparison_cosXcosY} and \ref{figDataMCComparison_cosZtotLength} show that the angular distributions of the new simulation (pink lines) are almost the same as distributions of Break Point Fitter tracks with full calibration cuts (blue dashed lines). This means that loosening up the calibration cuts (green dashed lines) did not help as expected with compensating for the underlying differences between the Break Point Fitter tracks and the Window cosmic tracks. This can also be seen on the total track length distribution on Fig. \ref{figDataMCComparison_cosZtotLength}. This is disappointing, but the distributions of the new simulation look reasonable and are close enough to the data, that we've decided to proceed with this simulation and use it in the Test Beam calibration. It is unlikely that we could mitigate these differences by changing the selection even more.
 
 \begin{figure}[!ht]
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosX.pdf}
-}
-
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosY.pdf}
-}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosX.pdf}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosY.pdf}
 \caption{Angular distribution comparison of the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
 \label{figDataMCComparison_cosXcosY}
 \end{figure}
 
 \begin{figure}[!ht]
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosZ.pdf}
-}
-
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_TotLength.pdf}
-}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosZ.pdf}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_TotLength.pdf}
 \caption{Angular and total track length distribution comparison of the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
 \label{figDataMCComparison_cosZtotLength}
 \end{figure}
@@ -404,13 +360,8 @@ Figures \ref{figDataMCComparison_cosXcosY} and \ref{figDataMCComparison_cosZtotL
 The start of track comparison between data and simulation on Fig. \ref{figDataMCComparison_startXstartY} and \ref{figDataMCComparison_startZ} show that there are fewer events that start at the edge of the detector. This is likely the result of the event smearing.
 
 \begin{figure}[!ht]
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_StartX.pdf}
-}
-
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_StartY.pdf}
-}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_StartX.pdf}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_StartY.pdf}
 \caption{Start of tracks comparison of the newly created simulation calibration sample and the corresponding (period 4) data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
 \label{figDataMCComparison_startXstartY}
 \end{figure}
@@ -424,13 +375,8 @@ The start of track comparison between data and simulation on Fig. \ref{figDataMC
 Adding the distributions for the re-simulation calibration sample shown on Fig. \ref{figSimVersionComparison}, we can see that the tracks' starts are systematically shifted even more towards the inside of the detector. This would support the theory that this effect is caused by the smearing of the events. This is also likely directly related to the loss of events with longer track lengths as shown on Fig. \ref{figSimVersionComparison}. If tracks start a few centimetres later in the detector their tracks would get shorter by the same amount.
 
 \begin{figure}[!ht]
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SimVersionComparison_StartZ.pdf}
-}
-
-\subfloat{
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SimVersionComparison_TotLength.pdf}
-}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SimVersionComparison_StartZ.pdf}
+\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SimVersionComparison_TotLength.pdf}
 \caption{Distribution of the re-simulated events, when the new simulation's artdaq sample is used as "fake data" for a new iteration of the simulation process discussed in this document. This is compared to the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
 \label{figSimVersionComparison}
 \end{figure}
@@ -489,15 +435,15 @@ The uniform distribution is expected, as the Test Beam detector is much smaller 
 
 \begin{figure}[hbtp]
 \centering
-\begin{subfigure}[t]{0.9\textwidth}
+\begin{subfigure}[t]{\textwidth}
 \centering
 \includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ThresholdCorrectionExample_axview_fb0_P4DataBasedSim.pdf}
 \end{subfigure}
-\begin{subfigure}[b]{0.9\textwidth}
+\begin{subfigure}[b]{\textwidth}
 \centering
 \includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ThresholdCorrectionExample_ayview_fb5_P4DataBasedSim.pdf}
 \end{subfigure}
-\begin{subfigure}[t]{0.9\textwidth}
+\begin{subfigure}[t]{\textwidth}
 \centering
 \includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ThresholdCorrectionExample_cyview_fb7_P4DataBasedSim.pdf}
 \end{subfigure}
@@ -517,7 +463,7 @@ The distribution of cosmic muon events from the new simulation across the detect
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.9\textwidth]{PlotsTBCalibTechnote/Attenprofs_Simulation_CellPlane.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_Simulation_CellPlane.pdf}
 \caption{Distribution of events in the Test Beam simulation calibration sample.}
 \label{fig:CalibhistSim}
 \end{figure}
@@ -536,16 +482,16 @@ Examples of a standard detector response and of the response for cells on the ed
 There is only one cell in the middle of the detector that is left uncalibrated, which is the cell 32 in a vertical plane in the brightness bin 5, shown on the top right of Fig.\ref{fig:AttenfitResultsSimulation}. The corresponding $\chi^2=0.227$. It seems the reason the $\chi^2$ is $>0.2$ is the high response with a large uncertainty in the very last fitted bin.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/sim_fb2_001_050.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/sim_fb5_000_032.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/sim_fb6_001_000.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/sim_fb10_000_063.png}
   \end{subfigure}
   \caption{Attenuation fits for a selection of cells in the Test Beam calibration simulation. Top left is an example of a successful attenuation fit, top right is a failed fit due to statistical fluctuation in the last bin and the bottom plots show failed fits for cells on the edges of the detector.}
@@ -560,7 +506,7 @@ The issue with underfilled cells described in Sec.~\ref{sec:TBDetector} was pres
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{PlotsTBCalibTechnote/Attenprofs_P2Data_CellPlane_AllRuns.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P2Data_CellPlane_AllRuns.pdf}
 \caption{Distribution of events in the period 2 Test Beam data calibration sample.}
 \label{fig:Calibhist_period2}
 \end{figure}
@@ -617,7 +563,7 @@ The results of the attenuation fit for period 2 are summarised on Fig. \ref{figC
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.9\textwidth]{PlotsTBCalibTechnote/CellResponseAtCentre_period2_Limited_NOvAPlotStyle.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/CellResponseAtCentre_period2_Limited_NOvAPlotStyle.pdf}
 \caption{Overview of the relative calibration results for the Test Beam detector period 2 data. Each cell represents the result of the attenuation fit to the energy response in the centre of that cell. The blank cells are uncalibrated.}
 \label{fig:CellCentreResponsePeriod2}
 \end{figure}
@@ -627,10 +573,10 @@ Most of the cells have an expected response, with steady rise towards the readou
 Some cells have a non-flat response across the cell, with one or more regions with a drop in the energy response, as shown on the right plot of Fig. \ref{fig:AttenfitResultsPerio2_ZippedFibers}. These low regions are (almost certainly) a real physical effect caused by zipped, or possibly even twisted fibres \cite{NOVA-doc-43249}, present in all of NOvA's detectors. Relative calibration corrects for this effect in data, but zipped fibres are not included in simulation, for any of the detectors. This could potentially cause issues with the ADC threshold in simulation.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_008_028.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_022_035.png}
   \end{subfigure}
   \caption{Attenuation fits for a selection of cells in period 2. Left plot shows an example of the standard energy deposition in the Test Beam. Right plot shows the effect of zipped fibres.}
@@ -640,10 +586,10 @@ Some cells have a non-flat response across the cell, with one or more regions wi
 Since the underfilled cells were marked as bad channels we didn't attempt to calibrate them. Their neighbours have fewer events due to the tricell condition, but majority of them pass the calibration condition, as shown on Fig. \ref{fig:AttenfitResultsPerio2_UnderfilledCells}. The neighbouring cells in plane 1 don't pass calibration due to low statistics and therefore large fluctuations, as shown on Fig. \ref{fig:AttenfitResultsPerio2_UnderfilledCellsPlane01}. This is likely due to a combination of the tricell condition and plane 1 being on the edge of the detector, which typically has fewer (accepted) hits than the center, as shown on Fig. \ref{fig:Calibhist_period2}.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_003_030.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_011_032.png}
   \end{subfigure}
   \caption{Fit to the energy response in period 2. The cells neighbouring the underfilled cells have fewer events and therefore larger fluctuations than the "usual" Test Beam cell.}
@@ -651,10 +597,10 @@ Since the underfilled cells were marked as bad channels we didn't attempt to cal
 \end{figure}
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_001_030.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_001_032.png}
   \end{subfigure}
   \caption{Fit to the energy response in period 2. The neighbouring cells to the underfilled cells in plane 1 are uncalibrated due to low statistics.}
@@ -664,10 +610,10 @@ Since the underfilled cells were marked as bad channels we didn't attempt to cal
 The left half of plane 55 has more than $3\times$ larger response than it's surrounding planes, as shown on the left plot of Fig. \ref{fig:AttenfitResultsPerio2_FaultyFEB}. Similarly, the left half of plane 57 has slightly lower response than the surrounding planes, as shown on the right plot of Fig. \ref{fig:AttenfitResultsPerio2_FaultyFEB}. This is due to the corresponding APDs/FEBs incorrectly recording different energy response than the real energy deposited in the detector. Since this effect is present for all data, not only for the cosmic muons used for calibration, it is important to correctly calibrate it out. The issue can arise if these FEBs have been "faulty" only for a limited time of the entire calibrated period. Since we are doing the attenuation fit on the average response across the whole calibrated period, if an FEB records a standard response for half of the time and $7\times$ larger response for the seconds half, calibration is going to assume the response was $4\times$ larger the entire time, which is incorrect. Since both of these planes are in the back of the detector, we decided to ignore this effect for period 2.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_055_011.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_057_011.png}
   \end{subfigure}
   \caption{Fit to the energy response in period 2. Lower halves of planes 55 and 57 have a different scale of energy response than the surrounding planes.}
@@ -677,10 +623,10 @@ The left half of plane 55 has more than $3\times$ larger response than it's surr
 The cells with (probably) swapped cables in plane 55 have almost no events, which affects both them and their neighbours as shown of Fig. \ref{fig:AttenfitResultsPerio2_SwappedCables}.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_055_045.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_055_046.png}
   \end{subfigure}
   \caption{Fit to the energy response in period 2. Cells with swapped readout cables have almost no recorded events as shown on the right plot. This also affect their neighbouring cells due to the tricell condition as shown on the left plot.}
@@ -690,16 +636,16 @@ The cells with (probably) swapped cables in plane 55 have almost no events, whic
 Several cells in the end of the Test Beam detector are uncalibrated due to the histogram bins on the edges of the cell having an unusually high response, or no events at all, as shown on Fig. \ref{fig:AttenfitResultsPerio2_CellEdge}. It is unknown if this is a real physical effect, possibly related to the fibres, or if it is unfiltered noise hits, or something else entirely. Since these cells are in the end of the detector, it is fairly safe to ignore them.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_054_050.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_058_024.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_058_025.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p2_060_032.png}
   \end{subfigure}
   \caption{Fit to the energy response in period 2. Examples of cells that have an unusually high or low energy response at the edge of the cell. These cells are not calibrated.}
@@ -731,11 +677,11 @@ The refilling of the underfilled cells can be clearly seen on the cell hits dist
 \centering
 \begin{subfigure}[b]{\textwidth}
 \centering
-\includegraphics[width=0.9\textwidth]{PlotsTBCalibTechnote/Attenprofs_P3Data_CellPlane_Epoch3a.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P3Data_CellPlane_Epoch3a.pdf}
 \end{subfigure}
 \begin{subfigure}[b]{\textwidth}
 \centering
-\includegraphics[width=0.9\textwidth]{PlotsTBCalibTechnote/Attenprofs_P3Data_CellPlane_Epoch3de.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P3Data_CellPlane_Epoch3de.pdf}
 \end{subfigure}
 \caption{Distribution of events in the period 3 Test Beam data calibration sample. Comparison of Epoch 3a data before the refilling of the underfilled cells and Epoch 3de (combination of Epochs 3d and 3e) after the full refilling.}
 \label{fig:Calibhist_period3}
@@ -803,10 +749,10 @@ The results of the attenuation fit are summarised on Fig. \ref{fig:CellCentreRes
 We can see that some of the underfilled cells that have been refilled for epochs 3b or 3c are now calibrated thanks to including these two short epochs into the same attenuation fit. An example of energy deposition in such a cell is on the left plot of Fig. \ref{fig:AttenfitResultsEpoch3abc_UnderfilledCellsNeighbours}.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3abc_005_031.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3abc_001_032.png}
   \end{subfigure}
   \caption{Fit to the energy response in epochs 3 a, b and c. Some underfilled cells that have been refilled in epochs 3b and 3c are now calibrated as shown on the left plot. Cell 32 in plane 1 is the only neighbouring cell to the underfilled cell that didn't manage to get calibrated due to low number of events.}
@@ -818,10 +764,10 @@ Same as in period 2, most of the neighbouring cells to the underfilled cells are
 There is a couple of notably faulty FEBs with a different energy response than their neighbours. Besides the expected top half of plane 58, which has about $5\times$ larger response than the usual, it's also the top half of plane 36, which has about $2.5\times$ larger response as its neighbours. This could mean that the FEB in plane 36 was faulty only for a limited time compared to the FEB in plane 58. The energy deposition for these cells is shown on Fig. \ref{fig:AttenfitResultsEpoch3abc_FaultyFEBs}.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3abc_036_054.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3abc_058_048.png}
   \end{subfigure}
   \caption{Fit to the energy response in epochs 3a, 3b and 3c. The most obvious faulty FEBs that have a significantly larger energy response than their neighbours.}
@@ -831,10 +777,10 @@ There is a couple of notably faulty FEBs with a different energy response than t
 Similarly as in period 2, there are a few cell in the back of the detector that have a sharp rise in the energy response at the edge of the cell, which causes them to be uncalibrated. This can be seen on Fig. \ref{fig:AttenfitResultsEpoch3abc_CellEdges}.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3abc_058_002.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3abc_060_032.png}
   \end{subfigure}
   \caption{Fit to the energy response in epochs 3a, 3b and 3c. Some cells are not calibrated due to large fluctuations at one edge of the cells.}
@@ -853,10 +799,10 @@ The results of the attenuation fits for epochs 3d and 3e are shown on Fig. \ref{
 \end{figure}
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3de_017_031.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3de_017_032.png}
   \end{subfigure}
   \caption{Fit to the energy response in epochs 3d and 3e. Possibly dead channel or still underfilled cell.}
@@ -866,10 +812,10 @@ The results of the attenuation fits for epochs 3d and 3e are shown on Fig. \ref{
 Epochs 3d and 3e should have all the previously underfilled cells now refilled, but as can be seen on Fig. \ref{fig:CellCentreResponseEp3de}, there's several of these cells that are still (officially) uncalibrated. The energy deposition in these cells is shown on Fig. \ref{fig:AttenfitResultsEpoch3de_RefilledDiscrepancy}. Here we can see that these cells have a fairly large discrepancy between the left and right side of the cells. This is caused by using different scintillator oils for the initial filling of the cells and for the refilling. Specifically, these cells have been initially filled with the Ash River and the Texas oils, which have higher energy depositions compared to the NDOS oil that was used for the refilling during period 3. These oils clearly didn't mix properly which causes a different energy deposition in different parts of the cells. This is a physical effect that should be accounted for in the calibration and as we can see, the attenuation fits are actually performing reasonably well. The large $\chi^2$ value is most likely caused only by the unusual shape of the distribution, which the fit is not build for. \textbf{We have therefore decided to manually change the $\chi^2$ inside the cvs tables (results of the attenuation fits), so that the $\chi^2<0.2$ and these cells are officially considered calibrated.}
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3de_033_031.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3de_059_031.png}
   \end{subfigure}
   \caption{Fit to the energy response in epochs 3 d and e. The scintillator oil used for refilling of the underfilled cells has lower energy response than the oil used for the initial filling. These oils didn't mix properly causing a different energy response in the left and right side of the cell.}
@@ -879,10 +825,10 @@ Epochs 3d and 3e should have all the previously underfilled cells now refilled, 
 Some of the cells in the back of the detector have a rise, or drop in energy deposition at the edge of the cell, as can be seen on Fig. \ref{fig:AttenfitResultsEpoch3de_CellEdges}. This is similar to the effect seen in period 2 and epochs 3a+3b+3c and since it's again concentrated in the end of the detector, we ignored these cells and left them uncalibrated.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3de_050_018.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/ep3de_062_006.png}
   \end{subfigure}
   \caption{Fit to the energy response in epochs 3d and 3e. Some cells have a drop, or a rise of energy response at the edge of the cell. This can be cause by low statistics.}
@@ -898,15 +844,15 @@ The period 4 Test Beam data taking period is the best data we managed to collect
 \centering
 \begin{subfigure}[b]{\textwidth}
 \centering
-\includegraphics[width=.9\textwidth]{PlotsTBCalibTechnote/Attenprofs_P4Data_CellPlane_Epoch4a.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P4Data_CellPlane_Epoch4a.pdf}
 \end{subfigure}
 \begin{subfigure}[b]{\textwidth}
 \centering
-\includegraphics[width=.9\textwidth]{PlotsTBCalibTechnote/Attenprofs_P4Data_CellPlane_CellMasking.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P4Data_CellPlane_CellMasking.pdf}
 \end{subfigure}
 \begin{subfigure}[b]{\textwidth}
 \centering
-\includegraphics[width=.9\textwidth]{PlotsTBCalibTechnote/Attenprofs_P4Data_CellPlane_GoodRuns.pdf}
+\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P4Data_CellPlane_GoodRuns.pdf}
 \end{subfigure}
 \caption{Distribution of events in the Test Beam period 4 data calibration sample. The top plot shows the first three commissioning runs, the middle plot the status of the detector during the Cell Masking studies and the bottom plot shows the rest.}
 \label{fig:Calibhist_period4}
@@ -970,10 +916,10 @@ Results of the attenuation fits for period 4 are summarised on Fig. \ref{fig:Cel
 We treated the formerly underfilled cells the same way as in epochs 3d and 3e, by manually changing their $\chi^2$ inside the csv files to be $<0.2$ and therefore making them officially calibrated.
 
 \begin{figure}[h]
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p4_035_031.png}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{RelativeCalibrationResults/p4_054_047.png}
   \end{subfigure}
   \caption{Fit to the energy response in period 4. Previously underfilled cells refilled with a scintillator of a different quality causing an unusual distribution of energy deposition (left). Unusually high energy response at the edge of the cell 47 (right).}
@@ -1072,16 +1018,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
   
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecm_w_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecm_w_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorrcm_w_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorrcm_w_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the position within a cell.}
@@ -1095,22 +1041,22 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pe_w_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pe_w_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_w_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_w_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/cm_w_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/cm_w_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the position within a cell.}
@@ -1124,16 +1070,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecm_cell_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecm_cell_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorrcm_cell_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorrcm_cell_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cells of the detector.}
@@ -1147,22 +1093,22 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pe_cell_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pe_cell_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_cell_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_cell_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/cm_cell_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/cm_cell_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cells of the detector.}
@@ -1176,16 +1122,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecm_plane_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecm_plane_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorrcm_plane_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorrcm_plane_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the planes of the detector.}
@@ -1199,22 +1145,22 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pe_plane_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pe_plane_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_plane_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_plane_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/cm_plane_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/cm_plane_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the planes of the detector.}
@@ -1228,16 +1174,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosx_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosx_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosx_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosx_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the X (horizontal) axis.}
@@ -1251,22 +1197,22 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosx_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosx_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosx_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosx_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosx_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosx_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the X (horizontal) axis.}
@@ -1280,16 +1226,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
   
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosy_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosy_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosy_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosy_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Y (vertical) axis.}
@@ -1303,22 +1249,22 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosy_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosy_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosy_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosy_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosy_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosy_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Y (vertical) axis.}
@@ -1332,16 +1278,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
   
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosz_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosz_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosz_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosz_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Z (beam) axis.}
@@ -1358,19 +1304,19 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \begin{subfigure}{0.5\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosz_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosz_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosz_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosz_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosz_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosz_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Z (beam) axis.}
@@ -1386,16 +1332,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
   
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pecm_time_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pecm_time_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pecorrcm_time_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pecorrcm_time_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the event UNIX time.}
@@ -1409,22 +1355,22 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
   
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pe_time_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pe_time_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pecorr_time_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/pecorr_time_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/cm_time_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{driftsec_tb/cm_time_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the event UNIX time.}
@@ -1438,16 +1384,16 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
 
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_meu_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_meu_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_mev_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_mev_y.pdf}
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks.}
@@ -1461,22 +1407,22 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \vspace*{2mm}
   
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_w_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_w_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_cell_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_cell_y.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_plane_x.pdf}
   \end{subfigure}
-  \begin{subfigure}{0.5\textwidth}
+  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/nhits_plane_y.pdf}
   \end{subfigure}
     \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks.}
