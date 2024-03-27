@@ -164,22 +164,22 @@ The Test Beam detector is slightly tilted around the z axis by about $0.7^{\circ
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data-based simulation of cosmic muons}\label{sec:DataBasedSimulation}
-The standard \gls{NOvA} calibration procedure described in Sec.~\ref{sec:NOvACalibration} uses the \gls{CRY} \gls{MC} generator (see Sec.~\ref{sec:NOvASimulation}) to create the simulated cosmic ray sample for calibration. However, the \gls{CRY} simulation proved to be highly inefficient, with only a small fraction of the simulated cosmic-ray activity resulting in selected calibration hits and the majority of particles failing to even hit the detector. This inefficiency consumed significant CPU resources, disk space, and file usage. Moreover, the momentum and angle distributions in \gls{CRY} were not well suited to the \gls{NOvA} sites, potentially impacting the calibration accuracy.
+The standard \gls{NOvA} calibration procedure described in Sec.~\ref{sec:NOvACalibration} uses the \gls{CRY} \gls{MC} generator (see Sec.~\ref{sec:NOvASimulation}) to create the simulated cosmic ray sample for calibration. However, the \gls{CRY} simulation proved to be highly inefficient, with only a small fraction of the simulated cosmic-ray activity resulting in selected calibration hits and the majority of particles failing to even hit the detector. This inefficiency consumed significant processing resources, disk space, and file usage. Moreover, the momentum and angle distributions in \gls{CRY} were not well suited to the \gls{NOvA} sites, potentially impacting the calibration accuracy.
 
-To overcome these challenges, we have implemented a data-based simulation that eliminates the need for the \gls{CRY} \gls{MC} generator. Instead, we use a subset of the cosmic data sample used in calibration and pass it through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic muon events are then used as inputs to the detector simulation to create a new simulated cosmic ray sample.
+To overcome these challenges, we developed and implemented a data-based simulation that eliminates the need for the \gls{CRY} \gls{MC} generator. Instead, we use a subset of the cosmic data sample used in calibration and pass it through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic muon events are then used as inputs to the detector simulation to create a new simulated cosmic ray sample.
 
-This approach results in a near-perfect efficiency, ensuring that almost every simulated muon contributes to the final calibration sample, thus saving processing time, file size, and storage. Additionally, the simulated muon distributions are inherently consistent with the distributions from data. Given that the calibration chain itself is a time and CPU intensive process, the reduction in simulation files and their sizes has significant benefits downstream of the file generation. On the other hand, using real data to seed the simulation could introduce undesirable bias, if we do not carefully consider possible misreconstruction or selection bias.\note{Can I re-word the last sentence?}
+This approach results in a near-perfect efficiency, ensuring that almost every simulated muon contributes to the final calibration sample, thus saving processing time, file size, and storage. Additionally, the simulated muon distributions are inherently consistent with the distributions from data. Given that the calibration chain itself is a time and computing intensive process, the reduction in simulation files and their sizes has significant benefits downstream of the file generation. On the other hand, using real data to seed the simulation could introduce undesirable bias, if we do not carefully consider possible misreconstruction or selection bias.\note{Can I re-word the last sentence?}
 %Using real world data introduces bias from known and unknown effects, such as varying detector efficiency or readout faults... We need to carefully consider and mitigate these effects when creating the simulation to make sure of its validity
 
 \subsection{Reconstruction and Selection of Cosmic Data Events}\label{sec:CosmicGenAna}
-It is important to choose a data sample that represents the detector in an ideal state, with as few known issues as possible. For Test Beam, we used half of period 4 data sample (see Tab.~\ref{tab:TestBeamPeriods}), as the other periods had complications such as faulty \gls{FEB}s, or underfilled cells. We sampled through the entire period 4 by using every other sub-run for the simulation.
+It is important to choose a data sample that represents the detector in an ideal state, with as few known issues as possible. For Test Beam, we chose the period 4 data sample (see Tab.~\ref{tab:TestBeamPeriods}), as the other periods had complications such as faulty \gls{FEB}s, or underfilled cells. We only used half of the entire period 4 sample by only using every other sub-run for the simulation to only produce the necessary number of events for a successful calibration.
 
 %Our goal is to examine the response of the \textbf{simulated detector} to realistic cosmic muons found in the \textbf{real data}. We therefore need to use well-reconstructed and selected cosmic muons from data to generate our simulation. If the selection of the reconstructed data does not accurately correspond to reality, either due to misreconstruction or incorrect selection criteria, it can introduce bias into our simulation.
 
-We design the reconstruction and selection criteria so that the majority of the simulated cosmic muons will make it into the final simulation calibration sample. Therefore, we employ a similar process to that used to create the data calibration samples. Additionally, we require all distributions of the selected events to be well-understood and to resemble those of the data calibration samples.
+We designed the reconstruction and selection criteria so that the majority of the simulated cosmic muons make it into the final simulation calibration sample. Therefore, we employed a similar process to that used to create the data calibration samples. Additionally, we require all distributions of the selected events to be well-understood and to resemble those of the data calibration samples.
 
 \subsubsection*{Remove Beam Spills}
-The first step is to remove beam spill events based on the event time relative to the time of the beam spill. For Test Beam the beam spill is $\unit[4.2]{s}$ long and we remove all events within a $\unit[5]{s}$ window from the start of the beam spill, as shown on Fig.~\ref{fig:RemoveTBSpills}. This should leave us with mostly cosmic events.
+The first step is to remove beam spill events based on their time relative to the time of the beam spill. For Test Beam the beam spill is $\unit[4.2]{s}$ long and we remove all events within a $\unit[5]{s}$ window from the start of the beam spill, as shown on Fig.~\ref{fig:RemoveTBSpills}. This should leave us with mostly cosmic events.
 
 \begin{figure}[hbtp]
 \centering
@@ -189,47 +189,45 @@ The first step is to remove beam spill events based on the event time relative t
 \end{figure}
 
 \subsubsection*{Reconstruction}
-The \gls{MC} generator requires the vertex position and the initial 4-momentum for each simulated event. For that we use the standard reconstruction methods from \gls{NOvA}, described in Sec.~\ref{sec:NOvAReconstruction}. First we take the raw hits and group them into slices. Then we reconstruct cosmic tracks using the window cosmic track algorithm (used for calibration samples). Since we also require the 4-momentum information we have to use the \gls{BPF} algorithm to identify muons and assign their momenta. \gls{BPF} required a vertex and prong input information, which we get from a cosmic ray vertex and FuzzyK algorithms respectively. The first three steps are identical to the full reconstruction applied to get the calibration samples. Since we do not need a 4-momentum information for calibration, we do not need to use cosmic ray vertex, FuzzyK vertex, or the \gls{BPF} to create calibration samples.
+To use the events in the simulation, we require their vertex positions and their initial 4-momenta. We use the standard reconstruction methods from \gls{NOvA}, described in Sec.~\ref{sec:NOvAReconstruction}. First we take the raw hits and group them into slices. Then we reconstruct cosmic tracks using the window cosmic track algorithm (used for calibration samples). Since we also require the 4-momentum information we have to use the \gls{BPF} tracking algorithm to identify muons and assign their momenta. \gls{BPF} required a vertex and prong input information, which we get from a cosmic ray vertex and FuzzyK prong algorithms respectively. The first three steps are identical to the full reconstruction applied to get the calibration samples. Since we do not need a 4-momentum information for calibration, we do not need to use cosmic ray vertex, FuzzyK vertex, or the \gls{BPF} to create calibration samples.
 
-\subsubsection*{Selection}\label{secSelection}
-After the reconstruction process, we proceed to select events based on their slice and \textbf{BreakPointFitter (BPF) track} properties.
-
-To select an event, the following conditions must be met (Tab. \ref{tabSelection} provides an overview of all cuts and their corresponding values):
+\subsubsection*{Selection}\label{sec:DataBasedSimSelection}
+After the reconstruction process, we proceed to select events based on their slice' and \gls{BPF} track's properties. The overview of all selection criteria and their corresponding cut values are listed on Tab.~\ref{tab:DataBasedSimEventSelection}. In detail, the following conditions are used to select cosmic muon events for the data-based simulation:
 \begin{enumerate}
-\item We only use successfully reconstructed 3D BPF tracks with the muon assumption \cite{NOVA-doc-32455-v1};
-\item As we aim to select cosmic events originating outside the detector, we apply a cut based on the distance of each track's start from the Top/Front/Back/Sides of the detector. This cut has a negligible impact on the BPF tracks, as indicated by the minimal difference between the red and the dotted azure lines in Fig. \ref{figCosZSelectionComparison};
+\item We only use successfully reconstructed 3D \gls{BPF} tracks with the muon assumption;
+\item As we aim to select cosmic events originating outside the detector, we apply a cut based on the distance of each track's start position from the Top/Front/Back/Sides of the detector. This cut has a negligible impact on the \gls{BPF} tracks, as indicated by the minimal difference between the red and the dotted azure lines in Fig. \ref{fig:DataBasedSimCosZSelectionComparison};
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonCosZCut_CosY.pdf}
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonCosZCut_TotLength.pdf}
-\caption[Track start and $\textsf{Cos}_Z$ cut for data-based simulation selection]{Impact of track start and maximum track angle from the z axis (Cos$_Z$) cuts on the Test Beam data for the data-based simulation of cosmic muons. The track start cut has only negligible effect. The maximum $\textsf{Cos}_Z$ cut effectively removes sharp peaks in the total track length distribution and events perpendicular to the Y axis. These events are all parallel with the Z axes and are most likely leftover beam events. All of the distributions are made from the period 4 Test Beam data.}
-\label{figCosZSelectionComparison}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SelectionComparisonCosZCut_CosY.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SelectionComparisonCosZCut_TotLength.pdf}
+\caption[Track start and $\textsf{Cos}_Z$ cut for data-based simulation selection]{Impact of track start and maximum track angle from the z axis ($\textsf{Cos}_Z$) cuts on the Test Beam data for the data-based simulation of cosmic muons. The track start cut has only negligible effect. The maximum $\textsf{Cos}_Z$ cut effectively removes sharp peaks in the total track length distribution and events perpendicular to the Y axis. These events are all parallel with the Z axis and are most likely leftover beam events. All of the distributions are made from the period 4 Test Beam data.}
+\label{fig:DataBasedSimCosZSelectionComparison}
 \end{figure}
 
-\item We remove all events whose track is parallel to the beam direction, by requiring the angle from the z (beam) axis to be $|\textsf{Cos}_Z|\leq 0.98$. Figure \ref{figCosZSelectionComparison} demonstrates the presence of events peaked at track lengths of approximately $410$~cm and $200$~cm, which correspond to the total and half length of the detector, respectively (or alternatively lengths of both modules and a single module). These events are strictly parallel to the beam direction and are likely remnants of beam events. Applying a cut on $\textsf{Cos}_Z$ effectively removes these events without affecting the rest of the data. This cut might only be needed for Test Beam and not for the near and far detectors.
+\item We remove all events whose track is parallel to the beam direction, by requiring the angle from the Z (beam) axis to be $|\textsf{Cos}_Z|\leq 0.98$. Figure \ref{fig:DataBasedSimCosZSelectionComparison} demonstrates the presence of events peaked at track lengths of approximately $\unit[410]{cm}$ and $\unit[200]{cm}$, which correspond to the total and half length of the detector, respectively (or alternatively lengths of both modules and a single module). These events are strictly parallel to the beam direction and are likely remnants of beam events. Applying a cut on $\textsf{Cos}_Z$ effectively removes these events without affecting the rest of the data. This cut might only be needed for the Test Beam detector and not for the near and far detectors.
 
-\item To ensure that only events contributing to the final calibration sample are simulated, we use a selection based on cuts from the Calibration/PCHitsList module. This module is used for both data and simulation to create the calibration samples. Let's call these cuts the \textbf{calibration cuts}. However, there are two caveats we need to consider:
+\item To ensure that only events contributing to the final calibration sample are simulated, we use a selection based on the cuts used to select events for the data calibration samples (see Sec.~\ref{sec:NOvACalibration}). We call these cuts the \textbf{calibration cuts}. However, there are two caveats we need to consider when applying the calibration cuts:
 \begin{enumerate}
-\item First, to create calibration samples, we apply selection to tracks from the \textbf{Window cosmic track} algorithm instead of the Break Point Fitter algorithm, which yield different distributions as depicted on Fig. \ref{figTrackComparison}. Notably, the BPF tracks have a hard cut-off at the detector edges, whereas the Window cosmic tracks are allowed to start beyond these limits. Also, the BPF tracks have a rugged distribution in Cos$_Z$, which is not present for Window cosmic tracks. This is likely caused by the detector structure, as shown on Fig. \ref{figBPFPeaks}, but it is not clear how. We concluded that he rugged shape does not have any impact on the resulting simulation. Given these differences between the tracking algorithms, applying the calibration cuts on BPF tracks could mistakenly remove events that would pass the same selection when applied to the Window cosmic tracks.
+\item First, to create calibration samples, we apply the selection on tracks from the \textbf{Window cosmic track} algorithm instead of the \gls{BPF} algorithm, which yield different distributions as depicted on Fig.~\ref{fig:DataBasedSimTrackComparison}. Notably, the \gls{BPF} tracks have a hard cut-off at the detector edges, whereas the Window cosmic tracks are allowed to start beyond these limits. Also, the \gls{BPF} tracks have a rugged distribution in $\textsf{Cos}_Z$, which is not present for Window cosmic tracks. This is likely caused by the detector structure, as shown on Fig.~\ref{fig:DataBasedSimBPFPeaks}, but it is not clear how. We concluded that he rugged shape does not have any impact on the resulting simulation. Given these differences between the tracking algorithms, applying the calibration cuts on \gls{BPF} tracks could mistakenly remove events that would pass the same selection when applied to the Window cosmic tracks.
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/TrackAlgComparison_StartX.pdf}
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/TrackAlgComparison_CosZ.pdf}
-\caption{Difference between the tracks reconstructed with the break point fitter and with the Window cosmic track algorithms. Both distributions are for the period 4 Test Beam data (with removed beam spill) without applying any selection.}
-\label{figTrackComparison}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_TrackAlgComparison_StartX.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_TrackAlgComparison_CosZ.pdf}
+\caption[Tracking algorithms for the data-based simulation selection]{Difference between the tracks reconstructed with the \acrshort{BPF} and with the Window cosmic track algorithms. Both distributions are for the period 4 Test Beam data (with removed beam spill) without applying any selection.}
+\label{fig:DataBasedSimTrackComparison}
 \end{figure}
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/BPFPeaks_BPFTracks_dcosz_TotLength.pdf}
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/BPFPeaks_WTTracks_dcosz_TotLength.pdf}
-\caption{Investigating the origin of the rugged shape in the Cos$_Z$ distribution of Break Point Fitter tracks. The top plot is created with the loose calibration cuts and the bottom plot with full calibration cuts. This difference in selection shouldn't matter. The long lines on the 2D plots are likely the effects of the detector structure. We can see that for the Break Point Fitter tracks, each Cos$_Z$ angle corresponds to a specific track length, whereas for the Window cosmic tracks there is multiple track length for each angle. This could cause the resulting shape in the Cos$_Z$ distribution of Break Point Fitter tracks.}
-\label{figBPFPeaks}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_BPFPeaks_BPFTracks_dcosz_TotLength.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_BPFPeaks_WTTracks_dcosz_TotLength.pdf}
+\caption[Tracking algorithms $\textsf{Cos}_Z$ distributions for the data-based simulation selection]{Investigating the origin of the rugged shape in the $\textsf{Cos}_Z$ distribution of \acrshort{BPF} tracks. The top plot is created with the Loose calibration cuts and the bottom plot with the Full calibration cuts, as described on Tab.~\ref{tab:DataBasedSimEventSelection}. However, this difference in selection shouldn't matter. The long lines on the 2D plots are likely the effects of the detector structure. We can see that for the \acrshort{BPF} tracks, each $\textsf{Cos}_Z$ angle corresponds to a specific track length, whereas for the Window cosmic tracks there is multiple track length for each angle. This could cause the resulting shape in the $\textsf{Cos}_Z$ distribution of \acrshort{BPF} tracks.}
+\label{fig:DataBasedSimBPFPeaks}
 \end{figure}
 
 \item Second, each reconstruction algorithm has intrinsic deficiencies that can lead to misreconstructions. Applying the full calibration cuts may remove misreconstructed events that should have been included in the simulation, introducing a bias.
 \end{enumerate}
 
-To address these concerns, we have loosened the full calibration cuts to create a "buffer" around the selected events, allowing for fluctuations of the reconstruction algorithms while maintaining track quality. The differences between the full calibration cuts and the employed loosened calibration cuts applied to the BPF tracks are listed in Tab. \ref{tabSelection} and shown on Fig. \ref{figTrackComparison}. There we also show the data calibration sample, which was created by applying the full calibration cuts on window cosmic tracks from the same artdaq data sample.
+To address these concerns, we have loosened the full calibration cuts to create a "buffer" around the selected events, allowing for fluctuations of the reconstruction algorithms while maintaining track quality. The differences between the full calibration cuts and the employed loosened calibration cuts applied to the \gls{BPF} tracks are listed in Tab.~\ref{tab:DataBasedSimEventSelection} and shown on Fig.~\ref{figTrackComparison}. There we also show the data calibration sample, which was created by applying the full calibration cuts on window cosmic tracks from the same artdaq data sample.
 \end{enumerate}
 
 \iffalse
@@ -248,7 +246,7 @@ The cuts are:
 
 \begin{table}[!ht]
 \centering
-\caption{Event selection for the data-based simulation (in green under Loose selection) and comparison to the Full calibration sample selection cuts in blue. The last two rows are not used for Test Beam, but are employed for the Near and Far detectors and should be studied before creating a data-based simulation for them.}
+\caption[Overview of event selection of cosmic muons for the data-based simulation]{Event selection of cosmic muons used for the data-based simulation (in green under Loose selection) and comparison to the Full selection cuts used to create the calibration samples in blue. The last two rows are not used for Test Beam, but are employed for the Near and Far detectors and should be examined before creating another data-based simulation for them.}
 \begin{tabular}{clcc}
 & \multirow{2}{*}{\centering{\textbf{Cut}}} & \multicolumn{2}{c}{\textbf{Selection}}\\
 & & \cellcolor[HTML]{3166FF}\textbf{Full} & \cellcolor[HTML]{32CB00}\textbf{Loose}\\\hline
@@ -266,57 +264,57 @@ The cuts are:
                                    & \cellcolor[HTML]{C0C0C0}Max. vertex distance from edge    & \multicolumn{2}{c}{\cellcolor[HTML]{C0C0C0}10~cm}                                         \\
 \parbox[t]{2mm}{\multirow{-10}{*}{\rotatebox[origin=c]{90}{Calibration sample selection}}}& \cellcolor[HTML]{C0C0C0}Max. track end distance from edge & \multicolumn{2}{c}{\cellcolor[HTML]{C0C0C0}10 cm}
 \end{tabular}
-\label{tabSelection}
+\label{tab:DataBasedSimEventSelection}
 \end{table}
 
 \begin{figure}[!h]
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonPCHitsListCut_CosZ.pdf}
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/SelectionComparisonPCHitsListCut_TotLength.pdf}
-\caption{Comparison of event selections for the data-based simulation and of the corresponding data calibration sample in black. The green line represents the final selection used for the simulation, using the loosened calibration cuts, while the blue line shows the distributions with full calibration cuts. The data calibration sample was made with the same full calibration cuts as the blue line (without the track start cut and maximum Cos$_Z$ cuts), but applied to the window cosmic tracks instead of the Break Point Fitter tracks. All of the distributions are made from the period 4 Test Beam data.}
+\includegraphics[clip, width=\textwidth]{Plots/TBCalibration/DBSim_SelectionComparisonPCHitsListCut_CosZ.pdf}
+\includegraphics[clip, width=\textwidth]{Plots/TBCalibration/DBSim_SelectionComparisonPCHitsListCut_TotLength.pdf}
+\caption[Event selection for the data-based simulation]{Comparison of event selections for the data-based simulation and of the corresponding data calibration sample in black. The green line represents the final selection used for the simulation, using the loosened calibration cuts, as describe in text and in Tab.~\ref{tab:DataBasedSimEventSelection}. The blue line shows the distributions with full calibration cuts applied to the same sample and using the same tracks. The "calibration sample" shown in black was made with the same full calibration cuts as the blue line (without the track start cut and maximum Cos$_Z$ cuts), but applied to the window cosmic tracks instead of the \acrshort{BPF} tracks. All of the distributions are made from the period 4 Test Beam data.}
 \label{figPCHitsListCutsComparison}
 \end{figure}
 
-During the selection process, we determine whether the muon is stopping inside the detector or passing through, based on the reconstructed track's end position\footnote{For Test Beam we say it is a stopping muon if its track ends at least 20~cm from any edge of the detector. For the far and near detector this is 50~cm. This value was chosen by Kevin Mulder \cite{NOVA-doc-39244-v1} as 50~cm removed too many cosmic events from the Test Beam detector.}. This information assists in correcting the energy of through-going muons, as outlined in Sec. \ref{secPython}.
+During the selection process, we determine whether the muon is stopping inside the detector or passing through, based on the reconstructed track's end position. For Test Beam we say it is a stopping muon if its track ends at least $\unit[20]{cm}$ from any edge of the detector. For the far and near detector this is $\unit[50]{cm}$. This information assists in correcting the energy of through-going muons, as outlined in the following Sec.~\ref{sec:DataBasedSimPython}.
 
 %\FloatBarrier
-\subsection{Energy correction, charge assignment and smearing}\label{secPython}
-Once we have the kinematic information for the selected events performs several tasks, including correcting energies of the through-going muons, assigning a charge to each muon, and smearing and converting the information into the correct format required by the generator.
+\subsection{Energy correction, charge assignment and smearing}\label{sec:DataBasedSimPython}
+Once we have the kinematic information for the selected events, we perform several tasks to get the final sample of cosmic muon events for the data-based simulation. This includes correcting energies of the through-going muons, assigning a charge to each muon event, and smearing and converting the information into the correct format required by the generator.
 
 \subsubsection*{Energy correction}
-Through-going muons do not deposit all of their energy inside the detector. From data we cannot reliably calculate their initial energies, but we can estimate an energy that would leave the same track. In general, the energy spectrum of cosmic muons can be approximately described by a power law $E^{-\alpha}$, with $\alpha\approx2.7$ \cite{NOVA-doc-51327-v3,rpp2022-rev-cosmic-rays.pdf}. The expectation value for the "true" initial energy of through-going muons can be therefore calculated as
+Through-going muons do not deposit all of their energy inside the detector. From the reconstructed information we cannot reliably calculate their initial energies, but we can estimate an energy that could leave the same track. In general, the energy spectrum of cosmic muons can be approximately described by a power law $E^{-\alpha}$, with $\alpha\approx2.7$ \cite{NOvA-doc-51327,rpp2022-rev-cosmic-rays.pdf}. The expectation value for the "true" initial energy of through-going muons can be therefore calculated as
 \begin{equation}
-\left\langle E\right\rangle =\frac{\int^{E_C}_{E_R} E\cdot E^{-\alpha}}{\int^{E_C}_{E_R} E^{-\alpha}}=\left(\frac{\alpha -1}{\alpha -2}\right)\left(\frac{E_C^{2-\alpha}-E_R^{2-\alpha}}{E_C^{1-\alpha}-E_R^{1-\alpha}}\right)
+\left\langle E\right\rangle =\frac{\int^{E_C}_{E_R} E\cdot E^{-\alpha}}{\int^{E_C}_{E_R} E^{-\alpha}}=\left(\frac{\alpha -1}{\alpha -2}\right)\left(\frac{E_C^{2-\alpha}-E_R^{2-\alpha}}{E_C^{1-\alpha}-E_R^{1-\alpha}}\right),
 \end{equation}
-where $E_R$ is the reconstructed energy from the Break Point Fitter. $E_C$ is the critical energy chosen to be 300 GeV, as we do not expect muons with higher energies to be selected due to large showers along their paths.
+where $E_R$ is the reconstructed energy we got from the \gls{BPF}. $E_C$ is the critical energy chosen to be $\unit[300]{GeV}$, as we do not expect muons with higher energies to be selected due to large showers along their paths.
 
-We use this corrected initial energy for all muons that do not stop inside the detector (as identified during selection), as described in Sec. \ref{secSelection}. Plot \ref{figEnergyScaling} shows the corrected energy distribution of our selected events and demonstrates that the choice of the critical energy does not significantly change the correction. 
+We use this corrected initial energy for all muons that do not stop inside the detector, as identified during selection described in Sec.~\ref{sec:DataBasedSimSelection}. Figure \ref{fig:DataBasedSimEnergyScaling} shows the corrected energy distribution of our selected events and demonstrates that the choice of the critical energy does not significantly change the correction. 
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=0.8\textwidth]{Plots/DataBasedSimulation/ECritComparison.pdf}
-\caption{The effect of energy correction for through-going muons with various critical energies. No significant difference can be seen when using different critical energies.}
-\label{figEnergyScaling}
+\includegraphics[width=0.8\textwidth]{Plots/TBCalibration/DBSim_ECritComparison.pdf}
+\caption[Energy correction for through-going muons for the data-based simulation]{The effect of energy correction for through-going muons with various critical energies. No significant difference can be seen when using different critical energies.}
+\label{fig:DataBasedSimEnergyScaling}
 \end{figure}
 
-This corrected energy is \textbf{not} a good representation of the true energy spectrum of cosmic muons on surface level and getting a correct energy distribution from data would require a much more dedicated effort. The corrected energy would also be different for different NOvA detectors, since the reconstructed energy is calculated from the track length. For example, the corrected energy of cosmic muons when entering the detector would be larger for the bigger near detector than for Test Beam, even though the near detector is underground. 
+This corrected energy is \textbf{not} a good representation of the true energy spectrum of cosmic muons on surface level and getting a correct energy distribution from data would require a much more dedicated effort. The corrected energy would also be different for different \gls{NOvA} detectors, since the reconstructed energy is calculated from the track length. For example, the corrected energy of cosmic muons when entering the detector would be larger for the bigger \gls{ND} than for Test Beam, even though the \gls{ND} is underground. 
 
-However, since this simulation is intended to be used for calibration, where we use through-going muons only for relative calibration, we do not need a perfect representation of cosmic muon energy spectrum. Not including more energetic cosmic muons into the simulation does bias the energy deposition towards lower average, but this is corrected for during absolute calibration which only uses stopping muons. See Test Beam calibration technical note for further information \cite{NOVA-doc-60592}.
+However, since this simulation is intended to be used for calibration, where we use through-going muons only for relative calibration, we do not need a perfect representation of the cosmic muon energy spectrum. Not including more energetic cosmic muons into the simulation does bias the energy deposition towards lower values, but this is corrected for during absolute calibration which only uses stopping muons, for which we assume we reconstruct their energy well from \gls{BPF}.
 
 If someone were to use this simulation for something other than calibration, it would be necessary to rethink the energy correction, either by changing the energy estimation from track based algorithms to energy deposition, or by including information from external sources. It would also be necessary to include angular dependence for the energy correction as described in the PDG \cite{rpp2022-rev-cosmic-rays.pdf}.
 
 \subsubsection*{Smearing}
-The reconstructed data is influenced by the detector structure, reconstruction efficiencies and other effects that can bias the simulation. To avoid this influence, we apply smearing. Smearing is done by randomly changing
+The reconstructed data is influenced by the detector structure, reconstruction efficiencies and other effects that can bias the simulation. To avoid this influence, we smear the reconstructed values by randomly changing
 \begin{itemize}
-\item total momentum within 2\%,
-\item azimuthal angle uniformly,
-\item polar angle within 4~mrad,
+\item the total momentum within 2\%,
+\item the azimuthal angle uniformly,
+\item the polar angle within $\unit[4]{mrad}$,
 \item and the X/Y and Z vertex positions within the width or depth of the cell respectively.
 \end{itemize}
 
 The size of the smearing has been decided as the best estimate of variations of these variables for cosmic muons.
 
 \subsubsection*{Charge assignment}
-We need to tell the \gls{MC} generator whether to simulate a muon or an anti-muon. However we do not reconstruct the charge of the muons, so we have to randomly assign it based on a statistical distribution from external measurements \cite{NOVA-doc-51327-v3}:
+We need to tell the detector simulation whether to simulate a muon or an anti-muon. However we do not reconstruct the charge of the muons, so we have to randomly assign it based on a statistical distribution from external measurements \cite{NOvA-doc-51327}:
 
 %Figure out where are the plots and the equation Mark/Teresa quoted from (somewhere in PDG). Describe the basis of the measurement.
 %Here(p10): https://pdg.lbl.gov/2022/reviews/rpp2022-rev-cosmic-rays.pdf
@@ -325,64 +323,55 @@ We need to tell the \gls{MC} generator whether to simulate a muon or an anti-muo
 \begin{equation}
 P_+ \simeq 0.539 + \frac{x}{34.5}-\left(\frac{x}{9.48}\right)^2 + \left(\frac{x}{8.27}\right)^3,
 \end{equation}
-where $x$ is the logarithm of total momentum in $\unit{GeV}$.
+where $x$ is the logarithm of the total momentum in $\unit{GeV}$.
 
-\subsubsection{Submitting the simulation jobs}\label{secGenerator}
-The brightness file describes the relative differences in energy response across the different cells and planes. These differences mainly arise from the variability of each fibre's brightness, and specifically for Test Beam, also from the different scintillators used. Since we want the simulated detectors to be functional copies of the ideal versions of the real detectors, it is important to provide a correct brightness file without any defects.
-
-In the first iteration of the data-based simulation, Teresa used a test beam brightness file created from period 2 data, which contains faulty FEBs and underfilled cells, resulting in a simulation also containing these defects. In the second iteration Robert created a new brightness file from period 4 test beam data, which are free from any irregularities and supplied that to the simulation.
+\subsubsection*{Submitting the simulation jobs}
+We save the vertex positions, the four momenta and the assigned charge into a text file, that is then fed into the same detector and readout simulation chain, as was described for the \gls{ND} and \gls{FD} in Sec.~\ref{sec:NOvASimulation}.  We use the fibre brightness map that is used in calibration (see Sec.~\ref{sec:NOvACalibration}) to inform the simulation about the real detector conditions. Since we want the simulated detectors to be functional copies of the ideal versions of the real detectors, it is important to provide a correct brightness file without any defects. For this simulation we use the fibre brightness map described in Sec.~\ref{sec:FibreBrightnessTB}.
 
 \subsection{Validation}
-To validate whether our simulation is working as expected, we
-\begin{enumerate}
-\item compare the new simulation with the original data and
-\item use the new simulation (specifically the artdaq-stage sample) as "fake data" and feed it into the exact same simulation process to create a "re-simulation" sample.
-\end{enumerate}
+To validate whether the newly created simulation works as expected, we study the comparisons of the new simulation with the original data it was created from. Additionally, we use the new simulation as "fake data" and pass the simulated events through the same reconstruction, selection and simulation processes as were used to create the first simulation, creating a "re-simulation" sample.
 
-For the data-simulation comparisons we use the events from the calibration (pclist) samples, which are equivalent to the Window cosmic tracks with full calibration cuts from the CosmicGenAna module, as described in the selection Sec. \ref{secSelection}. We are expecting the new simulation to be similar to the data calibration sample, without a bias from the original data used for the simulation.
+For the data-simulation comparisons we use the events from the calibration samples, which are equivalent to the Window cosmic tracks with full calibration cuts, as described in the selection Sec.~\ref{sec:DataBasedSimSelection}. We are expecting the new simulation to be similar to the data calibration sample, without a bias from the original data used for the simulation.
 
-Figures \ref{figDataMCComparison_cosXcosY} and \ref{figDataMCComparison_cosZtotLength} show that the angular distributions of the new simulation (pink lines) are almost the same as distributions of Break Point Fitter tracks with full calibration cuts (blue dashed lines). This means that loosening up the calibration cuts (green dashed lines) did not help as expected with compensating for the underlying differences between the Break Point Fitter tracks and the Window cosmic tracks. This can also be seen on the total track length distribution on Fig. \ref{figDataMCComparison_cosZtotLength}. This is disappointing, but the distributions of the new simulation look reasonable and are close enough to the data, that we've decided to proceed with this simulation and use it in the Test Beam calibration. It is unlikely that we could mitigate these differences by changing the selection even more.
+Figures \ref{fig:DataBasedSimDataMCComparison_cosXcosY} and \ref{fig:DataBasedSimDataMCComparison_cosZtotLength} show that the angular distributions of the new simulation (pink lines) are almost the same as distributions of \gls{BPF} tracks with full calibration cuts (blue dashed lines). This means that loosening up the calibration cuts (green dashed lines) did not help as expected with compensating for the underlying differences between the \gls{BPF} tracks and the Window cosmic tracks. This can also be seen on the total track length distribution on Fig.~\ref{fig:DataBasedSimDataMCComparison_cosZtotLength}. This is disappointing, but the distributions of the new simulation look reasonable and are close enough to the data, that we've decided to proceed with this simulation and use it in the Test Beam calibration. It is unlikely that we could mitigate these differences by changing the selection even more.
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosX.pdf}
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosY.pdf}
-\caption{Angular distribution comparison of the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
-\label{figDataMCComparison_cosXcosY}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_CosX.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_CosY.pdf}
+\caption[Data-Simulation comparison of angular distributions]{Angular distribution comparison of the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to \acrshort{BPF} tracks instead of Window cosmic tracks) in blue.}
+\label{fig:DataBasedSimDataMCComparison_cosXcosY}
 \end{figure}
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_CosZ.pdf}
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_TotLength.pdf}
-\caption{Angular and total track length distribution comparison of the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
-\label{figDataMCComparison_cosZtotLength}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_CosZ.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_TotLength.pdf}
+\caption[Data-Simulation comparison of angular and track length distributions]{Angular and total track length distribution comparison of the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to \acrshort{BPF} tracks instead of Window cosmic tracks) in blue.}
+\label{fig:DataBasedSimDataMCComparison_cosZtotLength}
 \end{figure}
 
-The start of track comparison between data and simulation on Fig. \ref{figDataMCComparison_startXstartY} and \ref{figDataMCComparison_startZ} show that there are fewer events that start at the edge of the detector. This is likely the result of the event smearing.
+The start of track comparison between data and simulation on Fig.~\ref{fig:DataBasedSimDataMCComparison_startXstartY} and \ref{fig:DataBasedSimDataMCComparison_startZ} show that there are fewer events that start at the edge of the detector. This is likely the result of the event smearing.
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_StartX.pdf}
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_StartY.pdf}
-\caption{Start of tracks comparison of the newly created simulation calibration sample and the corresponding (period 4) data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
-\label{figDataMCComparison_startXstartY}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_StartX.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_StartY.pdf}
+\caption[Data-Simulation comparison of track start distributions]{Start of tracks comparison of the newly created simulation calibration sample and the corresponding (period 4) data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to \acrshort{BPF} tracks instead of Window cosmic tracks) in blue.}
+\label{fig:DataBasedSimDataMCComparison_startXstartY}
 \end{figure}
 
 \begin{figure}[!ht]
-\includegraphics[clip, width=\textwidth]{Plots/DataBasedSimulation/DataMCComparison_StartZ.pdf}
-\caption{Start of tracks comparison of the newly created simulation calibration sample and the corresponding (period 4) data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
-\label{figDataMCComparison_startZ}
+\includegraphics[clip, width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_StartZ.pdf}
+\caption[Data-Simulation comparison of track start distribution]{Start of tracks comparison of the newly created simulation calibration sample and the corresponding (period 4) data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to \acrshort{BPF} tracks instead of Window cosmic tracks) in blue.}
+\label{fig:DataBasedSimDataMCComparison_startZ}
 \end{figure}
 
-Adding the distributions for the re-simulation calibration sample shown on Fig. \ref{figSimVersionComparison}, we can see that the tracks' starts are systematically shifted even more towards the inside of the detector. This would support the theory that this effect is caused by the smearing of the events. This is also likely directly related to the loss of events with longer track lengths as shown on Fig. \ref{figSimVersionComparison}. If tracks start a few centimetres later in the detector their tracks would get shorter by the same amount.
+Adding the distributions for the re-simulation calibration sample shown on Fig.~\ref{fig:DataBasedSimSimVersionComparison}, we can see that the tracks' starts are systematically shifted even more towards the inside of the detector. This would support the theory that this effect is caused by the smearing of the reconstructed variables. This is also likely directly related to the loss of events with longer track lengths as shown on Fig.~\ref{fig:DataBasedSimSimVersionComparison}. If tracks start a few centimetres later in the detector their tracks would get shorter by the same amount.
 
 \begin{figure}[!ht]
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SimVersionComparison_StartZ.pdf}
-\includegraphics[width=\textwidth]{Plots/DataBasedSimulation/SimVersionComparison_TotLength.pdf}
-\caption{Distribution of the re-simulated events, when the new simulation's artdaq sample is used as "fake data" for a new iteration of the simulation process discussed in this document. This is compared to the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to Break Point Fitter tracks instead of Window cosmic tracks) in blue.}
-\label{figSimVersionComparison}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SimVersionComparison_StartZ.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SimVersionComparison_TotLength.pdf}
+\caption[Comparison of simulation to a circular re-simulation validation sample]{Distribution of the re-simulated events, when the new simulation is used as "fake data" for a new iteration of the simulation process discussed in this document. This is compared to the newly created simulation calibration sample and the corresponding data calibration sample. We are also showing the selection of data used to create the new simulation in green and a "full calibration cuts" selection (same cuts as used for the simulation calibration sample but applied to \acrshort{BPF} tracks instead of Window cosmic tracks) in blue.}
+\label{fig:DataBasedSimSimVersionComparison}
 \end{figure}
-
-\subsection{Conclusions}
-We created a new version of data-based simulation of cosmic muons for the Test Beam calibration. The new simulation is performing better than the old version of the data-based simulation and also than the CRY based simulations used in the earlier stages. The results of the new simulation inside the Test Beam calibration process are described in the Test Beam calibration technical note \cite{NOVA-doc-60592}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
