@@ -379,7 +379,7 @@ where ADCScale is 217000 for FEBv4.1 and 204800 for FEBv5.2.
 
 %The PECorr scaling is 75.0 (NDOS), 37.51 (ND), 39.91 (FD) and 39.91 (TB)
 
-\subsection{Threshold and shielding correction}
+\subsection{Threshold and Shielding Correction}
 %[CalibrationFirstTechnote2014.pdf] There are three main assumptions for calibration: response is stable in time (drift), the energy spectrum of cosmic rays is uniform in space (shielding), the ADC response to arriving photons is linear
 
 The Threshold and Shielding correction accounts for two assumptions, which hold true in most cases in NOvA, but fall short for some hits at the bottom of the detector, or far away from the readout, especially for the \gls{FD} \cite{PrabhjotNOvAThesis_CalibrationAndOscResults2019.pdf}. The first assumption is that the \gls{ADC} response to the photon signal is linear, which is mostly true except close to the \gls{APD} threshold. Energy deposited far away from the readout may produce photons that get attenuated enough to be shifted below the threshold. However, due to natural fluctuation, the same deposited energy may also produce photons that would make it over the threshold, therefore making it appear that the actual deposited energy was higher then in reality, introducing a bias to the calibration. The threshold correction is calculated using simulation, as the ratio between the number of simulated \gls{PE} seen by the \gls{APD} $\left(\textsc{PE}_{true}\right)$ and the Poisson mean number of simulation photons created in the scintillator by the same deposited energy $\left(\lambda\right)$.
@@ -402,7 +402,7 @@ TS_i = \frac{\textsc{PE}_{true}}{\lambda}\frac{E_{true}}{E_{\textsc{MIP}}}
 %\end{equation}
 %where $T$ is the combined “threshold and shielding” correction factor, $PE$ is the simulated photoelectrons recorded at the readout, $\lambda$ is the number of simulated photons which would be seen at the readout out in the absence of fluctuations, $E_{true}$ is the true energy deposited in the cell and $E_{mip}$ is the naive energy you would expect to be deposited based on the pathlength through the cell. In this way it encodes a threshold correction based on the simulated readout PE with and without the fluctuations, with $\lambda$ dependent on your simulated threshold, as well as a shielding correction based on the simulated energy deposition and a naive no shielding approximation. This equation gives us a cell by cell correction but we use an empirical polynomial fit to that distribution which removes statistical noise from the correction and well describes the initial distribution. This correction factor is applied to the cell by cell data and MC PE/cm distributions before the attenuation fits. [docdb:13579 - SA The Attenuation and Threshold Calibration of the NOvA detector, reference 8 is for docdb:7247, a talk by Backhouse]
 
-\subsection{Relative calibration}\label{secRelativCalibration}
+\subsection{Relative Calibration}\label{secRelativCalibration}
 
 %The \textbf{relative calibration} corrects for attenuation of scintillator light as it travels through the cell to the readout, as well as for differences between detector cells. This correction is calculated for each cell separately.
 
@@ -453,7 +453,7 @@ Even after an application of the \gls{LOWESS} correction, there are sometimes la
 
 %The current value of $\sigma$ in the code is $1.5\times\textsf{DetWidth}/20$
 
-\subsection{Absolute calibration}
+\subsection{Absolute Calibration}
 %Followed by the \textbf{absolute calibration}, which only uses stopping muons when they are minimum ionising particles. In the absolute calibration we calculate a scale between the measured energy deposition, corrected by the relative calibration, and the simulated energy deposition in physical units of $\unit{MeV}$. This scale is calculated for each time period and each detector separately, which ensures the energy deposition is directly comparable wherever or whenever it occurred.
 
 For the absolute calibration we only use hits from muons stopping inside the detector, $\unit[1-2]{m}$ from the end of their tracks. This is when they are approximately minimum ionizing particles and their energy deposition is well understood. We also remove hits at the edges of each cell, to mitigate the  effects at the end of the \gls{WLS} fibres and the lower number of events at the edge of the detector \cite{NOvA-doc-13579-FACalorimetricEnergyScale}.
@@ -483,7 +483,7 @@ We save these absolute energy scales, as well as the results of the attenuation 
 %\end{equation}
 %For stopping muons in NOvA it is also important to consider their decay. The muon has a vacuum lifetime of about 2.2 microseconds and favourably decays, with a branching ratio approx. 100\%, into an electron, an electron anti-neutrino and a muon neutrino. The electron produced in this decay is called a Michel electron and is used to select muons that stop within the NOvA detectors. The energy scale calibration is performed using cosmic ray muons. The calibration measures the detector response in data and MC in both near and far detectors and normalises them all by providing a conversion factor, for all four cases, that converts the detector response to energy in GeV. The energy loss rate (dE/dx) of stopping muons is well described by the Bethe-Bloch and is a function of the distance from the stopping point. A track window technique is used to minimise the variations in detector response that depend on the distance to the track end. Using this technique only hits within a region of distances from the track end are used. The position of the track window is chosen such that a mis-reconstruction of the track end point has the minimum effect on the mean detector response. The track window is currently set to be in the range from 100 cm to 200 cm from the track end.[docdb:13579 - FA\_Calorimetric\_energy\_scale]
 
-\section{Energy estimation}\label{sec:NOvAEnergyEstimation}
+\section{Energy Estimation}\label{sec:NOvAEnergyEstimation}
 The deposited energy we get from the detector calibration (Sec.~\ref{sec:NOvACalibration}) is only the first step in estimating the neutrino energy $\left(E_\nu\right)$ required for the main \gls{NOvA} analyses.
 
 For the $\nu_\mu$ disappearance analysis, the $E_{\nu_\mu}$ is measured as the sum of the muon energy and the energy of the hadronic shower \cite{NOvAResults2021.pdf}. The energy of the muon is identified from the length of its track, without the need of the calibration results. The energy of the hadronic shower is estimated from simulation as a fit to the 2D distribution of the true $E_{\nu_\mu}$ minus the reconstructed muon energy, versus the visible (not corrected for the dead material) deposited energy of the hadronic system \cite{PsihasNOvAThesis_ProngCVN.pdf}.

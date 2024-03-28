@@ -1,12 +1,13 @@
 \chapter{NOvA Test Beam Detector Calibration}\label{sec:TestBeamCalibration}
 
-The \gls{NOvA} Test Beam experiment~\cite{NOvATestBeamWallbangProceedings2020.pdf} aims to improve \gls{NOvA}'s sensitivity to the neutrino oscillation parameters by improving our understanding of particle interactions and energy deposition in the \gls{NOvA} detectors, with the hope of reducing the total systematic uncertainty on the three flavour oscillation parameters by about 10\%~\cite{NOvA-doc-33012}.
+The \gls{NOvA} Test Beam experiment~\cite{NOvATestBeamWallbangProceedings2020.pdf} is a sub-experiment of \gls{NOvA} that aims to improve \gls{NOvA}'s sensitivity to the neutrino oscillation parameters by improving our understanding of particle interactions and energy deposition in the \gls{NOvA} detectors. The initial studies showed~\cite{NOvA-doc-33012}, that the Test Beam experiment has a potential to reduce the total systematic uncertainty on the three flavour oscillation parameters by about 10\%.
  
-Specifically, using a test beam allows us to study the response of tagged single particles as a function of their measured energies and compare it to the simulated prediction. It also enables us to determine the energy resolution and the absolute energy scale of these particles. Additionally, we are able to compare the response of beam and cosmic ray muons, to study fibre attenuation, or to validate the entire \gls{NOvA} calibration process. The Test Beam detector was also equipped with a combination of \gls{ND} and \gls{FD} readout electronics and filled with a variety of \gls{NOvA} scintillator oils, which makes it possible to make a comparison of their responses \cite{NOvA-doc-15750}.
+The \gls{NOvA} Test Beam experiment consists of a scaled down version of the \gls{NOvA} detectors, placed in a test beam. Using a test beam allows us to study the response of tagged single particles with measured momenta and position in a \gls{NOvA} detector. It also enables us to determine their energy resolution and the absolute energy scale without the use of a simulation. Additionally, we are able to compare the responses of the beam muons and the cosmic ray muons, to study fibre attenuation, or to validate the \gls{NOvA} calibration process. The Test Beam detector was also equipped with a combination of \gls{ND} and \gls{FD} readout electronics and filled with a variety of \gls{NOvA} scintillator oils, which enables us to make a comparison of their respective performance and particle responses \cite{NOvA-doc-15750}.
 
-All the aforementioned benefits of running the \gls{NOvA} Test Beam experiment require, or benefit from, the Test Beam detector calibration, which follows the same calibration procedure as the standard NOvA detectors (outlined in Sec.~\ref{sec:NOvACalibration}). This allows for a direct comparison of the deposited energy in the Test Beam detector with the standard \gls{NOvA} detectors. On top of that, the unique qualities of Test Beam allow us to use the Test Beam calibration to validate the calibration process and possibly to provide a simulation-independent absolute energy scale.
+All the aforementioned benefits of running the \gls{NOvA} Test Beam experiment require, or benefit from, the Test Beam detector calibration. The calibration of the Test Beam detector follows the same calibration procedure as the standard \gls{NOvA} detectors (outlined in Sec.~\ref{sec:NOvACalibration}), which allows for a direct comparison of the deposited energy in the Test Beam detector with the standard \gls{NOvA} detectors. On top of that, the unique qualities of Test Beam allow us to use the Test Beam calibration to validate the calibration process and possibly to provide a simulation-independent absolute energy scale.
 
-In this chapter we will introduce the \gls{NOvA} Test Beam experiment in Sec.~\ref{sec:TBExperiment}, focusing on the Test Beam detector and especially on the aspects that could impact the calibration of the Test Beam detector. Section~\ref{sec:DataBasedSimulation} describes the new data-based simulation of cosmic muons that I developed for the Test Beam detector calibration as part of my PhD and Sec.~\ref{sec:TestBeamCalibration} discusses the Test Beam detector calibration itself. Here we present the differences from the calibration of the \gls{NOvA} \gls{ND} and \gls{FD}, as well as the results and their discussion and validation.
+In this chapter we will introduce the \gls{NOvA} Test Beam experiment in Sec.~\ref{sec:TBExperiment}, focusing on the Test Beam detector and especially on the aspects that could impact its calibration. In Sec.~\ref{sec:DataBasedSimulation} we describe the new data-based simulation of cosmic muons that was developed for the Test Beam detector calibration as part of author's PhD and in Sec.~\ref{sec:TestBeamCalibration} we discuss the Test Beam detector calibration itself. 
+%Here we present the differences from the calibration of the \gls{NOvA} \gls{ND} and \gls{FD}, as well as the results and their discussion and validation.
 
 %Only considering improvement in the calibration systematic uncertainty, the NOvA Test Beam program can reduce the overal systematic uncertainty for the main NOvA measurements by about 10\% [docdb:33012] (talk also contains a list of other talks on impact of TB in different NOvA areas). For DeltaM2: By increasing exposure, total syst. error decreases by (+) 18.5% (-) 25%; By increasing exposure and reducing calib systs., total syst. error decreases by: (+) 26% (-) 32%; Difference between the above (reducing calib systs. with large exposure): (+) 9.6% (-) 9.4%. For sin2Th23: Difference by reducing calib syst.: (+) 10.8% (-) 9.4%.
 %Statement: “The NOvA Test Beam will improve the total systema6c error on the final measurement of the oscilla6on parameters Dm232 and sin2Th23 by 10% from reduc6on of calibra6on systema6cs alone. Further, NOvA analyses will benefit from the detailed understanding of detector response to hadronic, electromagne6c, and muon energy provided by the Test Beam, which will be essen6al to solidify understanding of systema6cs, uncover poten6ally new uncertain6es, tune the simula6on modeling, and improve reconstruc6on and PID algorithms.”
@@ -30,7 +31,7 @@ In this chapter we will introduce the \gls{NOvA} Test Beam experiment in Sec.~\r
 %%%                       Test Beam detector description
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The NOvA Test Beam experiment}\label{sec:TBExperiment}
+\section{The NOvA Test Beam Experiment}\label{sec:TBExperiment}
 %What is Test Beam, how does the detector and beamline look like.
 %Placed in MC7b together with a beamline instrumentation (no need to describe beamline).
 
@@ -45,7 +46,7 @@ The \gls{NOvA} Test Beam experiment~\cite{NOvA-doc-22172} consists of a scaled d
 
 %Should I aslo talk about the beam halo? Could that have an influence on the calibration? Maybe it's the peaks in the cosz distribution?
 
-The Test Beam detector started with commissioning runs in June 2019 and ran, with an exception of regular summer shutdowns, until July 2022, after which it was decommissioned. The Test Beam data taking is divided into \textit{periods}, which are defined in Tab.~\ref{tab:TestBeamPeriods}.
+The Test Beam detector started with commissioning runs in June 2019 and ran, with an exception of regular summer shutdowns, until July 2022, after which it was decommissioned. The Test Beam data taking is divided into \textit{periods}, which are defined in Tab.~\ref{tab:TestBeamPeriods}. Period 1 only lasted for about a month and with only a half-filled detector, as explained below. It was therefore only used for detector commissioning and will not be used in any of the Test Beam physics analysis, or in the calibration.
 \begin{table}[!ht]
 \centering
 \caption{Test Beam detector data taking periods.}
@@ -66,7 +67,7 @@ Majority of the Test Beam detector and its instrumentation is identical to the o
 \subsubsection*{Beamline}
 The beam for the Test Beam experiment originates from the same $\unit[120]{GeV}$ Main Injector protons used in \gls{NuMI}, extracted once a minute in a continuous $\unit[4.2]{s}$ spill~\cite{NOvATestBeamWallbangProceedings2020.pdf}. The protons are impinged on a copper target producing mostly protons and pions, which are then directed towards a second target, producing the tertiary beam of particles used in the Test Beam detector. As can be seen on Fig.~\ref{fig:TBDetector}, we use two collimators to direct the tertiary beam and a magnet to select the desired momentum. Particle tracking is done using the four \gls{MWPC}s and particle identification is done with a combination of the \gls{ToF} detectors and the Cherenkov detector, which is set for electron detection. There was an additional \gls{ToF} detector installed ... during period ... \note{Where do I find the information on this?}
 
-\subsubsection*{Detector parameters}
+\subsubsection*{Detector Parameters}
 The \gls{NOvA} Test Beam detector consists of two 31-plane blocks, each beginning and ending with a vertical plane, with an additional horizontal plane glued in-between them to preserve the alternating pattern \cite{NOvA-doc-29543}. Each plane consists of 2 modules side-by-side, both made up of 32 cells. Each cell is $2.6\,\unit{m}$ long with an inner (without the PVC) depth and width of $5.9\,\unit{cm}$ and $3.8\,\unit{cm}$ respectively, same as for the other \gls{NOvA} detectors. This brings the final dimensions of the Test Beam detector to 63 planes $\times$ 64 cells, or $2.6\times 2.6\times 4.1\,\unit{m^3}$.
 
 The 63 planes are numbered from 0 to 62, with even numbers corresponding to vertical planes and odd numbers to horizontal planes. Cells are numbered 0 to 63, going from bottom to top for horizontal planes and left to right, when facing the front of the detector, for vertical planes.
@@ -140,7 +141,7 @@ Unlike the \gls{ND} and the \gls{FD}, the Test Beam detector does not have any o
 
 %Placed in the Fermilab Test Beam Facility with no overburden. Describe environmental controls, temperature dependence etc. Maybe add plots from environmental control (temperature differences etc.) with descriptions of where were the readings taken.
 
-\subsubsection*{Underfilled cells issue}
+\subsubsection*{Underfilled Cells Issue}
 The Test Beam detector is slightly tilted around the z axis by about $0.7^{\circ}$ towards the readout. This caused the top cells of both modules of all the horizontal planes (cells 31 and 63) to be underfilled, creating an air bubble on the left side of the detector and severely affecting the energy response in those cells \cite{LackeyThesisNOvATBProtons2022.pdf}. This has been fixed \cite{NOvA-doc-49439} during the period 3 running by adding extensions to the filling ports and overfilling the horizontal cells with the \gls{ND}+\gls{NDOS} scintillator (sample \#2 from the scintillator description). More details on this issue and its effects and on how it was handled in calibration are detailed in Sec.~\ref{sec:TBCalibration_period3}.
 %This scintillator was also used in the first half of the detector (Fermilab ND+NDOS oil on figure \ref{figScintillators}), but is different from the "Ash River oil" used in part of the second half of the detector (bright part of figure \ref{figScintillators}). The overfilling was done in April 2021 in 3 stages in between the full operation of the Test Beam detector.
 
@@ -163,7 +164,7 @@ The Test Beam detector is slightly tilted around the z axis by about $0.7^{\circ
 %%%                      Data based simulation of cosmic
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Data-based simulation of cosmic muons}\label{sec:DataBasedSimulation}
+\section{Data-based Simulation of Cosmic Muons}\label{sec:DataBasedSimulation}
 The standard \gls{NOvA} calibration procedure described in Sec.~\ref{sec:NOvACalibration} uses the \gls{CRY} \gls{MC} generator (see Sec.~\ref{sec:NOvASimulation}) to create the simulated cosmic ray sample for calibration. However, the \gls{CRY} simulation proved to be highly inefficient, with only a small fraction of the simulated cosmic-ray activity resulting in selected calibration hits and the majority of particles failing to even hit the detector. This inefficiency consumed significant processing resources, disk space, and file usage. Moreover, the momentum and angle distributions in \gls{CRY} were not well suited to the \gls{NOvA} sites, potentially impacting the calibration accuracy.
 
 To overcome these challenges, we developed and implemented a data-based simulation that eliminates the need for the \gls{CRY} \gls{MC} generator. Instead, we use a subset of the cosmic data sample used in calibration and pass it through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic muon events are then used as inputs to the detector simulation to create a new simulated cosmic ray sample.
@@ -195,7 +196,7 @@ To use the events in the simulation, we require their vertex positions and their
 After the reconstruction process, we proceed to select events based on their slice' and \gls{BPF} track's properties. The overview of all selection criteria and their corresponding cut values are listed on Tab.~\ref{tab:DataBasedSimEventSelection}. In detail, the following conditions are used to select cosmic muon events for the data-based simulation:
 \begin{enumerate}
 \item We only use successfully reconstructed 3D \gls{BPF} tracks with the muon assumption;
-\item As we aim to select cosmic events originating outside the detector, we apply a cut based on the distance of each track's start position from the Top/Front/Back/Sides of the detector. This cut has a negligible impact on the \gls{BPF} tracks, as indicated by the minimal difference between the red and the dotted azure lines in Fig. \ref{fig:DataBasedSimCosZSelectionComparison};
+\item As we aim to select cosmic events originating outside the detector, we apply a cut based on the distance of each track's start position from the edges of the detector. This cut has a negligible impact on the \gls{BPF} tracks, as indicated by the minimal difference between the red and the dotted azure lines in Fig. \ref{fig:DataBasedSimCosZSelectionComparison};
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SelectionComparisonCosZCut_CosY.pdf}
@@ -227,7 +228,7 @@ After the reconstruction process, we proceed to select events based on their sli
 \item Second, each reconstruction algorithm has intrinsic deficiencies that can lead to misreconstructions. Applying the full calibration cuts may remove misreconstructed events that should have been included in the simulation, introducing a bias.
 \end{enumerate}
 
-To address these concerns, we have loosened the full calibration cuts to create a "buffer" around the selected events, allowing for fluctuations of the reconstruction algorithms while maintaining track quality. The differences between the full calibration cuts and the employed loosened calibration cuts applied to the \gls{BPF} tracks are listed in Tab.~\ref{tab:DataBasedSimEventSelection} and shown on Fig.~\ref{figTrackComparison}. There we also show the data calibration sample, which was created by applying the full calibration cuts on window cosmic tracks from the same artdaq data sample.
+To address these concerns, we loosened the full calibration cuts to create a "buffer" around the selected events, allowing for fluctuations of the reconstruction algorithms while maintaining track quality. This way, events that would have been removed based on the calibration cuts applied to their reconstructed \gls{BPF} tracks, but kept based on the calibration cuts applied to their Window cosmic tracks, now have a chance to make it into the final selection and therefore calibration sample. The differences between the full calibration cuts and the employed loosened calibration cuts applied to the \gls{BPF} tracks are listed in Tab.~\ref{tab:DataBasedSimEventSelection} and shown on Fig.~\ref{fig:DataBasedSimTrackComparison}. There we also show the data calibration sample, which was created by applying the full calibration cuts on window cosmic tracks from the same artdaq data sample.
 \end{enumerate}
 
 \iffalse
@@ -246,7 +247,7 @@ The cuts are:
 
 \begin{table}[!ht]
 \centering
-\caption[Overview of event selection of cosmic muons for the data-based simulation]{Event selection of cosmic muons used for the data-based simulation (in green under Loose selection) and comparison to the Full selection cuts used to create the calibration samples in blue. The last two rows are not used for Test Beam, but are employed for the Near and Far detectors and should be examined before creating another data-based simulation for them.}
+\caption[Overview of the event selection for the data-based simulation]{Event selection of cosmic muons used for the data-based simulation (in green under Loose selection) and comparison to the Full selection cuts used to create the calibration samples in blue. The last two rows are not used for Test Beam, but are employed for the Near and Far detectors and should be examined before creating another data-based simulation for them.}
 \begin{tabular}{clcc}
 & \multirow{2}{*}{\centering{\textbf{Cut}}} & \multicolumn{2}{c}{\textbf{Selection}}\\
 & & \cellcolor[HTML]{3166FF}\textbf{Full} & \cellcolor[HTML]{32CB00}\textbf{Loose}\\\hline
@@ -277,10 +278,10 @@ The cuts are:
 During the selection process, we determine whether the muon is stopping inside the detector or passing through, based on the reconstructed track's end position. For Test Beam we say it is a stopping muon if its track ends at least $\unit[20]{cm}$ from any edge of the detector. For the far and near detector this is $\unit[50]{cm}$. This information assists in correcting the energy of through-going muons, as outlined in the following Sec.~\ref{sec:DataBasedSimPython}.
 
 %\FloatBarrier
-\subsection{Energy correction, charge assignment and smearing}\label{sec:DataBasedSimPython}
+\subsection{Energy Correction, Charge Assignment and Smearing}\label{sec:DataBasedSimPython}
 Once we have the kinematic information for the selected events, we perform several tasks to get the final sample of cosmic muon events for the data-based simulation. This includes correcting energies of the through-going muons, assigning a charge to each muon event, and smearing and converting the information into the correct format required by the generator.
 
-\subsubsection*{Energy correction}
+\subsubsection*{Energy Correction}
 Through-going muons do not deposit all of their energy inside the detector. From the reconstructed information we cannot reliably calculate their initial energies, but we can estimate an energy that could leave the same track. In general, the energy spectrum of cosmic muons can be approximately described by a power law $E^{-\alpha}$, with $\alpha\approx2.7$ \cite{NOvA-doc-51327,rpp2022-rev-cosmic-rays.pdf}. The expectation value for the "true" initial energy of through-going muons can be therefore calculated as
 \begin{equation}
 \left\langle E\right\rangle =\frac{\int^{E_C}_{E_R} E\cdot E^{-\alpha}}{\int^{E_C}_{E_R} E^{-\alpha}}=\left(\frac{\alpha -1}{\alpha -2}\right)\left(\frac{E_C^{2-\alpha}-E_R^{2-\alpha}}{E_C^{1-\alpha}-E_R^{1-\alpha}}\right),
@@ -313,7 +314,7 @@ The reconstructed data is influenced by the detector structure, reconstruction e
 
 The size of the smearing has been decided as the best estimate of variations of these variables for cosmic muons.
 
-\subsubsection*{Charge assignment}
+\subsubsection*{Charge Assignment}
 We need to tell the detector simulation whether to simulate a muon or an anti-muon. However we do not reconstruct the charge of the muons, so we have to randomly assign it based on a statistical distribution from external measurements \cite{NOvA-doc-51327}:
 
 %Figure out where are the plots and the equation Mark/Teresa quoted from (somewhere in PDG). Describe the basis of the measurement.
@@ -325,15 +326,15 @@ P_+ \simeq 0.539 + \frac{x}{34.5}-\left(\frac{x}{9.48}\right)^2 + \left(\frac{x}
 \end{equation}
 where $x$ is the logarithm of the total momentum in $\unit{GeV}$.
 
-\subsubsection*{Submitting the simulation jobs}
+\subsubsection*{Running the Simulation}
 We save the vertex positions, the four momenta and the assigned charge into a text file, that is then fed into the same detector and readout simulation chain, as was described for the \gls{ND} and \gls{FD} in Sec.~\ref{sec:NOvASimulation}.  We use the fibre brightness map that is used in calibration (see Sec.~\ref{sec:NOvACalibration}) to inform the simulation about the real detector conditions. Since we want the simulated detectors to be functional copies of the ideal versions of the real detectors, it is important to provide a correct brightness file without any defects. For this simulation we use the fibre brightness map described in Sec.~\ref{sec:FibreBrightnessTB}.
 
 \subsection{Validation}
-To validate whether the newly created simulation works as expected, we study the comparisons of the new simulation with the original data it was created from. Additionally, we use the new simulation as "fake data" and pass the simulated events through the same reconstruction, selection and simulation processes as were used to create the first simulation, creating a "re-simulation" sample.
+To validate whether the newly created simulation works as expected, we compare the new simulation with the original data it was created from. Additionally, we use the new simulation as "fake data" and pass the simulated events through the same reconstruction, selection and simulation processes as were used to create the first simulation, creating a "re-simulation" sample. This is used to validate the stability of the simulation process.
 
-For the data-simulation comparisons we use the events from the calibration samples, which are equivalent to the Window cosmic tracks with full calibration cuts, as described in the selection Sec.~\ref{sec:DataBasedSimSelection}. We are expecting the new simulation to be similar to the data calibration sample, without a bias from the original data used for the simulation.
+For the data-simulation comparisons we use the events from the actual calibration samples as data. This is equivalent to looking at the Window cosmic tracks with full calibration cuts described in the selection Sec.~\ref{sec:DataBasedSimSelection}. We are expecting the new simulation to be similar to the data calibration sample, without a bias from the original data used for the simulation.
 
-Figures \ref{fig:DataBasedSimDataMCComparison_cosXcosY} and \ref{fig:DataBasedSimDataMCComparison_cosZtotLength} show that the angular distributions of the new simulation (pink lines) are almost the same as distributions of \gls{BPF} tracks with full calibration cuts (blue dashed lines). This means that loosening up the calibration cuts (green dashed lines) did not help as expected with compensating for the underlying differences between the \gls{BPF} tracks and the Window cosmic tracks. This can also be seen on the total track length distribution on Fig.~\ref{fig:DataBasedSimDataMCComparison_cosZtotLength}. This is disappointing, but the distributions of the new simulation look reasonable and are close enough to the data, that we've decided to proceed with this simulation and use it in the Test Beam calibration. It is unlikely that we could mitigate these differences by changing the selection even more.
+Figures \ref{fig:DataBasedSimDataMCComparison_cosXcosY} and \ref{fig:DataBasedSimDataMCComparison_cosZtotLength} show that the angular distributions of the new simulation (pink lines) are almost the same as the distributions of the \gls{BPF} tracks with full calibration cuts (blue dashed lines). This means that loosening up the calibration cuts (green dashed lines) did not help as expected with compensating for the underlying differences between the \gls{BPF} tracks and the Window cosmic tracks. This can also be seen on the total track length distribution on Fig.~\ref{fig:DataBasedSimDataMCComparison_cosZtotLength}. During the development of the event selection we created three more versions of the simulation with various event selections, including with full calibration cuts and with different loosened calibration cut values. It became clear that it is unlikely we could mitigate these track algorithm differences by changing the selection even more. Since the entire simulation process is fairly time and resource consuming and the distributions of the new simulation look reasonable and are close enough to the data, we've decided to proceed with this version of the simulation and use it in the Test Beam calibration.
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_CosX.pdf}
@@ -349,7 +350,7 @@ Figures \ref{fig:DataBasedSimDataMCComparison_cosXcosY} and \ref{fig:DataBasedSi
 \label{fig:DataBasedSimDataMCComparison_cosZtotLength}
 \end{figure}
 
-The start of track comparison between data and simulation on Fig.~\ref{fig:DataBasedSimDataMCComparison_startXstartY} and \ref{fig:DataBasedSimDataMCComparison_startZ} show that there are fewer events that start at the edge of the detector. This is likely the result of the event smearing.
+The start of track comparison between data and simulation on Fig.~\ref{fig:DataBasedSimDataMCComparison_startXstartY} and \ref{fig:DataBasedSimDataMCComparison_startZ} show that there are fewer events that start at the edge of the detector and the vertex positions are moved slightly towards the inside of the detector. This is likely the result of the smearing of the vertex positions and we do not expect this to have an effect on the calibration. \note{Should this have been mitigated? Should I mention here that the smearing is still a good idea?}
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_DataMCComparison_StartX.pdf}
@@ -364,7 +365,7 @@ The start of track comparison between data and simulation on Fig.~\ref{fig:DataB
 \label{fig:DataBasedSimDataMCComparison_startZ}
 \end{figure}
 
-Adding the distributions for the re-simulation calibration sample shown on Fig.~\ref{fig:DataBasedSimSimVersionComparison}, we can see that the tracks' starts are systematically shifted even more towards the inside of the detector. This would support the theory that this effect is caused by the smearing of the reconstructed variables. This is also likely directly related to the loss of events with longer track lengths as shown on Fig.~\ref{fig:DataBasedSimSimVersionComparison}. If tracks start a few centimetres later in the detector their tracks would get shorter by the same amount.
+After adding the distributions for the re-simulation calibration sample, shown on Fig.~\ref{fig:DataBasedSimSimVersionComparison}, we can see that the tracks' starts are shifted even further towards the inside of the detector. This would support the hypothesis that this effect is caused by the smearing of the reconstructed variables. This is also likely directly related to the loss of events with longer track lengths as shown on Fig.~\ref{fig:DataBasedSimSimVersionComparison}. If tracks start a few centimetres later in the detector their tracks would get shorter by the same amount.
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SimVersionComparison_StartZ.pdf}
@@ -379,24 +380,26 @@ Adding the distributions for the re-simulation calibration sample shown on Fig.~
 %%%                      Test Beam calibration description
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{NOvA Test Beam detector calibration}
-In this section we describe the details of the Test Beam detector calibration as it was finalized in June 2023. This version includes a new purpose-made simulation and all measured Test Beam data, with the exception of period 1 data. Period 1 only includes one month of data, with half-filled detector and several issues including the beam halo \cite{NOVA-doc-41331} and was only used for commissioning and is not used in any Test Beam analysis. 
+\section{NOvA Test Beam Detector Calibration}
+In this section we describe the details of the Test Beam detector calibration as it was finalized in June 2023. This version includes a new purpose-made simulation and all the measured Test Beam data, with the exception of the period 1 data.
+
+The data calibration samples for Test Beam were creating using the same procedures as the \gls{ND} and \gls{FD} calibration samples, described in Sec.~\ref{sec:NOvACalibration}. However, there are two cuts from the event election, that were by accident not included for Test Beam during the processing of the data samples. This can be seen on Tab.~\ref{tab:DataBasedSimEventSelection}, where the two bottom rows show the two excluded cuts. One cut contains the vertex close to the edge of the detector ensuring we only use cosmic events, the other contains the end of track close to the edge, ensuring we only use through-going muons for the relative calibration. Given that we remove beam events and that all the other cuts are designed to select cosmic events, the first cut has only a negligible effect on the final selection. Additionally, the stopping muons only make up a small fraction of the total cosmic muon events, rendering the second cut also with only limited effect. Therefore, we concluded that the lack of the two event selection cuts for the Test Beam calibration samples does not have a substantial impact on the result and does not necessitate re-processing of the calibration samples, which would cost time and resources.
+
+This section is organized as follows. We first describe the Test Beam versions of the fibre brightness map and the threshold and shielding correction introduced in Sec.~\ref{sec:NOvACalibration}. We then go over the simulation and the three data samples and for each one we introduce their respective detector conditions and how they may affect the energy deposition. We show the state before the calibration process and discuss the effects that should be corrected for during calibration. We then show a selection of attenuation fit results and an overview of the relative calibration effects. Afterwards, we discuss the absolute calibration for all the samples combined, as well as the validation and conclusion of the Test Beam calibration.
 
 %Temperature study (small overview - probably not needed at all, depends if Randeeth want to add his work to this technote)
 
 %From Teresa's thesis
 %Along with setting the energy scale of the detector, we need to calibrate the timing of the readout system for the detector. The Data Concentrator Modules (DCMs) responsible for collating the data from multiple FEBs get their timing information via a daisy chain originating at the detector TDU. Each DCM in the chain has a timing offset relative to the DCM before it, with the last DCM having the earliest ti. Following the procedure described in [66], I used timing information from hits on cosmic ray muon tracks that pass through multiple DCMs to determine the relative offsets between DCMs, shown in Figure 3.20.
 
-The calibration samples used as inputs for the Test Beam detector calibration are listed in Tab.~\ref{tabTBCalibrationDefinitions}. We are using data from one of the two Test Beam data-driven activity-based triggers (DDActivity1).
-
 %From Teresa's thesis:
 %"For Test Beam, we have three beam-based triggers, one pulsed trigger, and two data-driven triggers. The data-driven triggers are both activity-based triggers. The first is intended to record cosmic ray induced events for use in calibrating the detector.
 
 \subsection{Fibre Brightness}\label{sec:FibreBrightnessTB}
 
-To divide the Test Beam detector into fibre brightness bins we used the attenuation fit results for period 4 Test Beam data (described in Sec. \ref{sec:TBPeriod4}), as that is the best detector conditions data we have. Since we need the fibre brightness file to run the attenuation fits and we need the attenuation fit results to create the brightness file, we proceeded iteratively and first ran the attenuation fit with an older version of the brightness file and then used the newer fit results to create a new brightness file to be used in a new attenuation fit.
+To divide the Test Beam detector into fibre brightness bins we used the attenuation fit results for period 4 Test Beam data (described in Sec.~\ref{sec:TBPeriod4}), as that is the best detector conditions data we have. Since we need the fibre brightness map in order to run the attenuation fits and we need the attenuation fit results to create the brightness file, we proceeded iteratively and first ran the attenuation fit with an older version of the brightness file and then used the newer fit results to create a new brightness file to be used in a new attenuation fit.
 
-As we are only using the attenuation fit results in the centre of each cell, we've decided to allow some cells that initially failed the calibration condition ($\chi^2>0.2$), to be still used for the creation of the brightness file. Otherwise, all the officially uncalibrated cells would be assigned an average response and we would loose the information on their relative brightness. As can be seen on Fig. \ref{fig:FiberBrightnessExamples}, some attenuation fits have $\chi^2>0.2$, even though they correctly represent the energy deposition in the centre of that cell. By carefully investigating all cells with $\chi^2>0.2$ (which is doable for Test Beam, due to its small number of cells), we concluded it is safe to use all the attenuation fit results with $\chi^2<0.7$. We use this loosened calibration condition only to create the brightness file and keep the original condition for the actual calibration results.
+As we are only using the attenuation fit results in the centre of each cell to create the fibre brightness map, we've decided to allow some cells that initially failed the calibration condition ($\chi^2>0.2$), to be still used for the creation of the brightness file. Otherwise, all the officially uncalibrated cells would be assigned an average response and we would loose the information on their relative brightness. As can be seen on Fig.~\ref{fig:FiberBrightnessExamples}, some attenuation fits have $\chi^2>0.2$, even though they correctly represent the energy deposition in the centre of that cell. By carefully investigating all Test Beam cells with $\chi^2>0.2$ (which is doable for Test Beam, due to its small number of cells), we concluded it is safe to use all the attenuation fit results with $\chi^2<0.7$. We use this loosened calibration condition only to create the fibre brightness file and we keep the original condition for the actual calibration results.
 
 %Describe and show plots that since we are only using the fitted response at cell centre we can allow fits with $\chi^2>0.2$. Show examples of responses with chisq larger than that and say what is the final chisq chosen. No need to show the final distribution of the fb bins here as they were technically shown in the general calibration description. But might refer back to it...
 
@@ -404,39 +407,39 @@ As we are only using the attenuation fit results in the centre of each cell, we'
 \centering
 \begin{subfigure}[b]{0.495\textwidth}
 \centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ExampleForBrightFile_fb0_030_000.png}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/ExampleForBrightFile_fb0_030_000.png}
 \end{subfigure}
 %\hfill
 \begin{subfigure}[b]{0.495\textwidth}
 \centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ExampleForBrightFile_fb5_061_061.png}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/ExampleForBrightFile_fb5_061_061.png}
 \end{subfigure}
-\caption{Attenuation fits for two cells that fail the calibration condition, but the fit (blue line) correctly represents the energy deposition in the centre of that cell (yellow dashed line).}
+\caption[Example of "failed" attenuation fits used for the Test Beam fibre brightness file]{Examples of attenuation fits for two cells that fail the calibration condition, but the fit (blue line) still correctly represents the energy deposition in the centre of that cell (dashed vertical line in the middle).}
 \label{fig:FiberBrightnessExamples}
 \end{figure}
 
-The final distribution of brightness bins and their corresponding relative brightnesses for the Test Beam detector is shown on Fig. \ref{fig:FiberBrightnessBins}.
+The final distribution of fibre brightness bins and their corresponding relative brightnesses for the Test Beam detector is shown on Fig.~\ref{fig:NOvAFiberBrightness}.
 
-\subsection{Threshold and shielding corrections}
-We created the threshold and shielding correction for Test Beam from the new simulation described in the next Sec. \ref{sec:SimulationResults}. As can be seen on Fig. \ref{fig:TBThresholdCorrections}, the correction is almost uniform as a function of both $w$ and cell number. This is the case for all fibre brightness bins and for both views.
+\subsection{Threshold and Shielding Corrections}
+We created the threshold and shielding correction for Test Beam from the new simulation described in Sec.~\ref{sec:DataBasedSimulation}. As can be seen on Fig.~\ref{fig:TBThresholdCorrections}, the correction is almost uniform as a function of both the position within each cell and the cell number. This is the case for all the Test Beam fibre brightness bins and for both views.
 
-The uniform distribution is expected, as the Test Beam detector is much smaller than the far detector and the corrected effects don't have a significant effect. The cell length of $2.6\ \unit{m}$ has only a negligible effect on the energy distribution of cosmic muons or on the threshold saturation. Therefore the threshold and shielding correction for Test Beam is only a normalization factor, except for the cell edges, where there is a large variation in the energy response there anyway due to low number of events. Since the relative calibration only cares about relative differences across the detector, a normalization factor does not have any impact on its results.
-
+The uniformity of the distributions is expected, as the Test Beam detector is much smaller than the \gls{FD}, results of which originated the study of the threshold and the shielding effects. The cell length of $2.6\ \unit{m}$ has only a negligible impact on the energy distribution of cosmic muons or on the threshold saturation. Therefore the threshold and shielding correction for Test Beam is only a normalization factor, except for the cell edges, where there is a large variation in the energy response there anyway due to low number of events. Since we apply the correction prior to the relative calibration, which only cares about the relative differences across the detector, a correction consisting of only a shape-less normalization factor does not have any impact on the calibration results.
+ 
 \begin{figure}[hbtp]
 \centering
 \begin{subfigure}[t]{\textwidth}
 \centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ThresholdCorrectionExample_axview_fb0_P4DataBasedSim.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/ThresholdCorrectionExample_axview_fb0_P4DataBasedSim.pdf}
 \end{subfigure}
 \begin{subfigure}[b]{\textwidth}
 \centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ThresholdCorrectionExample_ayview_fb5_P4DataBasedSim.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/ThresholdCorrectionExample_ayview_fb5_P4DataBasedSim.pdf}
 \end{subfigure}
 \begin{subfigure}[t]{\textwidth}
 \centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/ThresholdCorrectionExample_cyview_fb7_P4DataBasedSim.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/ThresholdCorrectionExample_cyview_fb7_P4DataBasedSim.pdf}
 \end{subfigure}
-\caption{Examples of threshold and shielding corrections for the Test Beam detector}
+\caption{Examples of threshold and shielding corrections for the Test Beam detector.}
 \label{fig:TBThresholdCorrections}
 \end{figure}
 
@@ -446,15 +449,43 @@ The uniform distribution is expected, as the Test Beam detector is much smaller 
 
 %We originally used Teresa's calibration MC sample, but after we saw disagreement, we developed a new MC based off of the period 3 data, which we ended up using for both period 2 and period 3. For fibre brightness we are also using the same MC from period 3 data as it represents the detector in its best condition.
 
-We used a custom made data-based simulation of cosmic muons for the Test Beam detector calibration. The details on the simulation and how it was created are described in the \textit{"Data-based simulation of cosmic muons (not only) for calibration technical note"} \cite{NOVA-doc-60026}. We used half of period 4 data (used every second event as saved in the root file, therefore sampled from the entire period 4) as the inputs. We also used the newly created fibre brightness file (Sec.~\ref{sec:FibreBrightnessTB}) to inform the simulation on the realistic detector conditions.
-
-The distribution of cosmic muon events from the new simulation across the detector is shown on Fig. \ref{fig:CalibhistSim}.
+We use the data-based simulation described in Sec.~\ref{sec:DataBasedSimulation}. Figure~\ref{fig:CalibhistSim} show the distribution of the hits from cosmic muon events used selected for calibration from the new simulation. We can clearly see the difference between the number of events in the vertical (even) and the horizontal (odd) planes, which is expected as cosmic muons are generally vertical and a single track often passes many more horizontal planes than vertical planes. We can also see that there are no events in cells 0 and 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_Simulation_CellPlane.pdf}
-\caption{Distribution of events in the Test Beam simulation calibration sample.}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/Attenprofs_Simulation_CellPlane.pdf}
+\caption[Plane-Cell distribution of hits for the simulation sample]{Distribution of hits used in the calibration for events in the Test Beam simulation calibration sample.}
 \label{fig:CalibhistSim}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/Attenprofs_Simulation_WPE_corr_xy_X_Prof.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/Attenprofs_Simulation_WPE_corr_xy_Y_Prof.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/Attenprofs_Simulation_CellPE_X_Prof.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/Attenprofs_Simulation_CellPE_Y_Prof.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/Attenprofs_Simulation_PlanePE_X_Prof.pdf}
+\end{subfigure}
+\begin{subfigure}[b]{0.495\textwidth}
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/Attenprofs_Simulation_PlanePE_Y_Prof.pdf}
+\end{subfigure}
+\caption{Uncorrected average energy response as a function of the position within a cell (w) for epochs in period 2. It is clear that there is no significant difference between the various epochs.}
+\label{fig:CalibhistWPE_simulation}
 \end{figure}
 
 An overview of the results of the attenuation fit are shown on Fig. \ref{fig:CellCentreResponseSim} as a map of the response in the centre of each cell. The blank cells show the uncalibrated cells which failed the calibration condition (attenuation fit $\chi^2>0.2$). Most of the uncalibrated cells are on the edges of the detector, which is expected as those have much fewer events that pass the calibration sample selection than the rest.
@@ -490,13 +521,13 @@ There is only one cell in the middle of the detector that is left uncalibrated, 
 Overall, this is a much better result of the relative calibration (attenuation fit) for a simulation than any of the previous versions of the cosmic muon simulations in the Test Beam detector.
 
 \FloatBarrier
-\subsection{Period 2 data}
+\subsection{Period 2 Data}
 The issue with underfilled cells described in Sec.~\ref{sec:TBDetector} was present throughout the period 2 data taking. This can be clearly seen on Fig. \ref{fig:Calibhist_period2}, represented by the empty cells 31 and 63 in the horizontal planes, which were marked as bad channels and therefore ignored during production of calibration samples. This also affects the neighbouring cells to the underfilled cells, which have fewer events due to the tricell condition (see Sec.~\ref{sec:CreatingCalibrationSamples}).
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P2Data_CellPlane_AllRuns.pdf}
-\caption{Distribution of events in the period 2 Test Beam data calibration sample.}
+\caption[Plane-Cell distribution of hits for the period 2 data sample]{Distribution of events in the period 2 Test Beam data calibration sample.}
 \label{fig:Calibhist_period2}
 \end{figure}
 
@@ -546,7 +577,7 @@ Officially, period 2 is divided into 6 epochs 2a - 2f, compared on figures \ref{
 \label{fig:CalibhistPlanePE_period2}
 \end{figure}
 
-\subsubsection*{Period 2 relative calibration results}
+\subsubsection*{Period 2 Relative Calibration Results}
 
 The results of the attenuation fit for period 2 are summarised on Fig. \ref{figCellCentreResponsePeriod2}, showing the fitted response at the centre of each cell, or a blank cell if it failed calibration.
 
@@ -642,7 +673,7 @@ Several cells in the end of the Test Beam detector are uncalibrated due to the h
 \end{figure}
 
 \FloatBarrier
-\subsection{Period 3 data}\label{sec:TBCalibration_period3}
+\subsection{Period 3 Data}\label{sec:TBCalibration_period3}
 The underfilled cells were refilled (or overfilled) during the period 3 data taking. This was the main motivation for dividing period 3 into individual epochs as shown on Tab.~\ref{tab:TestBeamPeriod3Epochs}. One more major event that could impact the Test Beam data is the replacement of several faulty FEBs, which motivated the creation of epoch 3e.
 
 \begin{table}[!ht]
@@ -672,7 +703,7 @@ The refilling of the underfilled cells can be clearly seen on the cell hits dist
 \centering
 \includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P3Data_CellPlane_Epoch3de.pdf}
 \end{subfigure}
-\caption{Distribution of events in the period 3 Test Beam data calibration sample. Comparison of Epoch 3a data before the refilling of the underfilled cells and Epoch 3de (combination of Epochs 3d and 3e) after the full refilling.}
+\caption[Plane-Cell distribution of hits for the period 3 data sample]{Distribution of events in the period 3 Test Beam data calibration sample. Comparison of Epoch 3a data before the refilling of the underfilled cells and Epoch 3de (combination of Epochs 3d and 3e) after the full refilling.}
 \label{fig:Calibhist_period3}
 \end{figure}
 
@@ -724,7 +755,7 @@ The energy distributions across cells and planes in the X view (vertical) on Fig
 
 From these considerations, we decided to calibrate epochs 3a, 3b and 3c together (all epochs containing any underfilled cells) and to separately calibrate epochs 3d and 3e. The faulty FEB in the top of plane 58 is far enough in the back of the detector, that we didn't find it necessary to calibrate epochs 3d and 3e separately. Also epochs 3b and 3c only contain a few days worth of data, which wouldn't be enough for a successful attenuation fit.
 
-\subsubsection*{Combined epochs 3a, 3b and 3c relative calibration results}
+\subsubsection*{Combined Epochs 3a, 3b and 3c Relative Calibration Results}
 
 The results of the attenuation fit are summarised on Fig. \ref{fig:CellCentreResponseEp3abc} showing cell $\times$ plane distribution of the fitted response at the centre of each cell.
 
@@ -776,7 +807,7 @@ Similarly as in period 2, there are a few cell in the back of the detector that 
   \label{fig:AttenfitResultsEpoch3abc_CellEdges}
 \end{figure}
 
-\subsubsection*{Combined epochs 3d and 3e relative calibration results}
+\subsubsection*{Combined Epochs 3d and 3e Relative Calibration Results}
 
 The results of the attenuation fits for epochs 3d and 3e are shown on Fig. \ref{fig:CellCentreResponseEp3de}. There we can see the expected uncalibrated cells in plane 17 related to the dead channel (or possible still underfilled cell). The energy deposition for this cell and one of its neighbours is shown on Fig. \ref{fig:AttenfitResultsEpoch3de_LeftoverUnderfilledCell}.
 
@@ -825,7 +856,7 @@ Some of the cells in the back of the detector have a rise, or drop in energy dep
 \end{figure}
 
 \FloatBarrier
-\subsection{Period 4 data}\label{sec:TBPeriod4}
+\subsection{Period 4 Data}\label{sec:TBPeriod4}
 
 The period 4 Test Beam data taking period is the best data we managed to collect with almost an ideal detector conditions. There's only a few commissioning runs in the very beginning of period 4, which uncovered some dead channels or faulty FEBs that were immediately fixed. These runs make up epoch 4a, shown on the top plot of Fig. \ref{fig:Calibhist_period4}. There is also a few runs during which we masked parts of the detector to help with FEB saturation \cite{NOVA-doc-53658}, which can clearly be seen on the middle plot of Fig. \ref{fig:Calibhist_period4}.
 
@@ -843,7 +874,7 @@ The period 4 Test Beam data taking period is the best data we managed to collect
 \centering
 \includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Attenprofs_P4Data_CellPlane_GoodRuns.pdf}
 \end{subfigure}
-\caption{Distribution of events in the Test Beam period 4 data calibration sample. The top plot shows the first three commissioning runs, the middle plot the status of the detector during the Cell Masking studies and the bottom plot shows the rest.}
+\caption[Plane-Cell distribution of hits for the period 4 data sample]{Distribution of events in the Test Beam period 4 data calibration sample. The top plot shows the first three commissioning runs, the middle plot the status of the detector during the Cell Masking studies and the bottom plot shows the rest.}
 \label{fig:Calibhist_period4}
 \end{figure}
 
@@ -891,7 +922,7 @@ Figures \ref{fig:CalibhistWPE_period4}, \ref{fig:CalibhistCellPE_period4} and \r
 \label{fig:CalibhistPlanePE_period4}
 \end{figure}
 
-\subsubsection*{Period 4 relative calibration results}
+\subsubsection*{Period 4 Relative Calibration Results}
 
 Results of the attenuation fits for period 4 are summarised on Fig. \ref{fig:CellCentreResponsePeriod4}. We can see that majority of the detector is calibrated, besides some cells on the edge of the detector, a few formerly underfilled cells (left plot on Fig. \ref{fig:AttenfitResultsPeriod4}), and one cell with an unusually high response at the edge of the cell (right plot on Fig. \ref{fig:AttenfitResultsPeriod4}).
 
@@ -922,7 +953,7 @@ We treated the formerly underfilled cells the same way as in epochs 3d and 3e, b
 %%%                        Absolute calibration results
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Absolute calibration results}
+\subsection{Absolute Calibration Results}
 To get the absolute energy scale we look at the stopping muon sample, apply the relative calibration results and the absolute calibration cuts to select only well-understood minimum ionising muons. The absolute calibration cuts are mostly the same as for the other detectors (hits 1-2 m from the end of track, $\unit{pathlength}>0$, $\unit{PE}>0$, $\unit{PECorr} > 0$, $\unit{PECorr/cm} < 100$), but with a smaller cell window $-80<w<80\ \unit{cm}$ to remove hits at the cell edges.
 
 We then look at the distributions of the reconstructed energy response in units of $\unit{PECorr/cm}$ (for all data and simulation samples), and true energy response in units of $\unit{MeV/cm}$ (only for simulation) in each view, as shown on Fig. \ref{fig:AbsCalibMEU}. The mean of these distributions is the $\textsf{MEU}_{Reco/True}$ value for each view, with an uncertainty calculated as $StdDev/\sqrt{N_{Entries}}$ from the distribution. The $\textsf{MEU}$ for each sample and view is shown on Tab.~\ref{tab:calib_summary_table}.
