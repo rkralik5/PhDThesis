@@ -837,16 +837,16 @@ Similarly to period 2, there are a few cell in the back of the detector that hav
 
 \subsubsection*{Combined Epochs 3d and 3e Relative Calibration Results}
 
-The results of the attenuation fits for epochs 3d and 3e are shown in Fig.~\ref{fig:CellCentreResponseEp3de}. There are 174 uncalibrated cells out of 4032 total cells, making up 4.32\% of the detector. The uncalibrated are now however almost entirely concentrated at the edges and at the end of the detector.
+The results of the attenuation fits for epochs 3d and 3e are shown in Fig.~\ref{fig:CellCentreResponseEp3de}. There are 182 uncalibrated cells out of 4032 total cells, making up 4.51\% of the detector. The uncalibrated are now however almost entirely concentrated at the edges and at the end of the detector.
 
 \begin{figure}[!hbtp]
 \centering
-\includegraphics[width=\textwidth]{Plots/TBCalibration/CellResponseAtCentre_epoch3de_Limited_NOvAPlotStyle.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/CellResponseAtCentre_epoch3de_original_Limited_NOvAPlotStyle.pdf}
 \caption[Map of fitted response at cell centre for epochs 3d and 3e data]{Overview of the relative calibration results for the Test Beam detector period 3, combined epochs 3d and 3e data. Each cell represents the result of the attenuation fit to the energy response in the centre of that cell. The blank cells are uncalibrated.}
 \label{fig:CellCentreResponseEp3de}
 \end{figure}
 
-In Fig.~\ref{fig:CellCentreResponseEp3de}, we can see the expected uncalibrated cells in plane 17 surrounding the dead channel discussed above (or possible still an underfilled cell). The energy deposition for this cell and one of its neighbours is shown in Fig.~\ref{fig:AttenfitResultsEpoch3de_LeftoverUnderfilledCell}.
+Figure~\ref{fig:CellCentreResponseEp3de} shows the expected uncalibrated cells in plane 17 surrounding the dead channel discussed above (or possible still an underfilled cell). The energy deposition for this cell and one of its neighbours is shown in Fig.~\ref{fig:AttenfitResultsEpoch3de_LeftoverUnderfilledCell}.
 
 \begin{figure}[h]
   \begin{subfigure}{0.495\textwidth}
@@ -855,11 +855,11 @@ In Fig.~\ref{fig:CellCentreResponseEp3de}, we can see the expected uncalibrated 
   \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{Plots/RelativeCalibrationResults/ep3de_017_032.png}
   \end{subfigure}
-  \caption{Fit to the energy response in epochs 3d and 3e. Possibly dead channel or still underfilled cell.}
+  \caption[Attenuation fits for dead channels cells in period 3 data]{Fit to the energy response in epochs 3d and 3e. Possibly dead channel or still underfilled cell.}
   \label{fig:AttenfitResultsEpoch3de_LeftoverUnderfilledCell}
 \end{figure}
 
-Epochs 3d and 3e should have all the previously underfilled cells now refilled, but as can be seen in Fig. \ref{fig:CellCentreResponseEp3de}, there's several of these cells that are still (officially) uncalibrated. The energy deposition in these cells is shown in Fig. \ref{fig:AttenfitResultsEpoch3de_RefilledDiscrepancy}. Here we can see that these cells have a fairly large discrepancy between the left and right side of the cells. This is caused by using different scintillator oils for the initial filling of the cells and for the refilling. Specifically, these cells have been initially filled with the Ash River and the Texas oils, which have higher energy depositions compared to the NDOS oil that was used for the refilling during period 3. These oils clearly didn't mix properly which causes a different energy deposition in different parts of the cells. This is a physical effect that should be accounted for in the calibration and as we can see, the attenuation fits are actually performing reasonably well. The large $\chi^2$ value is most likely caused only by the unusual shape of the distribution, which the fit is not build for. \textbf{We have therefore decided to manually change the $\chi^2$ inside the cvs tables (results of the attenuation fits), so that the $\chi^2<0.2$ and these cells are officially considered calibrated.}
+Epochs 3d and 3e should have all the previously underfilled cells now refilled, but as can be seen in Fig. \ref{fig:CellCentreResponseEp3de}, there's several of these cells that are still uncalibrated. The energy deposition in these cells is shown in Fig.~\ref{fig:AttenfitResultsEpoch3de_RefilledDiscrepancy}. Here we can see, that these cells have a fairly large discrepancy between the left and right side of the cells. This is caused by using different scintillator oils for the initial filling of the cells and for the refilling. Specifically, as was described in Sec.~\ref{sec:TBExperiment}, these cells have been initially filled with the Ash River and the Texas oils, which have higher energy depositions compared to the \gls{NDOS} oil that was used for the refilling during period 3. These oils clearly didn't mix properly, which caused a difference in energy deposition in different parts of the cells.
 
 \begin{figure}[h]
   \begin{subfigure}{0.495\textwidth}
@@ -868,11 +868,20 @@ Epochs 3d and 3e should have all the previously underfilled cells now refilled, 
   \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{Plots/RelativeCalibrationResults/ep3de_059_031.png}
   \end{subfigure}
-  \caption{Fit to the energy response in epochs 3 d and e. The scintillator oil used for refilling of the underfilled cells has lower energy response than the oil used for the initial filling. These oils didn't mix properly causing a different energy response in the left and right side of the cell.}
+  \caption[Attenuation fits for cells with mixed scintillators in period 3 data]{Fit to the energy response in epochs 3d and 3e. The scintillator oil used for refilling of the underfilled cells has lower energy response than the oil used for the initial filling. These oils didn't mix properly causing a different energy response in the left and right side of the cell.}
   \label{fig:AttenfitResultsEpoch3de_RefilledDiscrepancy}
 \end{figure}
 
-Some of the cells in the back of the detector have a rise, or drop in energy deposition at the edge of the cell, as can be seen in Fig. \ref{fig:AttenfitResultsEpoch3de_CellEdges}. This is similar to the effect seen in period 2 and epochs 3a+3b+3c and since it's again concentrated in the end of the detector, we ignored these cells and left them uncalibrated.
+This is a physical effect that should be accounted for in the calibration and as we can see, the attenuation fits are actually performing reasonably well. Additionally, these cells are in the middle of the detector and leaving them uncalibrated would almost certainly have an impact on the Test Beam analyses. The large $\chi^2$ value of the attenuation fit is most likely caused only by the unusual shape of the distribution, which the fit is not designed for. We have therefore decided to manually change the $\chi^2$ values for these cells inside the cvs tables (which hold the results of the attenuation fits), so that their $\chi^2<0.2$ and these cells are officially considered calibrated, even if they originally weren't. The "corrected" distribution of the attenuation fit results for epochs 3d and 3e is shown in Fig.~\ref{fig:CellCentreResponseEp3de_updated}. The number of uncalibrated cells was reduced by 8 to 174, or 4.32\% of the detector.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/CellResponseAtCentre_epoch3de_Limited_NOvAPlotStyle.pdf}
+\caption[Corrected map of fitted response at cell centre for epochs 3d and 3e data]{Overview of the relative calibration results for the Test Beam detector period 3, combined epochs 3d and 3e data. Each cell represents the result of the attenuation fit to the energy response in the centre of that cell. The blank cells are uncalibrated. The previously uncalibrated cells in the middle of the detector were artificially marked as calibrated after careful considerations.}
+\label{fig:CellCentreResponseEp3de_updated}
+\end{figure}
+
+Some of the cells in the back of the detector have a rise, or drop in energy deposition at the edge of the cell, as can be seen in Fig.~\ref{fig:AttenfitResultsEpoch3de_CellEdges}. This is similar to the effect seen in period 2 and epochs 3a+3b+3c and since it's again concentrated in the end of the detector, we ignored these cells and left them uncalibrated.
 
 \begin{figure}[h]
   \begin{subfigure}{0.495\textwidth}
@@ -881,14 +890,14 @@ Some of the cells in the back of the detector have a rise, or drop in energy dep
   \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{Plots/RelativeCalibrationResults/ep3de_062_006.png}
   \end{subfigure}
-  \caption{Fit to the energy response in epochs 3d and 3e. Some cells have a drop, or a rise of energy response at the edge of the cell. This can be cause by low statistics.}
+  \caption[Attenuation fits for cells with large fluctuations in period 3 data]{Fit to the energy response in epochs 3d and 3e. Some cells have a drop, or a rise of energy response at the edge of the cell. This can be cause by low statistics.}
   \label{fig:AttenfitResultsEpoch3de_CellEdges}
 \end{figure}
 
 \FloatBarrier
 \subsection{Period 4 Data}\label{sec:TBPeriod4}
 
-The period 4 Test Beam data taking period is the best data we managed to collect with almost an ideal detector conditions. There's only a few commissioning runs in the very beginning of period 4, which uncovered some dead channels or faulty FEBs that were immediately fixed. These runs make up epoch 4a, shown on the top plot of Fig. \ref{fig:Calibhist_period4}. There is also a few runs during which we masked parts of the detector to help with FEB saturation \cite{NOVA-doc-53658}, which can clearly be seen on the middle plot of Fig. \ref{fig:Calibhist_period4}.
+The period 4 Test Beam data taking period is the best data we managed to collect with almost ideal detector conditions. There are a few commissioning runs in the very beginning of period 4, which uncovered some dead channels or faulty \gls{FEB}s that were immediately fixed. These runs constitute epoch 4a, shown on the top of Fig.~\ref{fig:Calibhist_period4}. There is also a few runs during which we performed studies in which we masked parts of the detector to help with the \gls{FEB} saturation \cite{NOvA-doc-53658}, which can clearly be seen in the middle of Fig.~\ref{fig:Calibhist_period4}. Bottom part of Fig.~\ref{fig:Calibhist_period4} shows that the rest of the period 4 data does not have any noticeable faults in the distribution of hits across the detector.
 
 \begin{figure}[!hbtp]
 \centering
@@ -908,7 +917,7 @@ The period 4 Test Beam data taking period is the best data we managed to collect
 \label{fig:Calibhist_period4}
 \end{figure}
 
-Figures \ref{fig:CalibhistWPE_period4}, \ref{fig:CalibhistCellPE_period4} and \ref{fig:CalibhistPlanePE_period4} show that the epoch 4a and the cell masking study did have a noticeable impact on the energy deposition across the detector. We have therefore decided to ignore these runs and only calibrate the rest of the period 4 data.
+Figures \ref{fig:CalibhistWPE_period4}, \ref{fig:CalibhistCellPE_period4} and \ref{fig:CalibhistPlanePE_period4} show that the epoch 4a and the cell masking study did have a noticeable impact on the energy deposition across the detector. Both of these special periods only span a short time and contain a very limited number of hits. We therefore decided to ignore these runs and only calibrate the rest of the period 4 data, using these results for all runs in period 4. \note{I assume here that the runs from the cell masking studies will not be used in the TB analyses. Is that correct?}
 
 \begin{figure}[!hbtp]
 \centering
@@ -954,16 +963,14 @@ Figures \ref{fig:CalibhistWPE_period4}, \ref{fig:CalibhistCellPE_period4} and \r
 
 \subsubsection*{Period 4 Relative Calibration Results}
 
-Results of the attenuation fits for period 4 are summarised in Fig. \ref{fig:CellCentreResponsePeriod4}. We can see that majority of the detector is calibrated, besides some cells on the edge of the detector, a few formerly underfilled cells (left plot in Fig. \ref{fig:AttenfitResultsPeriod4}), and one cell with an unusually high response at the edge of the cell (right plot in Fig. \ref{fig:AttenfitResultsPeriod4}).
+Results of the attenuation fits for period 4 are summarised in Fig.~\ref{fig:CellCentreResponsePeriod4}. We can see that almost the entire detector is now calibrated. The only exceptions consists of cells on the edge of the detector, 7 formerly underfilled cells (left plot in Fig.~\ref{fig:AttenfitResultsPeriod4}), and one cell 47 in plane 54 with an unusually high response at the edge of the cell (right plot in Fig.~\ref{fig:AttenfitResultsPeriod4}).
 
 \begin{figure}[!hbtp]
 \centering
-\includegraphics[width=\textwidth]{Plots/TBCalibration/CellResponseAtCentre_period4_Limited_NOvAPlotStyle.pdf}
+\includegraphics[width=\textwidth]{Plots/TBCalibration/CellResponseAtCentre_period4_original_Limited_NOvAPlotStyle.pdf}
 \caption[Map of fitted response at cell centre for period 4 data]{Overview of the relative calibration results for the Test Beam detector period 4 data. Each cell represents the result of the attenuation fit to the energy response in the centre of that cell. The blank cells are uncalibrated.}
 \label{fig:CellCentreResponsePeriod4}
 \end{figure}
-
-We treated the formerly underfilled cells the same way as in epochs 3d and 3e, by manually changing their $\chi^2$ inside the csv files to be $<0.2$ and therefore making them officially calibrated.
 
 \begin{figure}[h]
   \begin{subfigure}{0.495\textwidth}
@@ -976,7 +983,27 @@ We treated the formerly underfilled cells the same way as in epochs 3d and 3e, b
   \label{fig:AttenfitResultsPeriod4}
 \end{figure}
 
+We treated the formerly underfilled cells the same way as in epochs 3d and 3e, by manually changing the $\chi^2$ of their attenuation fits inside the csv files to be $<0.2$ and therefore making them officially calibrated. The "corrected" distribution of the relative calibration results is shown in Fig.~\ref{fig:CellCentreResponsePeriod4_updated}. There are 108 uncalibrated cells out of 4032, totalling 2.68\% of the detector, almost exclusively on the edges.
+
+\begin{figure}[!hbtp]
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/CellResponseAtCentre_period4_Limited_NOvAPlotStyle.pdf}
+\caption[Corrected map of fitted response at cell centre for period 4 data]{Overview of the relative calibration results for the Test Beam detector period 4 data. Each cell represents the result of the attenuation fit to the energy response in the centre of that cell. The blank cells are uncalibrated. The previously uncalibrated cells in the middle of the detector were artificially marked as calibrated after careful considerations.}
+\label{fig:CellCentreResponsePeriod4_updated}
+\end{figure}
+
 \FloatBarrier
+\newpage
+
+\begin{center}
+\begin{Huge}
+End of thesis\\
+anything after this point was simply copied from the technote and hasn't been review yet
+\end{Huge}
+\end{center}
+
+\newpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
