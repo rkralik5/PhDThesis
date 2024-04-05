@@ -43,6 +43,7 @@
 
 %% Further useful packages (included in most LaTeX distributions)
 \usepackage{amsmath}        % extensions for typesetting of math
+\usepackage{amssymb}
 \usepackage{amsfonts}       % math fonts
 \usepackage{braket}         % bra-ket notation
 \usepackage{siunitx}        % units
@@ -58,6 +59,7 @@
 \usepackage{hyphenat}       % for allowing automatic hyphenation of hyphenated words
 \usepackage{setspace}       % for setting line spacing
 \usepackage{fancyvrb}       % improved verbatim environment
+\usepackage{mathtools}      % introduces rcases for example
 \usepackage[numbers,sort&compress]{natbib}% citation style AUTHOR (YEAR), or AUTHOR [NUMBER]
 \usepackage[nottoc]{tocbibind} % makes sure that bibliography and the lists
 			                   % of figures/tables are included in the table
@@ -72,6 +74,11 @@
 \usepackage{multirow}       % for multirows in tables (duh)
 \usepackage{doi}            % automatically link doi to hyperlinks
 \usepackage{url}            % use normal font for the URL in bibliography
+\usepackage{tikz-feynman}   % for feynman diagrams
+\usepackage{breqn}          % Equation breaking
+\usepackage{contour}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{slashed}        % Dirac notation
 %\usepackage{cooltooltips}   % for links showing when hovering above
 \usetikzlibrary{calc}       % for coloured header
 \usetikzlibrary{decorations.pathreplacing} % for curly braces
@@ -166,12 +173,12 @@ Measuring an enhanced neutrino magnetic moment would be a clear indication of ph
 %\glsresetall
 
 %%% Each chapter is kept in a separate file
-\include{title}
+%\include{title}
 %\include{Introduction}
-%\include{NeutrinoTheory}
-\include{NOvAExperiment}
-\include{TestBeamCalibration}
-%\include{NeutrinoMagMoment}
+\include{NeutrinoTheory}
+%\include{NOvAExperiment}
+%\include{TestBeamCalibration}
+\include{NeutrinoMagMoment}
 %\include{Conclusion}
 
 %\include{epilog}
