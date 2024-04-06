@@ -21,29 +21,17 @@ In the Standard Model (SM), neutrinos are massless and electrically neutral part
 %But this is only the neutrino charge radius, not the neutrino electric or magnetic moment (maybe also the anapole moment) "Hence, in the standard model the form factor can be interpreted as a neutrino charge radius or as an anapole moment (or as a combination of both). The standard model theory of the neutrino charge radius has a long history, with some controversies which are shortly summarized in the following." [nuElmagInt2015.pdf - sec.VIIB]
 
 %Various theories beyond the Standard Model
-To include neutrino masses required by neutrino oscillations, we must go Beyond the Standard Model (BSM), where neutrinos can acquire other electromagnetic properties \cite{nuElmagInt2015.pdf}. In the most general case, considering interactions with a single photon as shown on Fig.\ref{fig:Feynman}, neutrino electromagnetic interactions can be described by an \textit{effective} interaction Hamiltonian \cite{nuElmagInt2015.pdf}
+To include neutrino masses required by neutrino oscillations, we must go Beyond the Standard Model (BSM), where neutrinos can acquire other electromagnetic properties \cite{nuElmagInt2015.pdf}. In the most general case, considering interactions with a single photon as shown on Fig.~\ref{fig:FeynmanNuElmagDiagram}, neutrino electromagnetic interactions can be described by an \textit{effective} interaction Hamiltonian \cite{nuElmagInt2015.pdf}
 \begin{equation}
 \mathcal{H}^{\left(\nu\right)}_{em}\left(x\right)=\sum^N_{k,j=1}\overline{\nu}_k\left(x\right)\Lambda^{kj}_{\mu}\nu_j\left(x\right)A^{\mu}\left(x\right).
 \end{equation}
 Here $\nu_k\left(x\right), k\in\left\lbrace 1,...,N\right\rbrace$ are neutrino fields in the mass basis with $N$ neutrino mass states. $\Lambda^{kj}_{\mu}$ is a general vertex function and $A^{\mu}\left(x\right)$ is the electromagnetic field.
 
-\begin{figure}
+\begin{figure}[hbtp]
 \centering
-\begin{tikzpicture}
-  \begin{feynman}
-    \vertex[draw,circle] (m) at ( 0, 0) {$\Lambda^{fi}$};
-    \vertex (a) at (-2,1) {\(\nu_i(p_i)\)};
-    \vertex (b) at (2,1) {\(\nu_f(p_f)\)};
-    \vertex (c) at (0,-1.5) {\(\gamma(q)\)};
-
-    \diagram* {
-      (a) -- [fermion] (m) -- [fermion] (b),
-      (m) -- [boson] (c)
-    };
-  \end{feynman}
-\end{tikzpicture}
-\caption{Effective coupling of neutrinos with one photon electromagnetic field.}
-\label{fig:Feynman}
+\includegraphics[width=0.4\linewidth]{Plots/NuMM/FeynmanDiagramNuElmagInt.png}
+\caption{Effective coupling of neutrinos with one photon electromagnetic field 2.}
+\label{fig:FeynmanNuElmagDiagram}
 \end{figure}
 
 \iffalse
