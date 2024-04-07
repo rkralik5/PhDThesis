@@ -1,4 +1,4 @@
-\chapter{Contraining neutrino magnetic moment in the NOvA near detector}\label{sec:NeutrinoMagMoment}
+\chapter{Muon Neutrino Magnetic Moment Measurement}\label{sec:NeutrinoMagMoment}
 
 %%% ABSTRACT %%%
 
@@ -220,10 +220,15 @@ And finally we get
 \cos\theta=\frac{E_{\nu}+m_e}{E_{\nu}}\sqrt{\frac{T_e}{T_e+2m_e}}.
 \end{equation}
 
-Electron's kinetic energy is kinematically constrained by the energy conservation as
-\begin{equation}
-T_e\leq\frac{2E_{\nu}^2}{2E_{\nu}+m_e}.
+We can rearrange the Eq.~\ref{eq:ThetaTRelation} to get
+\begin{equation}\label{eq:TThetaRelation}
+T_e=\frac{2m_eE_\nu^2\cos^2\theta}{\left(E_\nu+m_e\right)^2-E_\nu^2\cos^2\theta}.
 \end{equation}
+Electron's kinetic energy is therefore kinematically constrained by the energy conservation as
+\begin{equation}
+T_e\leq\frac{2E_{\nu}^2}{2E_{\nu}+m_e},
+\end{equation}
+which corresponds to the $\cos\theta\rightarrow 1$ when the recoil electron goes exactly forward in the incident neutrino direction.
 
 Considering $E_{\nu}\sim\textsf{GeV}$, we can approximate $\frac{m_e^2}{E_{\nu}^2}\rightarrow 0$ and from Fig.\ref{fig:TThetaDistribution} we can see that we can approximate all recoil angles to be very small, therefore $\theta^2\cong \left(1-\cos^2\theta\right)$. Using Eq.\ref{eq:ThetaTRelation} we get
 \begin{equation}
@@ -248,6 +253,40 @@ This is a strong limit that clearly distinguishes the neutrino-on-electron elast
 \label{fig:TThetaDistribution}
 \end{figure}
 
+\subsubsection{Neutrino magnetic moment cross section}
+
+In the ultrarelativistic limit, the neutrino magnetic moment changes the neutrino helicity, turning active neutrinos into sterile \todo{this is a very strong statement and it probably need a bit more backing up}. Since the SM weak interaction conserves helicity we can simply add the two contribution to the neutrino-on-electron cross section incoherently \cite{nuElmagInt2015.pdf}:
+\begin{equation}
+\frac{d\sigma_{\nu_le^-}}{dT_e}=\left(\frac{d\sigma_{\nu_le^-}}{dT_e}\right)_{\textsf{SM}}+\left(\frac{d\sigma_{\nu_le^-}}{dT_e}\right)_{\textsf{MAG}}.
+\end{equation}
+
+The standard model contribution can be expressed as \cite{nuElmagInt2015.pdf}:
+\begin{multline}
+\left(\frac{d\sigma_{\nu_le^-}}{dT_e}\right)_{\textsf{SM}}=\frac{G_F^2m_e}{2\pi}\left\lbrace\left(g_V^{\nu_l}+g_A^{\nu_l}\right)^2+\left(g_V^{\nu_l}-g_A^{\nu_l}\right)^2\left(1-\frac{T_e}{E_{\nu}}\right)^2\right.\\
++\left.\left(\left(g_A^{\nu_l}\right)^2-\left(g_V^{\nu_l}\right)^2\right)\frac{m_eT_e}{E_{\nu}^2}\right\rbrace,
+\end{multline}
+where the coupling constants $g_V$ and $g_A$ are different for different neutrino flavours and for antineutrinos. Their values are:
+\begin{align}
+g_V^{\nu_e}&=2\sin^2\theta_W+1/2,\hspace{2.5cm} g_A^{\nu_e}=1/2,\\
+g_V^{\nu_{\mu,\tau}}&=2\sin^2\theta_W-1/2,\hspace{2.25cm} g_A^{\nu_{\mu,\tau}}=-1/2.
+\end{align}
+For antineutrinos $g_A\rightarrow -g_A$.
+
+Using Eq.~\ref{eq:TThetaRelation} to get the differential cross section on $\cos\theta$:
+\begin{equation}
+dT_e=\frac{4m_eE_\nu^2\left(m_e+E_\nu\right)^2}{\left[\left(m_e+E_\nu\right)^2-E_\nu^2\cos^2\theta\right]^2}\cos\theta d\cos\theta
+\end{equation}
+
+We can also express this as
+\begin{multline}
+\left(\frac{d\sigma_{\nu_le^-}}{d\cos\theta}\right)_{\textsf{SM}}=
+\frac{2G_F^2E_{\nu}^2m_e^2\cos\theta\left(E_{\nu}+m_e\right)^2}{\pi\left(\left(E_{\nu}+m_e\right)^2-E_{\nu}^2\cos^2\theta\right)^2}\\
+\left\lbrace\left(g_V^{\nu_l}+g_A^{\nu_l}\right)^2+
+\left(g_V^{\nu_l}-g_A^{\nu_l}\right)^2\left(1-\frac{2m_eE_{\nu}\cos^2\theta}{\left(E_{\nu}+m_e\right)^2-E_{\nu}^2\cos^2\theta}\right)^2\right.+\\
+\left.\left(\left(g_A^{\nu_l}\right)^2-\left(g_V^{\nu_l}\right)^2\right)
+\frac{2m_e^2\cos^2\theta}{\left(\left(E_{\nu}+m_e\right)^2-E_{\nu}^2\cos^2\theta\right)}\right\rbrace,
+\end{multline}
+
 [Fundamentals of neutrino Physics and Astrophysics, p.139]
 The total neutrino-electron elastic scattering cross section for large energies is
 \begin{table}{ht}
@@ -262,25 +301,6 @@ $\nu_{\mu,\tau}+e^-$ & $\simeq \unit[15\times 10^{-43} E_\nu]{cm^2 GeV^{-1}}$\\
 $\overline{\nu}_{\mu,\tau}+e^-$ & $\simeq \unit[13\times 10^{-43} E_\nu]{cm^2 GeV^{-1}}$\\\hline
 \end{tabular}
 \end{table}
-
-
-\subsubsection{Neutrino magnetic moment cross section}
-
-In the ultrarelativistic limit, the neutrino magnetic moment changes the neutrino helicity, turning active neutrinos into sterile \todo{this is a very strong statement and it probably need a bit more backing up}. Since the SM weak interaction conserves helicity we can simply add the two contribution to the neutrino-on-electron cross section incoherently \cite{nuElmagInt2015.pdf}:
-\begin{equation}
-\frac{d\sigma_{\nu_le^-}}{dT_e}=\left(\frac{d\sigma_{\nu_le^-}}{dT_e}\right)_{\textsf{SM}}+\left(\frac{d\sigma_{\nu_le^-}}{dT_e}\right)_{\textsf{MAG}}.
-\end{equation}
-
-The standard model contribution can be expressed as \cite{nuElmagInt2015.pdf}:
-\begin{equation}
-\left(\frac{d\sigma_{\nu_le^-}}{dT_e}\right)_{\textsf{SM}}=\frac{G_F^2m_e}{2\pi}\left\lbrace\left(g_V^{\nu_l}+g_A^{\nu_l}\right)^2+\left(g_V^{\nu_l}-g_A^{\nu_l}\right)^2\left(1-\frac{T_e}{E_{\nu}}\right)^2+\left(\left(g_A^{\nu_l}\right)^2-\left(g_V^{\nu_l}\right)^2\right)\frac{m_eT_e}{E_{\nu}^2}\right\rbrace,
-\end{equation}
-where the coupling constants $g_V$ and $g_A$ are different for different neutrino flavours and for antineutrinos. Their values are:
-\begin{align}
-g_V^{\nu_e}&=2\sin^2\theta_W+1/2,\hspace{2.5cm} g_A^{\nu_e}=1/2,\\
-g_V^{\nu_{\mu,\tau}}&=2\sin^2\theta_W-1/2,\hspace{2.25cm} g_A^{\nu_{\mu,\tau}}=-1/2.
-\end{align}
-For antineutrinos $g_A\rightarrow -g_A$.
 
 The neutrino magnetic moment contribution is \todo{include derivation from \cite{NeutrinoElmagFormFactors1989.pdf}} \cite{nuElmagInt2015.pdf}:
 \begin{equation}

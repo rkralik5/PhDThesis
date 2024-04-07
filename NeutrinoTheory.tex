@@ -44,6 +44,8 @@ j^\mu_Z=2\sum_{\alpha=e,\mu,\tau} g^\nu_L \overline{\nu}_{\alpha L} \gamma^\mu \
 \end{equation}
 where $\gamma^\mu,\mu=0,1,2,3$, are the four Dirac gamma matrices, $\alpha_R$ is the right handed chiral field for the charged lepton $\alpha$ and $g_L^\nu$ is the coupling term.
 
+\todo{Need to actually properly mention that there are three fermion generations}
+
 The interaction lagrangian described in Eq.~\ref{eq:NuIntLagrangian} describes two possible vertices for the neutrino interaction, as shown on Fig.~\ref{fig:FeynmanNuIntVertices}.
 
 \begin{figure}[hbtp]
@@ -51,7 +53,7 @@ The interaction lagrangian described in Eq.~\ref{eq:NuIntLagrangian} describes t
 \includegraphics[width=0.4\linewidth]{Plots/Theory/NeutrinoCCInteractionVertices.png}
 \hspace{0.1\linewidth}
 \includegraphics[width=0.4\linewidth]{Plots/Theory/NeutrinoNCInteractionVertices.png}
-\caption{Neutrino interaction vertices in the \acrshort{SM}}
+\caption[Neutrino interaction vertices in the SM]{Neutrino interaction vertices in the \acrshort{SM} via the weak charged currents (left) and neutral currents (right).}
 \label{fig:FeynmanNuIntVertices}
 \end{figure}
 
@@ -71,6 +73,7 @@ The interaction lagrangian described in Eq.~\ref{eq:NuIntLagrangian} describes t
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 2. Neutrino production and sources
+\section{Neutrino Production}
 The main neutrino sources \cite{FundamentalsOfNeutrinoPhysics.pdf} are the $\beta^-$ decay, which is essentially a neutron decay, happening in radioactive materials, or nuclear reactors, and can be described as
 \begin{equation}
 n\rightarrow p+e^-+\overline{\nu}_e.
@@ -85,12 +88,12 @@ or the electron capture
 p+e^-\rightarrow n+\nu_e,
 \end{equation}
 which occurs in the stars and for Earth especially in the Sun.
-Source of $\nu_\mu$ is especially pion, muon and kaon decay, occurring in the atmosphere and the accelerators
+Source of $\nu_\mu$ is especially pion, muon and kaon decay, occurring in the atmosphere when the cosmic ray protons interact with the nuclei in the atmosphere and the accelerators
 \begin{align}
 p+X \rightarrow \pi^\pm \rightarrow &\mu^\pm + \nu_\mu\left(\overline{\nu}_\mu\right) \\
  & \mu^\pm \rightarrow e^\pm + \nu_\mu\left(\overline{\nu}_\mu\right) + \nu_e\left(\overline{\nu}_e\right)
 \end{align}
-Notice that if all muons decay by the time they reach Earth's surface, then there should be almost exactly 2:1 ratio of $\nu_\mu : \nu_e$ for atmospheric neutrinos. This is also used in the modern accelerator based source of neutrinos which have accelerated protons strike a fixed target \cite{GoodmanAdvancesInNeutrinoPhysics.pdf}\cite{SchwartzAccelerators.pdf}.
+Notice that if all muons decay by the time they reach Earth's surface, then there should be almost exactly 2:1 ratio of $\nu_\mu : \nu_e$ for atmospheric neutrinos. This ratio increases with the neutrino energy as more energetic muons have lower chance of decaying before reaching the surface. Also $\frac{\phi_{\nu_\mu}}{\phi_{\overline{\nu}_\mu}}\approx 1$ This is also used in the modern accelerator based source of neutrinos which have accelerated protons strike a fixed target \cite{GoodmanAdvancesInNeutrinoPhysics.pdf}\cite{SchwartzAccelerators.pdf}.
 
 For supernovas its partly electron capture but 90\% through thermal pair production
 \begin{equation}
@@ -102,13 +105,19 @@ There is also cosmic neutrino background that decoupled from the rest of matter 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 3. Interaction of neutrinos
-Inversely, the detection of neutrinos is usually done by reverting the above mentioned processes.
+\section{Neutrino Interactions}
+Inversely, the detection of neutrinos is usually done by reverting the above mentioned processes. The discussion of neutrino interactions is in \cite{NeutrinoIntOverview2012.pdf}
 
-For example the inverse beta decay
+For example for the $\overline{\nu}_e$ we can use the so-called inverse beta decay
 \begin{equation}
-\nu +p\rightarrow n+e^+
+\overline{\nu}_e +p\rightarrow n+e^+
 \end{equation}
-was used for the first detection of neutrinos by Cowan and Reines \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf}. 
+was used for the first detection of neutrinos by Cowan and Reines \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf}. This is currently used in the reactor neutrino experiments \note{Should I mention some reactor experiments here?}
+
+\note{Should I describe the neutrino-on-electron scattering here? - I should definitely mention it as one of the detection methods. Not sure how much I should talk about it. Leave the details to the last chapter...}
+\cite{FundamentalsOfNeutrinoPhysics.pdf} 
+nu-on-e is for example used for the detection of solar neutrinos in the Kamiokande experiments
+Nu-on-e is mainly sensitive to electron neutrinos, whose cross section is about 6 times larger than for the muon/tau neutrinos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Masters
@@ -118,8 +127,12 @@ was used for the first detection of neutrinos by Cowan and Reines \cite{CowanRei
 %In 1953 C.~L.~Cowan and F.~Reines placed a liquid scintillation detector near the Hanford reactor reporting uncertain results \cite{CowanReinesFirstAttempt.pdf}. They later moved the detector to the Savannah River Plant and in 1956 confirmed \cite{CowanReinesConfirmation.pdf} the detection of the antineutrino, verifying the neutrino hypothesis \cite{NeutrinoPhysicsCowanReines.pdf}.
 %(\ovnu{$\nu$} interacting with proton, producing neutron and positron (\ovnu{$\nu$}$+p\rightarrow n+e^+$))
 
+% Electron neutrino
+The first electron neutrino detection was by the Homestake neutrino experiment detecting solar neutrinos \cite{Homestake1968.pdf}
+$\nu_e+n\rightarrow p+e^-$
+
 %%% Muon neutrino %%%
-Leon Lederman, Jack Steinberger and others joined Schwartz and using a spark chamber detector in 1962 observed\cite{MuonNeutrinoDetection.pdf} a different kind of neutrino, which we now call the muon neutrino ($\nu_{\mu}$), produced in pion decay ($\pi^{\pm}\rightarrow\mu^{\pm} +\nu$), while the previously known neutrino, produced in beta decays, was dubbed the electron neutrino ($\nu_e$).
+Leon Lederman, Jack Steinberger and others joined Schwartz and using a spark chamber detector in 1962 observed \cite{MuonNeutrinoDetection.pdf} for the first time the muon neutrino $\nu_{\mu}$. Atmospheric neutrinos were first observed by the Kolar Gold Field Mine in South India \cite{FirstAtmosphericNuDetIndia.pdf, FirstAtmosphericNuDetIndia2.pdf} and in the East Rand Proprietary Gold Mine in South Africa \cite{FirstAtmNuDetectionSouthAfrica1965.pdf}.
 
 % Tau neutrino and Z width
 In 1990 the L3 Collaboration studied properties of the $Z^0$ boson and fitted to its peak cross-section and decay width to determine the total number of active (interacting with $Z^0$) light ($m_{\nu}<m_{Z}/2$) neutrino flavours ($N_{\nu}$). They found the best fit integer value to be 3 and ruled out the possibility of four or more active light neutrino flavours at $4\sigma$ \cite{ZDecay.pdf}. Latest most precise results put the fitted value to $N_{\nu}=2.9840\pm 0.0082$ \cite{ZDecayPrecise.pdf}.
@@ -143,10 +156,12 @@ The main neutrino interactions are
 \overline{\nu}_l+N\rightarrow\overline{\nu}_l+N
 \end{equation}
 
+For neutrinos interacting on the nuclei, we distinguish between different types of interactions based on what happens to the nucleus. If it's an interaction with a single proton or neutron, we call this \gls{QE} interaction. If this proton gets excited into a $\Delta$ resonance (which then generally decays into a $\pi$), we call this Resonant production, if neutrino penetrates through the nucleon and interacts directly with a quark inside it, we call this \gls{DIS} interaction. This is shown on Fig.~\ref{fig:NuCCCrossSection}. There can be additional subtypes due to nuclear effects, namely the 2p2h interaction \todo{Find a reference for the 2p2h} also called \gls{MEC}, or possible \gls{FSI}.
+
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=0.8\linewidth]{Plots/Theory/NeutrinoCCCrossSections.png}
-\caption{Neutrino \acrshort{CC} cross sections based on the interaction types. Figure from \cite{NeutrinoCCCrossSectionPlot.pdf} compares the measured data \cite{NeutrinoIntOverview2012.pdf} and the prediction \cite{NuanceNuIntSimulation2002.pdf}}
+\caption[Neutrino CC cross sections based on the interaction types]{Neutrino \acrshort{CC} cross sections based on the interaction types. Figure from \cite{NeutrinoCCCrossSectionPlot.pdf} compares the measured data \cite{NeutrinoIntOverview2012.pdf} and the prediction \cite{NuanceNuIntSimulation2002.pdf}}
 \label{fig:NuCCCrossSection}
 \end{figure}
 
@@ -156,31 +171,87 @@ Problems of the SM
 
 \todo{Describe neutrino interactions, CC, NC elastic. QE, Res., DIS. Also nuclear effects - MEC, FSI,...}
 
-\section{Neutrino oscillation}
+\section{Neutrino Oscillation}
 Neutrino oscillate and therefore have mass. Describe neutrino oscillations and the current status of their measurements. Maybe also when they were discovered and how?
+
+
+
+%Experimental evidence that lead to neutrino oscillations
+[Master's] Several experimental indications for neutrino oscillations were found shortly after its theoretical predictions. Already in 1968 their Homestake Solar Neutrino Observatory saw a solar neutrino flux less than 3 Solar Neutrino Units (SNU = one interaction per $10^{36}$ target atoms $\unit{s^{-1}}$), well below the solar model prediction of the time \cite{Homestake1968.pdf}. This discrepancy became the \textit{“solar neutrino problem”}, which is in line with neutrino oscillations, but no direct implications could have been drawn since it might have been caused by a lack of understanding of nuclear physics, astrophysics of the Sun, or particle physics of the neutrino\cite{GoodmanAdvancesInNeutrinoPhysics.pdf}. Kamiokande experiment, which confirmed the results from Homestake \cite{Kamiokande96.pdf}.
+
+The Solar neutrino anomaly was also resolved, when the Sudbury Neutrino Observatory (SNO) provided $>5\sigma$ evidence for  solar $\nu_e$ oscillations in 2002, independent on the solar model \cite{NCOscInSNOSecondOscResult.pdf}. While other solar neutrino experiments measured solar $\nu_e$ only via the charged current (CC) interactions
+\begin{equation}
+\nu_e+n\rightarrow p+e^- \qquad (CC),
+\end{equation}
+SNO had an ability to also detect neutrinos via the neutral current (NC) interaction
+\begin{equation}
+\nu+X\rightarrow\nu+X^{\prime} \qquad (NC),
+\end{equation}
+which are equally sensitive to all active neutrino flavours and their rate is therefore unaffected by standard neutrino oscillations. SNO could compare CC and NC event rates and conclude that $\nu_e$ from the Sun oscillate into other neutrino flavours along the way \cite{NCOscInSNOSecondOscResult.pdf}.
+
+%Atmospheric neutrino experiments - atmospheric neutrino anomaly - how many neutrinos
+Measuring atmospheric neutrinos brought about another neutrino conundrum, the \textit{Atmospheric neutrino anomaly}. It came from the disagreement between experiments such as NUSEX\cite{NUSEX89.pdf} and Fr\'{e}jus\cite{Frejus95.pdf}, which used iron calorimeters detectors, and experiments IMP\cite{IMP92.pdf} and Kamiokande\cite{Kamiokande94.pdf}, which used water Cherenkov detectors. All of these experiments were looking for a deficit of $\nu_{\mu}$, or an excess of $\nu_e$, compared to prediction. While the first two experiments saw a good agreement between experimental results and predictions, the latter two did not and suggested the possibility of neutrino oscillations, which could explain their disagreement. Solution to the Atmospheric neutrino anomaly came in 1998, when the Super-Kamiokande (SK) experiment showed for the first time the~experimental evidence for neutrino oscillations \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}. SK has however also disfavoured the two neutrino hypothesis, with regards to the existence of an additional neutrino flavour. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Master's on neutrino oscillations
-This led B. Pontecorvo, inspired by already known $K^{0}\leftrightarrow \overline{K^0}$ oscillations, to consider $\nu\leftrightarrow\overline{\nu}$ transitions (oscillations), in case the conservation of neutrino charge does not apply\cite{Pontecorvo57.pdf}. Pontecorvo later built upon this statement in 1958 considering that oscillations between $\nu$ and $\overline{\nu}$ are due to them being combinations of particles $\nu_1$ and $\nu_2$ and that the transformation lifetime is related to the mass difference between $\nu_1$ and $\nu_2$ \cite{Pontecorvo58.pdf}, laying foundation for neutrino oscillations as we know them today.
 
-In 1962 Z. Maki, M. Nakagawa and S. Sakata applied Pontecorvo's idea of neutrino oscillations to \textit{weak neutrino} eigenstates $\nu_{\alpha}$ ($\nu_e$, $\nu_{\mu}$) produced in weak interactions. They assumed that oscillation $\nu_{\alpha}\leftrightarrow\nu_{\beta}$ are driven by a non-zero mass difference (therefore if true implying at least one neutrino has a non-zero mass) between \textit{true neutrinos} (= mass neutrino eigenstates $\nu_i$ ($\nu_1$, $\nu_2$)), which are related to weak eigenstates via a linear combination. This relation in general case looks like \cite{MNS1962Osc.pdf}
+The idea that neutrinos can oscillate between the individual flavours originates \cite{Pontecorvo57.pdf,Pontecorvo58.pdf} from the $K^{0}\leftrightarrow \overline{K^0}$ oscillations, which was adapted to neutrinos \cite{MNS1962Osc.pdf,Pontecorvo69.pdf} by considering that the weak interaction neutrino eigenstates $\nu_\alpha$ produced in \gls{CC} weak interaction are not identical to the mass neutrino eigenstates $\nu_k$ and are related by
 \begin{equation}
-\ket{\nu_{\alpha}}=\sum_{i=1}^{n} U_{\alpha i}^{*}\ket{\nu_{i}},
+\ket{\nu_{\alpha}}=\sum_{k} U_{\alpha k}^{*}\ket{\nu_{k}}.
 \end{equation}
-where $U$ is a unitary matrix now know as Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix and $n$ is the (general) number of light neutrino species \cite{Gonzalez-GarciaNuMassesAndMixing.pdf}.
+Here $U$ is a unitary matrix now know by the authors of neutrino oscillations as \gls{PMNS} matrix \cite{FundamentalsOfNeutrinoPhysics.pdf, Gonzalez-GarciaNuMassesAndMixing.pdf}.
 
-In the contemporary description of neutrino interactions it is common to treat neutrino as a plane wave  in a relativistic approximation, which after a distance $L$ evolves as \cite{Gonzalez-GarciaNuMassesAndMixing.pdf}
+%This led B. Pontecorvo, inspired by already known $K^{0}\leftrightarrow \overline{K^0}$ oscillations, to consider $\nu\leftrightarrow\overline{\nu}$ transitions (oscillations), in case the conservation of neutrino charge does not apply\cite{Pontecorvo57.pdf}. Pontecorvo later built upon this statement in 1958 considering that oscillations between $\nu$ and $\overline{\nu}$ are due to them being combinations of particles $\nu_1$ and $\nu_2$ and that the transformation lifetime is related to the mass difference between $\nu_1$ and $\nu_2$ \cite{Pontecorvo58.pdf}, laying foundation for neutrino oscillations as we know them today.
+
+%In 1962 Z. Maki, M. Nakagawa and S. Sakata applied Pontecorvo's idea of neutrino oscillations to \textit{weak neutrino} eigenstates $\nu_{\alpha}$ ($\nu_e$, $\nu_{\mu}$) produced in weak interactions. They assumed that oscillation $\nu_{\alpha}\leftrightarrow\nu_{\beta}$ are driven by a non-zero mass difference (therefore if true implying at least one neutrino has a non-zero mass) between \textit{true neutrinos} (= mass neutrino eigenstates $\nu_i$ ($\nu_1$, $\nu_2$)), which are related to weak eigenstates via a linear combination. This relation in general case looks like \cite{MNS1962Osc.pdf}
+%where $U$ is a unitary matrix now know as Pontecorvo-Maki-Nakagawa-Sakata (PMNS) matrix and $n$ is the (general) number of light neutrino species \cite{Gonzalez-GarciaNuMassesAndMixing.pdf}.
+
+The massive neutrino states $\ket{\nu_i}$ are eigenstates of the hamiltonian
 \begin{equation}
-\ket{\nu_{\alpha}\left( L\right) }=\sum_{\alpha\sp{\prime}} \sum_{i} U_{\alpha i}^{*} U_{\alpha\sp{\prime} i} e^{-i m_{i}^{2}L/2E} \ket{\nu_{\alpha\sp{\prime}}}.
+\mathcal{H}\ket{\nu_k}=E_i\ket{\nu_k},
 \end{equation}
+where 
+\begin{equation}
+E_k=\sqrt{\overrightarrow{p}^2+m_k^2}
+\end{equation}
+and since neutrinos are generally ultrarelativistic, we can approximate their energy as
+\begin{equation}\label{eq:NuOscUltrarelativisticApprox}
+E_k\xrightarrow{m^2\ll p^2\approx E}E+\frac{m_k^2}{E}.
+\end{equation}
+From the Schrodinger equation
+\begin{equation}
+i\frac{d}{dt}\ket{\nu_k\left(t\right)}=\mathcal{H}\ket{\nu_k\left(t\right)}
+\end{equation}
+we get that the massive neutrino states evolve as plane waves 
+\begin{equation}
+\ket{\nu_k\left(t\right)}=e^{-iE_kt}\ket{\nu_k}.
+\end{equation}
+Also thanks to the unitarity of the mixing matrix we get
+\begin{equation}
+\ket{\nu_k}=\sum_\alpha U_{\alpha k}\ket{\nu_\alpha}
+\end{equation}
+and therefore
+\begin{equation}
+\ket{\nu_{\alpha}\left( t\right) }=\sum_{\beta} \sum_{k} U_{\alpha k}^{*} U_{\beta k} e^{-i E_kt} \ket{\nu_\beta}.
+\end{equation}
+Since both the massive neutrino states and the flavour neutrino states are built in an orthogonal basis $\braket{\nu_k|\nu_j}=\delta_{kj}$ and $\braket{\nu_{\alpha}|\nu_{\beta}}=\delta_{\alpha\beta}$ we can write the amplitude of $\nu_\alpha\rightarrow\nu_\beta$ as
+\begin{equation}
+A_{\nu_\alpha\rightarrow\nu_\beta}\left(t\right)\equiv\braket{\nu_\beta|\nu_\alpha\left(t\right)}= \sum_{k} U_{\alpha k}^{*} U_{\beta k} e^{-i E_kt}
+\end{equation}
+
+Given the ultrarelativistic approximation in Eq.~\ref{eq:NuOscUltrarelativisticApprox}, assuming the time $t$ is equivalent to the distance $L$, which is easier to measure in an experiment, we get the probability that $\nu_\alpha$ oscillates into $\nu_beta$ over the course of distance $L$ with an energy $E$ is
 
 Neutrino $\nu_{\alpha}$ can oscillate and therefore be detected as a different neutrino flavour $\nu_{\beta}$ with a probability
-\begin{equation}
-P_{\nu_{\alpha}\rightarrow\nu_{\beta}}\left( L\right) =\vert\braket{\nu_{\beta}|\nu_{\alpha}\left( L\right) }\vert^{2}=\sum_{i, j}U_{\beta i}U_{\alpha i}^{*}U_{\beta j}^{*}U_{\alpha j}e^{-i\left( m_{i}^{2}-m_{j}^{2}\right) L/2E},
-\end{equation}
-where the difference of the masses squared is usually denoted as 
+\begin{align}
+P_{\nu_{\alpha}\rightarrow\nu_{\beta}}\left( L\right) =
+\left|A_{\nu_alpha\rightarrow\nu_\beta}\left(t\right)\right|^2 &=
+\sum_{k, j}U_{\alpha k}^*U_{\beta j}U_{\alpha j}U_{\beta j}^*e^{-i\left(E_k-E_j\right)L}\\
+&= \sum_{k, j}U_{\alpha k}^*U_{\beta j}U_{\alpha j}U_{\beta j}^*e^{-i\frac{\Delta m_{kj}^2 L}{2E}}
+\end{align}
+where we defined
 \begin{equation}\label{Deltamsq}
-\Delta m_{ij}^{2}=m_{i}^{2}-m_{j}^{2}.
+\Delta m_{kj}^{2}\equiv m_{k}^{2}-m_{j}^{2}.
 \end{equation}
 
 Oscillation probability can be also expressed as
@@ -193,60 +264,6 @@ P_{\nu_{\alpha}\rightarrow\nu_{\beta}}\left( L\right)= \delta_{\alpha\beta}
 where\cite{Gonzalez-GarciaNuMassesAndMixing.pdf} \[\Delta_{ij}\equiv\Delta m_{ij}^{2}\frac{L}{4E}=1.267\frac{\Delta m_{ij}^{2}}{\unit{eV^2}}\frac{L/E}{\unit{m}/\unit{MeV}} .\]
 
 Since real neutrino beams are not monochromatic, what is measured in experiments is an \textbf{average} oscillation probability with $\left\langle \sin^{2}\Delta_{ij}\right\rangle$ and $\left\langle\sin2\Delta_{ij}\right\rangle $ in eq.\ref{OscProb}. We can notice that if $E/L\gg\Delta m_{ij}^{2}$ the oscillation does not show any effect yet and if $E/L\ll\Delta m_{ij}^2$ the oscillating phase goes through many cycles and is averaged to $\left\langle \sin^{2}\Delta_{ij}\right\rangle=1/2$. Therefore different experimental settings can measure different oscillation parameters \cite{PDG.pdf}.
-
-Several experimental indications for neutrino oscillations were found shortly after its theoretical predictions.
-Davis continued looking for $^{37}Ar$ in a detector with $^{37}Cl$, but now moving to Homestake Gold Mine with Harmer and Hoffman focusing on detecting the first electron neutrinos from the Sun \cite{Homestake1998.pdf}. Already in 1968 their Homestake Solar Neutrino Observatory saw a solar neutrino flux less than 3 Solar Neutrino Units (SNU = one interaction per $10^{36}$ target atoms $\unit{s^{-1}}$), well below the solar model prediction of the time \cite{Homestake1968.pdf}. This discrepancy became the \textit{“solar neutrino problem”}, which is in line with neutrino oscillations, but no direct implications could have been drawn since it might have been caused by a lack of understanding of nuclear physics, astrophysics of the Sun, or particle physics of the neutrino\cite{GoodmanAdvancesInNeutrinoPhysics.pdf}.
-
-In 2002, Raymond Davis was together with Masatoshi Koshiba awarded the Nobel prize "for pioneering contributions to astrophysics, in particular for the detection of cosmic neutrinos" \cite{Nobel}. Koshiba was part of the Kamiokande experiment, which confirmed the results from Homestake \cite{Kamiokande96.pdf}.
-
-Possible explanation of the Solar neutrino problem was proposed in 1978 by L. Wolfenstein, who considered the effect of matter on neutrino oscillations \cite{Wolfenstein78.pdf}. His modification of neutrino oscillations when passing through matter arises from the coherent forward scattering of electron neutrinos, as a result of their charged current (CC) interaction with electrons, which are abundant in matter, as opposed to other lepton flavours, muons and tauons, resulting in an imbalance between $\nu_e$ and $\nu_{\mu}/\nu_{\tau}$. This manifests as an effective potential, which depends on the density and composition of the matter \cite{Wolfenstein78.pdf}. This idea was later further developed for neutrinos passing through the Sun by Mikheyev and Smirnov in 1985 \cite{MikheyevSmirnov85.pdf}\cite{Gonzalez-GarciaNuMassesAndMixing.pdf} and we now call this effect the Mikheyev-Smirnov-Wolfenstein (MSW) effect.
-
-To showcase this effect we consider only two neutrino flavours, $\nu_e$ and $\nu_X$, where $X$ denotes a combination of all other non-electron flavours. Vacuum oscillations are in this two-neutrino approximation driven by a single mass splitting $\Delta m^2$ and the corresponding PMNS matrix is a rotational matrix parametrized by one angle $\theta$:
-\begin{equation}
-U=
-\begin{pmatrix}
- \cos\theta  & \sin\theta    \\
- -\sin\theta & \cos\theta
-\end{pmatrix}.
-\end{equation}
-
-The MSW effect can be described as the presence of an Effective Potential \cite{CERNSchool2001.pdf}
-\begin{equation}
-V=\pm\sqrt{2}G_{F}N_{e}=\pm 3.8\times 10^{-14}\left(\frac{\rho}{\unit{g}\ \unit{cm^{-3}}}\right)\left(\frac{Y_e}{0.5}\right)\unit{eV},
-\end{equation}
-where $G_F$ is the Fermi coupling constant, $N_e$ is the electron density, $Y_e$ is the electron number per nucleon and plus or minus sign is for neutrinos or antineutrinos respectively.
-
-This potential can be seen as having the effect of modifying the $\Delta m^2$ and $\theta$ of the neutrino oscillations: \cite{CERNSchool2001.pdf}
-\begin{equation}\label{MSWEffect}
-\sin^22\theta_m=\frac{\sin^22\theta}{\sin^22\theta+\left(\cos 2\theta\mp\xi\right)^2}
-\end{equation}
-\begin{equation}
-\left(\Delta m^2\right)_{\textsl{eff}}=\Delta m^2\times\sqrt{\sin^22\Theta+\left(\cos 2\theta\mp\xi\right)^2},
-\end{equation}
-where 
-\begin{equation}
-\xi=\frac{2\sqrt{2}G_FN_e}{\Delta m^2}.
-\end{equation}
-
-%Atmospheric neutrino experiments - atmospheric neutrino anomaly - how many neutrinos
-Measuring atmospheric neutrinos brought about another neutrino conundrum, the \textit{Atmospheric neutrino anomaly}. It came from the disagreement between experiments such as NUSEX\cite{NUSEX89.pdf} and Fr\'{e}jus\cite{Frejus95.pdf}, which used iron calorimeters detectors, and experiments IMP\cite{IMP92.pdf} and Kamiokande\cite{Kamiokande94.pdf}, which used water Cherenkov detectors. All of these experiments were looking for a deficit of $\nu_{\mu}$, or an excess of $\nu_e$, compared to prediction. While the first two experiments saw a good agreement between experimental results and predictions, the latter two did not and suggested the possibility of neutrino oscillations, which could explain their disagreement. 
-
-Solution to the Atmospheric neutrino anomaly came in 1998, when the Super-Kamiokande (SK) experiment showed for the first time the~experimental evidence for neutrino oscillations \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}. SK has however also disfavoured the two neutrino hypothesis, with regards to the existence of an additional neutrino flavour. 
-
-The Solar neutrino anomaly was also resolved, when the Sudbury Neutrino Observatory (SNO) provided $>5\sigma$ evidence for  solar $\nu_e$ oscillations in 2002, independent on the solar model \cite{NCOscInSNOSecondOscResult.pdf}. While other solar neutrino experiments measured solar $\nu_e$ only via the charged current (CC) interactions
-\begin{equation}
-\nu_e+n\rightarrow p+e^- \qquad (CC),
-\end{equation}
-SNO had an ability to also detect neutrinos via the neutral current (NC) interaction
-\begin{equation}
-\nu+X\rightarrow\nu+X^{\prime} \qquad (NC),
-\end{equation}
-which are equally sensitive to all active neutrino flavours and their rate is therefore unaffected by standard neutrino oscillations. SNO could compare CC and NC event rates and conclude that $\nu_e$ from the Sun oscillate into other neutrino flavours along the way \cite{NCOscInSNOSecondOscResult.pdf}.
-
-Takaaki Kajita from SK and Arthur B. McDonald from SNO were jointly awarded the Nobel Prize in 2015 "for the discovery of neutrino oscillations, which shows that neutrinos have mass" \cite{Nobel}.
-
-In 1990 the L3 Collaboration studied properties of the $Z^0$ boson and fitted to its peak cross-section and decay width to determine the total number of active (interacting with $Z^0$) light ($m_{\nu}<m_{Z}/2$) neutrino flavours ($N_{\nu}$). They found the best fit integer value to be 3 and ruled out the possibility of four or more active light neutrino flavours at $4\sigma$ \cite{ZDecay.pdf}. Latest most precise results put the fitted value to $N_{\nu}=2.9840\pm 0.0082$ \cite{ZDecayPrecise.pdf}.
-After this result it was only a matter of time, before the third neutrino, the tau neutrino ($\nu_{\tau}$) was discovered. Evidence for that were shown in 2000 from the DONUT Collaboration at Fermilab \cite{ObservationOfTauNeutrino.pdf}.
 
 The PMNS matrix describing neutrino oscillations in the so~called $3\nu$ para-digm depends on six independent parameters: 3 mixing angles ($\theta_{12}$, $\theta_{13}, \theta_{23}$) and 3 phases. One of the phases is $\delta_{CP}$, which, if different from 0 or $\pi$, implies CP violation, and the other two are $\alpha$ and $\beta$, so called Majorana phases, which are non zero only if neutrinos are Majorana (neutrinos and antineutrinos are described by just one field, i.e. neutrinos are the same particle as antineutrinos). Majorana phases play no role in neutrino oscillations, so they are usually left out in the description \cite{PDG.pdf}. The PMNS matrix in this case can be parametrized as
 
@@ -288,10 +305,44 @@ Other than the PMNS matrix, neutrino oscillations depend on the mass squared dif
 \begin{equation}
 \Delta m^2_{21} + \Delta m^2_{32} + \Delta m^2_{13} = 0.
 \end{equation}
+
+%%%Matter effect
+\subsection{The Matter Effect}
+Possible explanation of the Solar neutrino problem was proposed in 1978 by L. Wolfenstein, who considered the effect of matter on neutrino oscillations \cite{Wolfenstein78.pdf}. His modification of neutrino oscillations when passing through matter arises from the coherent forward scattering of electron neutrinos, as a result of their charged current (CC) interaction with electrons, which are abundant in matter, as opposed to other lepton flavours, muons and tauons, resulting in an imbalance between $\nu_e$ and $\nu_{\mu}/\nu_{\tau}$. This manifests as an effective potential, which depends on the density and composition of the matter \cite{Wolfenstein78.pdf}. This idea was later further developed for neutrinos passing through the Sun by Mikheyev and Smirnov in 1985 \cite{MikheyevSmirnov85.pdf}\cite{Gonzalez-GarciaNuMassesAndMixing.pdf} and we now call this effect the Mikheyev-Smirnov-Wolfenstein (MSW) effect.
+
+To showcase this effect we consider only two neutrino flavours, $\nu_e$ and $\nu_X$, where $X$ denotes a combination of all other non-electron flavours. Vacuum oscillations are in this two-neutrino approximation driven by a single mass splitting $\Delta m^2$ and the corresponding PMNS matrix is a rotational matrix parametrized by one angle $\theta$:
+\begin{equation}
+U=
+\begin{pmatrix}
+ \cos\theta  & \sin\theta    \\
+ -\sin\theta & \cos\theta
+\end{pmatrix}.
+\end{equation}
+
+The MSW effect can be described as the presence of an Effective Potential \cite{CERNSchool2001.pdf}
+\begin{equation}
+V=\pm\sqrt{2}G_{F}N_{e}=\pm 3.8\times 10^{-14}\left(\frac{\rho}{\unit{g}\ \unit{cm^{-3}}}\right)\left(\frac{Y_e}{0.5}\right)\unit{eV},
+\end{equation}
+where $G_F$ is the Fermi coupling constant, $N_e$ is the electron density, $Y_e$ is the electron number per nucleon and plus or minus sign is for neutrinos or antineutrinos respectively.
+
+This potential can be seen as having the effect of modifying the $\Delta m^2$ and $\theta$ of the neutrino oscillations: \cite{CERNSchool2001.pdf}
+\begin{equation}\label{MSWEffect}
+\sin^22\theta_m=\frac{\sin^22\theta}{\sin^22\theta+\left(\cos 2\theta\mp\xi\right)^2}
+\end{equation}
+\begin{equation}
+\left(\Delta m^2\right)_{\textsl{eff}}=\Delta m^2\times\sqrt{\sin^22\Theta+\left(\cos 2\theta\mp\xi\right)^2},
+\end{equation}
+where 
+\begin{equation}
+\xi=\frac{2\sqrt{2}G_FN_e}{\Delta m^2}.
+\end{equation}
 %%% End of master's on neutrino oscillations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Neutrino masses}
+%%% Current state of neutrino oscillation measurements
+Need to mention the importance of the $\delta_{CP}$ measurements, maybe even the Sakharov conditions... Also why do we care about the $\Delta m^2$ or the octants and what are those... Maybe cite the Snowmass report and the PDG.
+
+\section{Neutrino Mass}
 Experiments for their values? Theoretical predictions for how they obtained them
 
 Theories of neutrino mass generation
