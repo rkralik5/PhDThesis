@@ -1,4 +1,5 @@
 \chapter{The NOvA experiment}\label{sec:NOvA}
+
 %%% OVERVIEW OF THE NOvA EXPERIMENT %%%
 The \gls{NOvA} \cite{NOvAWebsite} is a long-baseline neutrino oscillation experiment based at the \gls{Fermilab}
 %Fermi National Accelerator Laboratory (Fermilab) 
@@ -455,7 +456,7 @@ Even after an application of the \gls{LOWESS} correction, there are sometimes la
 
 For the absolute calibration we only use hits from muons stopping inside the detector, $\unit[1-2]{m}$ from the end of their tracks. This is when they are approximately minimum ionizing particles and their energy deposition is well understood. We also remove hits at the edges of each cell, to mitigate the  effects at the end of the \gls{WLS} fibres and the lower number of events at the edge of the detector \cite{NOvA-doc-13579-FACalorimetricEnergyScale}.
 
-We apply the results of the relative calibration to the selected hits to get the  distribution of the corrected detector response in the units of \gls{PECorr}$/\unit{cm}$, as shown on the left of Fig.~\ref{fig:NOvACalibrationAbsoluteEnergyScale}. We then take the mean of this distribution, separately in each of the two views, and in each time period and simulation version, which we call the \textit{reconstructed} \gls{MEU}. Analogously, we take the mean of the true deposited energy in the units of $\unit{MeV/cm}$ from simulation, shown on the right of Fig.~\ref{fig:NOvACalibrationAbsoluteEnergyScale}, and call it the \textit{true} \gls{MEU}. We then take the average over the two views and calculate the absolute energy scale for each time period and simulation version as the ratio on Eq.~\ref{eq:NOvAAbsEnergyScale}.
+We apply the results of the relative calibration to the selected hits to get the  distribution of the corrected detector response in the units of $\gls{PECorr}/\unit{cm}$, as shown on the left of Fig.~\ref{fig:NOvACalibrationAbsoluteEnergyScale}. We then take the mean of this distribution, separately in each of the two views, and in each time period and simulation version, which we call the \textit{reconstructed} \gls{MEU}. Analogously, we take the mean of the true deposited energy in the units of $\unit{MeV/cm}$ from simulation, shown on the right of Fig.~\ref{fig:NOvACalibrationAbsoluteEnergyScale}, and call it the \textit{true} \gls{MEU}. We then take the average over the two views and calculate the absolute energy scale for each time period and simulation version as the ratio on Eq.~\ref{eq:NOvAAbsEnergyScale}.
 \begin{equation}\label{eq:NOvAAbsEnergyScale}
 \textsf{Absolute Energy Scale} = \frac{\textsc{MEU}_{True}\ \left[\unit{MeV/cm}\right]}{\textsc{MEU}_{Reco}\ \left[\unit{\textsc{PECorr}/cm}\right]}.
 \end{equation}
@@ -470,7 +471,7 @@ We apply the results of the relative calibration to the selected hits to get the
 
 %For each calibrated data and simulation sample we take a mean of the corrected deposited energy distribution, separate for each view. We then take a simple average from the two views to get the final $\textsf{MEU}_{reco}$ in units of $\unit{PECorr/cm}$ for each sample \cite{NOvA-doc-13579-FACalorimetricEnergyScale}. Additionally, from simulation we can get the mean of the distribution of the true deposited energy in the scintillator, $\textsf{MEU}_{truth}$ in units of $\unit{MeV/cm}$ for the same sample of stopping muons. 
 
-We save these absolute energy scales, as well as the results of the attenuation fit, in a set of lookup tables, which are used any time a hit is recorded in the NOvA detector and processed through the NOvA data processing algorithms.
+We save these absolute energy scales, as well as the results of the attenuation fit, in a set of lookup tables, which are used any time a hit is recorded in the \gls{NOvA} detector and processed through the \gls{NOvA} data processing algorithms.
 
 %Stopping muons provide a good sample of known energy deposits. If we can collect a “golden” sample, they should provide the scale factor to convert PECorr to GeV. So far, the method used has been imperfect, and the absolute calibration constants are known to be off by approx. 10\%. Since a factor already has to be derived to correct for dead material, this is not significantly impeding current efforts, but work was recently gone into improving this area. [docdb:7410 - this was likely before the track window cut was introduced] (Here it says that it's not such a big a problem since we have to scale for the dead material anyway. But nowadays we have to account for a large systematic uncertainty in the absolute energy scale in our analyses. How is the dead material correction different from the energy scale uncertainty?)
 

@@ -169,7 +169,8 @@ The standard \gls{NOvA} calibration procedure described in Sec.~\ref{sec:NOvACal
 
 To overcome these challenges, we developed and implemented a data-based simulation that eliminates the need for the \gls{CRY} \gls{MC} generator. Instead, we use a subset of the cosmic data sample used in calibration and pass it through the beam removal filter, reconstruction chain and a selection of high-quality cosmic muons. The selected cosmic muon events are then used as inputs to the detector simulation to create a new simulated cosmic ray sample.
 
-This approach results in a near-perfect efficiency, ensuring that almost every simulated muon contributes to the final calibration sample, thus saving processing time, file size, and storage. Additionally, the simulated muon distributions are inherently consistent with the distributions from data. Given that the calibration chain itself is a time and computing intensive process, the reduction in simulation files and their sizes has significant benefits downstream of the file generation. On the other hand, using real data to seed the simulation could introduce undesirable bias, if we do not carefully consider possible misreconstruction or selection bias.\note{Can I re-word the last sentence?}
+This approach results in a near-perfect efficiency, ensuring that almost every simulated muon contributes to the final calibration sample, thus saving processing time, file size, and storage. Additionally, the simulated muon distributions are inherently consistent with the distributions from data. Given that the calibration chain itself is a time and computing intensive process, the reduction in simulation files and their sizes has significant benefits downstream of the file generation. 
+%On the other hand, using real data to seed the simulation could introduce undesirable bias, if we do not carefully consider possible misreconstruction or selection bias.\note{Can I re-word the last sentence?}
 %Using real world data introduces bias from known and unknown effects, such as varying detector efficiency or readout faults... We need to carefully consider and mitigate these effects when creating the simulation to make sure of its validity
 
 \subsection{Reconstruction and Selection of Cosmic Data Events}\label{sec:CosmicGenAna}
@@ -1013,26 +1014,36 @@ Anything after this point was simply copied from the technote and hasn't been re
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Absolute Calibration Results}
-To get the absolute energy scale we look at the stopping muon sample, apply the relative calibration results and the absolute calibration cuts to select only well-understood minimum ionising muons. The absolute calibration cuts are mostly the same as for the other detectors (hits 1-2 m from the end of track, $\unit{pathlength}>0$, $\unit{PE}>0$, $\unit{PECorr} > 0$, $\unit{PECorr/cm} < 100$), but with a smaller cell window $-80<w<80\ \unit{cm}$ to remove hits at the cell edges.
+As was described in Sec.~\ref{sec:NOvACalibration}, we apply the relative calibration results on the stopping muon sample and use the absolute calibration cuts to select only well-understood minimum ionising muons. These events represent a very well understood source of energy deposition we use as a standard candle to calculate the absolute energy scale. The absolute calibration cuts are mostly the same as for the other \gls{NOvA} detectors, selecting hits $1-\unit[2]{m}$ from the end of their tracks and removing uncalibrated and wrongly reconstructed hits by requiring non-zero pathlength, $\gls{PE}>0$, and $\gls{PECorr} > 0$, as well as $\gls{PECorr}\unit{/cm} < 100$. To remove hits at the edge of the cells, we require that $-80<w<\unit[80]{cm}$, therefore removing hits approximately $\unit[0.5]{m}$ from each side of the detector.
 
-We then look at the distributions of the reconstructed energy response in units of $\unit{PECorr/cm}$ (for all data and simulation samples), and true energy response in units of $\unit{MeV/cm}$ (only for simulation) in each view, as shown in Fig. \ref{fig:AbsCalibMEU}. The mean of these distributions is the $\textsf{MEU}_{Reco/True}$ value for each view, with an uncertainty calculated as $StdDev/\sqrt{N_{Entries}}$ from the distribution. The $\textsf{MEU}$ for each sample and view is shown on Tab.~\ref{tab:calib_summary_table}.
+The distributions of the reconstructed and true energy responses, for both views, and for each data and simulation sample, are shown in Fig.~\ref{fig:AbsCalibNHitsMEU}. The means of these distributions are the $\gls{MEU}_{Reco}$ and $\gls{MEU}_{True}$ values for each view. The uncertainty on the means are calculated as the standard deviation of the distributions divided by the square root of the number of entries. We average the two \gls{MEU} values from both views and combine the uncertainties in the sum of squares. The total number of entries, the \gls{MEU} values for each sample and view, and the combined \gls{MEU} values with corresponding uncertainties are shown in Tab.~\ref{tab:calib_summary_table}. Given the large number of entries in the energy response distributions, the total uncertainties on the \gls{MEU} values are negligible (around $0.05\%$). This are however not the final uncertainties of the absolute energy scale used in \gls{NOvA}. Instead, we use comparison to other standard candles, as was explained in Sec.~\ref{sec:NOvASystematics}.
 
-\begin{figure}[!hbtp]
-\centering
-\begin{subfigure}[b]{0.495\textwidth}
-\centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Period4_meu_y_NOvAPlotStyle.pdf}
-\end{subfigure}
-\begin{subfigure}[b]{0.495\textwidth}
-\centering
-\includegraphics[width=\textwidth]{PlotsTBCalibTechnote/Simulation_mev_y_NOvAPlotStyle.pdf}
-\end{subfigure}
-\caption{Example distributions of reconstructed (left) and true (right) energy response of stopping muons 1-2 m from the end of their tracks. The mean of the reconstructed (true) response is the reconstructed (true) MEU unit.}
-\label{fig:AbsCalibMEU}
+\begin{figure}[ht!]
+  \begin{subfigure}{\textwidth}
+    \centering
+    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
+  \end{subfigure}
+  \vspace*{2mm}
+
+  \begin{subfigure}{0.495\textwidth}
+    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_meu_x.pdf}
+  \end{subfigure}
+  \begin{subfigure}{0.495\textwidth}
+    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_meu_y.pdf}
+  \end{subfigure}
+  \begin{subfigure}{0.495\textwidth}
+    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_mev_x.pdf}
+  \end{subfigure}
+  \begin{subfigure}{0.495\textwidth}
+    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_mev_y.pdf}
+  \end{subfigure}
+  \caption[Reconstructed and true energy response of stopping muons]{Distributions of the reconstructed (top) and true (bottom) energy response of stopping muons in the X (left) and Y (right) view within a $1-\unit[2]{m}$ track window from the end of their tracks. The mean of the reconstructed and true distributions of the response are the reconstructed and true MEU values respectively for the corresponding views.}
+  \label{fig:AbsCalibNHitsMEU}
 \end{figure}
 
 \begin{table}[h!]
 \centering
+\caption[Summary of absolute calibration results]{Summary of absolute calibration results. \acrshort{MEU}$_{Reco}$ values (top table) are in units of $\gls{PECorr}\unit{/cm}$ and \acrshort{MEU}$_{True}$ values (bottom table) are in units of $\unit{MeV/cm}$}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
 \multicolumn{2}{|c|}{\multirow{2}{*}{Sample}} & \multicolumn{2}{c|}{X view} & \multicolumn{2}{c|}{Y view} & \multicolumn{2}{c|}{Combined}\\\cline{3-8}
@@ -1050,13 +1061,8 @@ We then look at the distributions of the reconstructed energy response in units 
 \hline
 \cellcolor[HTML]{F8A102}MEU$_{True}$ = 1.7722 $\unit{MeV/cm}$ & $\sigma_{\textsf{MEU}_{True}}$ = 0.0003 $\unit{MeV/cm}$\\ \hline
 \end{tabular}
-\caption{Table of the absolute calibration results. MEU$_{Reco}$ values (top table) are in units of $\unit{PECorr/cm}$ and MEU$_{True}$ values (bottom table) are in units of $\unit{MeV/cm}$}
 \label{tab:calib_summary_table}
 \end{table}
-
-We don't apply the absolute energy scale separately for each view, instead we combine the two views into a single $\textsf{MEU}_{Reco}$, or $\textsf{MEU}_{True}$ value. To combine the $\textsf{MEU}$ value we take a simple average $\left(\textsf{MEU}_X+\textsf{MEU}_Y\right)/2$, without accounting for the different statistics of the two views. To get the uncertainty on the final value, we calculate it as $\sigma^2_{Combined}=\sigma^2_{X} + \sigma^2_Y$. In the past (and for the other NOvA detectors), this uncertainty was calculated as $1/\sigma^2_{Combined}=1/\sigma^2_{X} + 1/\sigma^2_Y$. This uncertainty is however \textbf{not} the uncertainty used in NOvA for the absolute energy scale. Instead, we use a data-simulation comparison of special special samples to derive an uncertainty on the absolute energy scale \cite{NOVA-doc-36915}. The final combined values are highlighted in Tab.~\ref{tab:calib_summary_table}. Here $\textsf{MEU}_{Reco}$ values are all in units of $\unit{PECorr/cm}$.
-
-For each calibrated sample we write the combined $\textsf{MEU}_{Reco}$ value into an \texttt{calib\_abs\_consts.csv} file, together with its uncertainty and with the $\textsf{MEU}_{True}$ value, which is common for all samples.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1064,16 +1070,7 @@ For each calibrated sample we write the combined $\textsf{MEU}_{Reco}$ value int
 %%%                      Final results and conclusions
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Results}
-The results of the relative and the absolute calibration, in form of the csv files, are stored in \texttt{/grid/fermiapp/products/nova/externals/calibcsvs/} and are applied within NOvASoft in the calibration tag v15.09 and higher.
-
-The \texttt{csv} files follow the official NOvA calibration naming convention, which is \\\texttt{calib\_\{abs/atten\}\_\{consts/points\}.\{nd/fd/tb\}.\{data/mc\}.\{version\}.\{period\}.csv}. Here \texttt{version} is the calibration tag (i.e. v15) and period is the range of runs for that sample (i.e. \texttt{r100857-r101356} for the combined epochs 3a, 3b, and 3c, or \texttt{r-r} for simulation, since it is not divided into different periods).
-
-To create the calibration tag we've asked Lisa Koerner for help. Lisa is a NOvA calibration expert who wrote the instructions for calibration tagging \cite{NOVA-doc-59268}. It is possible to do it ourselves following these instructions, but it is advised to consult the detector systematics group before hand.
-
-We have also stored the final calibration results in a special location created for safekeeping of Test Beam calibration files: \texttt{/nova/ana/testbeam/calibration}. Here we have also copied all of the attenuation profiles used in the relative calibration. These can be very useful in case someone wants to re-do the calibration, as it allows to skip the prestaging of the calibration pclist samples (the pcliststop samples are much smaller and therefore easier to prestage). If there has been no change to the calibration samples, it is possible to skip the creation of attenuation profiles and reuse the existing files.
-
-\subsection{Validation}
+\subsection{Discussion}
 To validate the results of the Test Beam calibration we look at the stopping muon sample used for the absolute calibration, since these events have the most consistent and reliable energy deposition.
 
 In plots in Fig. \ref{fig:AbsCalibW1}-\ref{fig:AbsCalibDrift2} we look at distributions of variables used during the calibration, namely $PE$, $PECorr$, $Pathlength$, $PE/cm$ and $PECorr/cm$. Their distributions are over a range of variables we tried to correct the energy deposition in, namely position within a cell $w$, cell number, plane number, track angles and time.
@@ -1121,35 +1118,6 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \vspace*{2mm}
 
   \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pe_w_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pe_w_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_w_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_w_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/cm_w_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/cm_w_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the position within a cell.}
-  \label{fig:AbsCalibW2}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-
-  \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{essentialsec_tb/pecm_cell_x.pdf}
   \end{subfigure}
   \begin{subfigure}{0.495\textwidth}
@@ -1163,35 +1131,6 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \end{subfigure}
   \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cells of the detector.}
   \label{fig:AbsCalibCell1}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pe_cell_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pe_cell_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_cell_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_cell_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/cm_cell_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/cm_cell_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cells of the detector.}
-  \label{fig:AbsCalibCell2}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -1219,193 +1158,6 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
 
 \begin{figure}[!ht]
   \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pe_plane_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pe_plane_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_plane_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/pecorr_plane_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/cm_plane_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/cm_plane_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the planes of the detector.}
-  \label{fig:AbsCalibPlane2}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosx_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosx_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosx_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosx_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the X (horizontal) axis.}
-  \label{fig:AbsCalibCosX1}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosx_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosx_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosx_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosx_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosx_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosx_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the X (horizontal) axis.}
-  \label{fig:AbsCalibCosX2}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-  
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosy_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosy_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosy_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosy_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Y (vertical) axis.}
-  \label{fig:AbsCalibCosY1}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosy_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosy_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosy_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosy_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosy_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosy_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Y (vertical) axis.}
-  \label{fig:AbsCalibCosY2}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-  \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-  
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosz_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecm_cosz_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosz_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorrcm_cosz_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Z (beam) axis.}
-  \label{fig:AbsCalibCosZ1}
-\end{figure}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-    \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-  
-  \begin{subfigure}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosz_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pe_cosz_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosz_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/pecorr_cosz_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosz_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{PlotsAngularDistribution/cm_cosz_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the cosine of the track angle from the Z (beam) axis.}
-  \label{fig:AbsCalibCosZ2}
-\end{figure}
-
-%\subsection{Drift in TB data}
-
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
     \centering
     \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
   \end{subfigure}
@@ -1427,87 +1179,9 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \label{fig:AbsCalibDrift1}
 \end{figure}
 
-\begin{figure}[!ht]
-  \begin{subfigure}{\textwidth}
-    \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-  
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{driftsec_tb/pe_time_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{driftsec_tb/pe_time_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{driftsec_tb/pecorr_time_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{driftsec_tb/pecorr_time_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{driftsec_tb/cm_time_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{driftsec_tb/cm_time_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks across the event UNIX time.}
-  \label{fig:AbsCalibDrift2}
-\end{figure}
-
-\begin{figure}[ht!]
-  \begin{subfigure}{\textwidth}
-    \centering
-    \includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_meu_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_meu_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_mev_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_mev_y.pdf}
-  \end{subfigure}
-  \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks.}
-  \label{fig:AbsCalibNHitsMEU}
-\end{figure}
-
-\begin{figure}[ht!]
-  \begin{subfigure}{\textwidth}
-	\centering
-   	\includegraphics[height=0.2\linewidth]{essentialsec_tb/legend.pdf}
-  \end{subfigure}
-  \vspace*{2mm}
-  
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_w_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_w_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_cell_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_cell_y.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_plane_x.pdf}
-  \end{subfigure}
-  \begin{subfigure}{0.495\textwidth}
-    \includegraphics[width=\linewidth]{essentialsec_tb/nhits_plane_y.pdf}
-  \end{subfigure}
-    \caption{Distributions of stopping muons within a 1-2 m track window from the end of their tracks.}
-  \label{fig:AbsCalibNHitsWCellPlane}
-\end{figure}
-
-
 \section{Conclusion}
+The results of the relative and the absolute calibration, in form of the csv files, are stored in and are applied within NOvASoft in the calibration tag v15.09 and higher.
+
+\todo{Include a table with the percentages of calibrated cells}
+
 We have successfully calibrated the NOvA Test Beam detector for all the Test Beam run periods in both data and simulation. The calibration results are implemented in the v15.09 version of the NOvASoft calibration tag. We haven't attempted to estimate the uncertainty of the calibration, which is a separate task out of scope of this technical note.
