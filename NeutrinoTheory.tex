@@ -1,9 +1,6 @@
 \chapter{Theory of neutrino physics}\label{sec:NeutrinoTheory}
 
 Just give a short overview of the historical context, but mainly focusing on the actual description of the neutrino theory, mostly stating the fact rather than giving a large background
-1.neutrino interactions (neutrinos in the SM) - detection of neutrinos?
-2.neutrino oscillations (including possible sterile oscillation) - maybe current status?
-3.neutrino masses (theoretical prediction for their origins and their measurements)
 
 I should discuss everything that is even briefly mentioned in the neutrino magnetic moment theory section.
 \begin{itemize}
@@ -30,23 +27,28 @@ The story:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 1. Brief history up to neutrinos being in the SM
 
-Neutrinos were first introduced \cite{PauliNeutrinoProposalLetter.pdf,TheIdeaOfTheNeutrino.pdf} as very light, half-spin electrically neutral particles with possible magnetic moments \cite{NeutrinoMagMomentImplications1934.pdf}. Being a crucial part of the successful theory of weak interactions \cite{FermisTheoryOfBetaDecayOriginal.pdf, FermisTheoryOfBetaDecay.pdf}, neutrinos solidified their important in particle physics even before they were first experimentally detected. Neutrinos eventually developed into the two-component left-handed chiral fields $\nu_{\alpha L}$, with three generations $\alpha=e,\mu,\tau$ denoting the three know neutrino flavours \cite{LandauParityViolationForNus.pdf, LeeYangNuAsMasslessWeylSpinor.pdf, SalamNuAsMasslessWeylSpinors.pdf}, with no mass or magnetic moment, we use today in the \gls{SM} of particle physics \cite{SMGlashow.pdf,SMWeinberg.pdf,SMSalam.pdf}. They form weak isospin doublets together with their associated left handed charged lepton fields and unlike the charged leptons, neutrinos do not have an associated right handed singlet in the \gls{SM}. Therefore, they do not obtain their masses via the Higgs mechanism through the Yukawa coupling, which requires the both left handed and right handed fields, therefore there is no mass term in the \gls{SM} lagrangian \cite{FundamentalsOfNeutrinoPhysics.pdf}. The neutrino interaction terms of the \gls{SM} lagrangian can be separated into two, \gls{CC} or \gls{NC} based on the massive gauge field they interact with. They can be written as
+Neutrinos were first introduced by Pauli \cite{PauliNeutrinoProposalLetter.pdf,TheIdeaOfTheNeutrino.pdf} as very light electrically neutral particles with half-spin and a possible magnetic moment \cite{NeutrinoMagMomentImplications1934.pdf}. They were a crucial part of Enrico Fermi's successful theory of $\beta$ decays \cite{FermisTheoryOfBetaDecayOriginal.pdf, FermisTheoryOfBetaDecay.pdf}, which solidified their importance in particle physics even before their first experimental detection.
+Fermi's theory developed into the \gls{SM} of particle physics \cite{SMGlashow.pdf,SMWeinberg.pdf,SMSalam.pdf}, which in its current form contains three generations of fermions. Each generations contains two quarks, one charged lepton and an associated neutrino with no mass or magnetic moment. 
+
+\gls{SM} is mathematically described by a Lagrangian, in which neutrinos are expressed as two-component left-handed chiral fields $\nu_{\alpha L}$, where $\alpha=e,\mu,\tau$ denotes the three neutrino generations \cite{LandauParityViolationForNus.pdf, LeeYangNuAsMasslessWeylSpinor.pdf, SalamNuAsMasslessWeylSpinors.pdf}. Neutrinos form weak isospin doublets with their associated left handed charged lepton fields $\alpha_L$. Unlike for the charged leptons, there is no right handed neutrino singlet in the \gls{SM}. This means that neutrinos cannot obtain a (Dirac) mass term, since the mass terms for fermions arise from the Higgs mechanism \cite{HiggsMechanismOriginal1964.pdf, HiggMechanismEnglertBrut1964.pdf, HiggsMechanismGuralnikHagenKibble1964.pdf} via the Yukawa coupling of the fermion and the Higgs fields \cite{YukawaLagrangiaWeinberg1967.pdf}, which requires a combination of left-handed and right-handed fields \cite{FundamentalsOfNeutrinoPhysics.pdf}.
+
+%\cite{FundamentalsOfNeutrinoPhysics.pdf} In the SM, the mass of fermions arises as a result of the Higgs mechanism through the presence of Yukawa couplings of the fermion fields with the Higgs doublet. ... a fermion mass term must involve a coupling of left-handed and right-handed fileds, so it is clear that in the SM neutrinos are massless, because their fields do not have a right-handed components
+
+The interaction terms for neutrinos can be separated into two components defined by the vector gauge field they interact with. They are describing the \gls{CC} and the \gls{NC} interactions, based on whether they interact with the $W_\mu$ or $Z_\mu$ fields, which describe the $W^\pm$ or $Z^0$ weak boson respectively. Neglecting the non-neutrino components, the neutrinos interaction terms are \cite{FundamentalsOfNeutrinoPhysics.pdf}
 \begin{equation}\label{eq:NuIntLagrangian}
-\mathcal{L}_{\textsc{CC}}^{\textsc{SM}}=-\frac{g_w}{2\sqrt{2}}j^\mu_W W_\mu +\textsf{h.c.},\,\,\,
-\mathcal{L}_{\textsc{NC}}^{\textsc{SM}}=-\frac{g_w}{2\cos\left(\theta_W\right)}j^\mu_Z Z_\mu,
+\mathcal{L}_{\textsc{CC}}^{\textsc{SM}}=-\frac{g_w}{2\sqrt{2}}j^\mu_W W_\mu +\textsf{h.c.},\,\,\,\textsf{and}\,\,\,
+\mathcal{L}_{\textsc{NC}}^{\textsc{SM}}=-\frac{g_w}{2\cos\left(\theta_W\right)}j^\mu_Z Z_\mu.
 \end{equation}
-where $g_w$ is the weak coupling constant, $\theta_W$ is the Weinberg angle, $W_\mu$ and $Z_\mu$ are the 4-component vector gauge fields describing the $W^{\pm}$ and $Z^0$ weak bosons and $j^\mu_W$ and $j^\mu_Z$ are the weak currents. The currents are expressed as as
+Here $g_w$ is the weak coupling constant, $\theta_W$ is the Weinberg angle and $j^\mu_W$ and $j^\mu_Z$ are the weak currents expressed as
 \begin{equation}
 j^\mu_W=2\sum_{\alpha=e,\mu,\tau}\overline{\nu}_{\alpha L}\gamma^\mu\alpha_L,
 \end{equation}
 \begin{equation}
-j^\mu_Z=2\sum_{\alpha=e,\mu,\tau} g^\nu_L \overline{\nu}_{\alpha L} \gamma^\mu \nu_{\alpha L},
+j^\mu_Z=2\sum_{\alpha=e,\mu,\tau} g^\nu_L \overline{\nu}_{\alpha L} \gamma^\mu \nu_{\alpha L}.
 \end{equation}
-where $\gamma^\mu,\mu=0,1,2,3$, are the four Dirac gamma matrices, $\alpha_R$ is the right handed chiral field for the charged lepton $\alpha$ and $g_L^\nu$ is the coupling term.
+$\gamma^\mu,\mu=0,1,2,3$, are the four Dirac gamma matrices and $g_L^\nu$ is the coupling term, which for neutrinos $g_L^\nu=+1/2$.
 
-\todo{Need to actually properly mention that there are three fermion generations}
-
-The interaction lagrangian described in Eq.~\ref{eq:NuIntLagrangian} describes two possible vertices for the neutrino interaction, as shown on Fig.~\ref{fig:FeynmanNuIntVertices}.
+The interaction lagrangian described in Eq.~\ref{eq:NuIntLagrangian} describes two possible vertices for the neutrino interaction, as shown on Fig.~\ref{fig:FeynmanNuIntVertices}.\todo{Maybe add a note about possibly rotating the vertices so that neutrinos and leptons can annihilate and get created as well}
 
 \begin{figure}[hbtp]
 \centering
@@ -57,7 +59,6 @@ The interaction lagrangian described in Eq.~\ref{eq:NuIntLagrangian} describes t
 \label{fig:FeynmanNuIntVertices}
 \end{figure}
 
-%\cite{FundamentalsOfNeutrinoPhysics.pdf} In the SM, the mass of fermions arises as a result of the Higgs mechanism through the presence of Yukawa couplings of the fermion fields with the Higgs doublet. ... a fermion mass term must involve a coupling of left-handed and right-handed fileds, so it is clear that in the SM neutrinos are massless, because their fields do not have a right-handed components
 
 % in weak isospin doublets \cite{FundamentalsOfNeutrinoPhysics.pdf} grouped with their lepton left handed chiral components of charge leptons. Since SM neutrinos do not have a right handed counterpart, they can't acquire mass through the Yukawa lagrangian which combined the left and right handed fields. Their interaction lagrangian is...
 
