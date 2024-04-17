@@ -27,14 +27,14 @@ The story:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 1. Brief history up to neutrinos being in the SM
 
-Neutrinos were first introduced by Pauli \cite{PauliNeutrinoProposalLetter.pdf,TheIdeaOfTheNeutrino.pdf} as very light electrically neutral particles with half-spin and a possible magnetic moment \cite{NeutrinoMagMomentImplications1934.pdf}. They were a crucial part of Enrico Fermi's successful theory of $\beta$ decays \cite{FermisTheoryOfBetaDecayOriginal.pdf, FermisTheoryOfBetaDecay.pdf}, which solidified their importance in particle physics even before their first experimental detection.
+Neutrinos were first introduced by Wolfgang Pauli \cite{PauliNeutrinoProposalLetter.pdf,TheIdeaOfTheNeutrino.pdf} as very light electrically neutral particles with half-spin and a possible magnetic moment \cite{NeutrinoMagMomentImplications1934.pdf}. They were a crucial part of Enrico Fermi's successful theory of $\beta$ decays \cite{FermisTheoryOfBetaDecayOriginal.pdf, FermisTheoryOfBetaDecay.pdf}, which solidified their importance in particle physics even before their first experimental detection.
 Fermi's theory developed into the \gls{SM} of particle physics \cite{SMGlashow.pdf,SMWeinberg.pdf,SMSalam.pdf}, which in its current form contains three generations of fermions. Each generations contains two quarks, one charged lepton and an associated neutrino with no mass or magnetic moment. 
 
 \gls{SM} is mathematically described by a Lagrangian, in which neutrinos are expressed as two-component left-handed chiral fields $\nu_{\alpha L}$, where $\alpha=e,\mu,\tau$ denotes the three neutrino generations, also called flavours \cite{LandauParityViolationForNus.pdf, LeeYangNuAsMasslessWeylSpinor.pdf, SalamNuAsMasslessWeylSpinors.pdf}. Neutrinos form weak isospin doublets with their associated left handed charged lepton fields $\alpha_L$. Unlike for the charged leptons, there is no right handed neutrino singlet in the \gls{SM}. This means that neutrinos cannot obtain a (Dirac) mass term, since the mass terms for fermions arise from the Higgs mechanism \cite{HiggsMechanismOriginal1964.pdf, HiggMechanismEnglertBrut1964.pdf, HiggsMechanismGuralnikHagenKibble1964.pdf} via the Yukawa coupling of the fermion and the Higgs fields \cite{YukawaLagrangiaWeinberg1967.pdf}, which requires a combination of left-handed and right-handed fields \cite{FundamentalsOfNeutrinoPhysics.pdf}.
 
 %\cite{FundamentalsOfNeutrinoPhysics.pdf} In the SM, the mass of fermions arises as a result of the Higgs mechanism through the presence of Yukawa couplings of the fermion fields with the Higgs doublet. ... a fermion mass term must involve a coupling of left-handed and right-handed fileds, so it is clear that in the SM neutrinos are massless, because their fields do not have a right-handed components
 
-The interaction terms for neutrinos can be separated into two components defined by the vector gauge field they interact with. They are describing the \gls{CC} and the \gls{NC} interactions, based on whether they interact with the $W_\mu$ or $Z_\mu$ fields, which describe the $W^\pm$ or $Z^0$ weak boson respectively. Neglecting the non-neutrino components, the neutrinos interaction terms are \cite{FundamentalsOfNeutrinoPhysics.pdf}
+The interaction terms for neutrinos can be separated into two parts, describing the \gls{CC} and the \gls{NC} interactions, based on whether they interact with the $W_\mu$ or $Z_\mu$ massive gauge fields, which describe the $W^\pm$ or $Z^0$ weak boson respectively. Neglecting the non-neutrino components, the two neutrinos interaction terms are \cite{FundamentalsOfNeutrinoPhysics.pdf}
 \begin{equation}\label{eq:NuIntLagrangian}
 \mathcal{L}_{\textsc{CC}}^{\textsc{SM}}=-\frac{g_w}{2\sqrt{2}}j^\mu_W W_\mu +\textsf{h.c.},\,\,\,\textsf{and}\,\,\,
 \mathcal{L}_{\textsc{NC}}^{\textsc{SM}}=-\frac{g_w}{2\cos\left(\theta_W\right)}j^\mu_Z Z_\mu.
@@ -44,11 +44,11 @@ Here $g_w$ is the weak coupling constant, $\theta_W$ is the Weinberg angle and $
 j^\mu_W=2\sum_{\alpha=e,\mu,\tau}\overline{\nu}_{\alpha L}\gamma^\mu\alpha_L,
 \end{equation}
 \begin{equation}
-j^\mu_Z=2\sum_{\alpha=e,\mu,\tau} g^\nu_L \overline{\nu}_{\alpha L} \gamma^\mu \nu_{\alpha L}.
+j^\mu_Z=\sum_{\alpha=e,\mu,\tau} \overline{\nu}_{\alpha L} \gamma^\mu \nu_{\alpha L},
 \end{equation}
-$\gamma^\mu,\mu=0,1,2,3$, are the four Dirac gamma matrices and $g_L^\nu$ is the coupling term, which for neutrinos $g_L^\nu=+1/2$.
+where $\gamma^\mu,\mu=0,1,2,3$, are the four Dirac gamma matrices.
 
-The two terms of the interaction Lagrangian from Eq.~\ref{eq:NuIntLagrangian} describe the possible neutrino interaction vertices, shown in Fig.~\ref{fig:FeynmanNuIntVertices}. These diagrams show the \gls{CC} and \gls{NC} interaction of neutrinos and antineutrinos and, in case of the \gls{CC} diagram, can also be flipped around the vertical axis to show the production of neutrinos from the weak interaction (or decays) of leptons. They can also be rotated $90^{\circ}$ to show annihilation, or production, of the neutrino-lepton (for \gls{CC}), or neutrino-antineutrino (for \gls{NC}) pairs.
+The two terms of the interaction Lagrangian from Eq.~\ref{eq:NuIntLagrangian} describe the possible neutrino interaction vertices shown in Fig.~\ref{fig:FeynmanNuIntVertices}. These diagrams show the \gls{CC} and the \gls{NC} interaction of neutrinos and antineutrinos and, in case of the \gls{CC} diagram, can also be flipped around the vertical axis to show the production of neutrinos from the weak interaction (or decays) of leptons. They can also be rotated $90^{\circ}$ to either show the annihilation, or the production of the neutrino-lepton (for \gls{CC}), or neutrino-antineutrino (for \gls{NC}) pairs.
 
 \begin{figure}[hbtp]
 \centering
@@ -80,7 +80,7 @@ Some of the most common neutrino and antineutrino production channels include nu
 \begin{equation}
 n\rightarrow p+e^-+\overline{\nu}_e.
 \end{equation}
-The shape of the electron spectrum from a $\beta^-$ decay was the reason Pauli proposed the existence of the neutrino \cite{PauliNeutrinoProposalLetter.pdf}. Additionally, this channel is an abundant source of $\overline{\nu}_e$ from nuclear reactors, which were the first artificial sources of neutrinos, increasing the neutrino flux by about 100 million compared to the naturally occurring sources, enabling the first ever detection of a neutrino \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf, NeutrinoPhysicsCowanReines.pdf}.
+The study of the shape of the electron spectrum from $\beta^-$ decay was the reason Pauli proposed the existence of the neutrino \cite{PauliNeutrinoProposalLetter.pdf}. Additionally, this channel is an abundant source of $\overline{\nu}_e$ from nuclear reactors, which were the first artificial sources of neutrinos, increasing the neutrino flux by about 100 million compared to the naturally occurring sources, enabling the first ever detection of a neutrino \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf, NeutrinoPhysicsCowanReines.pdf}.
 
 Similarly, the production of an electron neutrino via the transition of a proton into a neutron can occur inside the nucleus either as the $\beta^+$ decay:
 \begin{equation}
@@ -90,11 +90,13 @@ or via the electron capture:
 \begin{equation}
 p+e^-\rightarrow n+\nu_e.
 \end{equation}
-This channel occurs in stars and in the first phase of supernovae \cite{FundamentalsOfNeutrinoPhysics.pdf}. However, most supernovae neutrinos are created via a thermal pair production via \gls{NC} interaction
+This channel occurs in stars and in the first phase of supernovae \cite{FundamentalsOfNeutrinoPhysics.pdf}.
+
+However, most supernovae neutrinos are created via a thermal pair production via \gls{NC} interaction
 \begin{equation}
 e^-+e^+\rightarrow\nu_\alpha+\overline{\nu}_\alpha
 \end{equation}
-producing neutrinos and antineutrinos of all flavours. The neutrino pair production via the decay of $Z^0$ was studied in great detail \cite{ZDecay.pdf}, since the magnitude of the decay width depends on the number of light active neutrino flavours. The current best fit is $N_\nu=2.984$ \cite{ZDecayPrecise.pdf}.
+producing neutrinos and antineutrinos of all flavours. Neutrino pair production via the decay of $Z^0$ was studied in great detail \cite{ZDecay.pdf}, since the magnitude of the decay width depends on the number of light active neutrino flavours, with the current best fit $N_\nu=2.984$ \cite{ZDecayPrecise.pdf}.
 %Similar interactions produced the currently unobservable relic neutrinos, which were produced during the Big Bang and have extremely low energies.
 
 %In 1990 the L3 Collaboration studied properties of the $Z^0$ boson and fitted to its peak cross-section and decay width to determine the total number of active (interacting with $Z^0$) light ($m_{\nu}<m_{Z}/2$) neutrino flavours ($N_{\nu}$). They found the best fit integer value to be 3 and ruled out the possibility of four or more active light neutrino flavours at $4\sigma$ \cite{ZDecay.pdf}. Latest most precise results put the fitted value to $N_{\nu}=2.9840\pm 0.0082$ \cite{ZDecayPrecise.pdf}.
@@ -104,41 +106,66 @@ An abundant source of $\nu_\mu$ and $\overline{\nu}_\mu$ is the decay of pions a
 p+X \rightarrow \pi^\pm \rightarrow &\mu^\pm + \nu_\mu\left(\overline{\nu}_\mu\right) \\
  & \mu^\pm \rightarrow e^\pm + \nu_\mu\left(\overline{\nu}_\mu\right) + \nu_e\left(\overline{\nu}_e\right),
 \end{align}
-which naturally occurs in Earth's atmosphere from the interaction of cosmic ray protons. Notice, that if all muons decay by the time they reach Earth's surface, the ratio of $\nu_\mu : \nu_e$ should be exactly 2:1. This processed is also used in the modern accelerator-based source of neutrinos, which accelerate protons to the desired energies, shoot them onto a fixed target, and focus the resulting hadrons to achieve a highly pure and precise source of $\nu_\mu$ or $\overline{\nu}_\mu$ \cite{GoodmanAdvancesInNeutrinoPhysics.pdf, SchwartzAccelerators.pdf}. Similarly, decays of heavier hadrons, such as kaons and charmed particles, also produce neutrinos, including $\nu_\tau$ and $\overline{\nu}_\tau$ \cite{ObservationOfTauNeutrino.pdf, FinalTauNeutrinoResultsDONUT2008.pdf}.
+which naturally occurs in Earth's atmosphere from the interaction of cosmic ray protons. It is notable, that if all the muons decay by the time they reach Earth's surface, the ratio of $\nu_\mu : \nu_e$ should be exactly 2:1. This processed is also used in the modern accelerator-based sources of neutrinos, which accelerate protons to the desired energies, impinge them onto a fixed target, and focus the resulting hadrons to achieve a highly pure and precise source of $\nu_\mu$ or $\overline{\nu}_\mu$ \cite{GoodmanAdvancesInNeutrinoPhysics.pdf, SchwartzAccelerators.pdf}. Similarly, decays of heavier hadrons, such as kaons and charmed particles, also produce neutrinos, including $\nu_\tau$ and $\overline{\nu}_\tau$ \cite{ObservationOfTauNeutrino.pdf, FinalTauNeutrinoResultsDONUT2008.pdf}.
 
 %[Master's] The advent of fission reactors brought increase of neutrino rate of about $10^7$, as well as higher neutrino energies, making the neutrino detection worth reinvestigating \cite{NeutrinoPhysicsCowanReines.pdf}. In 1960 Mel Schwartz designed the first neutrino beam made by accelerated protons striking a target, producing pions (mostly), which would decay into neutrinos \cite{GoodmanAdvancesInNeutrinoPhysics.pdf}\cite{SchwartzAccelerators.pdf}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 3. Interaction of neutrinos
 \section{Neutrino Interactions}
-The interaction of neutrinos can either be categorized based on the target, which is generally either electron or a nucleus, or on the neutrino energy. Neutrino-electron interactions either occur via elastic scattering, which has the same neutrino and an electron in the final state, or via the inverse muon (or tau) decay, which contains a muon (or tau) in the final state. Both of these interactions are purely governed by \gls{QED} and are theoretically very well understood, using their measurements to provide constraints on the parameters within the \gls{QED} theory. While the neutrino-on-electron elastic scattering does not have a threshold energy and can occur for any neutrinos, the inverse muon decay has a threshold energy of $\unit[10.92]{GeV}$, and the inverse tau decay $>\unit[3]{TeV}$ \cite{FundamentalsOfNeutrinoPhysics.pdf, NeutrinoOnElectronElScatteringTheory2003.pdf}.
+The interaction of neutrinos can either be categorized based on the target, which is generally either electron or a nucleus, or on the neutrino energy.
 
-The interaction of neutrinos on a nucleus is more complicated, due to contributions from possible nuclear effects and the non-trivial nature of the individual nucleons. At low neutrino energies, the only currently detectable
+Neutrino-electron interactions occur either via elastic scattering, which result in a neutrino and an electron in the final state, or via the inverse muon (or tau) decay, which contains a muon (or tau) in the final state. Both of these interactions are purely governed by \gls{QED} and are theoretically very well understood, and we are currently using their measurements to provide constraints on the parameters within the \gls{QED} theory. Additionally, while the neutrino-on-electron elastic scattering does not have a threshold energy and can occur for any neutrinos, the inverse muon decay has a threshold for the $\nu_\mu$ energy of $\unit[10.92]{GeV}$, and the inverse tau decay $E_{\nu_\tau}>\unit[3]{TeV}$ \cite{FundamentalsOfNeutrinoPhysics.pdf, NeutrinoOnElectronElScatteringTheory2003.pdf}.
 
-CEvENS \cite{CEvENSFirstObservation2017.pdf}
+%Interaction with nucleons
+%By increasing their energy, neutrinos can interact with the individual nucleons bound inside the nucleus above a certain threshold \note{But this threshold doesn't really exist tbh} we can start describing the nucleus as a collection of individual, quasi-free nucleons and we can consider interaction of neutrinos on free nucleons \cite{NeutrinoIntOverview2012.pdf}. 
 
-For low energies neutrinos typically interact with the entire nucleus, either via CEvENS, or either via various nuclear models. At higher energies neutrinos start to probe the individual nucleons. At higher energies still, the produced nucleons can get excited and at higher energies still neutrinos start to probe inside the nucleons themselves.
-
-For neutrinos interacting on the nuclei, we distinguish between different types of interactions based on what happens to the nucleus. If it's an interaction with a single proton or neutron, we call this \gls{QE} interaction. If this proton gets excited into a $\Delta$ resonance (which then generally decays into a $\pi$), we call this Resonant production, if neutrino penetrates through the nucleon and interacts directly with a quark inside it, we call this \gls{DIS} interaction. This is shown on Fig.~\ref{fig:NuCCCrossSection}. There can be additional subtypes due to nuclear effects, namely the 2p2h interaction \todo{Find a reference for the 2p2h} also called \gls{MEC}, or possible \gls{FSI}.
+The interaction of neutrinos with a nucleus can be to an extent approximated by an interaction of neutrinos on quasi-free nucleons \cite{NeutrinoIntOverview2012.pdf}. The interaction of neutrinos on nucleons can be further classified based on the products it generates. We illustrate these categories on a case of $\nu_\mu$ \gls{CC} cross section in Fig.~\ref{fig:NuCCCrossSection}. At lower energies neutrinos interact via the elastic interactions in the \gls{NC} channel, simply kicking the nucleon out of the nucleus, and via the \gls{QE} interactions in the \gls{CC} channel, transforming the neutron or proton into its nucleon counterpart. For example, the \gls{QE} interaction of an antineutrino on a proton
+\begin{equation}
+\overline{\nu}_l +p\rightarrow n+l^+
+\end{equation}
+is often called the inverse $\beta$ decay and it was used for the first ever detection of neutrinos (specifically electron antineutrinos from a nuclear reactor) by Cowan and Reines \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf}. Analogically, the interaction of neutrinos on a neutron
+\begin{equation}
+\nu_l+n\rightarrow p+l^-
+\end{equation}
+is interesting especially due to having no low energy threshold for $\nu_e$ and it is commonly used for detection of solar neutrinos \cite{Homestake1968.pdf}. For $\nu_\mu$ and $\nu_\tau$ there is a low energy threshold for the \gls{QE} interactions on a free nucleon. For $\nu_\mu$ this threshold is about $\unit[110]{GeV}$, which can be clearly seen in Fig.~\ref{fig:NuCCCrossSection} as the drop off cross section at low energies. The $\nu_\mu$ \gls{CC}\gls{QE} channel was used for the first detection of $\nu_\mu$ \cite{MuonNeutrinoDetection.pdf} from an accelerator and is commonly used for the detection of atmospheric neutrinos \cite{FirstAtmosphericNuDetIndia.pdf, FirstAtmosphericNuDetIndia2.pdf, FirstAtmNuDetectionSouthAfrica1965.pdf}. The threshold for the \gls{CC}\gls{QE} interaction of $\nu_\tau$ is about $\unit[3.5]{GEV}$, which meant that it was only discovered only in 2000 by the DONUT Collaboration at Fermilab \cite{ObservationOfTauNeutrino.pdf}.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=0.8\linewidth]{Plots/Theory/NeutrinoCCCrossSections.png}
-\caption[Neutrino CC cross sections based on the interaction types]{Neutrino \acrshort{CC} cross sections based on the interaction types. Figure from \cite{NeutrinoCCCrossSectionPlot.pdf} compares the measured data \cite{NeutrinoIntOverview2012.pdf} and the prediction \cite{NuanceNuIntSimulation2002.pdf}}
+\caption[Muon neutrino CC cross sections based on the interaction types]{Neutrino \acrshort{CC} cross sections on an isolated nucleon divided by the neutrino energy based on the interaction types. Figure is from \cite{NeutrinoCCCrossSectionPlot.pdf} and compares the measured data \cite{NeutrinoIntOverview2012.pdf} and the prediction provided by the NUANCE generator \cite{NuanceNuIntSimulation2002.pdf}.}
 \label{fig:NuCCCrossSection}
 \end{figure}
 
-Inversely, the detection of neutrinos is usually done by reverting the above mentioned processes. The discussion of neutrino interactions is in \cite{NeutrinoIntOverview2012.pdf}
+%%% Resonance production and DIS
+With an increase in neutrino energy above a certain threshold (about $\unit[270]{MeV}$ for $\nu_\mu$), neutrinos start the \gls{Res}, which commonly decay into a nucleon and an additional hadron. These hadrons are initially pions at lower energies, but by increasing the neutrino incident energy, they start producing multiple pions and other mesons and hyperons. With even higher incident energies, neutrinos start probing the quark contents of the individual nucleons in the \gls{DIS} interaction, as can be seen in Fig.~\ref{fig:NuCCCrossSection}.
 
-For example for the $\overline{\nu}_e$ we can use the so-called inverse beta decay
-\begin{equation}
-\overline{\nu}_e +p\rightarrow n+e^+
-\end{equation}
-was used for the first detection of neutrinos by Cowan and Reines \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf}. This is currently used in the reactor neutrino experiments \note{Should I mention some reactor experiments here?}
+%Mention that the NC resonance production of $\pi^0$ or $\gamma$ could potentially mimic the electron signal so this can be a significant background for the nuone interactions. In the case for resonant production neutrino produces an additional hadron to the nucleon from the QE interactions...
 
-\cite{FundamentalsOfNeutrinoPhysics.pdf} 
-nu-on-e is for example used for the detection of solar neutrinos in the Kamiokande experiments
-Nu-on-e is mainly sensitive to electron neutrinos, whose cross section is about 6 times larger than for the muon/tau neutrinos.
+%[NeutrinoIntForLBL2016.pdf] At energies above $\approx \unit[200]{MeV}$, the first inelastic excitations of the nucleon connected with pion production become possible. The threshold is $\unit[150.5]{MeV}$ for $\nu_e$ and $\unit[277.4]{MeV}$ for the $\nu_\mu$
+
+%With higher energies there can be more pions and also other mesons or hyperons and so on.
+
+%For DIS the neutrino doesn't interact with the nucleon as a whole but with its quark constituents
+
+%%% Nuclear effects
+Even though the approximation of nuclei as collections of quasi-free nucleons is useful, it has been shown \cite{MiniBooNE2p2hExperimentalDiscrepancy2010.pdf} that there are important nuclear effects that have to be considered. Example of these are: Fermi motion of nucleons and their binding inside the nucleus,  Pauli's exclusion principle and nucleon energy levels, short and long range nucleon-nucleon correlations, \gls{MEC}, or \gls{FSI} \cite{NeutrinoIntOverview2022.pdf}.
+
+Additionally, if the total energy transferred to the nucleus is small relative to the size of the nucleus, neutrinos can interact with the entire nucleus coherently. At low energies, neutrinos can interact via the \gls{CEvNS}, where the contributions from each individual nucleon are simply added together coherently \cite{CEvENSFirstObservation2017.pdf}, leaving behind an excited nucleus. At higher energies, neutrinos can interact via the \gls{COHpi} without transferring much momentum to the nucleus. Therefore, there is only a single pion produced (charged through \gls{CC}\gls{COHpi} and neutral through \gls{NC}\gls{COHpi}), which receives most of the transferred momentum and generally travels in the direction of the initial neutrino. This means that the \gls{COHpi} can mimic real $\mu^\pm$, $e^-$, or $\gamma$ signal in a detector \cite{NeutrinoIntOverview2022.pdf}.
+
+%\cite{NeutrinoIntOverview2022.pdf} Also coherent meson production, in which neutrino scatters from the nucleus producing mesons but the nucleus stays in the ground state, possible via both CC and NC. The momentum transferred to the nuclear target is very small and almost all the transferred momentum is taken by the outgoing meson. The coherence condition $Q\ll 1/R$ is satisfied and the individual amplitudes for the pion production from each nucleon in the nucleus add coherently. Most of the $\pi^\pm,\pi^0$ produced (through the electromagnetic shower as their decay products) in the forward direction through the coherent reactions mimic the real $\mu^\pm$ or $e^-$ signal.
+
+%However, recently we discovered that nuclear effect can't actually be ignored and we can't really consider neutrino nucleus interaction as a neutrino on nucleon interaction. 
+Another notable example is the \gls{2p2h} interaction \cite{FirstUseOfMEC2009.pdf, FirstUseOfMEC2010.pdf, FirstUseOfMEC2011.pdf}, which occurs when neutrinos interact with a correlated pair of nucleons, resulting in two nucleons leaving the nucleus, which now has two holes. This interaction can significantly increase the \gls{QE} cross section \cite{NeutrinoIntOverview2022.pdf}. Most frequently, this interaction occurs via the \gls{MEC}, where the meson effectively propagates the interaction between the two bound nucleons.
+%[Maria's thesis] A neutrino can interact with a pair of bound nuclei, thus knocking out two nucleons instead of one, as pictured in Figure 1.14. This is also referred as 2p2h, as the interaction leaves two holes in the struck nucleus. Most frequently, this occurs via the meson exchange current (MEC), where the two nucleons are interacting with each other via a meson.
+
+The products of each of the aforementioned interactions can re-interact inside the nucleus in the so-called \gls{FSI}. The final products of the interaction will therefore make it appear as a different interaction inside the detector.
+%[Maria's thesis] The nucleons and pions and others particles can re-interact within the nucleus. Specifically for pions there are a number of processes that can happen: absorption, (quasi)elastic scattering, charge exchange,... These can also happen multiple times
+
+%For neutrinos interacting on the nuclei, we distinguish between different types of interactions based on what happens to the nucleus. If it's an interaction with a single proton or neutron, we call this \gls{QE} interaction. If this proton gets excited into a $\Delta$ resonance (which then generally decays into a $\pi$), we call this Resonant production, if neutrino penetrates through the nucleon and interacts directly with a quark inside it, we call this \gls{DIS} interaction. This is shown on Fig.~\ref{fig:NuCCCrossSection}. There can be additional subtypes due to nuclear effects, namely the 2p2h interaction \todo{Find a reference for the 2p2h} also called \gls{MEC}, or possible \gls{FSI}.
+
+%nu-on-e is for example used for the detection of solar neutrinos in the Kamiokande experiments
+%Nu-on-e is mainly sensitive to electron neutrinos, whose cross section is about 6 times larger than for the muon/tau neutrinos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Masters
@@ -149,38 +176,20 @@ Nu-on-e is mainly sensitive to electron neutrinos, whose cross section is about 
 %(\ovnu{$\nu$} interacting with proton, producing neutron and positron (\ovnu{$\nu$}$+p\rightarrow n+e^+$))
 
 % Electron neutrino
-The first electron neutrino detection was by the Homestake neutrino experiment detecting solar neutrinos \cite{Homestake1968.pdf}
-$\nu_e+n\rightarrow p+e^-$
+%The first electron neutrino detection was by the Homestake neutrino experiment detecting solar neutrinos \cite{Homestake1968.pdf}
 
 %%% Muon neutrino %%%
-Leon Lederman, Jack Steinberger and others joined Schwartz and using a spark chamber detector in 1962 observed \cite{MuonNeutrinoDetection.pdf} for the first time the muon neutrino $\nu_{\mu}$. Atmospheric neutrinos were first observed by the Kolar Gold Field Mine in South India \cite{FirstAtmosphericNuDetIndia.pdf, FirstAtmosphericNuDetIndia2.pdf} and in the East Rand Proprietary Gold Mine in South Africa \cite{FirstAtmNuDetectionSouthAfrica1965.pdf}.
+%Leon Lederman, Jack Steinberger and others joined Schwartz and using a spark chamber detector in 1962 observed \cite{MuonNeutrinoDetection.pdf} for the first time the muon neutrino $\nu_{\mu}$. Atmospheric neutrinos were first observed by the Kolar Gold Field Mine in South India \cite{FirstAtmosphericNuDetIndia.pdf, FirstAtmosphericNuDetIndia2.pdf} and in the East Rand Proprietary Gold Mine in South Africa \cite{FirstAtmNuDetectionSouthAfrica1965.pdf}.
 
 % Tau neutrino
-After this result it was only a matter of time, before the third neutrino, the tau neutrino ($\nu_{\tau}$) was discovered. Evidence for that were shown in 2000 from the DONUT Collaboration at Fermilab \cite{ObservationOfTauNeutrino.pdf}.
+%After this result it was only a matter of time, before the third neutrino, the tau neutrino ($\nu_{\tau}$) was discovered. Evidence for that were shown in 2000 from the DONUT Collaboration at Fermilab \cite{ObservationOfTauNeutrino.pdf}.
 %%% End of master's on neutrino history
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-I think I should mention here the basic neutrino interactions and their corresponding cross section. For neutrino on nucleons, the total cross section per neutrino energy is around $\unit[0.7\times 10^{-38}]{cm^2GeV^{-1}}$ for neutrinos and half that for antineutrinos. For neutrino on electron interactions, the total cross section per neutrino energy is more similar to $10^-41-\unit[10^{-42}]{cm^2GeV^{-1}}$.
+%I think I should mention here the basic neutrino interactions and their corresponding cross section. For neutrino on nucleons, the total cross section per neutrino energy is around $\unit[0.7\times 10^{-38}]{cm^2GeV^{-1}}$ for neutrinos and half that for antineutrinos. For neutrino on electron interactions, the total cross section per neutrino energy is more similar to $10^-41-\unit[10^{-42}]{cm^2GeV^{-1}}$.
 
-The main neutrino interactions are
-\begin{equation}
-\nu_l+n\rightarrow p+l^-
-\end{equation}
-\begin{equation}
-\overline{\nu}_l+p\rightarrow n+l^+
-\end{equation}
-\begin{equation}
-\nu_l+N\rightarrow\nu_l+N
-\end{equation}
-\begin{equation}
-\overline{\nu}_l+N\rightarrow\overline{\nu}_l+N
-\end{equation}
-
-
-Problems of the SM
+%Problems of the SM
 %[OverviewOfNeutrinoPhysicsPheno2024.pdf] Besides, the SM falls short in describing other challenging issues, including the long-standing problems of explaining the nature of dark matter [12] and the overabundance of matter over antimatter in the Universe [13]. These fundamental problems may be inter-related, with neutrinos potentially playing a primary role in establishing such connections
-
-\todo{Describe neutrino interactions, CC, NC elastic. QE, Res., DIS. Also nuclear effects - MEC, FSI,...}
 
 \section{Neutrino Oscillation}
 Neutrino oscillate and therefore have mass. Describe neutrino oscillations and the current status of their measurements. Maybe also when they were discovered and how?
@@ -190,15 +199,7 @@ Neutrino oscillate and therefore have mass. Describe neutrino oscillations and t
 %Experimental evidence that lead to neutrino oscillations
 [Master's] Several experimental indications for neutrino oscillations were found shortly after its theoretical predictions. Already in 1968 their Homestake Solar Neutrino Observatory saw a solar neutrino flux less than 3 Solar Neutrino Units (SNU = one interaction per $10^{36}$ target atoms $\unit{s^{-1}}$), well below the solar model prediction of the time \cite{Homestake1968.pdf}. This discrepancy became the \textit{“solar neutrino problem”}, which is in line with neutrino oscillations, but no direct implications could have been drawn since it might have been caused by a lack of understanding of nuclear physics, astrophysics of the Sun, or particle physics of the neutrino\cite{GoodmanAdvancesInNeutrinoPhysics.pdf}. Kamiokande experiment, which confirmed the results from Homestake \cite{Kamiokande96.pdf}.
 
-The Solar neutrino anomaly was also resolved, when the Sudbury Neutrino Observatory (SNO) provided $>5\sigma$ evidence for  solar $\nu_e$ oscillations in 2002, independent on the solar model \cite{NCOscInSNOSecondOscResult.pdf}. While other solar neutrino experiments measured solar $\nu_e$ only via the charged current (CC) interactions
-\begin{equation}
-\nu_e+n\rightarrow p+e^- \qquad (CC),
-\end{equation}
-SNO had an ability to also detect neutrinos via the neutral current (NC) interaction
-\begin{equation}
-\nu+X\rightarrow\nu+X^{\prime} \qquad (NC),
-\end{equation}
-which are equally sensitive to all active neutrino flavours and their rate is therefore unaffected by standard neutrino oscillations. SNO could compare CC and NC event rates and conclude that $\nu_e$ from the Sun oscillate into other neutrino flavours along the way \cite{NCOscInSNOSecondOscResult.pdf}.
+The Solar neutrino anomaly was also resolved, when the Sudbury Neutrino Observatory (SNO) provided $>5\sigma$ evidence for  solar $\nu_e$ oscillations in 2002, independent on the solar model \cite{NCOscInSNOSecondOscResult.pdf}. While other solar neutrino experiments measured solar $\nu_e$ only via the charged current (CC) interactions SNO had an ability to also detect neutrinos via the neutral current (NC) interaction which are equally sensitive to all active neutrino flavours and their rate is therefore unaffected by standard neutrino oscillations. SNO could compare CC and NC event rates and conclude that $\nu_e$ from the Sun oscillate into other neutrino flavours along the way \cite{NCOscInSNOSecondOscResult.pdf}.
 
 %Atmospheric neutrino experiments - atmospheric neutrino anomaly - how many neutrinos
 Measuring atmospheric neutrinos brought about another neutrino conundrum, the \textit{Atmospheric neutrino anomaly}. It came from the disagreement between experiments such as NUSEX\cite{NUSEX89.pdf} and Fr\'{e}jus\cite{Frejus95.pdf}, which used iron calorimeters detectors, and experiments IMP\cite{IMP92.pdf} and Kamiokande\cite{Kamiokande94.pdf}, which used water Cherenkov detectors. All of these experiments were looking for a deficit of $\nu_{\mu}$, or an excess of $\nu_e$, compared to prediction. While the first two experiments saw a good agreement between experimental results and predictions, the latter two did not and suggested the possibility of neutrino oscillations, which could explain their disagreement. Solution to the Atmospheric neutrino anomaly came in 1998, when the Super-Kamiokande (SK) experiment showed for the first time the~experimental evidence for neutrino oscillations \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}. SK has however also disfavoured the two neutrino hypothesis, with regards to the existence of an additional neutrino flavour. 
@@ -207,11 +208,14 @@ Measuring atmospheric neutrinos brought about another neutrino conundrum, the \t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Master's on neutrino oscillations
 
-The idea that neutrinos can oscillate between the individual flavours originates \cite{Pontecorvo57.pdf,Pontecorvo58.pdf} from the $K^{0}\leftrightarrow \overline{K^0}$ oscillations, which was adapted to neutrinos \cite{MNS1962Osc.pdf,Pontecorvo69.pdf} by considering that the weak interaction neutrino eigenstates $\nu_\alpha$ produced in \gls{CC} weak interaction are not identical to the mass neutrino eigenstates $\nu_k$ and are related by
+The idea that neutrinos can oscillate between the individual flavours originates \cite{Pontecorvo57.pdf,Pontecorvo58.pdf} from the $K^{0}\leftrightarrow \overline{K^0}$ oscillations, which was adapted to neutrinos \cite{MNS1962Osc.pdf,Pontecorvo69.pdf} by considering that the weak interaction neutrino eigenstates $\nu_\alpha$, produced in \gls{CC} weak interactions, are not identical to the mass neutrino eigenstates $\nu_k$, which propagate through space. They are related by
 \begin{equation}
-\ket{\nu_{\alpha}}=\sum_{k} U_{\alpha k}^{*}\ket{\nu_{k}}.
+\ket{\nu_{\alpha}}=\sum_{k} U_{\alpha k}^{*}\ket{\nu_{k}},
 \end{equation}
-Here $U$ is a unitary matrix now know by the authors of neutrino oscillations as \gls{PMNS} matrix \cite{FundamentalsOfNeutrinoPhysics.pdf, Gonzalez-GarciaNuMassesAndMixing.pdf}.
+where $U$ is a unitary matrix now known by the authors of neutrino oscillations as the \gls{PMNS} matrix \cite{FundamentalsOfNeutrinoPhysics.pdf, Gonzalez-GarciaNuMassesAndMixing.pdf}. As it is unitary, we get a simple expression for the opposite relation
+\begin{equation}
+\ket{\nu_k}=\sum_\alpha U_{\alpha k}\ket{\nu_\alpha}.
+\end{equation}
 
 %This led B. Pontecorvo, inspired by already known $K^{0}\leftrightarrow \overline{K^0}$ oscillations, to consider $\nu\leftrightarrow\overline{\nu}$ transitions (oscillations), in case the conservation of neutrino charge does not apply\cite{Pontecorvo57.pdf}. Pontecorvo later built upon this statement in 1958 considering that oscillations between $\nu$ and $\overline{\nu}$ are due to them being combinations of particles $\nu_1$ and $\nu_2$ and that the transformation lifetime is related to the mass difference between $\nu_1$ and $\nu_2$ \cite{Pontecorvo58.pdf}, laying foundation for neutrino oscillations as we know them today.
 
