@@ -192,40 +192,39 @@ The products of each of the aforementioned interactions can re-interact inside t
 %[OverviewOfNeutrinoPhysicsPheno2024.pdf] Besides, the SM falls short in describing other challenging issues, including the long-standing problems of explaining the nature of dark matter [12] and the overabundance of matter over antimatter in the Universe [13]. These fundamental problems may be inter-related, with neutrinos potentially playing a primary role in establishing such connections
 
 \section{Neutrino Oscillation}
-The idea that neutrinos can oscillate originates \cite{Pontecorvo57.pdf,Pontecorvo58.pdf} from the already known oscillations of $K^{0}\leftrightarrow \overline{K^0}$. This was adapted to the oscillations between different neutrino flavours \cite{MNS1962Osc.pdf,Pontecorvo69.pdf} by considering that the weak interaction neutrino eigenstates $\nu_\alpha$, produced in \gls{CC} weak interactions described in Eq.~\ref{eq:NuIntLagrangian}-\ref{eq:NuIntNCCurrent}, are not identical to the mass neutrino states $\nu_k$, which are the eigenstates of the hamiltonian\footnote{vacuum hamiltonian, for the full hamiltonian including interactions with matter see matter effect below}
+The idea that neutrinos can oscillate originates as a possible transition between neutrinos and antineutrinos \cite{Pontecorvo57.pdf,Pontecorvo58.pdf}, analogically to the already known oscillations of $K^{0}\leftrightarrow \overline{K^0}$. This was adapted to the oscillations between different neutrino flavours \cite{MNS1962Osc.pdf,Pontecorvo69.pdf} by considering that the flavour neutrino states $\nu_\alpha$, which are the eigenstates of the weak interactions described in Eq.~\ref{eq:NuIntLagrangian}-\ref{eq:NuIntNCCurrent}, are not identical to the mass neutrino states $\nu_k$, which are the eigenstates of the vacuum hamiltonian
 \begin{equation}\label{eq:NuOscVacHamiltonian}
-\mathcal{H}\ket{\nu_k}=E_k\ket{\nu_k}.
+\mathcal{H}_0\ket{\nu_k}=E_k\ket{\nu_k}.
+\end{equation}
+
+Instead, the neutrino flavour and mass eigenstates are related as
+\begin{equation}\label{eq:NuOscFlavourMassRel}
+\ket{\nu_{\alpha}}=\sum_{k} U_{\alpha k}^{*}\ket{\nu_{k}},
+\end{equation}
+where $U$ is the \gls{PMNS} matrix, named after the authors of neutrino oscillations \cite{FundamentalsOfNeutrinoPhysics.pdf, Gonzalez-GarciaNuMassesAndMixing.pdf}. $U$ is defined as unitary, which makes the inverse relation simply
+\begin{equation}\label{eq:NuOscMassFlavourRel}
+\ket{\nu_k}=\sum_\alpha U_{\alpha k}\ket{\nu_\alpha}.
 \end{equation}
 
 From the Schr\"{o}dinger equation
 \begin{equation}
 i\frac{d}{dt}\ket{\nu_k\left(t\right)}=\mathcal{H}\ket{\nu_k\left(t\right)}
 \end{equation}
-we get that the massive neutrino states evolve as plane waves
+we get that in vacuum $\left(\mathcal{H}=\mathcal{H}_0\right)$, the massive neutrino states evolve as plane waves
 \begin{equation}\label{eq:NuOscPlaneWave}
-\ket{\nu_k\left(t\right)}=e^{-iE_kt}\ket{\nu_k}.
+\ket{\nu_k\left(t\right)}=e^{-iE_kt}\ket{\nu_k},
 \end{equation}
-
-The energy of the neutrino state
+where the energy of the neutrino state with mass $m_k$ and momentum $\overrightarrow{p}$ is
 \begin{equation}
-E_k=\sqrt{\overrightarrow{p}^2+m_k^2}
+E_k=\sqrt{\overrightarrow{p}^2+m_k^2}.
 \end{equation}
-can be approximated as
+Assuming small neutrinos masses, $E_k$ can be approximated as
 \begin{equation}\label{eq:NuOscUltrarelativisticApprox}
-E_k\xrightarrow{m^2\ll p^2\approx E^2}E+\frac{m_k^2}{2E},
+E_k\xrightarrow{m^2\ll p^2\approx E^2}E+\frac{m_k^2}{2E}
 \end{equation}
-for ultra-relativistic neutrinos \cite{FundamentalsOfNeutrinoPhysics.pdf}. Additionally, given the notation $c\equiv 1$,  we can approximate $L\approx t$, where $L$ is the distance neutrino travelled in time $t$, also called the baseline, which is easier to be experimentally measured than time.
+for ultra-relativistic neutrinos \cite{FundamentalsOfNeutrinoPhysics.pdf}. Additionally, given the notation $c\equiv 1$,  we can approximate $L\approx t$, where $L$ is the distance neutrino travelled in time $t$ and is easier to measure.
 
-The neutrino flavour and mass eigenstates are related by
-\begin{equation}\label{eq:NuOscFlavourMassRel}
-\ket{\nu_{\alpha}}=\sum_{k} U_{\alpha k}^{*}\ket{\nu_{k}},
-\end{equation}
-where $U$ is a unitary matrix now known by the authors of neutrino oscillations as the \gls{PMNS} matrix \cite{FundamentalsOfNeutrinoPhysics.pdf, Gonzalez-GarciaNuMassesAndMixing.pdf}. Due to its unitarity, the inverse relation is simply
-\begin{equation}\label{eq:NuOscMassFlavourRel}
-\ket{\nu_k}=\sum_\alpha U_{\alpha k}\ket{\nu_\alpha}.
-\end{equation}
-
-Given that $\braket{\nu_k|\nu_j}=\delta_{kj}$ and $\braket{\nu_{\alpha}|\nu_{\beta}}=\delta_{\alpha\beta}$ and using Eq.~\ref{eq:NuOscPlaneWave},\ref{eq:NuOscFlavourMassRel} and \ref{eq:NuOscMassFlavourRel}, we can write the amplitude of the $\nu_\alpha\rightarrow\nu_\beta$ transition over the distance $L$ as
+We are interested in the oscillation (transition) of $\nu_\alpha\rightarrow\nu_\beta$ over some experimental baseline $L$. Given that $\braket{\nu_k|\nu_j}=\delta_{kj}$ and $\braket{\nu_{\alpha}|\nu_{\beta}}=\delta_{\alpha\beta}$ and using Eq.~\ref{eq:NuOscPlaneWave},\ref{eq:NuOscFlavourMassRel} and \ref{eq:NuOscMassFlavourRel}, we can write the amplitude of the oscillation as
 \begin{equation}
 A_{\nu_\alpha\rightarrow\nu_\beta}\left(L\right)\equiv\braket{\nu_\beta|\nu_\alpha\left(L\right)}= \sum_{k} U_{\alpha k}^{*} U_{\beta k} e^{-i E_kL}
 \end{equation}
@@ -236,7 +235,7 @@ P_{\nu_{\alpha}\rightarrow\nu_{\beta}}\left( L\right) =
 \sum_{k, j}U_{\alpha k}^*U_{\beta k}U_{\alpha j}U_{\beta j}^*e^{-i\left(E_k-E_j\right)L}.
 \end{equation}
 
-Given Eq.~\ref{eq:NuOscUltrarelativisticApprox} and defining the neutrino mass splitting as
+Using Eq.~\ref{eq:NuOscUltrarelativisticApprox} and by defining the neutrino mass splitting (also called the mass squared difference) as
 \begin{equation}\label{Deltamsq}
 \Delta m_{kj}^{2}\equiv m_{k}^{2}-m_{j}^{2},
 \end{equation}
@@ -263,7 +262,7 @@ where\cite{Gonzalez-GarciaNuMassesAndMixing.pdf} \[\Delta_{ij}\equiv\Delta m_{ij
 Since real neutrino beams are not monochromatic, what is measured in experiments is an \textbf{average} oscillation probability with $\left\langle \sin^{2}\Delta_{ij}\right\rangle$ and $\left\langle\sin2\Delta_{ij}\right\rangle $ in eq.\ref{OscProb}. We can notice that if $E/L\gg\Delta m_{ij}^{2}$ the oscillation does not show any effect yet and if $E/L\ll\Delta m_{ij}^2$ the oscillating phase goes through many cycles and is averaged to $\left\langle \sin^{2}\Delta_{ij}\right\rangle=1/2$. Therefore different experimental settings can measure different oscillation parameters \cite{PDG.pdf}.
 \fi
 
-There can be in general any number of neutrino mass and flavour eigenstates. However, given we know three neutrinos flavour states, $\nu_\alpha$, where $\alpha=e,\mu,\tau$, we consider a symmetric $3\times 3$ \gls{PMNS} matrix parametrized as:
+So far we haven't assumed the specific number of neutrino mass and flavour states. However, since we currently know three neutrino flavour states, $\nu_e$, $\nu_\mu$ and $\nu_\tau$, for simplicity we also consider three mass states. This is often called the three neutrino paradigm. Therefore, the \gls{PMNS} matrix has size $3\times 3$ and can be written as \cite{FundamentalsOfNeutrinoPhysics.pdf}:
 \[
 U=
 \begin{pmatrix}
@@ -291,44 +290,41 @@ U=
  0       & 0      & 1
 \end{pmatrix},
 \end{equation}
-where $c_{ij}\equiv\cos\theta_{ij}$ and $s_{ij}\equiv\sin\theta_{ij}$. The matrix is parametrized using three mixing angles $\theta_{12}$, $\theta_{13}$ ,and $\theta_{23}$, which in general define the amplitude of neutrino oscillation. Additionally, there is one phase often denoted as the $\delta_{CP}$ phase, which describes the possible \gls{CP} violation for neutrino oscillations. Specifically, if the value of the $\delta_{CP}$ is different from $N\pi$, where $N\in\mathbb{Z}$, it would imply the \gls{CP} symmetry violation and therefore a difference between neutrino and antineutrino oscillations.
+where $c_{ij}\equiv\cos\theta_{ij}$ and $s_{ij}\equiv\sin\theta_{ij}$. The matrix is parametrized using three mixing angles $\theta_{12}$, $\theta_{13}$ ,and $\theta_{23}$ and one phase, often denoted $\delta_{CP}$. The phase describes the possible \gls{CP} symmetry violation in neutrino oscillations, which would result in a difference between neutrino and antineutrino oscillation probabilities.
+%Specifically, $\delta_{CP}$ different from $N\pi$, where $N\in\mathbb{Z}$, would imply \gls{CP} symmetry violation, which in turn results in a difference between neutrino and antineutrino oscillations.
 % and the other two are $\alpha$ and $\beta$, so called Majorana phases, which are non zero only if neutrinos are Majorana (neutrinos and antineutrinos are described by just one field, i.e. neutrinos are the same particle as antineutrinos). Majorana phases play no role in neutrino oscillations, so they are usually left out in the description \cite{PDG.pdf}. The PMNS matrix in this case can be parametrized as
 
-From Eq.~\ref{eq:NuOscProbability}, we can see that the frequency of neutrino oscillations depends on the $\Delta m^2$. In case of three neutrino mass states, there are two independent mass squared differences. 
-Other than the PMNS matrix, neutrino oscillations depend on the mass squared differences (eq.\ref{Deltamsq}). In case of 3 neutrinos, those are $\Delta m^2_{21}$ and $\Delta m^2_{31}$. $\Delta m^2_{21}$ mainly drives oscillations of solar neutrinos and is therefore often denoted as $\Delta m^2_{\odot}$ or $\Delta m^2_{sol}$, while $\Delta m^2_{31}$ drives oscillations on the scale for atmospheric neutrinos  and is often written as $\Delta m^2_{atm}$ \cite{Gonzalez-GarciaNuMassesAndMixing.pdf}. \todo{Update this and mention that this means that there must be at most one massless neutrino states and neutrinos must have mass}
+%%% Matter effect
+%The hamiltonian in Eq.~\ref{eq:NuOscVacHamiltonian} and all the previous considerations only consider neutrino oscillations in vacuum, without possible interactions in matter. 
+When neutrinos pass through matter, their evolution changes due to coherent elastic \gls{CC} and \gls{NC} scattering. However, since the \gls{NC} scattering affects all neutrino flavours equivalently, it does not have any effect on neutrino oscillations. Additionally, we only need to consider the effect of \gls{CC} interactions for $\nu_e$, as electrons are the only charged leptons present in matter. This is described by the \gls{MSW} effect \cite{Wolfenstein78.pdf, MikheyevSmirnov85.pdf}, which uses an effective potential
+\begin{equation}
+V_{\textsc{CC}}=\pm\sqrt{2}G_{F}N_{e}
+\end{equation}
+for neutrinos passing through matter with an electron density $N_e$. $G_F$ is the Fermi coupling constant and the plus or minus sign is for neutrinos or antineutrinos respectively.
 
-%Experimental evidence that lead to neutrino oscillations
-The idea of neutrino oscillations was suggested as an explanation for the observed deficit of solar neutrinos \cite{Homestake1968.pdf} and for the disagreement between the measurement and the prediction for the $\nu_\mu : \nu_e$ fraction of the atmospheric neutrinos \cite{NUSEX89.pdf, Frejus95.pdf, IMP92.pdf, Kamiokande94.pdf}. The so-called atmospheric neutrino anomaly was resolved by the \gls{SK} experiment \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}, which reported the first evidence for neutrino oscillations. The solar neutrino anomaly was resolved by the \gls{SNO} experiment \cite{NCOscInSNOSecondOscResult.pdf}, which compared the rate of the \gls{CC} interaction, which are affected by neutrino oscillations, and of the \gls{NC} interaction, which can't determine between neutrino flavours and are therefore unaffected by neutrino oscillations.  However, the results from \gls{SNO} confirmed that we need to account for so-called matter effects, especially for solar neutrinos.
+The effect of matter on the oscillation probabilities can be expressed as a shift to the values of the mixing angles and the mass squared differences, proportional to the $V_{\textsc{CC}}$. Since the \gls{MSW} effect differs for neutrinos and antineutrinos, it needs to be carefully considered especially for the measurement of the $\delta_{CP}$, which rely on the comparison of neutrino to antineutrino oscillations \cite{FundamentalsOfNeutrinoPhysics.pdf}.
 
-%[Master's] Several experimental indications for neutrino oscillations were found shortly after its theoretical predictions. Already in 1968 their Homestake Solar Neutrino Observatory saw a solar neutrino flux less than 3 Solar Neutrino Units (SNU = one interaction per $10^{36}$ target atoms $\unit{s^{-1}}$), well below the solar model prediction of the time \cite{Homestake1968.pdf}. This discrepancy became the \textit{“solar neutrino problem”}, which is in line with neutrino oscillations, but no direct implications could have been drawn since it might have been caused by a lack of understanding of nuclear physics, astrophysics of the Sun, or particle physics of the neutrino\cite{GoodmanAdvancesInNeutrinoPhysics.pdf}. Kamiokande experiment, which confirmed the results from Homestake \cite{Kamiokande96.pdf}.
-
-%The Solar neutrino anomaly was also resolved, when the Sudbury Neutrino Observatory (SNO) provided $>5\sigma$ evidence for  solar $\nu_e$ oscillations in 2002, independent on the solar model \cite{NCOscInSNOSecondOscResult.pdf}. While other solar neutrino experiments measured solar $\nu_e$ only via the charged current (CC) interactions SNO had an ability to also detect neutrinos via the neutral current (NC) interaction which are equally sensitive to all active neutrino flavours and their rate is therefore unaffected by standard neutrino oscillations. SNO could compare CC and NC event rates and conclude that $\nu_e$ from the Sun oscillate into other neutrino flavours along the way \cite{NCOscInSNOSecondOscResult.pdf}.
-
-%Atmospheric neutrino experiments - atmospheric neutrino anomaly - how many neutrinos
-%Measuring atmospheric neutrinos brought about another neutrino conundrum, the \textit{Atmospheric neutrino anomaly}. It came from the disagreement between experiments such as NUSEX\cite{NUSEX89.pdf} and Fr\'{e}jus\cite{Frejus95.pdf}, which used iron calorimeters detectors, and experiments IMP\cite{IMP92.pdf} and Kamiokande\cite{Kamiokande94.pdf}, which used water Cherenkov detectors. All of these experiments were looking for a deficit of $\nu_{\mu}$, or an excess of $\nu_e$, compared to prediction. While the first two experiments saw a good agreement between experimental results and predictions, the latter two did not and suggested the possibility of neutrino oscillations, which could explain their disagreement. Solution to the Atmospheric neutrino anomaly came in 1998, when the Super-Kamiokande (SK) experiment showed for the first time the~experimental evidence for neutrino oscillations \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}. SK has however also disfavoured the two neutrino hypothesis, with regards to the existence of an additional neutrino flavour. 
-
-%%%Matter effect
-\subsection{The Matter Effect}
-The hamiltonian in Eq.~\ref{eq:NuOscVacHamiltonian} and all the previous considerations only consider neutrino oscillations in vacuum, without possible interactions in matter. To account for the effect of matter on neutrinos oscillations, also called the \gls{MSW} effect \cite{Wolfenstein78.pdf, MikheyevSmirnov85.pdf} after its discoverers, we can consider $\mathcal{H}=\mathcal{H}_0+\mathcal{H}_I$, where
+\iffalse
+To consider the effect of neutrinos passing through matter on neutrino oscillations, now also called the \gls{MSW} effect \cite{Wolfenstein78.pdf, MikheyevSmirnov85.pdf}, we have to include the interaction hamiltonian
+\begin{equation}
+\mathcal{H}=\mathcal{H}_0+\mathcal{H}_I.
+\end{equation}
+effect of which can be described by a potential
 \begin{equation}
 \mathcal{H}_I\ket{\nu_\alpha}=V_\alpha\ket{\nu_\alpha}.
 \end{equation}
-
-This potential $V_\alpha$ will be different for electron neutrinos and for the other flavours, as $\nu_e$ can have \gls{CC} interaction with electrons, which are abundant in the universe unlike the other charged leptons \cite{FundamentalsOfNeutrinoPhysics.pdf}:
+This interaction potential $V_\alpha$ is different for $\nu_e$ compared to the other flavours, as $\nu_e$ can have \gls{CC} interaction with electrons, which are highly abundant in the universe unlike the other charged leptons \cite{FundamentalsOfNeutrinoPhysics.pdf}. In a simple form, we can express it as
 \begin{equation}
 V_\alpha=V_{\textsc{CC}}\delta_{\alpha e}+V_{\textsc{NC}}=
 \pm\sqrt{2}G_{F}\left(N_{e}\delta_{\alpha e}-\frac{1}{2}N_n\right),
 \end{equation}
-where $G_F$ is the Fermi coupling constant, $N_e$ is the electron density, $N_n$ is the neutron density and the plus and minus signs is for neutrinos or antineutrinos respectively.
+where $G_F$ is the Fermi coupling constant, $N_e$ is the electron density, $N_n$ is the neutron density and the plus and minus sign is for neutrinos and antineutrinos respectively.
 
-This potential effectively shifts the values of the mixing angles and the mass squared differences based on the matter neutrinos pass through and shifts it in the opposite direction for neutrinos and antineutrinos.
-
-Should probably also mention that this is of particular interest to the solar neutrinos...
-
+This effect of this potential on the neutrino oscillation probability can effectively be understood as shifts to the values of the mixing angles and the mass squared differences. Size of the shifts depends on the matter neutrinos pass through and the shifts are in the opposite direction for neutrinos and antineutrinos. This means that the \gls{MSW} effects needs to be carefully considered especially for the measurement of the $\delta_{CP}$, which rely on the comparison of neutrino to antineutrino oscillations.
+\fi
 %This potential is different for neutrinos and antineutrinos! Matter effect can help us distinguish the sign of the $\Delta m^2$ and the octant of $\theta$! However, since it's also different for neutrinos and antineutrinos it can either increase the difference caused by the $\delta_{CP}$, or can go in the opposite direction, depending on the individual values.
 
 %The matter effect for neutrino oscillations is a result of an imbalance between the interaction probability of $\nu_e$ and $\nu_{\mu}/\nu_{\tau}$, due to the abundance of electrons in matter. 
-
 
 \iffalse
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -359,15 +355,29 @@ where
 %%% End of master's on neutrino oscillations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% Current state of neutrino oscillation measurements
-Currently the three neutrino paradigm is well established. The absolute values (magnitudes) of the two neutrino mass splitting are well measured, two of the mixing angles are known fairly well $\theta_{13}$ and $\theta_{12}$ and for the third $\theta_{23}$ we know it is close to the maximum, but still trying to figure out whether it is $<45^{\circ}$ or $>45^{\circ}$, also called the octants. We still don't know what is the $\delta_{CP}$ \cite{SnowmassNeutrinoFrontierReport.pdf}.
+%Experimental evidence that lead to neutrino oscillations
+Neutrino oscillations were suggested as an explanation for the observed deficit of solar neutrinos \cite{Homestake1968.pdf} and for the disagreement between the measurement and the prediction for the $\nu_\mu : \nu_e$ fraction of the atmospheric neutrinos \cite{NUSEX89.pdf, Frejus95.pdf, IMP92.pdf, Kamiokande94.pdf}. The so-called atmospheric neutrino anomaly was resolved by the \gls{SK} experiment \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}, which reported the first evidence for neutrino oscillations. The solar neutrino anomaly was resolved by the \gls{SNO} experiment \cite{NCOscInSNOSecondOscResult.pdf}, which compared the rate of the \gls{CC} interaction, which are affected by neutrino oscillations, and of the \gls{NC} interaction, which can't determine between neutrino flavours and are therefore unaffected by neutrino oscillations. The results from \gls{SNO} also confirmed that we need to account for the \gls{MSW} effects, especially for solar neutrinos, due to the large $N_e$ in the Sun.
+
+%[Master's] Several experimental indications for neutrino oscillations were found shortly after its theoretical predictions. Already in 1968 their Homestake Solar Neutrino Observatory saw a solar neutrino flux less than 3 Solar Neutrino Units (SNU = one interaction per $10^{36}$ target atoms $\unit{s^{-1}}$), well below the solar model prediction of the time \cite{Homestake1968.pdf}. This discrepancy became the \textit{“solar neutrino problem”}, which is in line with neutrino oscillations, but no direct implications could have been drawn since it might have been caused by a lack of understanding of nuclear physics, astrophysics of the Sun, or particle physics of the neutrino\cite{GoodmanAdvancesInNeutrinoPhysics.pdf}. Kamiokande experiment, which confirmed the results from Homestake \cite{Kamiokande96.pdf}.
+
+%The Solar neutrino anomaly was also resolved, when the Sudbury Neutrino Observatory (SNO) provided $>5\sigma$ evidence for  solar $\nu_e$ oscillations in 2002, independent on the solar model \cite{NCOscInSNOSecondOscResult.pdf}. While other solar neutrino experiments measured solar $\nu_e$ only via the charged current (CC) interactions SNO had an ability to also detect neutrinos via the neutral current (NC) interaction which are equally sensitive to all active neutrino flavours and their rate is therefore unaffected by standard neutrino oscillations. SNO could compare CC and NC event rates and conclude that $\nu_e$ from the Sun oscillate into other neutrino flavours along the way \cite{NCOscInSNOSecondOscResult.pdf}.
+
+%Atmospheric neutrino experiments - atmospheric neutrino anomaly - how many neutrinos
+%Measuring atmospheric neutrinos brought about another neutrino conundrum, the \textit{Atmospheric neutrino anomaly}. It came from the disagreement between experiments such as NUSEX\cite{NUSEX89.pdf} and Fr\'{e}jus\cite{Frejus95.pdf}, which used iron calorimeters detectors, and experiments IMP\cite{IMP92.pdf} and Kamiokande\cite{Kamiokande94.pdf}, which used water Cherenkov detectors. All of these experiments were looking for a deficit of $\nu_{\mu}$, or an excess of $\nu_e$, compared to prediction. While the first two experiments saw a good agreement between experimental results and predictions, the latter two did not and suggested the possibility of neutrino oscillations, which could explain their disagreement. Solution to the Atmospheric neutrino anomaly came in 1998, when the Super-Kamiokande (SK) experiment showed for the first time the~experimental evidence for neutrino oscillations \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}. SK has however also disfavoured the two neutrino hypothesis, with regards to the existence of an additional neutrino flavour. 
+
+%%% History and current state of neutrino oscillation measurements
+From Eq.~\ref{eq:NuOscProbability}, we can see that the frequency of neutrino oscillations depends on the $\Delta m^2$. In case of three neutrino mass states, there are two independent mass squared differences. 
+Other than the PMNS matrix, neutrino oscillations depend on the mass squared differences (eq.\ref{Deltamsq}). In case of 3 neutrinos, those are $\Delta m^2_{21}$ and $\Delta m^2_{31}$. $\Delta m^2_{21}$ mainly drives oscillations of solar neutrinos and is therefore often denoted as $\Delta m^2_{\odot}$ or $\Delta m^2_{sol}$, while $\Delta m^2_{31}$ drives oscillations on the scale for atmospheric neutrinos  and is often written as $\Delta m^2_{atm}$ \cite{Gonzalez-GarciaNuMassesAndMixing.pdf}. \todo{Update this and mention that this means that there must be at most one massless neutrino states and neutrinos must have mass}
+
+Currently the three neutrino paradigm is well established.
+The existence of three neutrino mass states implies two independent neutrino mass splittings. The magnitude of both is well measured, as well as the size of two mixing angles, $\theta_{12}$ and $\theta_{13}$, and for $\theta_{23}$ we know it is close to the maximum mixing value $45^{\circ}$. However, there are three main questions yet to be determined. Is the sign of the larger neutrino mass splitting positive or negative (is neutrino hierarchy normal or inverted)? Is $\theta_{23}<45^{\circ}$ or $\theta_{23}>45^{\circ}$ (what is the octant of $\theta_{23})$? What is the value of $\delta_{CP}$ (is there \gls{CP} symmetry violation in the neutrino sector)? There is currently an intense experimental program ongoing to measure this values \cite{SnowmassNeutrinoFrontierReport.pdf,PDG.pdf}.
+
+ The absolute values (magnitudes) of the two neutrino mass splitting are well measured, two of the mixing angles are known fairly well $\theta_{13}$ and $\theta_{12}$ and for the third $\theta_{23}$ we know it is close to the maximum, but still trying to figure out whether it is $<45^{\circ}$ or $>45^{\circ}$, also called the octants. We still don't know what is the $\delta_{CP}$ \cite{SnowmassNeutrinoFrontierReport.pdf}.
 
 Global fit \cite{NuOscGlobalFit2020.pdf}
 
 $\delta_{CP}$ could help explain the matter antimatter asymmetry in the universe
 The fact that the Universe consists of matter and not antimatter hints at a fundamental asymmetry between matter and antimatter, in the form of CP violation. We know that the known sources of CP violation via quark mixing and from the QCD Lagrangian are insufficient to account for the composition of the Universe. Neutrino oscillation is sensitive to one new CP phase and if neutrinos are Majorana particles, there are two additional neutrino-sector CP phases which may contribute to matter-antimatter asymmetry \cite{SnowmassNeutrinoFrontierReport.pdf}. 
-
-Need to mention the importance of the $\delta_{CP}$ measurements, maybe even the Sakharov conditions... Also why do we care about the $\Delta m^2$ or the octants and what are those... Maybe cite the Snowmass report and the PDG.
 
 [IUPAP_Neutrino_Panel_Report_2021.pdf] Neutrinos oscillate which implies that leptons mix in analogy to quarks. This means that neutrinos have non-vanishing rest masses, which requires at least one new particle species beyond the ones in the standard model.
 
@@ -376,6 +386,8 @@ Need to mention the importance of the $\delta_{CP}$ measurements, maybe even the
 \cite{IUPAP_Neutrino_Panel_Report_2021.pdf} These observations, subsequently confirmed using neutrinos produced in nuclear reactors and at accelerator facilities, established that the three-flavor oscillations of Eq. (4) can be described to a good approximation by two, decoupled oscillations. The first, describing the oscillations of atmospheric muon neutrinos, is characterized by a large mass-squared difference and a mixing angle that is approximately 45 degrees. The second, describing the oscillations of solar electron neutrinos, is characterized by a small mass-squared splitting and a large (approx. 35 degrees) mixing angle. $\theta_{23}$ is referred to as the “atmospheric mixing angle” as it determines at leading order the oscillations of atmospheric muon neutrinos while $\theta_{12}$ is referred to as the solar mixing angle as it is used, at leading order, to describe the oscillations of solar electron neutrinos. The mixing angle $\theta_{13}$ is small, accounting for the approximate decoupling of the atmospheric and solar oscillations. For Majorana neutrinos there are two additional phases (“Majorana phases”), which an be put in a diagonal phase matrix to the right of Eq.(5). See Sec. 5.3 for a discussion. Two additional phases that might arise if neutrinos are Majorana particles can not be measured in neutrino-oscillation experiments and are omitted from Eq. (5). 
 
 \section{Neutrino Mass}
+The existence of oscillations between more than one neutrino mass states requires neutrinos to have non-zero mass. This is to-date the only experimentally proved evidence of physics \gls{BSM}.
+
 The existence of non-zero neutrino mass is, to date, the only laboratory-based observation of BSM physics. The disparity of mass scales between neutrinos and other fundamental particles suggests a high-energy scale for neutrino-mass generation. In models where this mechanism lies at or below the TeV scale, the physics of neutrino mass may be accompanied by complementary signatures at colliders. In models where the scale is higher, experiments probing the nature of neutrino mass are the only feasible way of exploring this new physics. The observation of neutrinoless double beta decay would provide direct evidence that lepton number is violated, opening a path to baryogenesis via leptogenesis in the early universe. As such, direct tests of the scale or nature of neutrino mass target some of the most central open questions in fundamental physics today. Other neutrino properties may be connected to extensions of the standard model, yet are not observable via oscillations. Neutrino electromagnetic properties are of fundamental interest, \cite{SnowmassNeutrinoFrontierReport.pdf}.
 
 Detection of neutrinoless double beta decay is the only known method with plausible sensitivity to the Majorana nature of the neutrino, one of the most important open questions in particle physics. \cite{SnowmassNeutrinoFrontierReport.pdf}
