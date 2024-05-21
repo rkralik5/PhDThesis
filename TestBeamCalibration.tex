@@ -403,6 +403,7 @@ In this section I describe the details of the Test Beam detector calibration as 
 The data calibration samples for Test Beam were created using the same procedures as the \gls{ND} and \gls{FD} calibration samples, described in Sec.~\ref{sec:NOvACalibration}. However, there are two cuts from the event election, that were not included for Test Beam during the processing of the data samples. This can be seen on Tab.~\ref{tab:DataBasedSimEventSelection}, where the two bottom rows show the two excluded cuts. One cut contains the vertex close to the edge of the detector ensuring we only use cosmic events, the other contains the end of track close to the edge, ensuring we only use through-going muons for the relative calibration. Given that we remove beam events and that all the other cuts are designed to select cosmic events, the first cut has only a negligible effect on the final selection. Additionally, the stopping muons only make up a small fraction of the total cosmic muon events, rendering the second cut also negligible.
 
 This section is organized as follows. I first describe the Test Beam versions of the fibre brightness map in Sec.~\ref{sec:FibreBrightnessTB} and the threshold and shielding correction in Sec.~\ref{sec:TBThresholdCorrection}, as they were introduced in Sec.~\ref{sec:NOvACalibration}. I then go over the simulation sample and the three data samples (for periods 2, 3, and 4) showing distributions of hits selected for calibration and of the uncorrected energy deposition before calibration. I then discuss considerations going into calibration, focusing on issues that could affect the calibration results. Afterwards, I am showing a selection of attenuation fit results for each sample together with an overview of the relative calibration effects. Lastly, I discuss the absolute calibration results for all the samples combined, as well as the validation and conclusion of the Test Beam calibration.
+\todo{I should also discuss why we are dividing the calibration into periods and epochs in the first place (beyond mitigating issues) - it's also to counter detector ageing and time related issues}
 
 %Temperature study (small overview - probably not needed at all, depends if Randeeth want to add his work to this technote)
 
@@ -521,7 +522,7 @@ In summary, the threshold and shielding correction exhibits significant variatio
 Several approaches can address these issues. For simulation-related discrepancies, the only viable solution is to rectify the identified faults and to remake the simulation, albeit this would be computationally very intensive. However, for data-related concerns, efforts are underway to devise a new data-driven threshold and shielding correction \cite{NOvA-doc-15223}, eliminating any influence of simulation on the relative calibration of data. If a purely data-driven correction is not viable, there is another possible improvement to the threshold correction while still using simulation, which is to not use the $\gls{PE}_{Poisson \lambda}$ directly, but to pass it through the readout simulation in the same way as $\gls{PE}_{True}$ and create an alternative $\gls{PE}_{Poisson \lambda Reco}$.
 
 \subsection{Simulation}\label{sec:SimulationResults}
-The distribution of tricell hits from the simulated cosmic muon events selected for calibration as a function of the Test Beam detector planes and cells is shown in Fig.~\ref{fig:CalibhistSim}. The features on this plot illustrate the distribution of tricell hits in the `ideal conditions' Test Beam detector and are present in all the data samples discussed below as well. We can clearly see the difference in the number of events between vertical (even) and horizontal (odd) planes. This is expected as cosmic muons are generally vertical and a single cosmic track often passes more horizontal planes than vertical planes. We can also see that due to the tricell condition there are no hits in cells 0 and 63, which are on the edge of the detector. These cells can still be calibrated by including hits from the `z tricell' condition, which is not shown in the plot. The clear horizontal lines correspond to cells (0), 15, 16, 31, 32, 47, 48, (63), which are the first and the last cell of each 16 cell-wide extrusion that makes up half of a module (which makes up half of a Test Beam plane). As was mentioned in Sec.~\ref{sec:NOvADetectors}, these select cells are $\unit[3]{mm}$ narrower than the rest, resulting in fewer hits and a lower deposited energy, although a consistent deposited energy per path length. Overall, Fig.~\ref{fig:CalibhistSim} demonstrates that the tricell hits are distributed fairly uniformly in the centre of the detector, with the number of hits dropping off towards the front, back and corners of the detector. This is due to the event selection applied to the cosmic tracks for calibration.
+The distribution of tricell hits from the simulated cosmic muon events selected for calibration, mapped across the Test Beam detector planes and cells, is shown in Fig.~\ref{fig:CalibhistSim}. As this is a simulated detector, we will use this `ideal conditions' distribution of tricell hits to illustrate the main features that are also present in all the data samples discussed below. We can clearly see the difference in the number of events between vertical (even) and horizontal (odd) planes. This is expected as cosmic muons are generally vertical and a single cosmic track often passes more horizontal planes than vertical planes. We can also see that due to the tricell condition there are no hits in cells 0 and 63, which are on the edge of the detector. These cells can still be calibrated by including hits from the `z tricell' condition, which is not shown in the plot. The three clear horizontal lines of relatively lower response going across the detector correspond to pairs of cells 15 + 16, 31 + 32, and 47 + 48. Together with cells 0 and 63, they represent the first and the last cell of each 16 cell-wide extrusion, which makes up half of a module, which in turn makes up half of a Test Beam plane. As was mentioned in Sec.~\ref{sec:NOvADetectors}, these cells are $\unit[3]{mm}$ narrower than the rest, resulting in fewer hits and a lower deposited energy. However, the deposited energy per path length, which is used in calibration, should compensate for this effect. Overall, Fig.~\ref{fig:CalibhistSim} demonstrates that the tricell hits are distributed fairly uniformly in the centre of the detector, with the number of hits dropping off towards the front, back and corners of the detector. This is due to the event selection applied to the cosmic tracks for calibration.
 
 \begin{figure}[h]
 \centering
@@ -1054,7 +1055,9 @@ Results of the attenuation fits for period 4 are summarised in Fig.~\ref{fig:Cel
 \subsection{Absolute Calibration Results}
 As was described in Sec.~\ref{sec:NOvACalibration}, we apply the relative calibration results (without the threshold and shielding correction) on the stopping muon sample and use the absolute calibration cuts to select only well-understood minimum ionising muons. These events represent a very well understood source of energy deposition and we use them as standard candles to calculate the absolute energy scale. The absolute calibration cuts are mostly the same as for the other \gls{NOvA} detectors, except for a smaller allowed range of $w$ due to the smaller cell length. The selection consists of selecting hits $1-\unit[2]{m}$ from the end of their tracks and removing uncalibrated and wrongly reconstructed hits by requiring non-zero path length, $\gls{PE}>0$, $\gls{PECorr} > 0$, as well as $\gls{PECorr}\unit{/cm} < 100$. To remove hits at the edge of the cells, we require that $-80<w<\unit[80]{cm}$, therefore removing hits approximately $\unit[0.5]{m}$ from each side of the detector.
 
-The distributions of the reconstructed and true energy responses, for both views, and for each data and simulation sample, are shown in Fig.~\ref{fig:AbsCalibNHitsMEU}. The means of these distributions are the $\gls{MEU}_{Reco}$ and $\gls{MEU}_{True}$ values for each view. The uncertainty on the means are calculated as the standard deviation of the distributions divided by the square root of the number of entries. We average the two \gls{MEU} values from both views and combine the uncertainties in the sum of squares. The total number of entries, the \gls{MEU} values for each sample and view, and the combined \gls{MEU} values with corresponding uncertainties are shown in Tab.~\ref{tab:calib_summary_table}. Given the large number of entries in the energy response distributions, the total uncertainties on the \gls{MEU} values are negligible (around $0.05\%$). This are however not the final uncertainties of the absolute energy scale used in \gls{NOvA}. Instead, we use comparison to other standard candles, as was explained in Sec.~\ref{sec:NOvASystematics}.
+The distributions of the reconstructed and true energy responses, for both views, and for each data and simulation sample, are shown in Fig.~\ref{fig:AbsCalibNHitsMEU}. The means of these distributions are the $\gls{MEU}_{Reco}$ and $\gls{MEU}_{True}$ values for each view. The uncertainty on the means are calculated as the standard deviation of the distributions divided by the square root of the number of entries. We average the two \gls{MEU} values from both views and combine the uncertainties in the sum of squares. The total number of entries, the \gls{MEU} values for each sample and view, and the combined \gls{MEU} values with corresponding uncertainties are shown in Tab.~\ref{tab:calib_summary_table}. Given the large number of entries in the energy response distributions, the total uncertainties on the \gls{MEU} values are negligible (around $0.05\%$). This are however not the final uncertainties of the absolute energy scale used in \gls{NOvA}. Instead, we use comparison to other standard candles, as was explained in Sec.~\ref{sec:NOvASystematics}. \todo{Mention that these are just statistical uncertainties and not systematic ones}
+
+\todo{Discuss here already why is simulation larger than data. It's interesting that it's different for X and Y views...}
 
 \begin{figure}[ht!]
   \begin{subfigure}{\textwidth}
@@ -1108,8 +1111,32 @@ The distributions of the reconstructed and true energy responses, for both views
 %%%                      Final results and conclusions
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Discussion}
+\subsection{Validation} %Or rather Validation?
+%First we look at the stopping muons which compare the periods and the simulation amongst themselves. They have some issues such as an unequal distribution across the detector, but where they exist they are the most reliable information on the calibration performance. This should also be used to check the time dependence and the stability of calibration
+
+% To check on the performance of calibration within the detector, we use the data from period 4 from stable runs with a limited w. Similarly for simulation.
+
+
+%What do we want to pay special attention to during validation? Especially checking if the things we wanted to correct for did get in fact corrected, but alsoif other things that we'd expect would've gotten corrected, did
 To validate the results of the Test Beam calibration we look at the stopping muon sample used for the absolute calibration, since these events have the most consistent and reliable energy deposition.
+In the end the performance of this calibration (and the  general performance of the NOvA calibration) will be measured by the Test Beam measurements themselves.
+
+What we expect: the energy dependence should be uniform in space and time
+
+Variation of the MIP muons energy deposition between 1-2 m from their track end is about 1.8\% \cite{AbsCal_technote_1stAna.pdf}.
+
+We are only showing a selection of validation plots related to the main results and issues seen in calibration. The full suite of validation plots is included in the appendix~\ref{sec:AppTBCalibValid}.
+
+%We look at comparions between periods for stopping muons, they might be affected and not equally distributed, but their energy deposition is very consistent
+%Then we look at throughgoing muons for stable runs in period 4 and in simulation. Here we also considered the effect of the threshold and shielding correction, even if it's already been discussed before
+%We can look at data or simulation by themselves, Data VS Simulation, or reco VS true from simulation. I guess based on what is the best. Should I include all of these plots into the appendix?
+%Can the data-MC comparisons be trusted if we know that through going muons do not have a good energy in the simulation?
+
+%Maybe I can divide this section into the individual dependencies
+% 1. dependence on w (maybe calibration shape unc.?)
+% 2. dependence on plane and cell (together due to the maps)
+% 3. dependence on time
+
 
 In plots in Fig. \ref{fig:AbsCalibW1}-\ref{fig:AbsCalibDrift2} we look at distributions of variables used during the calibration, namely $PE$, $PECorr$, $Pathlength$, $PE/cm$ and $PECorr/cm$. Their distributions are over a range of variables we tried to correct the energy deposition in, namely position within a cell $w$, cell number, plane number, track angles and time.
 
@@ -1119,8 +1146,10 @@ The distribution of $PECorr/cm$ across cells in X view in Fig. \ref{fig:AbsCalib
 
 The distributions of $PECorr/cm$ across planes in the X view (Fig. \ref{fig:AbsCalibPlane1}) shows a noticeable smaller corrected energy response of stopping muons in plane 36. This means that the relative calibration over-corrected the energy response due to the through-going muons having unusually high energy response (as shown in Fig. \ref{fig:AttenfitResultsEpoch3abc_FaultyFEBs}), but not the selected stopping muons. The most likely cause is that the impacted FEB was `faulty' only for a certain period of time. In that case the corrected energy response would be correct for the period when the FEB was faulty, but would be under-estimated for the period when the FEB behaved `normally'. The $PECorr/cm$ over Plane plot shows the average over these responses.
 
+%Shape of the response in plane for Y view
 The corrected response across planes in Y view (Fig. \ref{fig:AbsCalibPlane1}) shows a slight incline in the first half of the detector. We do not know where does this slope come from, but it is not big enough to be of concern and we decided to ignore it.
 
+%Dependence in time - maybe also mention the systematic uncertainty?
 The distributions of energy deposition in time (Fig. \ref{fig:AbsCalibDrift1} and \ref{fig:AbsCalibDrift2}) show a non-trivial dependency. The detector response could be influenced by environmental factors (temperature and humidity) and by scintillator or readout ageing. Neither of these factors are well understood within NOvA and Test Beam detector could be potentially used to shine more light on this issue. However this is a topic for a separate study and is out of scope of this technical note.
 
 Technically, we would expect the distributions of $PECorr/cm$ to also have the same \textbf{scale} for all data samples and for simulation. As can be seen on all the validation plots, the data samples have a reasonably similar scale of $PECorr/cm$, but this is noticeably different for simulation. This is caused due to the data-based simulation we are using does not have a correct energy estimation for through-going muons, which have generally underestimated energies \cite{NOVA-doc-60026}. This results in an over-estimated correction from the relative calibration. However, this is not an issue, since we only use stopping muons to calculate the absolute energy scale and stopping muons have correct energies in the new simulation.
@@ -1217,6 +1246,12 @@ Technically, we would expect the distributions of $PECorr/cm$ to also have the s
   \label{fig:AbsCalibDrift1}
 \end{figure}
 
+%%% Systematic uncertainties
+\cite{AbsCal_technote_1stAna.pdf}
+Sources of systematic uncertainty of particular concern are those introduced by residual variations remaining after calibration. Systematic errors are introduced by spatial and temporal variations in detector response. Further, any difference between the two detectors may introduce a relative shift in the energy scale between the detectors.
+Track end misreconstruction: For a track window starting at 100 cm from the track end, a conservative mis-reconstruction of the track end point by 10cm will shift the start of the track window to between 90cm and 110cm. This shift will alter the MEU value by less than 0.4\% over the range.
+Variations in space and time: If the calibration procedure was ideal the detector response would not vary with position in either data or MC. The calibration is not ideal and the detector response and recorded simulated energy deposition varies with position of the hit within the detector, such variations will introduce systematic errors. The position of a hit can be defined by the plane, cell within the plane, and distance along the
+
 \section{Conclusion}
 Everything went great, but what could be improved in the future.
 
@@ -1225,6 +1260,8 @@ The results of the relative and the absolute calibration, in form of the csv fil
 \todo{Include a table with the percentages of calibrated cells}
 
 We have successfully calibrated the NOvA Test Beam detector for all the Test Beam run periods in both data and simulation. The calibration results are implemented in the v15.09 version of the NOvASoft calibration tag. We haven't attempted to estimate the uncertainty of the calibration, which is a separate task out of scope of this technical note.
+
+Also need to mention the faulty FEBs, which might be calibrated, but they're results cannot be trusted...
 
 In the future there should be a better treatment of the threshold correction, ideally based solely on data. Also, the calibration of period 4 should probably be done in smaller intervals? Also have to devise proper systematic uncertainty for the TB calibration.
 
