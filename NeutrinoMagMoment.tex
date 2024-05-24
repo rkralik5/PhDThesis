@@ -518,6 +518,8 @@ weight_{\nu\text{ Mag. Moment}} = \left.\frac{d\sigma_{\nu-on-e}}{dy}\right|_{\n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Event selection}
 
+Mention what are the main backgrounds for this analysis. They would be the events that produce electromagnetic showers: electrons or gamma in the final state. This can be the beam nueCC, or events that produce $\pi^0$, either CC or NC. 
+
 We are trying to select low energy neutrino-on-electron events, which are characterised by a single very forward going electron shower. Since these are the same events as are used in the \gls{ND} group's analysis to constraint the neutrino beam prediction with a \gls{nuone} events \cite{NOVA-doc-56383}, we have taken taken their event selection without changes. This is to save time and analysis efforts, but also to get a first good estimation of \gls{NOvA}'s capabilities to constraint (or measure) neutrino magnetic moment. Almost the same selection is also used in the \gls{LDM} analysis \cite{NOVA-doc-59439}, only without the final $E\theta^2$ cut.
 
 We explain the motivation behind each cut of the event selection and discuss their effect on the neutrino magnetic moment events below. We also consider possible improvements to the event selection for a future (re-)analysis. \todo{Also describe how were the cuts selected}
@@ -542,7 +544,8 @@ Other background         & !(\texttt{kMode}== 5 \&\& \texttt{kElInFinState} \&\&
 \label{tab:SignalDefinitions}
 \end{table}
 
-\subsubsection*{Spill Quality Selection}
+\subsubsection*{Data Quality Selection}
+Spill cuts
 To ensure good data quality, we apply the following criteria on the run, subrun and spill level. 
 \todo{Add a description of the spill quality cuts (only applied to data)}
 
@@ -550,6 +553,8 @@ To ensure good data quality, we apply the following criteria on the run, subrun 
 
 \todo{Split the pre-selection into basic reco quality and basic event selection}
 Pre-selection cuts include basic quality cuts that remove events with invalid vertex reconstruction and events with no reconstructed prongs, as shown on Fig.~\ref{fig:BasicPreSelectionCuts}. In pre-selection we also include a cut on the time difference between the mean times of the "current" slice and of the slice closest in time, which should be $>25\ \unit{ns}$. This ensures that ... \todo{This is to remove slicing failures that split the two gamma from a $\pi^0$ into two slices that resemble electron signal. Should we remove them now though?}.
+
+[nueXSec ana, docdb:37668] One additional detector issues is the presence of "FEB Flashers" within reconstructed slices. FEB flashers are caused by high  energy deposits in one cell, which induces a sagged baseline in all other channels on the same APD. When the baseline is restored, fake hits are triggered on the whole APD.
 
 \begin{figure}[hbtp]
 \centering
@@ -583,6 +588,8 @@ They also remove the obvious $\nu_\mu$CC interactions by requiring that the leng
 %\todo{Add the DeCAF cuts description here - might describe them already when introducing the decaf samples, not sure yet}
 
 \subsubsection*{Fiducial and containment cuts}
+
+[nueXSec ana, docdb:37668] For both the X and Y vertices the distributions are asymmetric when comparing across the origin, in terms of vertex position. This is primarily due to particles coming from the +y and -x from events in the rock surrounding the detector. This corresponds to the direction of the NuMI target from the near detector. ...We require all activity from neutrino activity be deposited outside of the muon catcher.
 
 \todo{Describe what does the fiducial cut do}
 We require that the reconstructed vertex is contained within the following volume: $-185<\textsf{Vtx}_X<175,-175<\textsf{Vtx}_Y<175, 95<\textsf{Vtx}_Z<1095\ \unit{cm}$.
