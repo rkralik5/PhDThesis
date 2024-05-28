@@ -552,36 +552,43 @@ To ensure good data quality, we apply the following criteria on the run, subrun 
 \subsubsection*{Basic Reconstruction Quality Selection}
 
 \todo{Split the pre-selection into basic reco quality and basic event selection}
-Pre-selection cuts include basic quality cuts that remove events with invalid vertex reconstruction and events with no reconstructed prongs, as shown on Fig.~\ref{fig:BasicPreSelectionCuts}. In pre-selection we also include a cut on the time difference between the mean times of the "current" slice and of the slice closest in time, which should be $>25\ \unit{ns}$. This ensures that ... \todo{This is to remove slicing failures that split the two gamma from a $\pi^0$ into two slices that resemble electron signal. Should we remove them now though?}.
+Literally taken from the 3 flavour's nue appearance low energy selection
+Pre-selection cuts include basic quality cuts that remove events with invalid vertex reconstruction and events with no reconstructed prongs, as shown on Fig.~\ref{fig:BasicPreSelectionCuts}.
+%In pre-selection we also include a cut on the time difference between the mean times of the "current" slice and of the slice closest in time, which should be $>25\ \unit{ns}$. This ensures that ... \todo{This is to remove slicing failures that split the two gamma from a $\pi^0$ into two slices that resemble electron signal. Should we remove them now though?}.
 
 [nueXSec ana, docdb:37668] One additional detector issues is the presence of "FEB Flashers" within reconstructed slices. FEB flashers are caused by high  energy deposits in one cell, which induces a sagged baseline in all other channels on the same APD. When the baseline is restored, fake hits are triggered on the whole APD.
+
+Requiring at least one reconstructed vertex and at least one reconstructed prong (and shower). Also requiring that there are $<8$ hits per plane to remove FEB flashers.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NoCut_vtxIsValid.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NoCut_NPng.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. No cuts were applied to make these plots. Gold lines show the cut values for the shown variables.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHitsPPlane.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic reconstruction quality selection variables. No cuts were applied to make these plots. Yellow lines indicate the cut values for the shown variables, with arrows pointing towards the preserved events. All plots show relative comparison with histograms normalised to their areas.}
 \label{fig:BasicPreSelectionCuts}
 \end{figure}
 
 \subsubsection*{Basic Event Selection}
+again Literally taken from the 3 flavour's nue appearance low energy selection
 
 The pre-selection cuts have been kept from the $\nu_e$\gls{CC} analysis with loosened cut values \todo{find a reference for this analysis}.
-They also remove the obvious $\nu_\mu$CC interactions by requiring that the length of the longest prong is $<800\ \unit{cm}$, number of planes crossed by the longest prong is $<120$, and the summed number of cells for all prongs in the slice is $<600$.Relative comparison of signal, $\nu$-on-e background, and other background distributions for the pre-selection variables is shown on Fig.~\ref{fig:PreSelectionCuts}.
+They also remove the obvious $\nu_\mu$CC interactions by requiring that the length of the longest prong is $<500\ \unit{cm}$ and the summed number of cells for all prongs in the slice is $<200$. Relative comparison of signal, $\nu$-on-e background, and other background distributions for the pre-selection variables is shown on Fig.~\ref{fig:PreSelectionCuts}. This is much stricted than the ND group's $NHits<600$, $LongestPlane<800\unit{cm}$ and planes crossed by the longest prong $<120$.
+
+\todo{Mention that I added a preliminary $E\theta^2<0.04$ cut}
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_longestProng.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NPlanes.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for pre-selection variables. Cuts on VtxIsValid and number of prongs were applied to make these plots. Gold lines show the cut values for the shown variables.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHits.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
 \label{fig:PreSelectionCuts1}
 \end{figure}
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHits.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_closestSlice.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for pre-selection variables. Cuts on VtxIsValid and number of prongs were applied to make these plots. Gold lines show the cut values for the shown variables.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_eth2Loose.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
 \label{fig:PreSelectionCuts2}
 \end{figure}
 
@@ -592,18 +599,18 @@ They also remove the obvious $\nu_\mu$CC interactions by requiring that the leng
 [nueXSec ana, docdb:37668] For both the X and Y vertices the distributions are asymmetric when comparing across the origin, in terms of vertex position. This is primarily due to particles coming from the +y and -x from events in the rock surrounding the detector. This corresponds to the direction of the NuMI target from the near detector. ...We require all activity from neutrino activity be deposited outside of the muon catcher.
 
 \todo{Describe what does the fiducial cut do}
-We require that the reconstructed vertex is contained within the following volume: $-185<\textsf{Vtx}_X<175,-175<\textsf{Vtx}_Y<175, 95<\textsf{Vtx}_Z<1095\ \unit{cm}$.
+We require that the reconstructed vertex is contained within the following volume: $-175<\textsf{Vtx}_X<175,-175<\textsf{Vtx}_Y<175, 95<\textsf{Vtx}_Z<1095\ \unit{cm}$.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NoCut_vtxX.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NoCut_vtxY.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NoCut_vtxZ.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. No cuts were applied to make these plots. Gold lines show the cut values that create the fiducial volume.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxXActive.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxYActive.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxZ.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Basic reconstruction quality and pre-selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($<\unit[1270]{cm}$) for the two top plots. Gold lines show the cut values that create the fiducial volume.}
 \label{fig:FiducialCut}
 \end{figure}
 
-To ensure all the energy is contained within the detector and to remove events originating outside of the detector (rock muons), we require that the extreme positions of hits for all prongs in the slice are within the following volume: $-190<\textsf{min}_X, \textsf{max}_X<180, -180<\textsf{min}_Y, \textsf{max}_Y<190, 105<\textsf{min}_Z, \textsf{max}_Z<1275\ \unit{cm}$.
+To ensure all the energy is contained within the detector and to remove events originating outside of the detector (rock muons), we require that the extreme positions of hits for all prongs in the slice are within the following volume: $-175<\textsf{min}_X, \textsf{max}_X<175, -175<\textsf{min}_Y, \textsf{max}_Y<175, 105<\textsf{min}_Z, \textsf{max}_Z<1270\ \unit{cm}$. \note{Also made this a bit stricter from the ND group's values as it didn't really make sense}
 
 \begin{figure}[hbtp]
 \centering
@@ -629,20 +636,8 @@ To ensure all the energy is contained within the detector and to remove events o
 \label{fig:ContainmentCutsZ}
 \end{figure}
 
-\subsubsection*{Single particle requirement}
-
-To selection events with a single particle we require that the fraction of energy contained in the most energetic shower is $>0.8$, that the summed energy of all cells (above threshold and within $\pm8$ planes from the vertex) outside of the most energetic shower is $<0.02\ \unit{GeV}$, and that the distance between the vertex and the start of the primary shower is $<20\ \unit{cm}$.
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_showerEFrac.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxE.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_gap.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. No cuts were applied to make these plots. Gold lines show the cut values that create the fiducial volume.}
-\label{fig:SingleShowerCuts}
-\end{figure}
-
 \subsubsection*{Shower energy cut}
+\note{Already applying the cut here to help reduce the events for TMVA. This cut is based purely on reco quality (we don't trust events below 0.5GeV, especially not for the CVN nuone ID variables0}
 
 \todo{discuss the energy cut, should this be removed? What is the effect on the event count? Why was this included in the first place (the identifiers are not as strong for lower energies - is this true though? - also there are further unexplored backgrounds that would need to be further studied and explore. Maybe depends on where would we move the cut...)}
 The calorimetric energy of the primary shower is required to be within $0.5<E_{cal}<5\ \unit{GeV}$.
@@ -655,12 +650,27 @@ The calorimetric energy of the primary shower is required to be within $0.5<E_{c
 \label{fig:SingleShowerCuts1}
 \end{figure}
 
+\subsubsection*{Single particle requirement}
+\note{This is where I started the TMVA}
+
+To selection events with a single particle we require that the fraction of energy contained in the most energetic shower is $>0.8$, that the summed energy of all cells (above threshold and within $\pm8$ planes from the vertex) outside of the most energetic shower is $<0.02\ \unit{GeV}$, and that the distance between the vertex and the start of the primary shower is $<20\ \unit{cm}$.
+
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_calE_Stat.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_calE_Syst.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. No cuts were applied to make these plots. Gold lines show the cut values that create the fiducial volume.}
-\label{fig:SingleShowerCuts2}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_showerEFracOLD.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxEOLD.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_gapOLD.pdf}
+\caption{OLD Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Every previous cut was applied to make these plots, including the ShwECont for the middle and the bottom plot and the VtxE cut for the bottom plot. Gold lines show the cut values that create the fiducial volume.}
+\label{fig:SingleShowerCutsOld}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_shwEFracE.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_vtxEE.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_gapEE.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. No cuts were applied to make these plots. All the previous cuts were applied, including the cut on the shower energy. No single particle or event ID cuts were applied yet though. Gold lines show the cut values that create the fiducial volume.}
+\label{fig:SingleShowerCuts}
 \end{figure}
 
 \subsubsection*{Event classifiers}
