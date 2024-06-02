@@ -1106,8 +1106,7 @@ As expected, the comparison of the absolute calibration results in Fig.~\ref{fig
 
 %This is caused due to the data-based simulation we are using does not have a correct energy estimation for through-going muons, which have generally underestimated energies \cite{NOVA-doc-60026}. This results in an over-estimated correction from the relative calibration. However, this is not an issue, since we only use stopping muons to calculate the absolute energy scale and stopping muons have correct energies in the new simulation.
 
-There is a noticeable discrepancy of about $\unit[1]{\%}$ in the \gls{MEU}$_{Reco}$ values between the two views. Given the minimal statistical uncertainties and the consistency of results across the samples, this is unlikely to be a random effect. The actual reason for this discrepancy is unknown; it could be due to a real difference in the stopping muon distribution between the two views that is not accounted for, or a systematic difference in the calibration treatment of the two views. This effect is observed in all \gls{NOvA} detectors \cite{NOvA-doc-60709}. Since this means that the final result is technically incorrect for both views, one possible mitigation is to apply the absolute calibration results to each view separately. However, this contradicts the logic that stopping muons can serve as a standard candle, providing a single final calibration value.
-\todo{Describe that simulation varies in the opposite direction to data - why? I don't know}
+There is a noticeable discrepancy of about $\unit[1]{\%}$ in the \gls{MEU}$_{Reco}$ values between the two views. Given the minimal statistical uncertainties and the consistency of results across the samples, this is unlikely to be a random effect. Additionally, the discrepancy between the two views is in a different direction for the data samples and for simulation. The actual reason for this discrepancy is unknown; it could be due to a real difference in the stopping muon distribution between the two views that is not accounted for, or a systematic difference in the calibration treatment of the two views. This effect is observed in all \gls{NOvA} detectors \cite{NOvA-doc-60709}. Since this means that the final result is technically incorrect for both views, one possible mitigation is to apply the absolute calibration results to each view separately. However, this contradicts the logic that stopping muons can serve as a standard candle, providing a single final calibration value.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1115,19 +1114,19 @@ There is a noticeable discrepancy of about $\unit[1]{\%}$ in the \gls{MEU}$_{Rec
 %%%                      Final results and conclusions
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Validation}
+\subsection{Validation}\label{sec:TBCalibValidation}
 
-The initial validation of the Test Beam detector calibration results is performed using the same cosmic muons that were used in the calibration process. This step is essential to ensure that the calibration performs as intended and successfully unifies the energy deposition of cosmic muons across the detector (as a function of $w$, cell and plane) and throughout the Test Beam detector runtime. By analysing these validation results and investigating any residual differences, we assess the stability and quality of the calibration.
+The initial validation of the Test Beam detector calibration is performed using the same cosmic muons that were used in the calibration process. This step is essential to ensure that the calibration performs as intended and successfully unifies the energy deposition of cosmic muons across the detector (as a function of $w$, cell and plane) and throughout the Test Beam detector runtime. By analysing these validation results and investigating any residual differences, we assess the stability and quality of the calibration.
 
-After the initial validation with cosmic muons, we apply the calibration results to beam events. For the \gls{ND} and the \gls{FD}, we use a selection of standard candles, as described in Sec.~\ref{sec:NOvASystematics}, to evaluate the performance of the cosmic-based calibration on beam events and to assess the calibration systematic uncertainties. However, Test Beam offers a unique opportunity to validate the detector calibration directly with measurements from its beamline and to reassess and potentially reduce the systematic uncertainties associated with detector calibration in \gls{NOvA}. This is going to be one of the main results of the Test Beam experiment. We are therefore focusing solely on the cosmic-based validation process.
+After the initial validation with cosmic muons, we apply the calibration results to beam events. For the \gls{ND} and the \gls{FD}, we use a selection of standard candles, as described in Sec.~\ref{sec:NOvASystematics}, to evaluate the performance of the cosmic-based calibration on beam events and to assess the calibration systematic uncertainties. However, Test Beam offers a unique opportunity to validate the detector calibration directly with measurements from its beamline and to reassess and potentially reduce the systematic uncertainties associated with detector calibration in \gls{NOvA}. This is going to be one of the main results of the Test Beam experiment, therefore, we are focusing solely on the cosmic-based validation process.
 
 The following section highlights the most important features observed during the validation, with additional plots provided in Appendix~\ref{sec:AppTBCalibValid} for the reader's convenience.
 
-\subsubsection{Validation with the stopping muons sample}
+\subsubsection{Validation with stopping muons}
 
-First, we examine the calibration effects on the same stopping muon hits as were used for the absolute calibration (Sec.~\ref{sec:TBAbsoluteCalib}), including all the absolute calibration cuts. These events, with a very reliable and stable energy deposition, are used to compare the calibration performance amongst the various data and simulation samples. However, since we require hits to be within $\unit[1-2]{m}$ from the end of the stopping muons' tracks, they are not evenly distributed across the detector, particularly absent in its bottom parts. This causes large statistical uncertainties and scattered distributions along $w$ in the X view (for hits with $w<0$), and across cells in the Y view (for cells $<32$).
+First, we examine the calibration effects on the same stopping muon hits as were used for the absolute calibration (Sec.~\ref{sec:TBAbsoluteCalib}), including all the absolute calibration cuts. These stopping muons, which have a very reliable and stable energy deposition, are used to compare the calibration performance amongst the various data and simulation samples. However, since we require hits to be within $\unit[1-2]{m}$ from the end of the stopping muons' tracks, they are not evenly distributed across the detector, particularly absent in its bottom parts. This causes large statistical uncertainties and scattered distributions along $w$ in the X view (for hits with $w<0$), and across cells in the Y view (for cells $<32$).
 
-Figures \ref{fig:AbsCalibW1}-\ref{fig:AbsCalibDrift1} present the distributions of uncorrected (in \gls{PE}$\unit{/cm}$) and corrected (in $\unit{MeV/cm}$) energy deposition as a function of $w$, cell number, plane number, and time. The uncorrected energy deposition distributions are displaying the same general attributes as were discussed for each sample in the previous sections. As expected, the corrected energy deposition is generally uniform across all the studied variables. However, some notable residual variations can be noticed and are explained below.
+Figures \ref{fig:AbsCalibW1}-\ref{fig:AbsCalibDrift1} present the distributions of uncorrected (in \gls{PE}$\unit{/cm}$) and corrected (in $\unit{MeV/cm}$) energy deposition as a function of $w$, cell number, plane number, and time. The uncorrected energy deposition distributions are displaying the same general attributes as were discussed for each sample in previous sections. As expected, the corrected energy deposition is generally uniform across all the studied variables. However, some residual variations can be noticed and are discussed below.
 
 % General w distribution - all good
 The distributions as a function of $w$ (Fig.~\ref{fig:AbsCalibW1}) illustrate the successful uniformity of energy deposition after applying calibration. Excluding the region affected by the lack of stopping muon hits, the corrected energy deposition for each sample is uniform within $\pm\unit[0.5]{\%}$. Additionally, all four data samples are consistent with each other, and the discrepancy between data and simulation is within $\pm\unit[1.5]{\%}$.
@@ -1156,10 +1155,10 @@ The distributions as a function of $w$ (Fig.~\ref{fig:AbsCalibW1}) illustrate th
 \end{figure}
 
 % The uncorrected response is clearly getting lower with time
-The distributions of uncorrected energy deposition as a function of $w$ demonstrate a relative decrease in energy response over time, with period 4 data exhibiting a significantly smaller uncorrected energy response than period 2 data. This decrease, however, is corrected by calibration as expected.
+The distributions of uncorrected energy deposition as a function of $w$ (top of Fig.~\ref{fig:AbsCalibW1}) demonstrate a relative decrease in energy response over time, with period 4 data exhibiting a significantly smaller uncorrected energy response than period 2 data. This decrease, however, is corrected by calibration as expected.
 
 % Generally different scale for simulation in X and Y views
-The data-simulation discrepancy for the corrected energy deposition along $w$ varies in the opposite direction between the X and Y views. This discrepancy arises from averaging the \gls{MEU}$_{Reco}$ values between the two views, which show opposite variation in simulation compared to data, as explained in Sec.~\ref{sec:TBAbsoluteCalib}. Ideally, there should be no data-simulation discrepancy after applying the full calibration results. Therefore, applying the view-dependent absolute calibration results separately to each view, which would likely resolve this issue, is worthwhile to consider.
+The data-simulation discrepancy for the corrected energy deposition along $w$ (bottom of Fig.~\ref{fig:AbsCalibW1}) varies in the opposite direction between the X and Y views. This discrepancy arises from averaging the two view-dependent \gls{MEU}$_{Reco}$ values, which show opposite variation in simulation compared to data, as explained in Sec.~\ref{sec:TBAbsoluteCalib}. Ideally, there should be no data-simulation discrepancy after applying the full calibration results. Therefore, applying the view-dependent absolute calibration results separately to each view, which would likely resolve this issue, is worthwhile to consider.
 
 % Cell distributions - is this caused by the APD gains and the threshold correction?
 The distributions of energy deposition across cells in Fig. \ref{fig:AbsCalibPlane1} exhibit greater variability after calibration compared to the $w$ dependence. This variability, particularly noticeable in the X view, is caused by issues with the threshold and shielding correction discussed in Sec.~\ref{sec:TBThresholdCorrection}. The threshold and shielding correction is not applied to these distributions, just as it is not applied to the stopping muon sample for absolute calibration or to beam events, as it is not supposed to affect them. However, since the incorrect threshold and shielding correction is applied during relative calibration, it is incorporated into the calibration results and consequently into the reconstructed deposited energy. The variability introduced by these faulty corrections is within $\pm\unit[3.5]{\%}$.
@@ -1190,10 +1189,10 @@ The distributions of energy deposition across cells in Fig. \ref{fig:AbsCalibPla
 \end{figure}
 
 % Cell distribution in Y view - what is up with that middle cells - underfilled?
-The distribution of corrected energy across cells in the Y view additionally shows two cells with a noticeably lower energy response ($\sim\unit[2-4]{\%}$) for period 2 and epochs 3a+3b+3c compared to the rest of the samples. Specifically, these are cells 31, which was underfilled during period 2 and epoch 3a, and its neighbouring cell 32. The variation for the underfilled cell is expected. However, it is unclear why one of the neighbouring cells to the underfilled cells is miscalibrated.
+The distribution of corrected energy across cells in the Y view (bottom right of Fig.~\ref{fig:AbsCalibCell1}) additionally shows two cells with a noticeably lower energy response ($\sim\unit[2-4]{\%}$) for period 2 and epochs 3a+3b+3c compared to the rest of the samples. Specifically, this is the cell 31, which was underfilled during period 2 and epoch 3a, and its neighbouring cell 32. The variation for the underfilled cell is expected. However, it is unclear why one of the neighbouring cells to the underfilled cells is miscalibrated. \note{Is this enough to say like this?}
 
 % Uncorrected energy response for different sammples - seems like the old scintillator is ageing the most, the Ash river the least and the Texas oil is somewhere in the middle
-The relative differences in the uncorrected energy response across planes, shown in Fig.~\ref{fig:AbsCalibPlane1}, between the three different data taking periods demonstrates, that the decrease of energy deposition with time differs between planes. This is especially noticeable in the X view, but is equally present in the Y view planes. This effect is related to the variations in the scintillators used to fill the three visibly separate portions of the detector, as explained in Sec.~\ref{sec:TBExperiment}. Additionally, this is a clear indication of a scintillator ageing, which results in a decrease of scintillation photos per deposited energy over time. Specifically, it appears that the \texttt{ND+NDOS} scintillator oil (planes 0-31) aged the most between period 2 and period 4, followed by the Texas NDOS oil (planes 53-62), and the Ash River oil (planes 32-52) aged the least. However, more quantitative studies are necessary to assess the ageing of the \gls{NOvA} scintillator, as its details are currently not known.\note{Should I be this specific?}
+The relative differences in the uncorrected energy response across planes (top of Fig.~\ref{fig:AbsCalibPlane1}) between the three different data taking periods demonstrate that the decrease in energy deposition over time varies between planes. This variation is especially noticeable in the X view plot, but is equally present in the Y view planes. This effect is attributed to the differences in the quality of the scintillator oil used to fill the detector, as explained in Sec.~\ref{sec:TBExperiment}. Additionally, it indicates scintillator ageing, which results in a decrease of the scintillation light produced per deposited energy over time. Specifically, the \texttt{ND+NDOS} scintillator oil (planes 0-31) appears to have aged the most between periods 2 and 4, followed by the Texas \texttt{NDOS} oil (planes 53-62), while the Ash River oil (planes 32-52) aged the least. However, more quantitative studies are necessary to assess the ageing of the \gls{NOvA} scintillator, as its details are currently not well understood.
 
 \begin{figure}[!ht]
   \begin{subfigure}{\textwidth}
@@ -1219,21 +1218,19 @@ The relative differences in the uncorrected energy response across planes, shown
 \end{figure}
 
 % Plane distribution in X view - large discrepancy in ep3abc
-The distribution of the corrected energy response across planes in the X view (Fig.~\ref{fig:AbsCalibPlane1}) shows a significantly smaller ($\unit[16]{\%}$) response for epochs 3a+3b+3c in plane 36. This means that the relative calibration over-corrected the energy response due to the through-going muons having unusually high energy response (as shown in Fig. \ref{fig:AttenfitResultsEpoch3abc_FaultyFEBs}), but not the selected stopping muons. The most likely cause is that the impacted \gls{FEB} was `faulty' only for a certain period of time. In that case, the corrected energy response would be correct for the period when the \gls{FEB} was faulty, but would be under-estimated for the period when the \gls{FEB} behaved nominally.
+The distribution of the corrected energy response across planes in the X view (bottom left of Fig.~\ref{fig:AbsCalibPlane1}) reveals a significantly smaller response ($\sim\unit[16]{\%}$) for epochs 3a+3b+3c in plane 36. This indicates that the relative calibration over-corrected the energy response due to through-going muons having an unusually high energy response (as shown in Fig. \ref{fig:AttenfitResultsEpoch3abc_FaultyFEBs}), but not the selected stopping muons. The most likely explanation is that the affected \gls{FEB} was `faulty' only for a certain period. Consequently, the corrected energy response would be accurate for the period when the \gls{FEB} was faulty, but would be under-estimated for the period when the \gls{FEB} functioned normally.
 
 %Also planes 16 and 48, same as planes 17 49
 %FB map tell Sim to simulation the FEBv5 lower than the rest, but readout simulation shifts it higher. That's why it is incorrect in the threshold correction and in simulation
-We can also see the effect of the different \gls{FEB} versions, with the \gls{ND} \gls{FEB}v5 used in planes 16, 17, 48 and 49 clearly visible by the relatively larger corrected energy deposition, especially for simulation and in the X view. This effect should be corrected out during calibration, however, due to the incorrect incorporation of the variations between the \gls{FEB} versions in the simulation, and its effect on the threshold and shielding correction, it is not. This was discussed in Sec.~\ref{sec:TBThresholdCorrection}.
+We can observe the effect of different \gls{FEB} versions in both the corrected and uncorrected energy response distributions across planes, shown in Fig.~\ref{fig:AbsCalibPlane1}. Specifically, the \gls{FEB}v5 was used in planes 16, 17, 48 and 49, which is evident by the relatively larger corrected energy deposition, especially in the simulation and in the X view. Although this effect should be corrected during calibration, it is not, due to the incorrect incorporation of the variations between the \gls{FEB} versions in the simulation and its impact on the threshold and shielding correction, as discussed in Sec.~\ref{sec:TBThresholdCorrection}.
 
 % Shape of plane distribution in X view
 % Why are planes 2 (for all data periods) and planes 54 and 56 for all periods but ep3abc so much lower? But this seems to be only present of the stopping muons as will be explained below...
-There are additional variations in the corrected energy deposition across planes in the X view, especially the significant ($\sim\unit[6]{\%}$ drop in corrected energy response in planes 4 and 58. The reason for this variation is now know, but it appears it is caused by a discrepancy between through-going and stopping muons, as it disappears when looking at through-going muons, as will be explain below.
-
-%Shape of the response in plane for Y view
-The distribution of the corrected response rises with planes in the Y view (Fig.~\ref{fig:AbsCalibPlane1}) within the first half of the detector. This effect is only present in data. We do not know where does this slope come from, but it is not present when investigating the variations for through-going muons.\note{Maybe I should connect this with the above paragraph}
+There are additional variations in the corrected energy deposition across planes (bottom of Fig.~\ref{fig:AbsCalibPlane1}). In the X view, there is a significant ($\sim\unit[6]{\%}$) drop in corrected energy response in planes 4 and 58, along with a smaller drop in some surrounding planes. The cause of this variation is unknown. However, it appears to be due to a discrepancy between through-going and stopping muons, as it disappears when analysing through-going muons, as explain below. In the Y view, the corrected response increases with planes  within the first half of the detector. This effect is only observed in data and not in simulation. The origin of this slope is unclear, however it is also absent when examining variations for through-going muons.\note{Should I have found this out?}
 
 %Dependence in time - maybe also mention the systematic uncertainty?
-The distributions of energy deposition in time (Fig.~\ref{fig:AbsCalibDrift1}) show a non-trivial dependency and large variations. There is no clear downward-going trend that would point towards detector ageing over time. The only exception might be the response the continuous drop in the detector response along time in period 4. There are additional factors that could influence the energy response over time. For example environmental factors, such as temperature and humidity, or scintillator or readout ageing. Neither of these factors are well understood within \gls{NOvA} and Test Beam detector could be potentially used to shine more light on this issue. There are currently ongoing studies of these effects on the Test Beam detector.\todo{Reference Randeeths detector ageing talks}
+%Large variability; Only normalizing mean; Visibly smaller uncorrected response in period 4, however the trend is not clear and the fluctuations are larger than the possible effect of detector ageing; Others addressed this by calibrating smaller samples; TB has more variability due to the environment and less stable detector running conditions; This provides an opportunity to test these effect as they are not well understood within NOvA
+The distributions of energy deposition over time (Fig.~\ref{fig:AbsCalibDrift1}) reveal a complex dependency and significant variations. As shown, the calibration process currently only normalizes the mean of each calibrated sample, leaving time-dependent variations within the samples uncorrected. The uncorrected energy response is noticeably higher for period 2 compared to period 4, likely due to detector ageing, as previously discussed. However, there is no clear downward-going trend; the variations are larger than any consistent time-dependent pattern, except fir the second half of period 4.
 
 \begin{figure}[!ht]
   \begin{subfigure}{\textwidth}
@@ -1258,32 +1255,37 @@ The distributions of energy deposition in time (Fig.~\ref{fig:AbsCalibDrift1}) s
   \label{fig:AbsCalibDrift1}
 \end{figure}
 
+In the \gls{ND} and \gls{FD} calibration, these time-dependent variations are partially addressed by reducing the size of the calibration samples to month-long epochs. This approach reduces variations in the calibrated energy deposition but generally results in larger portions of the detector being uncalibrated. However, this did not have a significant effect on the rate of calibrated cells for the \gls{ND} and \gls{FD} \cite{NOvA-doc-60838} and in the future can be explored for Test Beam detector as well. The \gls{ND} and \gls{FD} typically exhibit smaller variations in energy response over time compared to the Test Beam detector due to the Test Beam detector's less stable running conditions, such as larger fluctuations in temperature and humidity in the Test Beam hall.
+
+The effect of these environmental factors on detector performance, along with scintillator and potential readout electronics ageing, are not well understood within \gls{NOvA}. As these effects are more pronounced in the Test Beam detector and given the range of scintillator oils and readout electronics used, Test separating the effects of the individual factors is challenging and is currently the focus of ongoing studies \cite{NOvA-doc-59591}.
 
 %%% PCListAna
-\subsubsection{Validation with the through-going muons sample}
-% To check on the performance of calibration within the detector, we use the data from period 4 from stable runs with a limited w. Similarly for simulation.
-
-%Then we look at throughgoing muons for stable runs in period 4 and in simulation. Here we also considered the effect of the threshold and shielding correction, even if it's already been discussed before
-%We can look at data or simulation by themselves, Data VS Simulation, or reco VS true from simulation. I guess based on what is the best. Should I include all of these plots into the appendix?
-%Can the data-MC comparisons be trusted if we know that through going muons do not have a good energy in the simulation?
+\subsubsection{Validation with the through-going muons}
+To validate the calibration performance without the limitations imposed by stopping muons, we examine the effects of calibration on through-going muons, which were also used for the relative calibration. Unlike for to the stopping muon sample, we apply the threshold and shielding corrections for the through-going muons to truly verify the validity of the relative calibration process. Since the simulated through-going muons have incorrect incident energies, this validation focuses solely on variations in shape rather than scale.
 
 % Stable runs - say that I'm only taking the data from stable runs
+Considering the variability of detector performance over time, we use through-going muons collected during `stable runs' in period 4, as depicted in Fig.~\ref{fig:ValidStableRuns}. This period was selected by visually inspecting the time dependence of corrected energy deposition and choosing runs that correspond to seemingly stable energy deposition.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.8\linewidth]{Plots/PCListAna/Period4StableRuns.pdf}
-  \caption[Selection of stable runs from the period 4 Test Beam data]{Selection of stable runs from the period 4 Test Beam data. Showing the reconstructed energy response as a function of the run number for through-going cosmic muons.}
+  \caption[Selection of stable runs from the period 4 Test Beam data]{Selection of stable runs from the period 4 Test Beam data. Showing the reconstructed energy response as a function of the run number for through-going cosmic muons. Shaded red area shows rejected runs.}
   \label{fig:ValidStableRuns}
 \end{figure}
 
 % Edge effects - show one plot and say it's taken care of by the calibration shape uncertainty (which I haven't done)
+Furthermore, Fig.~\ref{fig:ValidLimW} shows significant variation of energy deposition at cell edges. This issue is addressed by the calibration shape systematic uncertainty discussed in Sec.~\ref{sec:NOvASystematics}. Therefore, for this validation study we ignore the edge variations, using the same $w$ limit as for the stopping muon sample:  $-80<w<\unit[80]{cm}$.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.6\linewidth]{Plots/PCListAna/AbsCalCuts_TBData_p4_StableRuns.pdf}
-  \caption[Removing edge hits for through-going validation plots]{Removing edge hits for through-going validation plots. Showing the stable runs of the period 4 Test Beam cosmic data.}
-  \label{fig:ValidStableRuns}
+  \caption[Removing edge hits for validation with through-going muons]{Removing edge hits for validation with through-going muons. Showing only events from the stable runs of the period 4 Test Beam cosmic data.}
+  \label{fig:ValidLimW}
 \end{figure}
+
+With the aforementioned constraints, we expect uniform distributions with limited variations. Residual variations should be scattered throughout the detector without any particular pattern, indicating potential errors in the calibration process. It is worth noting that investigating these distributions without applying the threshold and shielding correction led to the discovery of the issues discussed in Sec.~\ref{sec:TBThresholdCorrection}. Any remaining variations point to potential systematic uncertainties in the calibration process.
+
+Figure~\ref{fig:ValidPCListAnaProfDists} displays individual distributions of corrected energy response as a function of $w$, plane, and cell number for both data and simulation. For through-going muons with the threshold and shielding correction applied, the calibration procedure works as expected, with residual variations around $\pm\unit[0.2]{\%}$ for the $w$ and cell dependence. However, for plane dependence, these residual variations are larger: approximately $\pm\unit[0.5]{\%}$ in data and up to $\pm\unit[1]{\%}$ in simulation. Additionally, maps of corrected energy deposition as a function of both plane and cell numbers, along with their 1D projections, are shown in Fig.~\ref{fig:ValidPCListAnaMapData} for data and in Fig.~\ref{fig:ValidPCListAnaMapSim} for simulation. These plots demonstrate that the final residual variations for calibration reach approximately $\unit[1]{\%}$ in data and $\unit[4]{\%}$ in simulation.
 
 % Individual variations - very small
 \begin{figure}[!ht]
@@ -1305,53 +1307,78 @@ The distributions of energy deposition in time (Fig.~\ref{fig:AbsCalibDrift1}) s
   \begin{subfigure}{0.495\textwidth}
     \includegraphics[width=\linewidth]{Plots/PCListAna/DataAndSim_recomevcm_ts_plane_y.pdf}
   \end{subfigure}
-  \caption[Validation plots for through-going muons as a function of w, cell and plane]{Distributions of through-going cosmic muons with $w\in\left(-80,80\right)\unit{cm}$ as a function of $w$ for stable runs in the Test Beam period 4 data (black) and data-based simulation (red). Bottom panel of each plot shows the ratio of each bin and the mean Y axis, separately for data and simulation. Discrepancy in the right-most bin is solely due to binning.\note{Are these way too small?}}
+  \caption[Validation plots for through-going muons as a function of w, cell and plane]{Distributions of through-going cosmic muons with $w\in\left(-80,80\right)\unit{cm}$ as a function of $w$, cells and planes for stable runs in the Test Beam period 4 data (black) and data-based simulation (red). Bottom panel of each plot shows the ratio between the value for each bin and the mean across the entire y axis, calculated separately for data and simulation.}
+  \label{fig:ValidPCListAnaProfDists}
 \end{figure}
 
-% Variations in data
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.7\linewidth]{Plots/PCListAna/TBDataP4_recomevcm_ts_zoomed.pdf}
   
   \includegraphics[width=0.7\linewidth]{Plots/PCListAna/Variation_recomevcm_TBDataP4_StableRuns_LimW.pdf}
-  \caption{Distributions of through-going cosmic muons with $w\in\left(-80,80\right)\unit{cm}$ as a function of $w$ for stable runs in the Test Beam period 4 data (black) and data-based simulation (red). Bottom panel of each plot shows the ratio of each bin and the mean Y axis, separately for data and simulation. Discrepancy in the right-most bin is solely due to binning.\note{Are these way too small?}}
+  \caption[Map of corrected energy deposition for through-going cosmic in data]{Top: Map of corrected energy deposition for through-going cosmic muons with $w\in\left(-80,80\right)\unit{cm}$ as a function of cell and plane numbers for stable runs in the Test Beam period 4 data. Bottom: Projection of each bin from the map. Red line shows the median value of the projection and red shaded area shows the $\pm\unit[1]{\%}$ range of the median value. Gray shaded bins show the excluded bins corresponding to faulty \acrshort{FEB}, visible as a stark red line in plane 19 on the map. Additional features explained in text.}
+  \label{fig:ValidPCListAnaMapData}
 \end{figure}
 
-% Variations in simulation
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.7\linewidth]{Plots/PCListAna/TBSimulation_CP_recomevcm_ts_zoomed.pdf}
   
   \includegraphics[width=0.7\linewidth]{Plots/PCListAna/Variation_recomevcm_TBSimulation_LimW.pdf}
-  \caption{Distributions of through-going cosmic muons with $w\in\left(-80,80\right)\unit{cm}$ as a function of $w$ for stable runs in the Test Beam period 4 data (black) and data-based simulation (red). Bottom panel of each plot shows the ratio of each bin and the mean Y axis, separately for data and simulation. Discrepancy in the right-most bin is solely due to binning.\note{Are these way too small?}}
+  \caption[Map of corrected energy deposition for through-going cosmic in simulation]{Top: Map of corrected energy deposition for through-going cosmic muons with $w\in\left(-80,80\right)\unit{cm}$ as a function of cell and plane numbers for stable runs in the Test Beam data-based simulation. Bottom: Projection of each bin from the map. Red line shows the median value of the projection and red shaded area shows the $\pm\unit[4]{\%}$ range of the median value. Additional features explained in text.}
+  \label{fig:ValidPCListAnaMapSim}
 \end{figure}
+
+% Variations in data
+In the distributions for data, we observe a clear effect of the different scintillators used, which is related to varying levels of detector ageing among the scintillators, as previously discussed. This effect is particularly noticeable in this validation sample due to the selection of events from `stable runs', while the relative calibration was calculated for the entire period 4. Therefore, calibration scales the deposited energy with respect to the mean deposited energy for the full period 4. Consequently, planes 0-31 appear to have the lowest relative corrected response in Fig.~\ref{fig:ValidPCListAnaProfDists} and \ref{fig:ValidPCListAnaMapData} because the corresponding \texttt{ND+NDOS} scintillator oil aged the most compared to the mean. This issue could be addressed by splitting period 4 into smaller epochs for calibration.
+
+% Variations in simulation
+For simulation, the relative calibration is performed in bins of $w$ for each cell and each \gls{FB} bin but importantly not for each plane. As a result, the relative calibration in simulation does not specifically correct for plane dependence, leading to larger variations between planes.
+
+Furthermore, one half of plane 19 in data shows a corrected energy response approximately $\unit[0.7]{\%}$ higher than the rest. This is due to a faulty \gls{FEB} that was likely malfunctioning for a brief period. Since this study aims to examine purely the residual variations from the calibration procedure, cells corresponding to this \gls{FEB} can be ignored. Additionally, planes 48 and 49 in simulation, which correspond to \gls{FEB}v5, display a corrected energy response about $\unit[2-2.2]{\%}$ higher than the rest. This discrepancy arises from the incorrect accounting for different \gls{FEB} versions in simulation, combined with consolidating the planes into \gls{FB} bins.
+
+\subsection{Conclusion}
+\note{Should I create a section called discussion that would discuss all the possible improvements in the future?}
+
+%Everything was great
+We have successfully calibrated the NOvA Test Beam detector in four independent Test Beam data samples and in simulation. This is a critical step in order to analyse the Test Beam data, enabling crucial improvements to our understanding of the detector response and particularly of the calibration for all the \gls{NOvA} detectors.
+
+Each calibrated sample contains only a few uncalibrated cells, mainly concentrated on the periphery of the detector. Most of the other uncalibrated cells failed the calibration condition due to unavoidable circumstances, such as underfilled cells, or dead channels. However, several improvements could increase the number of calibrated cells or otherwise improve the calibration performance. Some of the improvements could benefit not only the Test Beam detector but all the \gls{NOvA} detectors.
+
+%%% Threshold and shielding corrections and simulation issues
+Several issues discovered during the Test Beam calibration that will enhance calibration and simulation for all the \gls{NOvA} detectors include the problems found with the threshold and shielding correction and with the readout simulation, described in Sec.~\ref{sec:TBThresholdCorrection}. Ongoing work aims to address these issues by improving the logic of the threshold and shielding correction or basing it entirely on data. Additionally, plans are in place to remove the relative gain variation from the simulation, as the \gls{FB} map used during simulation already sufficiently describes the relative gain variations, making the current treatment redundant.
+
+%%% Faulty FEBs - transpose files
+One of the most common issues that could be resolved is the faulty \glspl{FEB}, which often malfunctioned only for a limited period. This is particularly concerning, as cells belonging to faulty \glspl{FEB} usually pass the calibration condition; however, if the corresponding \gls{FEB} was faulty only for a limited period, the calibration results for those cells would be incorrect. This issue is currently difficult to address because the inputs for the relative calibration are organized by run and subrun numbers instead of by cells, making it impossible to calibrate cells corresponding to a single \gls{FEB} separately from the rest. However, ongoing work is adapting both the input files and the calibration procedures to enable calibrating individual cells separately.
+
+%%% Time dependece - needs to be studied further, unique opportunity to understand this in all of nova, can be addressed by splitting
+The time dependence of energy deposition in the Test Beam detector discussed in Sec.~\ref{sec:TBCalibValidation} is currently being studied and could help explain several contributions to the time-dependency seen in all \gls{NOvA} detectors. Specifically, the Test Beam can study the environmental effects on energy deposition, as well as the ageing of different scintillators and electronics. The first results indicate that the \gls{NOvA} scintillator oils age differently based on their quality. 
+
+Addressing the time-dependent variations in the energy deposition in Test Beam could include splitting the calibrated periods into smaller samples, similarly to the \gls{ND} and \gls{FD}. However, this approach risks insufficient statistics for attenuation fits in various cells. This could in turn be addressed by tuning the binning of the attenuation profiles to better fit the real cell dimensions that are actually being fitted in the attenuation fits.
+
+%%% Better binning
+%Several cells have failed the calibration condition due to a combination of low statistics and improper binning in the attenuation profiles. To  correct the dependence on time, the idea is to use smaller samples calibration, this effect could be enlarged. It's possible to partially tackle it by improving the binning of the attenuation profiles t
+%Other suggestion for improvement is to change the binning of profile histograms to avoid the issues of single strange bins on the edges of the attenuation fit.
+
+%%% Manually changing the chi2
+Another technical improvements to the calibration results could stem from manually altering the $\chi^2$ value of cells that have attenuation fits which visibly looks all right, to below $0.2$. This would officially rendering these cells calibrated, similarly to how it was done for some cells in epochs 3d+3e and period 4. However, this would require manually going over all the uncalibrated cells, which is only really possible for the Test Beam detector and only for larger calibrated samples. Reducing the size of the calibrated sample would make this extremely impractical.
+
+%Philosophical question of whether to manually change the chi2 values just cause by eye the response looks all right.
+
+%%% Applying the absolute calibration for the views separately
+Lastly, there is a possible improvement to the data-simulation discrepancy, by applying the absolute calibration results to each view independently. This would however have to be seriously considered, as the stopping muon sample used for calibration should technically not have any variation between the views and therefore this might introduce bias when applying the calibration results to beam data.
+%Also applying the absolute calibration to the two views independently. - Is this actually what we'd want? Can still discuss it here...
+
+%%% Possibly using Test Beam data to calculate the absolute energy scale
+
+%%% Systematics
+%Also have to devise proper systematic uncertainty for the TB calibration.
+%We haven't attempted to estimate the uncertainty of the calibration, although we can estimate the final residual variations after applying the calibration. However, more work will need to go into this,  specifically to understand the time dependence of the deposited energy and the edge effects.
+
+Overall, the calibration of the NOvA Test Beam detector was successful and represents a significant advancement, with ongoing efforts aimed at further refining the process and addressing the identified issues to improve calibration accuracy and reliability across all \gls{NOvA} detectors. Part of the ongoing work also aims to quantify the correctness of the Test Beam calibration, devising a concrete systematic uncertainty.
 
 %%% Discussion - Systematic uncertainties
 
-Variation of the MIP muons energy deposition between 1-2 m from their track end is about 1.8\% \cite{AbsCal_technote_1stAna.pdf}.
+%Variation of the MIP muons energy deposition between 1-2 m from their track end is about 1.8\% \cite{AbsCal_technote_1stAna.pdf}.
 
-\cite{AbsCal_technote_1stAna.pdf}
-Sources of systematic uncertainty of particular concern are those introduced by residual variations remaining after calibration. Systematic errors are introduced by spatial and temporal variations in detector response. Further, any difference between the two detectors may introduce a relative shift in the energy scale between the detectors.
-Track end misreconstruction: For a track window starting at 100 cm from the track end, a conservative mis-reconstruction of the track end point by 10cm will shift the start of the track window to between 90cm and 110cm. This shift will alter the MEU value by less than 0.4\% over the range.
-Variations in space and time: If the calibration procedure was ideal the detector response would not vary with position in either data or MC. The calibration is not ideal and the detector response and recorded simulated energy deposition varies with position of the hit within the detector, such variations will introduce systematic errors. The position of a hit can be defined by the plane, cell within the plane, and distance along the
-
-\section{Conclusion}
-Everything went great, but what could be improved in the future.
-
-Include a conclusion for the data-based simulation and a plan for the Test Beam experiment itself...
-
-Find out if I'd need a discussion or not...
-
-\todo{Include a table with the percentages of calibrated cells}
-
-We have successfully calibrated the NOvA Test Beam detector for all the Test Beam run periods in both data and simulation. The calibration results are implemented in the v15.09 version of the NOvASoft calibration tag. We haven't attempted to estimate the uncertainty of the calibration, which is a separate task out of scope of this technical note.
-
-Also need to mention the faulty FEBs, which might be calibrated, but they're results cannot be trusted... This can be fixed by using the transposed calibration files coming soon.
-
-In the future there should be a better treatment of the threshold correction, ideally based solely on data. Also, the calibration of period 4 should probably be done in smaller intervals? Also have to devise proper systematic uncertainty for the TB calibration.
-
-Other suggestion for improvement is to change the binning of profile histograms to avoid the issues of single strange bins on the edges of the attenuation fit.
-
-Also applying the absolute calibration to the two views independently. - Is this actually what we'd want? Can still discuss it here...
-
-Philosophical question of whether to manually change the chi2 values just cause by eye the response looks all right.
+%\cite{AbsCal_technote_1stAna.pdf} Sources of systematic uncertainty of particular concern are those introduced by residual variations remaining after calibration. Systematic errors are introduced by spatial and temporal variations in detector response. Further, any difference between the two detectors may introduce a relative shift in the energy scale between the detectors. Track end misreconstruction: For a track window starting at 100 cm from the track end, a conservative mis-reconstruction of the track end point by 10cm will shift the start of the track window to between 90cm and 110cm. This shift will alter the MEU value by less than 0.4\% over the range. Variations in space and time: If the calibration procedure was ideal the detector response would not vary with position in either data or MC. The calibration is not ideal and the detector response and recorded simulated energy deposition varies with position of the hit within the detector, such variations will introduce systematic errors. The position of a hit can be defined by the plane, cell within the plane, and distance along the
