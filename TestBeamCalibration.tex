@@ -282,7 +282,7 @@ During the selection process, we determine whether the muon is stopping inside t
 Once we have the kinematic information for the selected events, we perform several tasks to get the final sample of cosmic muons for the data-based simulation. This includes correcting energies of the through-going muons, assigning a charge to each muon event, and smearing and converting the information into the correct format required by the generator.
 
 \subsubsection*{Energy Correction}
-Through-going muons do not deposit all of their energy inside the detector. Therefore we cannot reliably calculate their initial energies from the reconstructed information, but we can estimate an energy that could leave the same track. In general, the energy spectrum of cosmic muons can be approximately described by a power law $E^{-\alpha}$, with $\alpha\approx2.7$ \cite{NOvA-doc-51327,rpp2022-rev-cosmic-rays.pdf}. The expectation value for the `true' initial energy of through-going muons can be therefore calculated as
+Through-going muons do not deposit all of their energy inside the detector. Therefore we cannot reliably calculate their initial energies from the reconstructed information, but we can estimate an energy that could leave the same track. In general, the energy spectrum of cosmic muons can be approximately described by a power law $E^{-\alpha}$, with $\alpha\approx2.7$ \cite{NOvA-doc-51327,PDG.pdf}. The expectation value for the `true' initial energy of through-going muons can be therefore calculated as
 \begin{equation}
 \left\langle E\right\rangle =\frac{\int^{E_C}_{E_R} E\cdot E^{-\alpha}}{\int^{E_C}_{E_R} E^{-\alpha}}=\left(\frac{\alpha -1}{\alpha -2}\right)\left(\frac{E_C^{2-\alpha}-E_R^{2-\alpha}}{E_C^{1-\alpha}-E_R^{1-\alpha}}\right),
 \end{equation}
@@ -299,7 +299,7 @@ This corrected energy is however \textbf{not} a good representation of the true 
 
 However, since this simulation is intended to be used for calibration, where we use through-going muons only for relative calibration, we do not need a perfect representation of the cosmic muon energy spectrum. Not including more energetic cosmic muons into the simulation does bias the energy deposition towards lower values, but this is corrected for during absolute calibration which only uses stopping muons, for which we assume we reconstruct their energy well from \gls{BPF}.
 
-If someone were to use this simulation for something other than calibration, it would be necessary to rethink the energy correction, either by changing the energy estimation from track based algorithms to energy deposition, or by including information from external sources. It would also be necessary to include angular dependence for the energy correction as described in the PDG \cite{rpp2022-rev-cosmic-rays.pdf}.
+If someone were to use this simulation for something other than calibration, it would be necessary to rethink the energy correction, either by changing the energy estimation from track based algorithms to energy deposition, or by including information from external sources. It would also be necessary to include angular dependence for the energy correction as described in the PDG \cite{PDG.pdf}.
 
 \subsubsection*{Smearing}
 The reconstructed distributions in data are influenced by the detector structure, reconstruction efficiencies and other effects that can bias the simulation. To avoid this influence, we smear the reconstructed values by randomly varying
