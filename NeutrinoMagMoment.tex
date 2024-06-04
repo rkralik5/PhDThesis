@@ -435,12 +435,15 @@ This section describes the simulation samples used to predict the number of sign
 % Not sure if this should be here or in the datasets subsection... Here on forward I'm going to describe the differences between these (definitions, weights, signal def, systematics. What is the same: event selection and binning. They're joint together in the fitting framework, where the $\nu_e$CC MEC and the other backgrounds are simply summed together and scaled together. The $\nu$-on-e background (also called the irreducible background by the LDM analysis) is treated/scaled separately.
 
 \subsection{Datasets and Event Reconstruction details}\label{sec:datasets}
-For this analysis we are using near detector CAF samples with the standard Production 5.1 reconstruction.
+We are using the standard \gls{NOvA} simulation and reconstruction, specifically the same tools that were used in analyses that use Prod5.1 (which are?)
 
-We are following the standard data blinding procedure and have not looked at any data events until the analysis passes the full collaboration review. The Near Detector group has validated \todo{Figure out where did Yiwen and Wenjie actually look at the data} using this data sample.
+We are using data collected from the start of \gls{NOvA} data taking on 22$^{\textsf{nd}}$ of August 2014, until 3$^{\textsf{rd}}$ of March 2021. \gls{NOvA} collected further data from that point, those are however still being processed and are not available at the time of writing this thesis. The exposure of the data sample is approximately $13.8\times 10^{20}$\gls{POT}.
 
-The exposure of the data sample is approximately $1.3848600\times 10^{21}\ \unit{POT}$. This is the exposure we use for all the following studies shown in this technical note.
-The Prod5.1 ND data sample contains data from run 10391 in epoch1a (2014-08-22 21:08:40) until run 14010 in epoch 11a (2021-02-03 15:48:21) (from the period and epoch naming wiki page https://cdcvs.fnal.gov/redmine/projects/novaart/wiki/Period\_and\_Epoch\_Naming)
+The NSI paper claims exposure of 13.6E20 POT from February 6 2014 to March 20 2020. - this is the 2020 exposure from the paper.
+
+Periods used in prod 5.1
+ND run first: 10391 - 
+ND run last:  14010
 
 \todo{Briefly describe the MC details. Versions of the individual simulation software}
 To tackle the low number of \gls{nuone} and $\nu_e$\gls{CC} \gls{MEC} events in the nominal simulation sample we are using a suit of nominal and enhanced simulation samples for four different signal and background components. Each one contains its nominal sample and special systematically shifted samples for the detector systematics. The use of the samples is summarised in table \ref{tab:SignalDefinitions} and described in detail below.
@@ -463,8 +466,6 @@ MC includes simulation in the rock surrounding the ND
 \todo{Describe here that we're using the nominal ND MC sample for signal utilizing the simple relationship between the Standard Model cross section and the neutrino magnetic moment cross section (ref. theory)}
 
 The signal of the neutrino magnetic moment analysis is just a re-weighted signal of the \gls{nuone} analysis from the near detector group. We are using the same event selection as the near detector group.
-
-\todo{Say already here that the POT inside the enhanced MC samples are not properly accounted for in CAFAna (Loader issue) and so the event counts need to be adjusted post-hoc}
 
 \begin{table}[!ht]
 \centering
@@ -586,28 +587,29 @@ weight_{\nu\text{ Mag. Moment}} = \left.\frac{d\sigma_{\nu-on-e}}{dy}\right|_{\n
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Event selection}\label{sec:NuMMEventSelection}
 
-Mention what are the main backgrounds for this analysis. They would be the events that produce electromagnetic showers: electrons or gamma in the final state. This can be the beam nueCC, or events that produce $\pi^0$, either CC or NC. 
+Introduction: We are searching for \gls{nuone} events at low electron recoil energies. Due to their small cross section compared to other processes, there is only a limited number of \gls{nuone} events that can be utilized. Therefore, we are focusing on retaining as many events as possible, while reducing the background. There are a few notable features that can be utilized to select low energetic \gls{nuone} events. Specifically that \gls{nuone} events are characterized by a single very forward going electromagnetic shower.
 
-We are trying to select low energy neutrino-on-electron events, which are characterised by a single very forward going electron shower. Since these are the same events as are used in the \gls{ND} group's analysis to constraint the neutrino beam prediction with a \gls{nuone} events \cite{NOVA-doc-56383}, we have taken taken their event selection without changes. This is to save time and analysis efforts, but also to get a first good estimation of \gls{NOvA}'s capabilities to constraint (or measure) neutrino magnetic moment. Almost the same selection is also used in the \gls{LDM} analysis \cite{NOVA-doc-59439}, only without the final $E\theta^2$ cut.
+We are trying to select low energy neutrino-on-electron events, which are characterised by a single very forward going electron shower. This is a similar task to the ND group and to the $\nu_e$ appearance search for the three flavour group.
 
-We explain the motivation behind each cut of the event selection and discuss their effect on the neutrino magnetic moment events below. We also consider possible improvements to the event selection for a future (re-)analysis. \todo{Also describe how were the cuts selected}
+The main background in \gls{NOvA} in general are the $\nu_\mu$\gls{CC} events. They are generally easy to identify from our signal, however their sheer number makes them a dominant background nevertheless. Additionally, there are backgrounds that have the same or similar topology to our signal. These are specifically the $\nu_e$\gls{CC} events that produce electrons. Additionally, there are interactions that produce $\pi^0$, which can look similar to our signal in our detector. These can be from either $\nu_\mu$ or $\nu_e$, and can be both \gls{CC} or \gls{NC}.
+
+We explain the motivation behind each cut of the event selection and discuss their effect on the neutrino magnetic moment events below. We also consider possible improvements to the event selection for a future (re-)analysis.
 
 \subsubsection*{Signal Definition}
-To define the signal and background samples we use the true information listed in Tab.~\ref{tab:SignalDefinitions}. The neutrino magnetic moment signal definition is the same as that for the \gls{nuone} background with the neutrino magnetic moment weight applied (explained in Sec.~\ref{sec:anaWeights}). 
+To define the signal and background samples we use the true information listed in Tab.~\ref{tab:SignalDefinitions}. The neutrino magnetic moment signal definition is the same as that for the \gls{nuone} background with the neutrino magnetic moment weight applied (explained in Sec.~\ref{sec:anaWeights}).
 
 The signal definitions use the \texttt{kMode} variable instead of the \texttt{kIntType}, which is now deprecated (ref.: various Slack conversations). Mode 10005 denotes only the \gls{nuone} events and is only available for the enhanced \gls{nuone} samples, while mode 5 denotes all electron scattering events, including inverse muon decay interactions. That is why we had to add a requirement of an electron in the final state. Mode 10 denotes all Meson Exchange Current (MEC) events.
 
-We are using the \gls{ND} group's \cite{NOVA-doc-56383} signal definition including a requirement for the true vertex to lie within their fiducial volume (defined below). This is the cut name \texttt{NDNuoneFiducial}. This is in contrast with the \gls{LDM} analysis \cite{NOVA-doc-59439}, which uses the \texttt{ana::kVtxIsContained} cut instead, which has a looser boundary. This choice has only a negligible effect on the final number of selected events and only affects the selection efficiency.
-
+\note{Do I have to discuss these different signal definitions?}
 \begin{table}[!ht]
 \centering
 \caption{Overview of signal and background definitions.}
 \def\arraystretch{1.4}
 \begin{tabular}{p{.25\textwidth}p{.7\textwidth}}
-Signal                   & \texttt{kMode}== 10005 \&\& \texttt{NDNuoneFiducial}\\
-$\nu$-on-e background    & \texttt{kMode}== 10005 \&\& \texttt{NDNuoneFiducial}\\
-$\nu_e$CC MEC background & !(\texttt{kMode}== 5 \&\& \texttt{kElInFinState} \&\& \texttt{NDNuoneFiducial}) \&\& (\texttt{kIsCC} \&\& \texttt{kIsNue} \&\& \texttt{kMode == 10})\\
-Other background         & !(\texttt{kMode}== 5 \&\& \texttt{kElInFinState} \&\& \texttt{NDNuoneFiducial}) \&\& !(\texttt{kIsCC} \&\& \texttt{kIsNue} \&\& \texttt{kMode} == 10)
+Signal                   & \gls{nuone} \&\& \texttt{TrueVtxContained}\\
+$\nu$-on-e background    & \gls{nuone}\\
+$\nu_e$CC MEC background & !(\texttt{el scattering} \&\& \texttt{el In Fin State}) \&\& (\gls{CC} \&\& $\nu_e$ \&\& \gls{MEC})\\
+Other background         & !(\texttt{el scattering} \&\& \texttt{el In Fin State}) \&\& !(\gls{CC} \&\& $\nu_e$ \&\& \gls{MEC})
 \end{tabular}
 \label{tab:SignalDefinitions}
 \end{table}
