@@ -432,42 +432,28 @@ What should be included here:
 \end{itemize}
 \end{itemize}
 
-Our analysis strategy is to compare the count of the recorded neutrino events in data with the prediction. We are considering two hypotheses. Under the null hypothesis, which assumes no effective muon magnetic moment, the predicted number of events corresponds to the simulation true \gls{nuone} events under the \gls{SM} processes. For the alternative hypothesis, the predicted number of signal events, which depends on the value of the effective neutrino magnetic moment, and appear on top of the \gls{SM} background from the null hypothesis.
+Our analysis strategy is to compare the count of the recorded neutrino events in data with the prediction. The prediction consists of the signal, which is directly related to the value of the neutrino magnetic moment, and the background, which corresponds to the predicted events under the \gls{SM}. The signal is defined as true \gls{nuone} events with the neutrino magnetic moment cross section instead of the \gls{SM} one. Additionally, we require the true vertex to be contained inside of the \gls{ND} to remove events that originates from outside of the detector. Background is everything else.
 
-\note{Should I maybe discuss the statistical analysis used already here?}
+The data used in this analysis was collected from the start of the \gls{NOvA} \gls{ND} data taking on the 22$^{\textsf{nd}}$ of August 2014, until the 3$^{\textsf{rd}}$ of February 2021. This is the \gls{ND} data that was used in the latest \gls{NOvA} neutrino oscillations result \cite{NOvAResults2021.pdf}, with an additional one year of data taking. The \gls{ND} collected more data since February 2021 which is however still being processed and it is not available at the time of writing this thesis. The full \gls{ND}-equivalent exposure of the data sample is approximately $13.8\times10^{20}$~\gls{POT}. This exposure is used throughout the rest of this chapter to scale the predicted distributions and number of events.
 
-% Not sure if this should be here or in the datasets subsection... Here on forward I'm going to describe the differences between these (definitions, weights, signal def, systematics. What is the same: event selection and binning. They're joint together in the fitting framework, where the $\nu_e$CC MEC and the other backgrounds are simply summed together and scaled together. The $\nu$-on-e background (also called the irreducible background by the LDM analysis) is treated/scaled separately.
-
-The data used in this analysis was collected from the start of the \gls{NOvA} \gls{ND} data taking on the 22$^{\textsf{nd}}$ of August 2014, until the 3$^{\textsf{rd}}$ of February 2021. This is the same \gls{ND} data as was used in the latest \gls{NOvA} neutrino oscillations result \cite{NOvAResults2021.pdf}, with a additional one year of data taking. \gls{NOvA} collected more data until the writing of this thesis, this data is however still being processed and it is not available at the time of writing this thesis. The full \gls{ND}-equivalent exposure of the data sample is approximately $13.8\times10^{20}$~\gls{POT}. This exposure is used to scale all the predictions in this chapter to properly compare the predicted number of events to the expectations in data.
-
-We are using the standard \gls{NOvA} simulation and reconstruction tools as were discussed in Sec.~\ref{NOvAResults2021.pdf} and \ref{sec:NOvAReconstruction}. The simulation was created with approximately $4\times$ larger number of events than in data to limit statistical uncertainties from simulation. The total exposure for the simulation is approximately $55.4\times10^{20}$~\gls{POT}. For the studies of the systematic uncertainties, only a smaller portion of this is used, specifically $19.3\times10^{20}$~\gls{POT} exposure.
+This analysis uses the standard \gls{NOvA} simulation and reconstruction tools, as were discussed in Sec.~\ref{sec:NOvASimulation} and \ref{sec:NOvAReconstruction}. The simulation was created with approximately $4\times$ larger statistics than is available in data to limit statistical uncertainties from simulation. The total exposure for the simulation is approximately $55.4\times10^{20}$~\gls{POT}. However, for the studies of the systematic uncertainties, only a smaller portion of this full sample is used, specifically $19.3\times10^{20}$~\gls{POT} \gls{ND}-equivalent.
 
 %Enhanced nuone and nueCC MEC samples
-To tackle the low number of \gls{nuone} and $\nu_e$\gls{CC} \gls{MEC} events in the nominal simulation sample we are using a suit of nominal and enhanced simulation samples for four different signal and background components. Each one contains its nominal sample and special systematically shifted samples for the detector systematics. The use of the samples is summarised in table \ref{tab:SignalDefinitions} and described in detail below.
+Due to the relatively low cross section of the \gls{nuone} interaction, the nominal simulation sample contains too few \gls{nuone} events, which could result in a significant statistical uncertainty from simulation. To avoid this, we created a \gls{nuone}-enhanced simulation sample which contains mainly \gls{nuone} events with a little non-\gls{nuone} background overlaid on top to properly account for the possible reconstruction effects of the pileup of neutrino interactions in one spill \cite{NOVA-doc-56383}. In the real detector, the hits from the true \gls{nuone} interaction can be clustered to another interaction, or additional hits can be clustered together into the \gls{nuone} event. The total exposure of the \gls{nuone}-enhanced sample is $1.72\times10^{24}$~\gls{POT}. To save up on unnecessary disk space and processing usage, the enhanced \gls{nuone} sample does not include any cross section related parameters and variables, as the \gls{nuone} interaction is assumed to be known exactly from theory.
 
-% enhanced nuone sample
-Created by Wenjie Wu (was it just him or also Yiwen?) to do ... and fully described in the technote \cite{NOVA-doc-56383}. Using the overlayed and filematched samples for consistency. Correct POT is 1.72e+24 (this should be filematched). missing cross section parameters to save on file size
-
-[ND group's technote] Because the cross section of the nuone elastic scattering is very low (approx. 1/2000 of the total charged-current cross section), the statistics of nuone elastic scattering is not enough in the inclusive sample. In order to optimize the signal selection criteria, we made a sample with only nuone elastic scattering events in the detector. The size of this nuone signal MC is 1.48E23 POT. However the pile-up of neutrino interactions in one spill impacts on the hit clustering in reconstruction, either hits from the nuone elastic scattering can be clustered to other interactions or extra hits can be clustered to the nuone elastic scattering.
+%[ND group's technote] Because the cross section of the nuone elastic scattering is very low (approx. 1/2000 of the total charged-current cross section), the statistics of nuone elastic scattering is not enough in the inclusive sample. In order to optimize the signal selection criteria, we made a sample with only nuone elastic scattering events in the detector. The size of this nuone signal MC is 1.48E23 POT. However the pile-up of neutrino interactions in one spill impacts on the hit clustering in reconstruction, either hits from the nuone elastic scattering can be clustered to other interactions or extra hits can be clustered to the nuone elastic scattering.
 
 % enhanced nueccmec
-Created by Yiwen Xiao \cite{NOVA-doc-56383} to tackle the low statistics of the $\nu_e$CC MEC background events and subsequently large and unphysical cross section weights. Correct POT is 1.99e+24 (filematched). There are limitations of the sample in the q3-q0 parameter space.
+The cross section tuning procedure in \gls{NOvA} (Sec.~\ref{sec:NOvASimulation}) applies large weights to \gls{MEC} events in some parts of the parameter space. However, after the full event selection described below in Sec.~\ref{sec:NuMMEventSelection} there is only a small amount of \gls{MEC} events, specifically $\nu_e$\gls{CC} \gls{MEC} events, left in the detector. Applying large tuning corrections to only a small number of events results in large statistical fluctuations. To avoid this, we created another special sample with enhanced number of $\nu_e$\gls{CC} \gls{MEC} events. We followed the same procedure as for the \gls{nuone}-enhanced sample, resulting in the final exposure of $1.99\times10^{24}$~\gls{POT}.
 
-\todo{Describe already here the signal definitions, but only very briefly, basically just need to say that the signal also includes true vertex contained in the detector}
+%Created by Yiwen Xiao \cite{NOVA-doc-56383} to tackle the low statistics of the $\nu_e$CC MEC background events and subsequently large and unphysical cross section weights. Correct POT is 1.99e+24 (filematched). There are limitations of the sample in the q3-q0 parameter space.
 
+%[ND group's technote] After implementing GSF Xsec weights, the shape of background after selection shows multiple spikes from nue CC events.  Since the number of nue CC MEC events remained in the final sample is small, events with very large weight can distort the distribution of nue CC MEC events. In order to mitigate the effect for nue CC MEC events in the signal and sideband region (ETh2 < 0.04 GeV Rad2), a special nue CC MEC sample is produced with enlarged statistics. The nue CC MEC events after all selection in Production 5.1 MC are replaced by the nue CC MEC events in the special sample in the sections of DATA analysis and Systematic Uncertainty.
 
-\todo{Describe here that we're using the nominal ND MC sample for signal utilizing the simple relationship between the Standard Model cross section and the neutrino magnetic moment cross section (ref. theory)}
-
-The signal of the neutrino magnetic moment analysis is just a re-weighted signal of the \gls{nuone} analysis from the near detector group. We are using the same event selection as the near detector group.
-
-The signature of the neutrino magnetic moment is a single very forward low energetic electron shower. The major backgrounds are \gls{NC} and $\nu_\mu$\gls{CC} interactions that produce $\pi^0$ in the final state, which decays into two $\gamma$, mimicking the signal.
-
-NOvA is not super well suited for a low energy detection and there are troubles identifying very low energetic event. Majority of the analyses in NOvA only use events with energies above $\unit[0.5]{GeV}$.
-nueCCXSec only uses events above 1 GeV. The  numuCCpi0 XSec ana had a low E cutoff at 0.1GeV
 
 \subsection{Analysis weights}\label{sec:anaWeights}
-\todo{Describe why do we use weights}
-What are the weights we are using and why? weights used to correct for known limitations of the simulation
+
+The corrections for the known limitations in the simulation are applied in the form of event-by-event analysis weights, which weight each single event based on how it is affected by that particular variation in simulation.
 
 To correct for known deficiencies in simulation of neutrino flux or cross sections we apply weights calculated for each event.
 
@@ -512,7 +498,7 @@ https://journals.aps.org/prd/pdf/10.1103/PhysRevD.100.092001
 
 Say that we are not using the third part of the correction because it is tiny and it makes no difference. (tried and tested)
 
-[ND group's technote] In GENIE, the cross section of the nuone elastic scattering signal is calculated at the tree level. To improve the precision of the simulated nuone elastic scattering cross section, we performed radiative corrections to the GENIE nuone elastic scattering as shown in Appendix A.
+[ND group's technote] In GENIE, the cross section of the nuone elastic scattering signal is calculated at the tree level. To improve the precision of the simulated nuone elastic scattering cross section, we performed radiative corrections to the GENIE nuone elastic scattering as shown in Appendix A. The precision of the simulated nuone elastic scattering cross section is improved by tuning CLL and CLR to one-loop values obtained from global fits to electroweak data 14 and 2. The radiative correction also includes additional low-energy terms in the expression of differential cross section of nuone elastic scattering. In comparison, the neutrino interactions in the NOvA detector are simulated using the GENIE neutrino event generator, where the Weinberg Angle is 0.501716712132. After radiative corrections, the total number of nuone elastic scattering increases  0.83\% from the standard GENIE MC.
 
 \todo{correct the equation}
 Calculated as 
@@ -561,6 +547,11 @@ We are trying to select low energy neutrino-on-electron events, which are charac
 
 The main background in \gls{NOvA} in general are the $\nu_\mu$\gls{CC} events. They are generally easy to identify from our signal, however their sheer number makes them a dominant background nevertheless. Additionally, there are backgrounds that have the same or similar topology to our signal. These are specifically the $\nu_e$\gls{CC} events that produce electrons. Additionally, there are interactions that produce $\pi^0$, which can look similar to our signal in our detector. These can be from either $\nu_\mu$ or $\nu_e$, and can be both \gls{CC} or \gls{NC}.
 
+The signature of the neutrino magnetic moment is a single very forward low energetic electron shower. The major backgrounds are \gls{NC} and $\nu_\mu$\gls{CC} interactions that produce $\pi^0$ in the final state, which decays into two $\gamma$, mimicking the signal.
+
+NOvA is not super well suited for a low energy detection and there are troubles identifying very low energetic event. Majority of the analyses in NOvA only use events with energies above $\unit[0.5]{GeV}$.
+nueCCXSec only uses events above 1 GeV. The  numuCCpi0 XSec ana had a low E cutoff at 0.1GeV
+
 We explain the motivation behind each cut of the event selection and discuss their effect on the neutrino magnetic moment events below. We also consider possible improvements to the event selection for a future (re-)analysis.
 
 Should I describe already here the electron reconstruction and therefore resolution? The plots for energy resolution are done using full selection... The only place it comes into play for us (single bin analysis) is through the  cuts involving energy
@@ -569,6 +560,8 @@ The strategy for event selection is as follows. First, we remove misreconstructe
 \begin{equation}
 \textsf{\gls{FOM}} = \frac{\textsf{Signal}}{\sqrt{\textsf{Background}}}.
 \end{equation}
+
+[ND group's technote] Due to its small cross section, nuone elastic scattering contributes a small portion to the neutrino interactions happened in the detector. This section presents a thorough study regarding the features that can be utilized to differentiate nuone elastic scattering from other neutrino interactions. With the series of selection cuts, a sample with concentrated signals and strongly suppressed backgrounds is obtained in the ETh2 phase space.
 
 \subsubsection*{Data Collection Quality}
 Spill cuts
@@ -648,6 +641,7 @@ The pre-selection cuts have been kept from the $\nu_e$\gls{CC} analysis with loo
 They also remove the obvious $\nu_\mu$CC interactions by requiring that the length of the longest prong is $<500\ \unit{cm}$ and the summed number of cells for all prongs in the slice is $<200$. Relative comparison of signal, $\nu$-on-e background, and other background distributions for the pre-selection variables is shown on Fig.~\ref{fig:PreSelectionCuts}. This is much stricted than the ND group's $NHits<600$, $LongestPlane<800\unit{cm}$ and planes crossed by the longest prong $<120$.
 
 \todo{Mention that I added a preliminary $E\theta^2<0.04$ cut}
+Some of the signal events can be reconstructed with the opposite direction than the beam. These events might still be useful though and we want to keep them. For that reason, we are calculating the angle between the outgoing electron and the neutrino beam direction as $\textsf{acos}\left(\texttt{abs}\left(\theta\right)\right)$, which gives the same value whether the shower is reconstructed forward or backwards.
 
 \begin{figure}[hbtp]
 \centering
@@ -742,6 +736,8 @@ We require that the product of reconstructed energy of the primary shower and th
 \todo{Add plots of distributions of the event selection variables with two columns. LHS shows no cuts applied and RHS shows all previous cuts applied}
 
 Using the many plots below that show the effect of each of the cuts on the signal and all background events. (For signal we are showing NuMM=...)
+
+[ND group's technote] Two event classifiers (NuoneID and Epi0ID) based on convolutional neural network (CNN) are trained to identify nuone elastic scattering events (NuoneID) and to further reject background with pi0 in the final state (Epi0ID). The CNN architecture adopted for this analysis is the one used for NOvA CVN [12]. It takes the pixel map of a slice as the input and has deeper and more complicated neural networks than the ANNs used in the previous round of analysis [11]. The training for both classifiers (NuoneID and Epi0ID) were done with single electron samples as the signal in order to mitigate the model dependence. A nuone elastic scattering has an electron in the final state which could deposit energy in the detector. Single electron events share this feature with nuone elastic scattering, but have more uniform distribution of energy, angle between the shower direction and the beam direction. This additional feature could prevent CNN models from overfitting the feature of the very small scattering angle.  To make comparisons, test samples of signal and background are normalized to 1.1E21. The output categories are \gls{nuone}, $\pi^0$, $\nu_e$\gls{CC} and other. The \gls{nuone} and $\pi^0$ outputs are used for the training of the Epi0ID. The pre-selection applied is: ND group's preselection ($L<\unit[800]{cm}$, $N_{plane}<120$, $N_{cell}<600$), loose containment ($-190<X<190$, $-190<Y<190$, $50<Z<1500$ $\unit{cm}$), loose single particle cut ($E_{vtx}<\unit[0.05]{GeV}$, $gap<\unit[20]{cm}$, $E_{shower}/E_{tot} > 0.9$ \note{These are quite strict actually}. The training accuracy for NuoneID is about 85\% and for Epi0ID is about 96\%. After each round of training, the trained model is saved to make predictions on the test sample so we know how the actual performance of the classifiers evolves over different epochs.
 
 \todo{Describe the cutflow tables below}
 The final event count and efficiency of each of the cuts is shown on the table \ref{tab:CutflowTableSignal}. Table \ref{tab:CutflowTableBackground} shows the dissemination of background into the individual components.
@@ -882,9 +878,9 @@ What should be included here:
 \item Fake data studies: Explain the use of fake data or Monte Carlo simulations to test the robustness of the analysis.
 \end{itemize}
 
+\iffalse
 Depends on what fits I'm going to end up using...
 
-\iffalse
 How do we find the value of or limit for the effective neutrino magnetic moment?
 
 Large section on statistics in the PDG.
@@ -948,7 +944,6 @@ Also this framework is used for both LDM and NuMM together. It is trivial to sim
 \item Fitter which does exactly what... What are the parameters of the fit? What are the results/outputs?
 \end{itemize}
 \fi
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                             RESULTS                           %%%
