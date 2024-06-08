@@ -413,88 +413,23 @@ which does not depend on the neutrino energy and makes experiments sensitive to 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Analysis overview}\label{sec:NuMMAnalysisOverview}
 
-What should be included here:
-\begin{itemize}
-\item Data collection - Explain how data is collected, including the duration and conditions of data taking. Talk about possible RHC data and future data?
-\item Event Reconstruction
-\item Simulation
-\begin{itemize}
-\item Nominal ND
-\item Enhanced nuone
-\item Enhanced nueccMEC
-\end{itemize}
-\item Weights
-\begin{itemize}
-\item Overview
-\item PPFX and XSec weights
-\item Radcorr weight
-\item Magnetic moment signal as a weight
-\end{itemize}
-\end{itemize}
-
 Our analysis strategy is to compare the count of the recorded neutrino events in data with the prediction. The prediction consists of the signal, which is directly related to the value of the neutrino magnetic moment, and the background, which corresponds to the predicted events under the \gls{SM}. The signal is defined as true \gls{nuone} events with the neutrino magnetic moment cross section instead of the \gls{SM} one. Additionally, we require the true vertex to be contained inside of the \gls{ND} to remove events that originates from outside of the detector. Background is everything else.
 
-The data used in this analysis was collected from the start of the \gls{NOvA} \gls{ND} data taking on the 22$^{\textsf{nd}}$ of August 2014, until the 3$^{\textsf{rd}}$ of February 2021. This is the \gls{ND} data that was used in the latest \gls{NOvA} neutrino oscillations result \cite{NOvAResults2021.pdf}, with an additional one year of data taking. The \gls{ND} collected more data since February 2021 which is however still being processed and it is not available at the time of writing this thesis. The full \gls{ND}-equivalent exposure of the data sample is approximately $13.8\times10^{20}$~\gls{POT}. This exposure is used throughout the rest of this chapter to scale the predicted distributions and number of events.
+The data used in this analysis was collected from the start of the \gls{NOvA} \gls{ND} data taking on the 22$^{\textsf{nd}}$ of August 2014, until the 3$^{\textsf{rd}}$ of February 2021. This is the \gls{ND} data that was used in the latest \gls{NOvA} neutrino oscillations result \cite{NOvAResults2021.pdf}, with an additional one year of data taking. The \gls{ND} collected more data since February 2021 which is however still being processed and it is not available at the time of writing this thesis. The full \gls{ND}-equivalent exposure of the data sample is approximately $13.8\times10^{20}$~\gls{POT}. This exposure is used throughout the rest of this chapter to scale the predicted distributions and number of events. \note{Should I also talk about the RHC sample here? Future data?}
 
 This analysis uses the standard \gls{NOvA} simulation and reconstruction tools, as were discussed in Sec.~\ref{sec:NOvASimulation} and \ref{sec:NOvAReconstruction}. The simulation was created with approximately $4\times$ larger statistics than is available in data to limit statistical uncertainties from simulation. The total exposure for the simulation is approximately $55.4\times10^{20}$~\gls{POT}. However, for the studies of the systematic uncertainties, only a smaller portion of this full sample is used, specifically $19.3\times10^{20}$~\gls{POT} \gls{ND}-equivalent.
 
-%Enhanced nuone and nueCC MEC samples
-Due to the relatively low cross section of the \gls{nuone} interaction, the nominal simulation sample contains too few \gls{nuone} events, which could result in a significant statistical uncertainty from simulation. To avoid this, we created a \gls{nuone}-enhanced simulation sample which contains mainly \gls{nuone} events with a little non-\gls{nuone} background overlaid on top to properly account for the possible reconstruction effects of the pileup of neutrino interactions in one spill \cite{NOVA-doc-56383}. In the real detector, the hits from the true \gls{nuone} interaction can be clustered to another interaction, or additional hits can be clustered together into the \gls{nuone} event. The total exposure of the \gls{nuone}-enhanced sample is $1.72\times10^{24}$~\gls{POT}. To save up on unnecessary disk space and processing usage, the enhanced \gls{nuone} sample does not include any cross section related parameters and variables, as the \gls{nuone} interaction is assumed to be known exactly from theory.
+%Analysis weights - PPFX and cross section
+The corrections for the known limitations in the simulation are applied in the form of event-by-event analysis weights, which weight each single event based on how it is affected by that particular variation in simulation. To correct for known deficiencies in simulation of neutrino flux or cross sections we apply weights calculated for each event. This includes the external measurements that correct the neutrino beam prediction inside \gls{PPFX} as described in Sec.~\ref{sec:NOvASimulation}, and for the non-\gls{nuone} background, also the internal and external measurements that constrain the neutrino interaction prediction inside GENIE. These are not applied to the \gls{nuone} events, as they are assumed to be known precisely from theory.  However, the GENIE \gls{MC} simulation doesn't consider radiative corrections for the \gls{nuone} events, which are however trivial to implement.
 
-%[ND group's technote] Because the cross section of the nuone elastic scattering is very low (approx. 1/2000 of the total charged-current cross section), the statistics of nuone elastic scattering is not enough in the inclusive sample. In order to optimize the signal selection criteria, we made a sample with only nuone elastic scattering events in the detector. The size of this nuone signal MC is 1.48E23 POT. However the pile-up of neutrino interactions in one spill impacts on the hit clustering in reconstruction, either hits from the nuone elastic scattering can be clustered to other interactions or extra hits can be clustered to the nuone elastic scattering.
-
-% enhanced nueccmec
-The cross section tuning procedure in \gls{NOvA} (Sec.~\ref{sec:NOvASimulation}) applies large weights to \gls{MEC} events in some parts of the parameter space. However, after the full event selection described below in Sec.~\ref{sec:NuMMEventSelection} there is only a small amount of \gls{MEC} events, specifically $\nu_e$\gls{CC} \gls{MEC} events, left in the detector. Applying large tuning corrections to only a small number of events results in large statistical fluctuations. To avoid this, we created another special sample with enhanced number of $\nu_e$\gls{CC} \gls{MEC} events. We followed the same procedure as for the \gls{nuone}-enhanced sample, resulting in the final exposure of $1.99\times10^{24}$~\gls{POT}.
-
-%Created by Yiwen Xiao \cite{NOVA-doc-56383} to tackle the low statistics of the $\nu_e$CC MEC background events and subsequently large and unphysical cross section weights. Correct POT is 1.99e+24 (filematched). There are limitations of the sample in the q3-q0 parameter space.
-
-%[ND group's technote] After implementing GSF Xsec weights, the shape of background after selection shows multiple spikes from nue CC events.  Since the number of nue CC MEC events remained in the final sample is small, events with very large weight can distort the distribution of nue CC MEC events. In order to mitigate the effect for nue CC MEC events in the signal and sideband region (ETh2 < 0.04 GeV Rad2), a special nue CC MEC sample is produced with enlarged statistics. The nue CC MEC events after all selection in Production 5.1 MC are replaced by the nue CC MEC events in the special sample in the sections of DATA analysis and Systematic Uncertainty.
-
-
-\subsection{Analysis weights}\label{sec:anaWeights}
-
-The corrections for the known limitations in the simulation are applied in the form of event-by-event analysis weights, which weight each single event based on how it is affected by that particular variation in simulation.
-
-To correct for known deficiencies in simulation of neutrino flux or cross sections we apply weights calculated for each event.
-
-[ND group's technote] In order to ensure that the Monte Carlo used in this analysis is representative of the most up-to-date knowledge of both cross sections and flux, weights were applied to each simulated event based on true event information. 
-
-\subsubsection*{PPFX weight}
-\cite{NOVA-doc-23441}
-\todo{What does this do (one sentence ish).}
-Maybe cite Leo's thesis? Or paper?
-L. Aliaga, “Neutrino Flux Prediction for the NuMI Beamline.” PhD Thesis, FERMILAB-1081
-THESIS-2016-03
-
-[ND group's technote] The flux weight reweights the flux to the central value prediction, based on external hadron production measurements, from the PPFX package
-
-\subsubsection*{Prod5.1 GSF XSec weight}
-\todo{Find the reference: possibly Maria's docdb:53336 together with the official 2020 XSec tuning technote docdb:43962.}
-
-NOvAReweight reference: J. Wolcott, “NOvARwgt software.” https://github.com/novaexperiment/NOvARwgt-public.
-
-\todo{Briefly describe what does this do. Also mention Yiwen's talk/technote about the large XSec weights that made her create an enhanced nueCC MEC sample.}
-
-We are only using the for the background since we assume that the cross section for the signal is perfect. Also there are not weights for this kind of interaction.
-
-[ND group's technote] The cross-section weight is a combination of different weights applied to various processes. The major effects of this weight are
-\begin{itemize}
-\item  Adjust the axial mass (MA) for CCQE cross section to $\unit[1.04]{GeV/c^2}$ based on the error-weighted mean of updated ANL, BNL, and FNAL experiments.
-\item Applies the empirical MEC weight determined from the cross section tuning fit.
-\item Reduces non-resonant single pion production by 50\%.
-\item Applies RPA suppression that models nuclear screen effects at low values Q2 to QE and RES interactions.
-\item Reduces GENIE predicted DIS events with $W>\unit[1.7]{GeV}$ by 10\%.
-\end{itemize}
-
-\subsubsection*{Radiative correction weight}
-\todo{Why are we doing this? (reference Yiwen's talk/technote).}
-
+%Radiative correction weight
 Mention here where did I get the original GENIE cross section from (reference Yiwen's talk or technote, plus the original paper that was used). nu-on-e technote\cite{NOVA-doc-56383}
 
 \todo{Write out the actual version of the weight. Including the original and the corrected XSec constants}
 
-MINERvA paper:
-https://journals.aps.org/prd/pdf/10.1103/PhysRevD.100.092001
+MINERvA paper \cite{MinervaNuoneFluxConstraint2019.pdf}: At tree level, the neutrino-electron scattering cross section is given by... (basically same as I have in the theory) corrected for updated electroweak couplings, CLL and CLR [17] and one-loop electroweak radiative corrections as calculated in Ref. [18]. One deficiency of the calculation of Ref. [18] is that it does not contain the term in the one-loop cross section proportional to CLL CLR. This deficiency is corrected in a recent calculation [38], and that result is given below. However, as illustrated in Eq. (A1) this term also contains an additional power of m/Enu compared to the terms proportional to C2 LL and C2 LR, and the entire term is therefore negligible at the few-GeV neutrino energies of the MINERvA experiment.
+%[17] is https://www.sciencedirect.com/science/article/pii/S0146641013000239?via%3Dihub
+%[18] is https://www.sciencedirect.com/science/article/pii/0550321384902931?via%3Dihub
 
 Say that we are not using the third part of the correction because it is tiny and it makes no difference. (tried and tested)
 
@@ -506,7 +441,7 @@ Calculated as
 weight_{\text{Radiative Corr.}} = \left.\frac{d\sigma_{\nu-on-e}}{dy}\right|_{\text{Radiative Corr.}} / \left.\frac{\textsf{d}\sigma_{\nu-on-e}}{\textsf{d}y}\right|_{\text{GENIE 3}};\,y=\frac{E_e-m_e}{E_\nu}
 \end{equation}
 
-\subsubsection*{Neutrino magnetic moment signal as a weight}
+%Magnetic moment as a weight 
 \todo{What does this do and why does it work? Reference the theory part as to why is the magnetic moment signal simply a rescaling of the GENIE cross section.}
 
 Using the same tree-level cross section from GENIE as in the rad. corr. weight.
@@ -518,6 +453,30 @@ Calculated as
 \begin{equation}
 weight_{\nu\text{ Mag. Moment}} = \left.\frac{d\sigma_{\nu-on-e}}{dy}\right|_{\nu\text{ Mag. Moment}} / \left.\frac{\textsf{d}\sigma_{\nu-on-e}}{\textsf{d}y}\right|_{\text{GENIE 3}};\,y=\frac{E_e-m_e}{E_\nu}
 \end{equation}
+
+%Enhanced nuone sample
+Due to the relatively low cross section of the \gls{nuone} interaction, the nominal simulation sample contains too few \gls{nuone} events, which could result in a significant statistical uncertainty from simulation. To avoid this, we created a \gls{nuone}-enhanced simulation sample which contains mainly \gls{nuone} events with a little non-\gls{nuone} background overlaid on top to properly account for the possible reconstruction effects of the pileup of neutrino interactions in one spill \cite{NOVA-doc-56383}. In the real detector, the hits from the true \gls{nuone} interaction can be clustered to another interaction, or additional hits can be clustered together into the \gls{nuone} event. The total exposure of the \gls{nuone}-enhanced sample is $1.72\times10^{24}$~\gls{POT}. To save up on unnecessary disk space and processing usage, the enhanced \gls{nuone} sample does not include any cross section related parameters and variables, as the \gls{nuone} interaction is assumed to be known exactly from theory.
+
+%[ND group's technote] Because the cross section of the nuone elastic scattering is very low (approx. 1/2000 of the total charged-current cross section), the statistics of nuone elastic scattering is not enough in the inclusive sample. In order to optimize the signal selection criteria, we made a sample with only nuone elastic scattering events in the detector. The size of this nuone signal MC is 1.48E23 POT. However the pile-up of neutrino interactions in one spill impacts on the hit clustering in reconstruction, either hits from the nuone elastic scattering can be clustered to other interactions or extra hits can be clustered to the nuone elastic scattering.
+
+% enhanced nueccmec
+The cross section tuning procedure in \gls{NOvA} (Sec.~\ref{sec:NOvASimulation}) applies large weights to \gls{MEC} events in some parts of the parameter space. However, after the full event selection described below in Sec.~\ref{sec:NuMMEventSelection} there is only a small amount of \gls{MEC} events, specifically $\nu_e$\gls{CC} \gls{MEC} events, left in the detector. Applying large tuning corrections to only a small number of events results in large statistical fluctuations. To avoid this, we created another special sample with enhanced number of $\nu_e$\gls{CC} \gls{MEC} events. We followed the same procedure as for the \gls{nuone}-enhanced sample, resulting in the final exposure of $1.99\times10^{24}$~\gls{POT}.
+
+%Created by Yiwen Xiao \cite{NOVA-doc-56383} to tackle the low statistics of the $\nu_e$CC MEC background events and subsequently large and unphysical cross section weights. Correct POT is 1.99e+24 (filematched). There are limitations of the sample in the q3-q0 parameter space.
+
+%[ND group's technote] After implementing GSF Xsec weights, the shape of background after selection shows multiple spikes from nue CC events.  Since the number of nue CC MEC events remained in the final sample is small, events with very large weight can distort the distribution of nue CC MEC events. In order to mitigate the effect for nue CC MEC events in the signal and sideband region (ETh2 < 0.04 GeV Rad2), a special nue CC MEC sample is produced with enlarged statistics. The nue CC MEC events after all selection in Production 5.1 MC are replaced by the nue CC MEC events in the special sample in the sections of DATA analysis and Systematic Uncertainty.
+
+\iffalse
+NOvAReweight reference: J. Wolcott, “NOvARwgt software.” https://github.com/novaexperiment/NOvARwgt-public.
+[ND group's technote] The cross-section weight is a combination of different weights applied to various processes. The major effects of this weight are
+\begin{itemize}
+\item  Adjust the axial mass (MA) for CCQE cross section to $\unit[1.04]{GeV/c^2}$ based on the error-weighted mean of updated ANL, BNL, and FNAL experiments.
+\item Applies the empirical MEC weight determined from the cross section tuning fit.
+\item Reduces non-resonant single pion production by 50\%.
+\item Applies RPA suppression that models nuclear screen effects at low values Q2 to QE and RES interactions.
+\item Reduces GENIE predicted DIS events with $W>\unit[1.7]{GeV}$ by 10\%.
+\end{itemize}
+\fi
 
 
 The summary of the simulation samples and analysis weights for the three different types of signal and background component is shown in Tab.~\ref{tab:NuMMSamplesAndWeightsOverview}.
@@ -549,14 +508,9 @@ The main background in \gls{NOvA} in general are the $\nu_\mu$\gls{CC} events. T
 
 The signature of the neutrino magnetic moment is a single very forward low energetic electron shower. The major backgrounds are \gls{NC} and $\nu_\mu$\gls{CC} interactions that produce $\pi^0$ in the final state, which decays into two $\gamma$, mimicking the signal.
 
-NOvA is not super well suited for a low energy detection and there are troubles identifying very low energetic event. Majority of the analyses in NOvA only use events with energies above $\unit[0.5]{GeV}$.
-nueCCXSec only uses events above 1 GeV. The  numuCCpi0 XSec ana had a low E cutoff at 0.1GeV
-
 We explain the motivation behind each cut of the event selection and discuss their effect on the neutrino magnetic moment events below. We also consider possible improvements to the event selection for a future (re-)analysis.
 
-Should I describe already here the electron reconstruction and therefore resolution? The plots for energy resolution are done using full selection... The only place it comes into play for us (single bin analysis) is through the  cuts involving energy
-
-The strategy for event selection is as follows. First, we remove misreconstructed and untrusted events. Then we apply pre-selection cuts that remove obvious background, by limiting the reduction of the signal efficiency at most at $\unit[0.2]{\%}$. Then we apply the containment cuts that remove events that are either not fully contained within the detector, or events that originate from outside of the detector, such are rock muons. Then we look at a selection of variables inside a TMVA and choose the cuts that are give us the best signal over background ratio. Given that we have a very limited number of signal events, our chosen \gls{FOM} is a simple
+The strategy for event selection is as follows. First, we remove misreconstructed and untrusted events. Then we apply pre-selection cuts that remove obvious background, by limiting the reduction of the signal efficiency at most at $\unit[0.2]{\%}$. Then we apply the containment cuts that remove events that are either not fully contained within the detector, or events that originate from outside of the detector, such are rock muons. Then we look at a selection of variables inside a TMVA and choose the cuts that give us the best signal over background ratio. Given that we have a very limited number of signal events, our chosen \gls{FOM} is a simple
 \begin{equation}
 \textsf{\gls{FOM}} = \frac{\textsf{Signal}}{\sqrt{\textsf{Background}}}.
 \end{equation}
@@ -564,98 +518,107 @@ The strategy for event selection is as follows. First, we remove misreconstructe
 [ND group's technote] Due to its small cross section, nuone elastic scattering contributes a small portion to the neutrino interactions happened in the detector. This section presents a thorough study regarding the features that can be utilized to differentiate nuone elastic scattering from other neutrino interactions. With the series of selection cuts, a sample with concentrated signals and strongly suppressed backgrounds is obtained in the ETh2 phase space.
 
 \subsubsection*{Data Collection Quality}
-Spill cuts
-To ensure good data quality, we apply the following criteria on the run, subrun and spill level. 
-\todo{Add a description of the spill quality cuts (only applied to data)}
-
-\note{How much in detail do I need to go in here? This is very technical. Should I even include this? See 3fl technote for more detail}
+To ensure good data quality, we apply the following criteria to data only. These involve the the spill time cut, at least $2\time10^{12}$ \gls{POT} per spill, the current in the focusing horn within $1<I_{Horn}<-198$, position of the beam is within $\pm\unit[2]{cm}$ in both x and y axis and that the width of the beam is within $0.57$ and $\unit[1.58]{cm}$. Additionally, we remove events that are incomplete, or with problems in one or more \glspl{DCM}.
 
 \subsubsection*{Reconstruction Quality}
 
 Since electron are reconstructed by slicing, then vertexing, then reconstructing prongs. To identify electron we request that there is a valid reconstructed vertex and at least one reconstructed prong. Even though electrons only consist of a single shower, we don't reject events with more than one prongs in a slice, as the reconstruction can wrongly assign noise hits as a separate prong. We do not want to reject these events as we might still recover the true signal event from there.
 
-\todo{Discuss why so many events do not have a reconstructed vertex}
+Figure~\ref{fig:NuMMCutsVertexIsValid} and Tab.~\ref{tab:CutflowTableBasicRecoQC} show that about $\unit[67]{\%}$ signal events do not have a valid reconstructed vertex. This is due to the concentration of the signal events at very low electron recoil energies, which can often consist of a single hit or only a few hits. As can be seen in the bottom plot of Fig.~\ref{fig:NuMMCutsVertexIsValid}, events with small true electron recoil energy have much smaller vertex reconstruction efficiency than higher energetic electrons. However, improving \gls{NOvA} vertex reconstruction at low energies might significantly aid the search for the neutrino magnetic moment. Ongoing work is improving the vertex reconstruction by using \gls{ML} approach instead of the currently used Hough transform together with Elastic Arms \cite{NOvA-doc-61190}.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.75\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxIsValid.pdf}
-\includegraphics[width=.75\textwidth]{Plots/NuMMEventSelection/VtxIsValidNuMM.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic reconstruction quality selection variables. No cuts were applied to make these plots. Yellow lines indicate the cut values for the shown variables, with arrows pointing towards the preserved events. All plots show relative comparison with histograms normalised to their areas.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxIsValid.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/VtxIsValidNuMM.pdf}
+\caption[Vertex reconstruction quality cut]{Top: Relative comparison of the signal (red), $\nu$-on-e background (blue), and other background (green) events for the vertex reconstruction quality selection. Each histogram is area-normalised and the first bin corresponds to events without a valid vertex and second bin to events with correctly reconstructed vertex. The yellow line indicates the chosen cut value: all events have to have a valid reconstructed vertex. Bottom: profile histogram of the `vertex is valid' variable as a function of the true electron energy for the true signal events, showing the significant drop in vertex reconstruction efficiency at low electron recoil energies. No selection was applied prior to making these plots.}
 \label{fig:NuMMCutsVertexIsValid}
 \end{figure}
 
-Additionally, we're placing a cut on the number of hits per plane to $<5$. This is to remove the so-called `\gls{FEB} flashers', which are caused by a very high energy deposit in one cell, such that it affects all the other channel on the same \gls{APD} \cite{NOvA-doc-37668}
+Additionally, we're placing a cut on the number of hits per plane to $<5$. This is to remove the so-called `\gls{FEB} flashers', which are caused by a very high energy deposit in one cell, such that it affects all the other channel on the same \gls{APD} \cite{NOvA-doc-37668}. The cut value was chosen so that it removes $\leq\unit[0.25]{\%}$ signal events, which is the same criterion as is used for the basic event selection cuts described below. Relative comparisons between signal and background for the number of prongs and the number of hits per plane are shown in Fig.~\ref{fig:NuMMCutsRecoQuality}.
 
-Literally taken from the 3 flavour's nue appearance low energy selection
-Pre-selection cuts include basic quality cuts that remove events with invalid vertex reconstruction and events with no reconstructed prongs, as shown on Fig.~\ref{fig:BasicPreSelectionCuts}.
 %In pre-selection we also include a cut on the time difference between the mean times of the "current" slice and of the slice closest in time, which should be $>25\ \unit{ns}$. This ensures that ... \todo{This is to remove slicing failures that split the two gamma from a $\pi^0$ into two slices that resemble electron signal. Should we remove them now though?}.
 
-[nueXSec ana, docdb:37668] One additional detector issues is the presence of "FEB Flashers" within reconstructed slices. FEB flashers are caused by high  energy deposits in one cell, which induces a sagged baseline in all other channels on the same APD. When the baseline is restored, fake hits are triggered on the whole APD.
-
-Requiring at least one reconstructed vertex and at least one reconstructed prong (and shower). Also requiring that there are $<8$ hits per plane to remove FEB flashers.
+%[nueXSec ana, docdb:37668] One additional detector issues is the presence of "FEB Flashers" within reconstructed slices. FEB flashers are caused by high  energy deposits in one cell, which induces a sagged baseline in all other channels on the same APD. When the baseline is restored, fake hits are triggered on the whole APD.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.75\textwidth]{Plots/NuMMEventSelection/N1Cut_NPng.pdf}
-\includegraphics[width=.75\textwidth]{Plots/NuMMEventSelection/N1Cut_NHitsPPlane.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic reconstruction quality selection variables. No cuts were applied to make these plots. Yellow lines indicate the cut values for the shown variables, with arrows pointing towards the preserved events. All plots show relative comparison with histograms normalised to their areas.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NPng.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHitsPPlane.pdf}
+\caption[Prong and hits reconstruction quality cuts]{Relative comparison of signal (red), $\nu$-on-e background (blue), and other background (green) events in the number of prongs (top) and the number of hits per plane (bottom) distributions. Events in both plots are required to have a valid reconstructed vertex and in the bottom plot also at least one reconstructed prong. Yellow lines indicate the cut values for the shown variables, with arrows pointing towards the preserved events. All histograms are area-normalised.}
 \label{fig:NuMMCutsRecoQuality}
+\end{figure}
+
+%%% Low CalE
+\note{Already applying the cut here to help reduce the events for TMVA. This cut is based purely on reco quality (we don't trust events below 0.5GeV, especially not for the CVN nuone ID variables}
+
+\todo{discuss the energy cut, should this be removed? What is the effect on the event count? Why was this included in the first place (the identifiers are not as strong for lower energies - is this true though? - also there are further unexplored backgrounds that would need to be further studied and explore. Maybe depends on where would we move the cut...)}
+
+The reconstructed calorimetric energy of the primary shower is required to be $E_{cal} > \unit[0.5]{GeV}$ as shown in Fig.~\ref{fig:NuMMCutsLowCalE}. This is to remove region in the parameter space with large backgrounds. However, due to the nature of the neutrino magnetic moment signal, this cut also removes a majority of our signal events (exactly how much?). 
+
+This is due to a presence of large background that has not been studied very well. No \gls{NOvA} analysis really uses events with such low energies. However, after further studies and validation, it is likely that these cut can be pushed to lower electron recoil energy, especially by using better event identifiers to remove the large background there. 
+
+NOvA is not super well suited for a low energy detection and there are troubles identifying very low energetic event. Majority of the analyses in NOvA only use events with energies above $\unit[0.5]{GeV}$.
+nueCCXSec only uses events above 1 GeV. The  numuCCpi0 XSec ana had a low E cutoff at 0.1GeV
+
+\note{How does the energy resolution and bias come into play here? 0.5GeV for us is not the same as for the 3fl or for some other ND analyses. This needs to be properly investigated in the future}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calELow.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calELow_BkgDecomp.pdf}
+\caption[Low calorimetric energy cut for reconstruction quality]{Top: Relative comparison of signal (red), $\nu$-on-e background (blue), and other background (green) events in the reconstructed calorimetric energy distribution. All histograms are area-normalised. Bottom: Decomposition of background into various sub-samples, normalised to the data \acrshort{POT} exposure. Events in both plots are required to have a valid reconstructed vertex, at least one reconstructed prong and at most $5$ hits per plane. Yellow lines indicate the cut value for the reconstructed calorimetric energy, with arrows pointing towards the preserved events.}
+\label{fig:NuMMCutsLowCalE}
 \end{figure}
 
 \begin{table}[!hb]
 \centering
-\caption{Event selection cutflow table}
+\caption[Event selection cutflow table for the reconstruction quality cut]{Event selection cutflow table for the reconstruction quality cut. Number of events for each signal sample and the relative efficiency. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied.}
 \begin{tabular}{|l|cc|cc|cc|}\hline
 \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
-\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon^{N-1}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon^{N-1}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon^{N-1}\left(\%\right)$}\\\hline
+\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon^{N-1}$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{Rel}$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon^{Rel}$}\\\hline
 \textbf{No Cut} & 269.76 & 100 & 3.43$\times 10^3$ & 100 & 2.96$\times 10^8$ & 100\\
 \textbf{Valid Vtx} & 180.54 & 66.93 & 3.33$\times 10^3$ & 96.94 & 2.34$\times 10^8$ & 79.10\\
 \textbf{N Prongs} & 174.65 & 96.74 & 64.74 $\times 10^3$ & 96.99 & 8.66$\times 10^7$ & 37.01\\
-\textbf{Hits / Plane} & - & - & - & - & - & -\\\hline
+\textbf{Hits / Plane} & - & - & - & - & - & -\\
+\textbf{Low Cal. E} & - & - & - & - & - & -\\\hline
 \end{tabular}
 \label{tab:CutflowTableBasicRecoQC}
 \end{table}
 
-\subsubsection*{Shower energy cut}
-\note{Already applying the cut here to help reduce the events for TMVA. This cut is based purely on reco quality (we don't trust events below 0.5GeV, especially not for the CVN nuone ID variables0}
+\subsubsection*{Basic Event Selection}
 
-\todo{discuss the energy cut, should this be removed? What is the effect on the event count? Why was this included in the first place (the identifiers are not as strong for lower energies - is this true though? - also there are further unexplored backgrounds that would need to be further studied and explore. Maybe depends on where would we move the cut...)}
-The calorimetric energy of the primary shower is required to be $E_{cal} > \unit[0.5]{GeV}$.
+Basic event selection cuts aim to remove obvious background events without affecting the signal too much. The criterion for these cuts will be that each of them has to limit the signal efficiency by approximately $\unit[0.25]{\%}$. This means that in total the pre-selection cuts will lower the signal efficiency by only approximately $\unit[1]{\%}$. We are using the same variables for these cuts as were used in the event selection for the $\nu_e$ appearance \gls{ND} constraint for the three flavour neutrino oscillation measurements \cite{NOvAResults2021.pdf}. Additionally, we are also using a cut on the product of the reconstructed calorimetric energy and the square of the reconstructed angle between the recoil electron and the neutrino beam direction. The electron is assumed to be the most energetic reconstructed showers. The reconstructed showers are ordered based on their deposited energies, therefore the first reconstructed prong is assumed to be the most energetic. In case of the \gls{nuone} events, this should be the electron.
+
+They also remove the obvious $\nu_\mu$CC interactions by requiring that the summed number of cells for all prongs in the slice is $<200$ and the length of the longest prong is $<540\ \unit{cm}$. Relative comparison of signal, \gls{nuone} background, and other background distributions for the pre-selection variables is shown on Fig.~\ref{fig:PreSelectionCuts}.
+
+Additionally, as discussed in Sec.~\ref{sec:MeasuringNuMM}, from theory we know what the true recoil electron for the \gls{nuone} interaction is supposed to be limited by $E\theta^2<2m_e$. Due to reconstruction deficiencies, the reconstructed $E\theta^2$ will not have such a strict cut-off for \gls{nuone} events, this variable can however be used to distinguish them from the $\nu_e$\gls{CC} events, for which the electron has a much more isotropic distribution.
+
+On top of that, we are also placing a loose cut on the maximum calorimetric energy, as the signal is limited to low energies, as can be seen in Fig.~\ref{fig:NuMMCutsETh2CalEHighLoose}.
+
+Some of the signal events can be reconstructed with the opposite direction than the beam. These events might still be useful though and we want to keep them. For that reason, we are calculating the angle between the outgoing electron and the neutrino beam direction as $\textsf{acos}\left(\textsf{abs}\left(\cos\theta\right)\right)$, which gives the same value whether the shower is reconstructed forward or backwards.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calE.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calE_BkgDecomp.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. No cuts were applied to make these plots. Gold lines show the cut values that create the fiducial volume.}
-\label{fig:SingleShowerCuts1}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHits.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_NHitsleft_Eff.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
+\label{fig:NuMMCutsNHits}
 \end{figure}
-
-\subsubsection*{Basic Event Selection}
-again Literally taken from the 3 flavour's nue appearance low energy selection - variables, not the values.
-
-The cut values for the basic event selection were chosen so that they cut out most of the background, while only approximately $\unit[0.2]{\%}$ of signal events 
-
-The criterion for these cuts will be that each of them has to limit the signal efficiency by 0.25\% or lower. This means that in total the preselection cuts will lower the signal efficiency by 1\% or lower, which is acceptable.
-
-The pre-selection cuts have been kept from the $\nu_e$\gls{CC} analysis with loosened cut values \todo{find a reference for this analysis}.
-They also remove the obvious $\nu_\mu$CC interactions by requiring that the length of the longest prong is $<500\ \unit{cm}$ and the summed number of cells for all prongs in the slice is $<200$. Relative comparison of signal, $\nu$-on-e background, and other background distributions for the pre-selection variables is shown on Fig.~\ref{fig:PreSelectionCuts}. This is much stricted than the ND group's $NHits<600$, $LongestPlane<800\unit{cm}$ and planes crossed by the longest prong $<120$.
-
-\todo{Mention that I added a preliminary $E\theta^2<0.04$ cut}
-Some of the signal events can be reconstructed with the opposite direction than the beam. These events might still be useful though and we want to keep them. For that reason, we are calculating the angle between the outgoing electron and the neutrino beam direction as $\textsf{acos}\left(\texttt{abs}\left(\theta\right)\right)$, which gives the same value whether the shower is reconstructed forward or backwards.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_longestProng.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHits.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_longestProngleft_Eff.pdf}
 \caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
-\label{fig:PreSelectionCuts1}
+\label{fig:NuMMCutsLongestProng}
 \end{figure}
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_eth2Loose.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calEHigh.pdf}
 \caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
-\label{fig:PreSelectionCuts2}
+\label{fig:NuMMCutsETh2CalEHighLoose}
 \end{figure}
 
 %\todo{Add the DeCAF cuts description here - might describe them already when introducing the decaf samples, not sure yet}
@@ -670,10 +633,28 @@ We require that the reconstructed vertex is contained within the following volum
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxXActive.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxYActive.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxZ.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxXActiveright_FOMStats.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxXActiveleft_FOMStats.pdf}
 \caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Basic reconstruction quality and pre-selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($<\unit[1270]{cm}$) for the two top plots. Gold lines show the cut values that create the fiducial volume.}
-\label{fig:FiducialCut}
+\label{fig:NuMMFiducialCutX}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxYActive.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxYActiveright_FOMStats.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxYActiveleft_FOMStats.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Basic reconstruction quality and pre-selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($<\unit[1270]{cm}$) for the two top plots. Gold lines show the cut values that create the fiducial volume.}
+\label{fig:NuMMFiducialCutY}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxZ.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxZright_FOMStats.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxZleft_FOMStats.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Basic reconstruction quality and pre-selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($<\unit[1270]{cm}$) for the two top plots. Gold lines show the cut values that create the fiducial volume.}
+\label{fig:NuMMFiducialCutY}
 \end{figure}
 
 To ensure all the energy is contained within the detector and to remove events originating outside of the detector (rock muons), we require that the extreme positions of hits for all prongs in the slice are within the following volume: $-175<\textsf{min}_X, \textsf{max}_X<175, -175<\textsf{min}_Y, \textsf{max}_Y<175, 105<\textsf{min}_Z, \textsf{max}_Z<1270\ \unit{cm}$. \note{Also made this a bit stricter from the ND group's values as it didn't really make sense}
@@ -681,25 +662,49 @@ To ensure all the energy is contained within the detector and to remove events o
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_minX.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_maxX.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_minXright_FOMStats.pdf}
 \caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the x axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
-\label{fig:ContainmentCutsX}
+\label{fig:NuMMContainmentCutMinX}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_maxX.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_maxXleft_FOMStats}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the x axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
+\label{fig:NuMMContainmentCutMaxX}
 \end{figure}
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_minY.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_minYright_FOMStats.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the y axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
+\label{fig:NuMMContainmentCutMinY}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_maxY.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the Y axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
-\label{fig:ContainmentCutsY}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_maxYleft_FOMStats}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the y axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
+\label{fig:NuMMContainmentCutMaxY}
 \end{figure}
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_minZ.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_minZright_FOMStats.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the z axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
+\label{fig:NuMMContainmentCutMinZ}
+\end{figure}
+
+\begin{figure}[hbtp]
+\centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_maxZ.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the Z axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
-\label{fig:ContainmentCutsZ}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_maxZleft_FOMStats}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the z axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
+\label{fig:NuMMContainmentCutMaxZ}
 \end{figure}
 
 
@@ -869,7 +874,13 @@ Plots of energy showing shifts for signal and backgrounds separately
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                           FITTING                             %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Fitting and hypothesis testing, parameter estimation}\label{sec:NuMMFitting}
+\section{Statistical analysis}\label{sec:NuMMFitting}
+
+We are basically doing two separate things:
+\begin{enumerate}
+\item Testing a hypothesis that there is no magnetic moment present in the signal. Can we reject the null hypothesis given our data?
+\item If we can reject the null hypothesis we want to estimate the best fit of the parameter. Additionally, we want to put a limit (set a confidence interval) on the magnetic moment parameter.
+\end{enumerate}
 
 What should be included here:
 \begin{itemize}
