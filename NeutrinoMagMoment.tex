@@ -530,7 +530,7 @@ Figure~\ref{fig:NuMMCutsVertexIsValid} and Tab.~\ref{tab:CutflowTableBasicRecoQC
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxIsValid.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/VtxIsValidNuMM.pdf}
-\caption[Vertex reconstruction quality cut]{Top: Relative comparison of the signal (red), $\nu$-on-e background (blue), and other background (green) events for the vertex reconstruction quality selection. Each histogram is area-normalised and the first bin corresponds to events without a valid vertex and second bin to events with correctly reconstructed vertex. The yellow line indicates the chosen cut value: all events have to have a valid reconstructed vertex. Bottom: profile histogram of the `vertex is valid' variable as a function of the true electron energy for the true signal events, showing the significant drop in vertex reconstruction efficiency at low electron recoil energies. No selection was applied prior to making these plots.}
+\caption[Vertex reconstruction quality cut]{Top: Relative comparison of the signal (red), \acrshort{nuone} background (blue), and other background (green) events for the vertex reconstruction quality selection. Each histogram is area-normalised and the first bin corresponds to events without a valid vertex and second bin to events with correctly reconstructed vertex. The yellow line indicates the chosen cut value: all events have to have a valid reconstructed vertex. Bottom: profile histogram of the `vertex is valid' variable as a function of the true electron energy for the true signal events, showing the significant drop in vertex reconstruction efficiency at low electron recoil energies. No selection was applied prior to making these plots.}
 \label{fig:NuMMCutsVertexIsValid}
 \end{figure}
 
@@ -544,7 +544,7 @@ Additionally, we're placing a cut on the number of hits per plane to $<5$. This 
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NPng.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHitsPPlane.pdf}
-\caption[Prong and hits reconstruction quality cuts]{Relative comparison of signal (red), $\nu$-on-e background (blue), and other background (green) events in the number of prongs (top) and the number of hits per plane (bottom) distributions. Events in both plots are required to have a valid reconstructed vertex and in the bottom plot also at least one reconstructed prong. Yellow lines indicate the cut values for the shown variables, with arrows pointing towards the preserved events. All histograms are area-normalised.}
+\caption[Prong and hits reconstruction quality cuts]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the number of prongs (top) and the number of hits per plane (bottom) distributions. Events in both plots are required to have a valid reconstructed vertex and in the bottom plot also at least one reconstructed prong. Yellow lines indicate the cut values for the shown variables, with arrows pointing towards the preserved events. All histograms are area-normalised.}
 \label{fig:NuMMCutsRecoQuality}
 \end{figure}
 
@@ -566,21 +566,21 @@ nueCCXSec only uses events above 1 GeV. The  numuCCpi0 XSec ana had a low E cuto
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calELow.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calELow_BkgDecomp.pdf}
-\caption[Low calorimetric energy cut for reconstruction quality]{Top: Relative comparison of signal (red), $\nu$-on-e background (blue), and other background (green) events in the reconstructed calorimetric energy distribution. All histograms are area-normalised. Bottom: Decomposition of background into various sub-samples, normalised to the data \acrshort{POT} exposure. Events in both plots are required to have a valid reconstructed vertex, at least one reconstructed prong and at most $5$ hits per plane. Yellow lines indicate the cut value for the reconstructed calorimetric energy, with arrows pointing towards the preserved events.}
+\caption[Low calorimetric energy cut for reconstruction quality]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the reconstructed calorimetric energy distribution. All histograms are area-normalised. Bottom: Decomposition of background into various sub-samples, normalised to the data \acrshort{POT} exposure. Events in both plots are required to have a valid reconstructed vertex, at least one reconstructed prong and at most $5$ hits per plane. Yellow lines indicate the cut value for the reconstructed calorimetric energy, with arrows pointing towards the preserved events.}
 \label{fig:NuMMCutsLowCalE}
 \end{figure}
 
 \begin{table}[!hb]
 \centering
-\caption[Event selection cutflow table for the reconstruction quality cut]{Event selection cutflow table for the reconstruction quality cut. Number of events for each signal sample and the relative efficiency. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied.}
+\caption[Event selection cutflow table for the reconstruction quality cuts]{Event selection cutflow table for the reconstruction quality cuts showing the number of events and the relative efficiency of each cut for each signal sample. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied.}
 \begin{tabular}{|l|cc|cc|cc|}\hline
 \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
-\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon^{N-1}$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{Rel}$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon^{Rel}$}\\\hline
-\textbf{No Cut} & 269.76 & 100 & 3.43$\times 10^3$ & 100 & 2.96$\times 10^8$ & 100\\
-\textbf{Valid Vtx} & 180.54 & 66.93 & 3.33$\times 10^3$ & 96.94 & 2.34$\times 10^8$ & 79.10\\
-\textbf{N Prongs} & 174.65 & 96.74 & 64.74 $\times 10^3$ & 96.99 & 8.66$\times 10^7$ & 37.01\\
-\textbf{Hits / Plane} & - & - & - & - & - & -\\
-\textbf{Low Cal. E} & - & - & - & - & - & -\\\hline
+\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
+\textbf{No Cut} & 269.77 & 100 & 3.43$\times 10^3$ & 100 & 2.96$\times 10^8$ & 100\\
+\textbf{Valid Vtx} & 180.58 & 66.94 & 3.33$\times 10^3$ & 96.94 & 2.34$\times 10^8$ & 79.10\\
+\textbf{N$^o$ Prongs} & 174.69 & 96.74 & 3.23$\times 10^3$ & 96.99 & 8.66$\times 10^7$ & 37.00\\
+\textbf{Hits / Plane} & 174.36 & 99.81 & 3.22$\times 10^3$ & 93.83 & 7.32$\times 10^7$ & 84.55\\
+\textbf{Low Cal. E} & 48.75 & 27.96 & 2.71$\times 10^3$ & 84.10 & 4.06$\times 10^7$ & 55.52\\\hline
 \end{tabular}
 \label{tab:CutflowTableBasicRecoQC}
 \end{table}
@@ -601,7 +601,7 @@ Some of the signal events can be reconstructed with the opposite direction than 
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHits.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_NHitsleft_Eff.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
+\caption[Number of hits cut for basic event selection]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of total number of hits from all reconstructed prongs in the slice. All histograms are area-normalised. Bottom: Cumulative signal (red) and background (black) efficiency calculated as number of signal/background events left of the bin divided by the total number of signal/background events. Yellow lines indicate the cut value for the maximum number of hits, with arrows pointing towards the preserved events. The reconstruction quality cuts were applied before making these plots.}
 \label{fig:NuMMCutsNHits}
 \end{figure}
 
@@ -609,7 +609,7 @@ Some of the signal events can be reconstructed with the opposite direction than 
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_longestProng.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_longestProngleft_Eff.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
+\caption[Length of the longest prong cut for basic event selection]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the length of the longest reconstructed prong in slice. All histograms are area-normalised. Bottom: Cumulative signal (red) and background (black) efficiency calculated as number of signal/background events left of the bin divided by the total number of signal/background events. Yellow lines indicate the cut value for the maximum length of the longest prong, with arrows pointing towards the preserved events. The reconstruction quality cuts and the number of hits cut were applied before making these plots.}
 \label{fig:NuMMCutsLongestProng}
 \end{figure}
 
@@ -617,11 +617,26 @@ Some of the signal events can be reconstructed with the opposite direction than 
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_eth2Loose.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calEHigh.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for basic pre-selection variables. Cuts on VtxIsValid, number of prongs, and number of hits per plane were applied to make these plots. Yellow lines show the cut values for the shown variables.}
+\caption[$E\theta^2$ and high calorimetric energy cut for basic event selection]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the reconstructed energy of the leading shower multiplied by its angle from the incoming neutrino beam direction squared (top) and of the reconstructed energy of the leading shower (bottom). All histograms are area-normalised. Yellow lines indicate the cut value for the corresponding variables, with arrows pointing towards the preserved events. The reconstruction quality cuts, the number of hits cut, and the length of the longest prong cuts were applied before making both of these plots, while the hits in the bottom plot are also required to pass the $E\theta^2$ cut.}
 \label{fig:NuMMCutsETh2CalEHighLoose}
 \end{figure}
 
 %\todo{Add the DeCAF cuts description here - might describe them already when introducing the decaf samples, not sure yet}
+
+\begin{table}[!hb]
+\centering
+\caption[Event selection cutflow table for the basic event selection]{Basic event selection cutflow table showing the number of events and the relative efficiency of each cut for each signal sample. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied. The top row corresponds to the sample after applying the reconstruction quality cuts.}
+\begin{tabular}{|l|cc|cc|cc|}\hline
+\multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
+\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
+\textbf{Reco Quality} & 48.75 & 100 & 2.71$\times 10^3$ & 100 & 4.06$\times 10^7$ & 100\\
+\textbf{N$^o$ Hits} & 48.64 & 99.78 & 2.32$\times 10^3$ & 85.63 & 3.08$\times 10^7$ & 75.67\\
+\textbf{Prong Length} & 48.52 & 99.75 & 2.26$\times 10^3$ & 97.39 & 2.17$\times 10^7$ & 70.66\\
+\textbf{$E\theta^2$} & 48.39 & 99.73 & 2.25$\times 10^3$ & 99.71 & 6.00$\times 10^6$ & 27.62\\
+\textbf{High Cal. E} & 48.27 & 99.76 & 2.03$\times 10^3$ & 90.04 & 5.98$\times 10^6$ & 99.67\\\hline
+\end{tabular}
+\label{tab:CutflowTableBasicSelection}
+\end{table}
 
 \subsubsection*{Fiducial and containment cuts}
 
@@ -635,7 +650,7 @@ We require that the reconstructed vertex is contained within the following volum
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxXActive.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxXActiveright_FOMStats.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxXActiveleft_FOMStats.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Basic reconstruction quality and pre-selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($<\unit[1270]{cm}$) for the two top plots. Gold lines show the cut values that create the fiducial volume.}
+\caption[Vertex x containment cut]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the x position of the reconstructed vertex. All histograms are area-normalized. Middle and bottom: Cumulative \acrshort{FOM} calculated as the number of signal events, divided by the number of background events from that bin until the end of the plot in the direction of the yellow arrow. The reconstruction quality and basic selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($Vtx_Z<\unit[1270]{cm}$). Yellow lines show the cut values that create the fiducial volume, with arrows pointing towards the preserved events.}
 \label{fig:NuMMFiducialCutX}
 \end{figure}
 
@@ -644,7 +659,7 @@ We require that the reconstructed vertex is contained within the following volum
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxYActive.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxYActiveright_FOMStats.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxYActiveleft_FOMStats.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Basic reconstruction quality and pre-selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($<\unit[1270]{cm}$) for the two top plots. Gold lines show the cut values that create the fiducial volume.}
+\caption[Vertex y containment cut]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the y position of the reconstructed vertex. All histograms are area-normalized. Middle and bottom: Cumulative \acrshort{FOM} calculated as the number of signal events, divided by the number of background events from that bin until the end of the plot in the direction of the yellow arrow. The reconstruction quality and basic selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($Vtx_Z<\unit[1270]{cm}$). Yellow lines show the cut values that create the fiducial volume, with arrows pointing towards the preserved events.}
 \label{fig:NuMMFiducialCutY}
 \end{figure}
 
@@ -653,7 +668,7 @@ We require that the reconstructed vertex is contained within the following volum
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxZ.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxZright_FOMStats.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_vtxZleft_FOMStats.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Basic reconstruction quality and pre-selection cuts were applied prior to making these plots. Additionally, vertex is required to be within the active region of the detector ($<\unit[1270]{cm}$) for the two top plots. Gold lines show the cut values that create the fiducial volume.}
+\caption[Vertex z containment cut]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the z position of the reconstructed vertex. All histograms are area-normalized. Middle and bottom: Cumulative \acrshort{FOM} calculated as the number of signal events, divided by the number of background events from that bin until the end of the plot in the direction of the yellow arrow. The reconstruction quality and basic selection cuts were applied prior to making these plots. Yellow lines show the cut values that create the fiducial volume, with arrows pointing towards the preserved events.}
 \label{fig:NuMMFiducialCutY}
 \end{figure}
 
@@ -663,7 +678,7 @@ To ensure all the energy is contained within the detector and to remove events o
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_minX.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_minXright_FOMStats.pdf}
-\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the minimum and maximum position of the reconstructed shower along the x axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
+\caption{Relative comparison of signal, \acrshort{nuone} background, and other background events for the minimum and maximum position of the reconstructed shower along the x axis. Pre-selection and fiducial cuts were applied to make these plots. Gold lines show the values of the containment cuts.}
 \label{fig:NuMMContainmentCutMinX}
 \end{figure}
 
@@ -707,6 +722,18 @@ To ensure all the energy is contained within the detector and to remove events o
 \label{fig:NuMMContainmentCutMaxZ}
 \end{figure}
 
+\begin{table}[!hb]
+\centering
+\caption[Event selection cutflow table for the reconstruction quality cut]{Event selection cutflow table for the reconstruction quality cuts showing the number of events and the relative efficiency of each cut for each signal sample. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied.}
+\begin{tabular}{|l|cc|cc|cc|}\hline
+\multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
+\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
+\textbf{Basic selection} & 48.27 & 100 & 2.03$\times 10^3$ & 100 & 5.98$\times 10^6$ & 100\\
+\textbf{Fiducial} & 45.51 & 94.27 & 1.89$\times 10^3$ & 93.36 & 2.89$\times 10^6$ & 48.22\\
+\textbf{Containment} & 42.01 & 92.31 & 1.62$\times 10^3$ & 85.42 & 7.22$\times 10^5$ & 25.04\\\hline
+\end{tabular}
+\label{tab:CutflowTableFiducialContainmnet}
+\end{table}
 
 \subsubsection*{Single particle requirement}
 \note{This is where I started the TMVA}
