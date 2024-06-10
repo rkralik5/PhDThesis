@@ -428,8 +428,8 @@ Mention here where did I get the original GENIE cross section from (reference Yi
 \todo{Write out the actual version of the weight. Including the original and the corrected XSec constants}
 
 MINERvA paper \cite{MinervaNuoneFluxConstraint2019.pdf}: At tree level, the neutrino-electron scattering cross section is given by... (basically same as I have in the theory) corrected for updated electroweak couplings, CLL and CLR [17] and one-loop electroweak radiative corrections as calculated in Ref. [18]. One deficiency of the calculation of Ref. [18] is that it does not contain the term in the one-loop cross section proportional to CLL CLR. This deficiency is corrected in a recent calculation [38], and that result is given below. However, as illustrated in Eq. (A1) this term also contains an additional power of m/Enu compared to the terms proportional to C2 LL and C2 LR, and the entire term is therefore negligible at the few-GeV neutrino energies of the MINERvA experiment.
-%[17] is https://www.sciencedirect.com/science/article/pii/S0146641013000239?via%3Dihub
-%[18] is https://www.sciencedirect.com/science/article/pii/0550321384902931?via%3Dihub
+%[17] is https://www.sciencedirect.com/science/article/pii/S0146641013000239?via%3Dihub \cite{NuoneRadCorrConstants2013.pdf}
+%[18] is https://www.sciencedirect.com/science/article/pii/0550321384902931?via%3Dihub \cite{NuoneRadCorrEquation1984.pdf}
 
 Say that we are not using the third part of the correction because it is tiny and it makes no difference. (tried and tested)
 
@@ -440,6 +440,53 @@ Calculated as
 \begin{equation}
 weight_{\text{Radiative Corr.}} = \left.\frac{d\sigma_{\nu-on-e}}{dy}\right|_{\text{Radiative Corr.}} / \left.\frac{\textsf{d}\sigma_{\nu-on-e}}{\textsf{d}y}\right|_{\text{GENIE 3}};\,y=\frac{E_e-m_e}{E_\nu}
 \end{equation}
+
+\iffalse
+For the GENIE constants I use
+    double C_LL, C_LR;                                                                                                                                             
+    if (pdg == 14) {                                                                                                                                               
+      C_LL = -0.268705;                                                                                                                                            
+      C_LR =  0.231295;                                                                                                                                            
+    } else if (pdg == -14) {                                                                                                                                       
+      C_LL =  0.231295;                                                                                                                                            
+      C_LR = -0.268705;                                                                                                                                            
+    } else if (pdg == +12) {                                                                                                                                       
+      C_LL = 0.731295;                                                                                                                                             
+      C_LR = 0.231295;                                                                                                                                             
+    } else if (pdg == -12) {                                                                                                                                       
+      C_LL = 0.231295;                                                                                                                                             
+      C_LR = 0.731295;                                                                                                                                             
+    } else return 1.;                                                                                                                                              
+                                                                                                                                                                   
+    SMXSec *= pow(C_LL,2) + pow(C_LR,2)*pow(1-y,2) -                                                                                                               
+              C_LL*C_LR*M_e*y/NuE;
+
+And for radiative corrections:
+    double C_LL, C_LR;                                                                                                                                             
+    if (pdg == 14) {                                                                                                                                               
+      C_LL = -0.2730;                                                                                                                                              
+      C_LR =  0.2334;                                                                                                                                              
+    } else if (pdg == -14) {                                                                                                                                       
+      C_LL =  0.2334;                                                                                                                                              
+      C_LR = -0.2730;                                                                                                                                              
+    } else if (pdg == +12) {                                                                                                                                       
+      C_LL = 0.7276;                                                                                                                                               
+      C_LR = 0.2334;                                                                                                                                               
+    } else if (pdg == -12) {                                                                                                                                       
+      C_LL = 0.2334;                                                                                                                                               
+      C_LR = 0.7276;                                                                                                                                               
+    } else return 1.;
+    
+    double X1 = -2.*log(2.*y*NuE/M_e)/3. + pow(y,2)/24. - 5.*y/12. -                                                                                               
+                pow(PI,2)/6. + 23./72.;                                                                                                                            
+    double X2 = -2.*log(2.*y*NuE/M_e)/3. - pow(y,2)/(18.*pow(1-y,2)) -                                                                                             
+                pow(PI,2)/6. - 2.*y/(9.*pow(1-y,2)) + 23./(72.*pow(1-y,2));                                                                                        
+                                                                                                                                                                   
+    RCXSec *= pow(C_LL,2)*(1+alpha*X1/PI) +                                                                                                                        
+              pow(C_LR,2)*pow(1-y,2)*(1+alpha*X2/PI) -                                                                                                             
+              (C_LL*C_LR*M_e*y/NuE);
+\fi
+
 
 %Magnetic moment as a weight 
 \todo{What does this do and why does it work? Reference the theory part as to why is the magnetic moment signal simply a rescaling of the GENIE cross section.}
@@ -517,10 +564,10 @@ The strategy for event selection is as follows. First, we remove misreconstructe
 
 [ND group's technote] Due to its small cross section, nuone elastic scattering contributes a small portion to the neutrino interactions happened in the detector. This section presents a thorough study regarding the features that can be utilized to differentiate nuone elastic scattering from other neutrino interactions. With the series of selection cuts, a sample with concentrated signals and strongly suppressed backgrounds is obtained in the ETh2 phase space.
 
-\subsubsection*{Data Collection Quality}
+\subsection{Data Collection Quality}
 To ensure good data quality, we apply the following criteria to data only. These involve the the spill time cut, at least $2\time10^{12}$ \gls{POT} per spill, the current in the focusing horn within $1<I_{Horn}<-198$, position of the beam is within $\pm\unit[2]{cm}$ in both x and y axis and that the width of the beam is within $0.57$ and $\unit[1.58]{cm}$. Additionally, we remove events that are incomplete, or with problems in one or more \glspl{DCM}.
 
-\subsubsection*{Reconstruction Quality}
+\subsection{Reconstruction Quality}
 
 Since electron are reconstructed by slicing, then vertexing, then reconstructing prongs. To identify electron we request that there is a valid reconstructed vertex and at least one reconstructed prong. Even though electrons only consist of a single shower, we don't reject events with more than one prongs in a slice, as the reconstruction can wrongly assign noise hits as a separate prong. We do not want to reject these events as we might still recover the true signal event from there.
 
@@ -585,7 +632,7 @@ nueCCXSec only uses events above 1 GeV. The  numuCCpi0 XSec ana had a low E cuto
 \label{tab:CutflowTableBasicRecoQC}
 \end{table}
 
-\subsubsection*{Basic Event Selection}
+\subsection{Basic Event Selection}
 
 Basic event selection cuts aim to remove obvious background events without affecting the signal too much. The criterion for these cuts will be that each of them has to limit the signal efficiency by approximately $\unit[0.25]{\%}$. This means that in total the pre-selection cuts will lower the signal efficiency by only approximately $\unit[1]{\%}$. We are using the same variables for these cuts as were used in the event selection for the $\nu_e$ appearance \gls{ND} constraint for the three flavour neutrino oscillation measurements \cite{NOvAResults2021.pdf}. Additionally, we are also using a cut on the product of the reconstructed calorimetric energy and the square of the reconstructed angle between the recoil electron and the neutrino beam direction. The electron is assumed to be the most energetic reconstructed showers. The reconstructed showers are ordered based on their deposited energies, therefore the first reconstructed prong is assumed to be the most energetic. In case of the \gls{nuone} events, this should be the electron.
 
@@ -615,9 +662,9 @@ Some of the signal events can be reconstructed with the opposite direction than 
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_eth2Loose.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calEHigh.pdf}
-\caption[$E\theta^2$ and high calorimetric energy cut for basic event selection]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the reconstructed energy of the leading shower multiplied by its angle from the incoming neutrino beam direction squared (top) and of the reconstructed energy of the leading shower (bottom). All histograms are area-normalised. Yellow lines indicate the cut value for the corresponding variables, with arrows pointing towards the preserved events. The reconstruction quality cuts, the number of hits cut, and the length of the longest prong cuts were applied before making both of these plots, while the hits in the bottom plot are also required to pass the $E\theta^2$ cut.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_eth2Loose.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_calEHighLoose.pdf}
+\caption[$E\theta^2$ and high calorimetric energy cut for basic event selection]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the reconstructed energy of the leading shower multiplied by its angle from the incoming neutrino beam direction squared (top) and of the reconstructed energy of the leading shower (bottom). All histograms are area-normalised with logarithmic y axis. Yellow lines indicate the cut value for the corresponding variables, with arrows pointing towards the preserved events. The reconstruction quality cuts, the number of hits cut, and the length of the longest prong cuts were applied before making both of these plots, while the hits in the bottom plot are also required to pass the $E\theta^2$ cut.}
 \label{fig:NuMMCutsETh2CalEHighLoose}
 \end{figure}
 
@@ -638,7 +685,7 @@ Some of the signal events can be reconstructed with the opposite direction than 
 \label{tab:CutflowTableBasicSelection}
 \end{table}
 
-\subsubsection*{Fiducial and containment cuts}
+\subsection{Fiducial and containment cuts}
 
 [nueXSec ana, docdb:37668] For both the X and Y vertices the distributions are asymmetric when comparing across the origin, in terms of vertex position. This is primarily due to particles coming from the +y and -x from events in the rock surrounding the detector. This corresponds to the direction of the NuMI target from the near detector. ...We require all activity from neutrino activity be deposited outside of the muon catcher.
 
@@ -735,30 +782,40 @@ To ensure all the energy is contained within the detector and to remove events o
 \label{tab:CutflowTableFiducialContainmnet}
 \end{table}
 
-\subsubsection*{Single particle requirement}
+\subsection{Event Selection Optimization}
 \note{This is where I started the TMVA}
+
+\subsubsection*{Single Shower Requirement}
 
 To selection events with a single particle we require that the fraction of energy contained in the most energetic shower is $>0.8$, that the summed energy of all cells (above threshold and within $\pm8$ planes from the vertex) outside of the most energetic shower is $<0.02\ \unit{GeV}$, and that the distance between the vertex and the start of the primary shower is $<20\ \unit{cm}$.
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_showerEFracOLD.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxEOLD.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_gapOLD.pdf}
-\caption{OLD Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Every previous cut was applied to make these plots, including the ShwECont for the middle and the bottom plot and the VtxE cut for the bottom plot. Gold lines show the cut values that create the fiducial volume.}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_shwEFracPre.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_vtxEPre.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_gapPre.pdf}
+\caption{TMVA variables before the TMVA results. Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. Every previous cut was applied to make these plots, including the ShwECont for the middle and the bottom plot and the VtxE cut for the bottom plot. Gold lines show the cut values that create the fiducial volume.}
 \label{fig:SingleShowerCutsOld}
 \end{figure}
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_shwEFracE.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_vtxEE.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_gapEE.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHitsPre.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calEHighPre.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_nuoneidPre.pdf}
 \caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. No cuts were applied to make these plots. All the previous cuts were applied, including the cut on the shower energy. No single particle or event ID cuts were applied yet though. Gold lines show the cut values that create the fiducial volume.}
 \label{fig:SingleShowerCuts}
 \end{figure}
 
-\subsubsection*{Event classifiers}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_epi0idPre.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_eth2Pre.pdf}
+\caption{Relative comparison of signal, $\nu$-on-e background, and other background events for the reconstructed vertex. No cuts were applied to make these plots. All the previous cuts were applied, including the cut on the shower energy. No single particle or event ID cuts were applied yet though. Gold lines show the cut values that create the fiducial volume.}
+\label{fig:SingleShowerCuts}
+\end{figure}
+
+\subsubsection*{Event Classifiers}
 
 We are using two event classifiers based on convolution neural network that were developed specifically to identify $\nu$-on-e interactions. The first one (\texttt{NuoneID}) is trained to select $\nu$-on-e events and the second one (\texttt{Epi0ID}) is trained on the events passing the \texttt{NuoneID} to reject the $\pi^0$ background. Our selection requires that \texttt{NuoneID}$>0.73$ and that \texttt{Epi0ID}$>0.92$.
 
@@ -770,6 +827,30 @@ We require that the product of reconstructed energy of the primary shower and th
 Using the many plots below that show the effect of each of the cuts on the signal and all background events. (For signal we are showing NuMM=...)
 
 [ND group's technote] Two event classifiers (NuoneID and Epi0ID) based on convolutional neural network (CNN) are trained to identify nuone elastic scattering events (NuoneID) and to further reject background with pi0 in the final state (Epi0ID). The CNN architecture adopted for this analysis is the one used for NOvA CVN [12]. It takes the pixel map of a slice as the input and has deeper and more complicated neural networks than the ANNs used in the previous round of analysis [11]. The training for both classifiers (NuoneID and Epi0ID) were done with single electron samples as the signal in order to mitigate the model dependence. A nuone elastic scattering has an electron in the final state which could deposit energy in the detector. Single electron events share this feature with nuone elastic scattering, but have more uniform distribution of energy, angle between the shower direction and the beam direction. This additional feature could prevent CNN models from overfitting the feature of the very small scattering angle.  To make comparisons, test samples of signal and background are normalized to 1.1E21. The output categories are \gls{nuone}, $\pi^0$, $\nu_e$\gls{CC} and other. The \gls{nuone} and $\pi^0$ outputs are used for the training of the Epi0ID. The pre-selection applied is: ND group's preselection ($L<\unit[800]{cm}$, $N_{plane}<120$, $N_{cell}<600$), loose containment ($-190<X<190$, $-190<Y<190$, $50<Z<1500$ $\unit{cm}$), loose single particle cut ($E_{vtx}<\unit[0.05]{GeV}$, $gap<\unit[20]{cm}$, $E_{shower}/E_{tot} > 0.9$ \note{These are quite strict actually}. The training accuracy for NuoneID is about 85\% and for Epi0ID is about 96\%. After each round of training, the trained model is saved to make predictions on the test sample so we know how the actual performance of the classifiers evolves over different epochs.
+
+\subsubsection*{Multivariate Analysis}
+TMVA \cite{TMVA}
+
+These event selection in total reduces signal $\unit[44.51]{\%}$, \gls{nuone} background $\unit[70.40]{\%}$ and other background $\unit[99.97]{\%}$. After the full event selection, the predicted number of signal events for $\mu_\nu=10^{-9}\mu_B$ is $23.31$ and the total number of background events under the \gls{SM} hypothesis is $678.26$. The most likely improvement is in probing the low energetic events and making sure they make sense. Additionally, it is possible to use a specially designed control regions to mitigate the very high non-\gls{nuone} background.
+
+\begin{table}[!hb]
+\centering
+\caption[Event selection cutflow table]{Event selection cutflow table for the reconstruction quality cuts showing the number of events and the relative efficiency of each cut for each signal sample. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied.}
+\begin{tabular}{|l|cc|cc|cc|}\hline
+\multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
+\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
+\textbf{Pre-selection} & 42.01 & 100 & 1.62$\times 10^3$ & 100 & 7.22$\times 10^5$ & 100\\
+\textbf{$E_{Shower}/E_{Tot}$} & 40.32 & 95.98 & 1.57$\times 10^3$ & 96.87 & 2.79$\times 10^5$ & 38.60\\
+\textbf{N$^o$ Hits} & 39.93 & 99.03 & 1.34$\times 10^3$ & 85.56 & 2.63$\times 10^5$ & 94.24\\
+\textbf{High Cal. $E$} & 34.70 & 86.91 & 714.28 & 53.28 & 2.22$\times 10^5$ & 84.58\\
+\textbf{\gls{nuone} ID} & 29.41 & 84.75 & 600.38 & 84.05 & 3.36$\times 10^3$ & 1.51\\
+\textbf{$E\pi^0$ ID} & 27.46 & 93.37 & 560.56 & 93.37 & 2.18$\times 10^3$ & 64.72\\
+\textbf{$E\theta^2$} & 23.31 & 84.88 & 478.83 & 85.42 & 199.42 & 9.17\\\hline
+\end{tabular}
+\label{tab:CutflowTableFiducialContainmnet}
+\end{table}
+
+
 
 \todo{Describe the cutflow tables below}
 The final event count and efficiency of each of the cuts is shown on the table \ref{tab:CutflowTableSignal}. Table \ref{tab:CutflowTableBackground} shows the dissemination of background into the individual components.
