@@ -557,23 +557,51 @@ Other background       & Nominal \gls{ND}     & Flux \& Cross Sec.
 %%%                         EVENT SELECTION                       %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Event selection}\label{sec:NuMMEventSelection}
-
-Introduction: We are searching for \gls{nuone} events at low electron recoil energies. Due to their small cross section compared to other processes, there is only a limited number of \gls{nuone} events that can be utilized. Therefore, we are focusing on retaining as many events as possible, while reducing the background. There are a few notable features that can be utilized to select low energetic \gls{nuone} events. Specifically that \gls{nuone} events are characterized by a single very forward going electromagnetic shower.
-
-We are trying to select low energy neutrino-on-electron events, which are characterised by a single very forward going electron shower. This is a similar task to the ND group and to the $\nu_e$ appearance search for the three flavour group.
-
-The main background in \gls{NOvA} in general are the $\nu_\mu$\gls{CC} events. They are generally easy to identify from our signal, however their sheer number makes them a dominant background nevertheless. Additionally, there are backgrounds that have the same or similar topology to our signal. These are specifically the $\nu_e$\gls{CC} events that produce electrons. Additionally, there are interactions that produce $\pi^0$, which can look similar to our signal in our detector. These can be from either $\nu_\mu$ or $\nu_e$, and can be both \gls{CC} or \gls{NC}.
-
-The signature of the neutrino magnetic moment is a single very forward low energetic electron shower. The major backgrounds are \gls{NC} and $\nu_\mu$\gls{CC} interactions that produce $\pi^0$ in the final state, which decays into two $\gamma$, mimicking the signal.
+%Introduction:
+We are searching for \gls{nuone} elastic scattering events, characterised by a single very forward going electron shower, specifically focusing on low electron recoil energies. The main background for our analysis come from $\nu_e$\gls{CC} interactions, which produce electron with an additional activity, and interactions that produce $\pi^0$, which decays into two photons producing electromagnetic showers, where each can look similar to the \gls{nuone} signal. Additionally, there are $\nu_\mu$\gls{CC} interactions, which are generally easy to identify from our signal, however their very high abundance in the \gls{NOvA} \gls{ND} makes them a dominant background nevertheless.
 
 We explain the motivation behind each cut of the event selection and discuss their effect on the neutrino magnetic moment events below. We also consider possible improvements to the event selection for a future (re-)analysis.
 
-The strategy for event selection is as follows. First, we remove misreconstructed and untrusted events. Then we apply pre-selection cuts that remove obvious background, by limiting the reduction of the signal efficiency at most at $\unit[0.2]{\%}$. Then we apply the containment cuts that remove events that are either not fully contained within the detector, or events that originate from outside of the detector, such are rock muons. Then we look at a selection of variables inside a TMVA and choose the cuts that give us the best signal over background ratio. Given that we have a very limited number of signal events, our chosen \gls{FOM} is a simple
+The strategy for event selection is as follows. First, we remove events that failed reconstruction or data collection. Then, we apply pre-selection cuts that remove obvious background. The exact cut is selected by limiting the reduction of the signal efficiency to about $\unit[0.25]{\%}$. Following this, we apply the containment cuts that remove events that are either not fully contained within the detector, or events that originate from outside of the detector, such are rock muons. Afterwards, we consider several variables that could be used for the signal selection and evaluate their combined performance for a signal selection. We choose cut values that result in the best statistical significance, based on a chosen \gls{FOM}. Given that we are searching for a very limited number of signal events on top of a large background, we chose a simple statistics-only \gls{FOM}
 \begin{equation}
 \textsf{\gls{FOM}} = \frac{\textsf{Signal}}{\sqrt{\textsf{Background}}}.
 \end{equation}
 
-[ND group's technote] Due to its small cross section, nuone elastic scattering contributes a small portion to the neutrino interactions happened in the detector. This section presents a thorough study regarding the features that can be utilized to differentiate nuone elastic scattering from other neutrino interactions. With the series of selection cuts, a sample with concentrated signals and strongly suppressed backgrounds is obtained in the ETh2 phase space.
+The summary of the cut values for the event selection of neutrino magnetic moment signal is presented in Tab.~\ref{tab:EventSelectionSummary}, showing the label for the event selection variable, its description and the cut value chosen. These event selection in total reduces signal $\unit[44.51]{\%}$, \gls{nuone} background $\unit[70.40]{\%}$ and other background $\unit[99.97]{\%}$. After the full event selection, the predicted number of signal events for $\mu_\nu=10^{-9}\mu_B$ is $23.31$ and the total number of background events under the \gls{SM} hypothesis is $678.26$. The most likely improvement is in probing the low energetic events and making sure they make sense. Additionally, it is possible to use a specially designed control regions to mitigate the very high non-\gls{nuone} background.
+
+%[ND group's technote] Due to its small cross section, nuone elastic scattering contributes a small portion to the neutrino interactions happened in the detector. This section presents a thorough study regarding the features that can be utilized to differentiate nuone elastic scattering from other neutrino interactions. With the series of selection cuts, a sample with concentrated signals and strongly suppressed backgrounds is obtained in the ETh2 phase space.
+
+\begin{table}[!hb]
+\centering
+\caption[Event selection summary]{Summary of the cut values for the event selection of neutrino magnetic moment signal showing the label for the event selection variable, its description and the cut value chosen. \note{Should I include the loose cuts here even when they were made stricter during TMVA?}}
+\begin{tabular}{|m{0.2\textwidth} m{0.55\textwidth} m{0.15\textwidth}|}\hline
+\textbf{Label} & \textbf{Description} & \textbf{Cut} \\\hline
+\textbf{Valid Vtx} & Valid reconstructed vertex & $>0$\\
+\textbf{N$^o$ Prongs} & Number of reconstructed prongs & $>0$\\
+\textbf{Hits / Plane} & Number of hits per plane & $<5$\\\hline
+\textbf{Low $E_{Shower}$} & Low cut on calorimetric energy of the most energetic shower & $>\unit[0.5]{GeV}$\\
+\textbf{N$^o$ Hits Loose} & Preliminary cut on the total number of hits for all prongs in a slice & $<200$\\
+\textbf{Prong Length} & Length of the longest prong & $<\unit[540]{cm}$\\
+\textbf{$E\theta^2$ Loose} & Preliminary cut on the product of the calorimetric energy and angle squared of the leading shower & $<0.05$ $\unit{GeV\times rad^2}$\\
+\textbf{High $E_{Shower}$ Loose} & Preliminary upper cut on the calorimetric energy of the most energetic shower & $<\unit[5.5]{GeV}$\\\hline
+\multirow{6}{*}{\textbf{Fiducial}} & Vertex x position & $>\unit[-177]{cm}$ $<\unit[177]{cm}$\\
+ & Vertex y position & $>\unit[-177]{cm}$ $<\unit[177]{cm}$\\
+ & Vertex z position & $\unit[>50]{cm}$ $\unit[<1050]{cm}$\\\hline
+\multirow{6}{*}{\textbf{Containment}} & Minimum hit position in x & $>\unit[-177]{cm}$\\
+ & Maximum hit position in x & $<\unit[177]{cm}$\\
+ & Minimum hit position in y & $>\unit[-185]{cm}$\\
+ & Maximum hit position in y & $<\unit[177]{cm}$\\
+ & Minimum hit position in z & $>\unit[55]{cm}$\\
+ & Maximum hit position in z & $<\unit[1270]{cm}$\\\hline
+\textbf{$E_{Shower}/E_{Tot}$} & Fraction of energy contained in the most energetic shower & $>0.91$\\
+\textbf{N$^o$ Hits} & Total number of hits for all prongs in a slice & $<116$\\
+\textbf{High $E_{Shower}$} & Calorimetric energy of the most energetic shower & $<\unit[1.4]{GeV}$\\
+\textbf{\gls{nuone} ID} & \gls{CVN}-based \gls{nuone} identifier & $>0.65$\\
+\textbf{$E\pi^0$ ID} & \gls{CVN}-based \gls{nuone} and $\pi^0$ identifier & $>0.63$\\
+\textbf{$E\theta^2$} & Product of the calorimetric energy and angle squared of the leading shower & $<0.0048$ $\unit{GeV\times rad^2}$\\\hline
+\end{tabular}
+\label{tab:EventSelectionSummary}
+\end{table}
 
 \subsection{Data Collection Quality}
 To ensure good data quality, we apply the following criteria to data only. These involve the the spill time cut, at least $2\time10^{12}$ \gls{POT} per spill, the current in the focusing horn within $1<I_{Horn}<-198$, position of the beam is within $\pm\unit[2]{cm}$ in both x and y axis and that the width of the beam is within $0.57$ and $\unit[1.58]{cm}$. Additionally, we remove events that are incomplete, or with problems in one or more \glspl{DCM}.
@@ -640,7 +668,7 @@ Maybe also say that Test Beam will be crucial in improving the vertex and energy
 \textbf{Valid Vtx} & 180.58 & 66.94 & 3.33$\times 10^3$ & 96.94 & 2.34$\times 10^8$ & 79.10\\
 \textbf{N$^o$ Prongs} & 174.69 & 96.74 & 3.23$\times 10^3$ & 96.99 & 8.66$\times 10^7$ & 37.00\\
 \textbf{Hits / Plane} & 174.36 & 99.81 & 3.22$\times 10^3$ & 93.83 & 7.32$\times 10^7$ & 84.55\\
-\textbf{Low Cal. E} & 48.75 & 27.96 & 2.71$\times 10^3$ & 84.10 & 4.06$\times 10^7$ & 55.52\\\hline
+\textbf{Low $E_{Shower}$} & 48.75 & 27.96 & 2.71$\times 10^3$ & 84.10 & 4.06$\times 10^7$ & 55.52\\\hline
 \end{tabular}
 \label{tab:CutflowTableBasicRecoQC}
 \end{table}
@@ -690,10 +718,10 @@ Some of the signal events can be reconstructed with the opposite direction than 
 \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
 \multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
 \textbf{Reco Quality} & 48.75 & 100 & 2.71$\times 10^3$ & 100 & 4.06$\times 10^7$ & 100\\
-\textbf{N$^o$ Hits} & 48.64 & 99.78 & 2.32$\times 10^3$ & 85.63 & 3.08$\times 10^7$ & 75.67\\
+\textbf{N$^o$ Hits Loose} & 48.64 & 99.78 & 2.32$\times 10^3$ & 85.63 & 3.08$\times 10^7$ & 75.67\\
 \textbf{Prong Length} & 48.52 & 99.75 & 2.26$\times 10^3$ & 97.39 & 2.17$\times 10^7$ & 70.66\\
-\textbf{$E\theta^2$} & 48.39 & 99.73 & 2.25$\times 10^3$ & 99.71 & 6.00$\times 10^6$ & 27.62\\
-\textbf{High Cal. E} & 48.27 & 99.76 & 2.03$\times 10^3$ & 90.04 & 5.98$\times 10^6$ & 99.67\\\hline
+\textbf{$E\theta^2$ Loose} & 48.39 & 99.73 & 2.25$\times 10^3$ & 99.71 & 6.00$\times 10^6$ & 27.62\\
+\textbf{High $E_{Shower}$ Loose} & 48.27 & 99.76 & 2.03$\times 10^3$ & 90.04 & 5.98$\times 10^6$ & 99.67\\\hline
 \end{tabular}
 \label{tab:CutflowTableBasicSelection}
 \end{table}
@@ -855,7 +883,7 @@ These event selection in total reduces signal $\unit[44.51]{\%}$, \gls{nuone} ba
 \textbf{Pre-selection} & 42.01 & 100 & 1.62$\times 10^3$ & 100 & 7.22$\times 10^5$ & 100\\
 \textbf{$E_{Shower}/E_{Tot}$} & 40.32 & 95.98 & 1.57$\times 10^3$ & 96.87 & 2.79$\times 10^5$ & 38.60\\
 \textbf{N$^o$ Hits} & 39.93 & 99.03 & 1.34$\times 10^3$ & 85.56 & 2.63$\times 10^5$ & 94.24\\
-\textbf{High Cal. $E$} & 34.70 & 86.91 & 714.28 & 53.28 & 2.22$\times 10^5$ & 84.58\\
+\textbf{High $E_{Shower}$} & 34.70 & 86.91 & 714.28 & 53.28 & 2.22$\times 10^5$ & 84.58\\
 \textbf{\gls{nuone} ID} & 29.41 & 84.75 & 600.38 & 84.05 & 3.36$\times 10^3$ & 1.51\\
 \textbf{$E\pi^0$ ID} & 27.46 & 93.37 & 560.56 & 93.37 & 2.18$\times 10^3$ & 64.72\\
 \textbf{$E\theta^2$} & 23.31 & 84.88 & 478.83 & 85.42 & 199.42 & 9.17\\\hline
@@ -864,7 +892,7 @@ These event selection in total reduces signal $\unit[44.51]{\%}$, \gls{nuone} ba
 \end{table}
 
 
-
+\iffalse
 \todo{Describe the cutflow tables below}
 The final event count and efficiency of each of the cuts is shown on the table \ref{tab:CutflowTableSignal}. Table \ref{tab:CutflowTableBackground} shows the dissemination of background into the individual components.
 
@@ -934,6 +962,7 @@ The final event count and efficiency of each of the cuts is shown on the table \
 \end{scriptsize}
 \end{sidewaysfigure}
 %\end{landscape}
+\fi
 
 \todo{Add a discussion of possible improvements on the event selection on its limitations - mostly for the analysis review committee}
 From here we can see that ... Maybe what can be improved is...
