@@ -494,6 +494,8 @@ Systematic uncertainties in \gls{NOvA} analyses arise from the imperfect knowled
 
 Both the 3-flavour \cite{NOvAResults2021.pdf} and the sterile neutrino \cite{NOvASterilesFHCRHCResults2021.pdf} oscillation analyses in \gls{NOvA} use the \gls{ND} to constrain the \gls{FD} prediction, which significantly reduces the effect of the neutrino beam and interaction prediction systematic uncertainties. On the other hand, these are the leading sources of systematic uncertainties for the \gls{ND}-only analyses, such as the cross section analyses \cite{NOvANCPi0XSecMeasurement2019.pdf, NOvANumuCCXSexMeasurement2023.pdf, NOvANueCCXSecMeasurement2023.pdf, NOvANuMuCCPi0XSecMeasurement2023.pdf}. The leading systematic uncertainty for the neutrino oscillation measurements comes from the detector calibration uncertainty. Significant uncertainties for all NOvA measurements also come from the neutron modelling, the detector simulation and the muon energy estimation. There are other sources of systematic uncertainties that are not mentioned here as they are sub-dominant, or specific to a certain analysis.
 
+\todo{Mention here how are the systematics used - shifting the spectra and doing the full analysis `separately' for each shifted prediction. Then we compare these shifted predictions with the nominal one}
+
 The systematic uncertainty on the prediction of the neutrino beam consists of two parts: the hadron production and the beam focusing uncertainties \cite{NuMIFlux.pdf}. The uncertainty for hadron production is estimated by the \gls{PPFX} (describe in Sec.~\ref{sec:NOvASimulation}) using the multi-universe technique. Here we create 100 \gls{PPFX} universes in which the inputs from the external measurements used to constrain the hadron production are randomly floated around their central values within their respective systematic uncertainties. Parts of the hadron production that are not constrained by external measurements are given a conservatively large systematic uncertainty. The beam focusing systematic uncertainties account for the uncertainties on the horn and target positions, the horn current, the beam position on the target, the beam spot size, and the effect of Earth's magnetic field in the beam pipe. %Since all these uncertainties can be correlated between each other, especially for an off-axis detector such as in NOvA, we perform a \gls{PCA} to estimate the bin-to-bin covariances in true energy for each neutrino flavour, detector and beam mode. 
 \todo{Describe the beam PCA and how can we limit the beam uncertainty}
 
@@ -512,6 +514,10 @@ The systematic uncertainty on the prediction of the neutrino beam consists of tw
 %%% Detector modelling
 \todo{Describe the detector modelling systematic uncertainties}
 
+The systematic uncertainty arising from the simulation of the detector response can be divided into the scaling of the overall light level inside the simulation and of the Cherenkov light component. 
+
+The systematic uncertainty on the Cherenkov light scaling factor is calculated by profiling over the factor during the light model tune and taking the $3\sigma$ confidence interval around the best fit value as the systematic uncertainty, resulting in a $\pm\unit[6.2]{\%}$ relative uncertainty on the Cherenkov scaling factor. Similarly, the light level uncertainty was calculated by profiling over the light level scaling factor, resulting in a $\pm\unit[5]{\%}$ relative uncertainty on the light level scaling factor.
+
 %[NOvAResults2021.pdf] Uncertainties arising from the custom light model are assigned based on comparison to a more robust response model that was not fully incorporated into the simulation for this analysis. This model is constrained by a sample of ND proton candidates in addition to the muon sample used previously. Differences in the detector response between the proton and muon samples also provide a data-driven uncertainty on the relative production of Cherenkov and scintillation light in the model.
 
 % I should probably just quote this uncertainty from the 3 flavour technote and say that it has been changed and improved since the last published analysis - or no? this is the uncertainty I'm going to be using so probably...
@@ -520,6 +526,16 @@ The systematic uncertainty on the prediction of the neutrino beam consists of tw
 \todo{Describe the neutron uncertainty - only if I decide I need it}
 
 %%% Calibration scale, shape and ageing systematic uncertainty
+
+There are three systematic uncertainty arising from the calibration procedure: the absolute energy scale, the shape (relative residual variations along the cell, especially on its edges) and detector ageing.
+
+Other standard candles are used to set the systematic uncertainty on the absolute energy scale. This is calculated as the difference between the data and simulation reconstructed energy for beam muons and protons in the \gls{ND}, rock muons in the \gls{ND}, $\pi^0$ measurement in the \gls{ND} and Michel electrons in the \gls{ND}. These discrepancies drove the decision to set the systematic uncertainty on the absolute energy scale to $\unit[5]{\%}$. Measurements from the \gls{NOvA} Test Beam experiment will help reduce this systematic uncertainty.
+%Since the light level scaling and the absolute energy scale are highly correlated, to account for the absolute energy scale, we scale the light level in the opposite direction to focus on the specific discrepancy studied. - is this correct?
+
+[3fl technote] The calibration shape systematic uncertainty was defined based on data/MC differences. The uncertainty was parameterized with a linear shape, with different slopes in the middle of the detector vs the edges, determined by linear fits to data/MC ratios.
+
+[3fl technote] The detector ageing uncertainty is implemented as a simple linear drift downward in light level as a function of time, and a corresponding drift upward in the overall calibration scale to compensate. This is intended to mimic the impact of the number of hits above thresholds falling over time, while the overall calorimetric energy remains the same. For a more detailed summary, see Section 4.3 in the Prod5 detector simulation technote [2].
+
 \todo{Describe the calibration uncertainties}
 %[NOvAResults2021.pdf] Detector calibration uncertainties remain dominant and are driven by a 5\% uncertainty in the calorimetric energy scale. Additionally, a new time-dependent calibration uncertainty is included to account for any residual differences remaining after performing the calibration over shorter time periods as mentioned previously.
 
