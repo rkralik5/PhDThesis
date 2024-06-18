@@ -314,12 +314,12 @@ This is a strong limit that very clearly distinguishes the \gls{nuone} elastic s
 \subsubsection{Neutrino magnetic moment cross section}
 In the ultra-relativistic limit, the neutrino magnetic moment interaction flips the neutrino helicity, while the \gls{SM} weak interaction conserves it, which means it is possible to add the two contribution to the total \gls{nuone} cross section incoherently (without interference terms) \cite{nuElmagInt2015.pdf}:
 \begin{equation}
-\frac{d\sigma_{\nu_e^-}}{dT_e}=\left(\frac{d\sigma_{\nu_e^-}}{dT_e}\right)_{\textsf{SM}}+\left(\frac{d\sigma_{\nu_e^-}}{dT_e}\right)_{\textsf{MAG}}.
+\frac{d\sigma_{\gls{nuone}}}{dT_e}=\left(\frac{d\sigma_{\gls{nuone}}}{dT_e}\right)_{\textsf{SM}}+\left(\frac{d\sigma_{\gls{nuone}}}{dT_e}\right)_{\textsf{MAG}}.
 \end{equation}
 
 The \gls{SM} contribution can be expressed as \cite{FundamentalsOfNeutrinoPhysics.pdf, nuElmagInt2015.pdf}:
 \begin{equation}\label{eq:NuMMSMCrossSection}
-\left(\frac{d\sigma_{\nu_e^-}}{dT_e}\right)_{\textsf{SM}}=\frac{2G_F^2m_e}{\pi}\left\lbrace g_1^2+g_2^2\left(1-\frac{T_e}{E_{\nu}}\right)^2+g_1 g_2\frac{m_eT_e}{E_{\nu}^2}\right\rbrace,
+\left(\frac{d\sigma_{\gls{nuone}}}{dT_e}\right)_{\textsf{SM}}=\frac{2G_F^2m_e}{\pi}\left\lbrace g_1^2+g_2^2\left(1-\frac{T_e}{E_{\nu}}\right)^2-g_1 g_2\frac{m_eT_e}{E_{\nu}^2}\right\rbrace,
 \end{equation}
 where the coupling constants $g_1$ and $g_2$ differ for between neutrino flavours and between neutrinos and antineutrinos. Their values are:
 \begin{align}
@@ -332,7 +332,7 @@ The total \gls{SM} cross section, and therefore the number of \gls{SM} \gls{nuon
 
 The neutrino magnetic moment contribution is \cite{NeutrinoElmagFormFactors1989.pdf, nuElmagInt2015.pdf}:
 \begin{equation}\label{eq:NuMMMMCrossSection}
-\left(\frac{d\sigma_{\nu_le^-}}{dT_e}\right)_{\textsf{MAG}}=\frac{\pi\alpha^2}{m_e^2}\left(\frac{1}{T_e}-\frac{1}{E_{\nu}}\right)\left(\frac{\mu_{\nu_l}}{\mu_B}\right)^2,
+\left(\frac{d\sigma_{\gls{nuone}}}{dT_e}\right)_{\textsf{MAG}}=\frac{\pi\alpha^2}{m_e^2}\left(\frac{1}{T_e}-\frac{1}{E_{\nu}}\right)\left(\frac{\mu_{\nu_l}}{\mu_B}\right)^2,
 \end{equation}
 where $\alpha$ is the fine structure constant and $\mu_{\nu_l}$ is the effective magnetic moment of $\nu_l$. The total cross section now only depends on the neutrino energy and on the effective magnetic moment, but is the same for neutrinos and antineutrinos.
 
@@ -389,86 +389,54 @@ This analysis uses the standard \gls{NOvA} simulation and reconstruction tools, 
 The corrections for the known limitations in the simulation are applied in the form of event-by-event analysis weights, which weight each single event based on how it is affected by that particular variation in simulation. To correct for known deficiencies in simulation of neutrino flux or cross sections we apply weights calculated for each event. This includes the external measurements that correct the neutrino beam prediction inside \gls{PPFX} as described in Sec.~\ref{sec:NOvASimulation}, and for the non-\gls{nuone} background, also the internal and external measurements that constrain the neutrino interaction prediction inside GENIE. These are not applied to the \gls{nuone} events, as they are assumed to be known precisely from theory.  However, the GENIE \gls{MC} simulation doesn't consider radiative corrections for the \gls{nuone} events, which are however trivial to implement.
 
 %Radiative correction weight
-Mention here where did I get the original GENIE cross section from (reference Yiwen's talk or technote, plus the original paper that was used). nu-on-e technote\cite{NOVA-doc-56383}
+GENIE \gls{MC} generator only considers tree-level \gls{SM} \gls{nuone} interactions \cite{NOVA-doc-56383} as were described in Sec.~\ref{sec:MeasuringNuMM}. However, when focusing on \gls{nuone} interaction, we have to account for higher orders of the perturbative expansion of the interaction Lagrangian and apply radiative corrections. These are contained in two adjustments to the tree-level \gls{SM} cross section for the \gls{nuone} interaction \cite{MinervaNuoneFluxConstraint2019.pdf}. First, the coupling constants change \cite{NuoneRadCorrConstants2013.pdf}
+\begin{equation}
+g_1^{\nu_e}\rightarrow 0.7276,\; \; g_1^{\nu_\mu}\rightarrow -0.2730,\; \;  g_2\rightarrow 0.2334.
+\end{equation}
+Second, the cross section equation has additional terms, which for one-loop correction look like \cite{NuoneRadCorrEquation1984.pdf}
+\begin{equation}
+\left(\frac{d\sigma_{\gls{nuone}}}{dy}\right)_{\textsf{Rad. Corr.}}=
+\frac{G_F^2s}{\pi}\left\lbrace
+g_1^2\left(1+\frac{\alpha}{\pi}X_1\right)+
+g_2^2\left(1-y\right)^2\left(1+\frac{\alpha}{\pi}X_2\right)-
+g_1 g_2\frac{m_ey}{E_{\nu}}\right\rbrace,
+\end{equation}
+where
+\begin{equation}
+y=\frac{T_e+E_\gamma}{E_\nu}
+\end{equation}
+$s=2E_\nu m_e+m_e^2$ is the Mandelstam variable,
+\begin{equation}
+X_1=-\frac{2}{3}\log\left(\frac{2yE_\nu}{m_e}\right)+\frac{y^2}{24}-\frac{5y}{12}-\frac{\pi^2}{6}+\frac{23}{72}
+\end{equation}
+and\footnote{There is technically also a third correction term $X_3$, which is however negligible for $E_\nu\sim\unit{GeV}$.}
+\begin{equation}
+X_2=-\frac{2}{3}\left(1-y\right)^2\log\left(\frac{2yE_\nu}{m_e}\right)-\frac{y^2}{18}-\frac{\pi^2}{6}\left(1-y\right)^2-\frac{2y}{9}+\frac{23}{72},
+\end{equation}
 
-\todo{Write out the actual version of the weight. Including the original and the corrected XSec constants}
+Practically, radiative corrections are applied in the form of weights, where each event is weighted by a ratio
+\begin{equation}
+\textsf{weight}_{\textsf{Rad. Corr.}}\left(E_\nu,T_e\right) = \left.\left(\frac{d\sigma_{\gls{nuone}}}{dy}\right)_{\textsf{Rad. Corr.}}\; \middle/\; \left(\frac{d\sigma_{\gls{nuone}}}{dy}\right)_{\textsf{GENIE 3}}\right.;
+\end{equation}
 
-MINERvA paper \cite{MinervaNuoneFluxConstraint2019.pdf}: At tree level, the neutrino-electron scattering cross section is given by... (basically same as I have in the theory) corrected for updated electroweak couplings, CLL and CLR [17] and one-loop electroweak radiative corrections as calculated in Ref. [18]. One deficiency of the calculation of Ref. [18] is that it does not contain the term in the one-loop cross section proportional to CLL CLR. This deficiency is corrected in a recent calculation [38], and that result is given below. However, as illustrated in Eq. (A1) this term also contains an additional power of m/Enu compared to the terms proportional to C2 LL and C2 LR, and the entire term is therefore negligible at the few-GeV neutrino energies of the MINERvA experiment.
+%MINERvA paper \cite{MinervaNuoneFluxConstraint2019.pdf}: At tree level, the neutrino-electron scattering cross section is given by... (basically same as I have in the theory) corrected for updated electroweak couplings, CLL and CLR [17] and one-loop electroweak radiative corrections as calculated in Ref. [18]. One deficiency of the calculation of Ref. [18] is that it does not contain the term in the one-loop cross section proportional to CLL CLR. This deficiency is corrected in a recent calculation [38], and that result is given below. However, as illustrated in Eq. (A1) this term also contains an additional power of m/Enu compared to the terms proportional to C2 LL and C2 LR, and the entire term is therefore negligible at the few-GeV neutrino energies of the MINERvA experiment.
 %[17] is https://www.sciencedirect.com/science/article/pii/S0146641013000239?via%3Dihub \cite{NuoneRadCorrConstants2013.pdf}
 %[18] is https://www.sciencedirect.com/science/article/pii/0550321384902931?via%3Dihub \cite{NuoneRadCorrEquation1984.pdf}
 
-Say that we are not using the third part of the correction because it is tiny and it makes no difference. (tried and tested)
-
-[ND group's technote] In GENIE, the cross section of the nuone elastic scattering signal is calculated at the tree level. To improve the precision of the simulated nuone elastic scattering cross section, we performed radiative corrections to the GENIE nuone elastic scattering as shown in Appendix A. The precision of the simulated nuone elastic scattering cross section is improved by tuning CLL and CLR to one-loop values obtained from global fits to electroweak data 14 and 2. The radiative correction also includes additional low-energy terms in the expression of differential cross section of nuone elastic scattering. In comparison, the neutrino interactions in the NOvA detector are simulated using the GENIE neutrino event generator, where the Weinberg Angle is 0.501716712132. After radiative corrections, the total number of nuone elastic scattering increases  0.83\% from the standard GENIE MC.
-
-\todo{correct the equation}
-Calculated as 
-\begin{equation}
-weight_{\text{Radiative Corr.}} = \left.\frac{d\sigma_{\nu-on-e}}{dy}\right|_{\text{Radiative Corr.}} / \left.\frac{\textsf{d}\sigma_{\nu-on-e}}{\textsf{d}y}\right|_{\text{GENIE 3}};\,y=\frac{E_e-m_e}{E_\nu}
-\end{equation}
-
-\iffalse
-For the GENIE constants I use
-    double C_LL, C_LR;                                                                                                                                             
-    if (pdg == 14) {                                                                                                                                               
-      C_LL = -0.268705;                                                                                                                                            
-      C_LR =  0.231295;                                                                                                                                            
-    } else if (pdg == -14) {                                                                                                                                       
-      C_LL =  0.231295;                                                                                                                                            
-      C_LR = -0.268705;                                                                                                                                            
-    } else if (pdg == +12) {                                                                                                                                       
-      C_LL = 0.731295;                                                                                                                                             
-      C_LR = 0.231295;                                                                                                                                             
-    } else if (pdg == -12) {                                                                                                                                       
-      C_LL = 0.231295;                                                                                                                                             
-      C_LR = 0.731295;                                                                                                                                             
-    } else return 1.;                                                                                                                                              
-                                                                                                                                                                   
-    SMXSec *= pow(C_LL,2) + pow(C_LR,2)*pow(1-y,2) -                                                                                                               
-              C_LL*C_LR*M_e*y/NuE;
-
-And for radiative corrections:
-    double C_LL, C_LR;                                                                                                                                             
-    if (pdg == 14) {                                                                                                                                               
-      C_LL = -0.2730;                                                                                                                                              
-      C_LR =  0.2334;                                                                                                                                              
-    } else if (pdg == -14) {                                                                                                                                       
-      C_LL =  0.2334;                                                                                                                                              
-      C_LR = -0.2730;                                                                                                                                              
-    } else if (pdg == +12) {                                                                                                                                       
-      C_LL = 0.7276;                                                                                                                                               
-      C_LR = 0.2334;                                                                                                                                               
-    } else if (pdg == -12) {                                                                                                                                       
-      C_LL = 0.2334;                                                                                                                                               
-      C_LR = 0.7276;                                                                                                                                               
-    } else return 1.;
-    
-    double X1 = -2.*log(2.*y*NuE/M_e)/3. + pow(y,2)/24. - 5.*y/12. -                                                                                               
-                pow(PI,2)/6. + 23./72.;                                                                                                                            
-    double X2 = -2.*log(2.*y*NuE/M_e)/3. - pow(y,2)/(18.*pow(1-y,2)) -                                                                                             
-                pow(PI,2)/6. - 2.*y/(9.*pow(1-y,2)) + 23./(72.*pow(1-y,2));                                                                                        
-                                                                                                                                                                   
-    RCXSec *= pow(C_LL,2)*(1+alpha*X1/PI) +                                                                                                                        
-              pow(C_LR,2)*pow(1-y,2)*(1+alpha*X2/PI) -                                                                                                             
-              (C_LL*C_LR*M_e*y/NuE);
-\fi
-
+%[ND group's technote] In GENIE, the cross section of the nuone elastic scattering signal is calculated at the tree level. To improve the precision of the simulated nuone elastic scattering cross section, we performed radiative corrections to the GENIE nuone elastic scattering as shown in Appendix A. The precision of the simulated nuone elastic scattering cross section is improved by tuning CLL and CLR to one-loop values obtained from global fits to electroweak data 14 and 2. The radiative correction also includes additional low-energy terms in the expression of differential cross section of nuone elastic scattering. In comparison, the neutrino interactions in the NOvA detector are simulated using the GENIE neutrino event generator, where the Weinberg Angle is 0.501716712132. After radiative corrections, the total number of nuone elastic scattering increases  0.83\% from the standard GENIE MC.
 
 %Magnetic moment as a weight 
-\todo{What does this do and why does it work? Reference the theory part as to why is the magnetic moment signal simply a rescaling of the GENIE cross section.}
-
-Using the same tree-level cross section from GENIE as in the rad. corr. weight.
-
-\todo{Write the name of the weight in CAFAna/nuone namespace and where it is located}
-
-\todo{correct the equation}
-Calculated as 
+Analogically to the radiative correction weight it is possible to create a neutrino magnetic moment weight as a ratio between the neutrino magnetic moment and the GENIE \gls{SM} differential cross sections. This is possible thanks to the theoretically well understood properties of the \gls{nuone} interaction, as described in Sec.~\ref{sec:MeasuringNuMM}. This effectively emulates the neutrino magnetic moment simulation without requiring any additional processing power. Therefore out signal sample can be created from the same events as a true \gls{nuone} sample, with the magnetic moment weight applied. The weight has a form:
 \begin{equation}
-weight_{\nu\text{ Mag. Moment}} = \left.\frac{d\sigma_{\nu-on-e}}{dy}\right|_{\nu\text{ Mag. Moment}} / \left.\frac{\textsf{d}\sigma_{\nu-on-e}}{\textsf{d}y}\right|_{\text{GENIE 3}};\,y=\frac{E_e-m_e}{E_\nu}
+\textsf{weight}_{\nu \textsf{Mag. Mom.}}\left(E_\nu,T_e\right) = \left.\left(\frac{d\sigma_{\gls{nuone}}}{dy}\right)_{\nu \textsf{Mag. Mom.}}\; \middle/\; \left(\frac{d\sigma_{\gls{nuone}}}{dy}\right)_{\textsf{GENIE 3}}\right.,
+\end{equation}
+where
+\begin{equation}
+\left(\frac{d\sigma_{\gls{nuone}}}{dy}\right)_{\nu \textsf{Mag. Mom.}} = E_\nu \left(\frac{d\sigma_{\gls{nuone}}}{dT_e}\right)_{\nu \textsf{Mag. Mom.}}.
 \end{equation}
 
 %Enhanced nuone sample
-Due to the relatively low cross section of the \gls{nuone} interaction, the nominal simulation sample contains too few \gls{nuone} events, which could result in a significant statistical uncertainty from simulation. To avoid this, we created a \gls{nuone}-enhanced simulation sample which contains mainly \gls{nuone} events with a little non-\gls{nuone} background overlaid on top to properly account for the possible reconstruction effects of the pileup of neutrino interactions in one spill \cite{NOVA-doc-56383}. In the real detector, the hits from the true \gls{nuone} interaction can be clustered to another interaction, or additional hits can be clustered together into the \gls{nuone} event. The total exposure of the \gls{nuone}-enhanced sample is $1.72\times10^{24}$~\gls{POT}. To save up on unnecessary disk space and processing usage, the enhanced \gls{nuone} sample does not include any cross section related parameters and variables, as the \gls{nuone} interaction is assumed to be known exactly from theory.
+Due to the relatively low cross section of the \gls{nuone} interaction, the nominal simulation sample contains too few \gls{nuone} events, which could result in a significant statistical uncertainty from simulation. To avoid this, we created a \gls{nuone}-enhanced simulation sample which contains mainly \gls{nuone} events with a little non-\gls{nuone} background overlaid on top to properly account for the possible reconstruction effects of the pileup of neutrino interactions in one spill \cite{NOVA-doc-56383}. In the real detector, the hits from the true \gls{nuone} interaction can be clustered to another interaction, or additional hits can be clustered together into the \gls{nuone} event. The total exposure of the \gls{nuone}-enhanced sample is $1.72\times10^{24}$~\gls{POT}. To save up on unnecessary disk space and processing usage, the enhanced \gls{nuone} sample does not include any cross section related parameters and variables, as the \gls{nuone} interaction is assumed to be known exactly from theory. Therefore, we also do not apply the cross section weights or account for cross section systematic uncertainties.
 
 %[ND group's technote] Because the cross section of the nuone elastic scattering is very low (approx. 1/2000 of the total charged-current cross section), the statistics of nuone elastic scattering is not enough in the inclusive sample. In order to optimize the signal selection criteria, we made a sample with only nuone elastic scattering events in the detector. The size of this nuone signal MC is 1.48E23 POT. However the pile-up of neutrino interactions in one spill impacts on the hit clustering in reconstruction, either hits from the nuone elastic scattering can be clustered to other interactions or extra hits can be clustered to the nuone elastic scattering.
 
@@ -1098,7 +1066,7 @@ What should be included here:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                            CONCLUSION                         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion}\label{sec:NuMMConclusion}
+\section{Summary}\label{sec:NuMMConclusion}
 
 Summarize the results and compare them to the introduction, including comparisons to other experiments and theory. Restate the significant of the measurement
 
