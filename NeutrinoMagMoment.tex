@@ -7,7 +7,7 @@ In this analysis, I aim to detect a potential signal of the effective muon neutr
 
 
 %%% WHY - BSM theories, Majorana nature of neutrinos
-Detecting the neutrino magnetic moment would provide a definitive evidence of new \gls{BSM} physics, and measuring its value would help identify the appropriate \gls{BSM} theory. As current and planned experiments can only detect an anomalously large neutrino magnetic moment, observing such a signature would strongly suggest that neutrinos are Majorana particles and would have significant implications for astrophysics and cosmology \cite{SnowmassNeutrinoFrontierReport.pdf}.
+Detecting the neutrino magnetic moment $\left(\mu_\nu\right)$ would provide a definitive evidence of new \gls{BSM} physics, and measuring its value would help identify the appropriate \gls{BSM} theory. As current and planned experiments can only detect an anomalously large neutrino magnetic moment, observing such a signature would strongly suggest that neutrinos are Majorana particles and would have significant implications for astrophysics and cosmology \cite{SnowmassNeutrinoFrontierReport.pdf}.
 
 %"The same types of experimental measurements are also sensitive to more exotic neutrino electromagnetic properties: magnetic moments and millicharges, which would be certainly due to new BSM physics. The discovery of millicharges or anomalously large neutrino magnetic moments would have also important implications for astrophysics and cosmology."\cite{SnowmassNeutrinoFrontierReport.pdf}
 
@@ -85,7 +85,7 @@ In this chapter, I will provide an overview of the theory of neutrino electromag
 
 %Neutrino electromagnetic properties are important because they are directly connected to fundamentals of particle physics. For example, neutrino electromagnetic properties can be used to distinguish Dirac and Majorana neutrinos, because Dirac neutrinos can have both diagonal and off-diagonal magnetic and electric dipole moments, whereas only the off-diagonal ones are allowed for Majorana neutrinos (Schechter and Valle, 1981; Kayser, 1982, 1984; Nieves, 1982; Pal and Wolfenstein, 1982; Shrock, 1982). This is shown in detail in Secs. III.A and III.B. Another important case in which Dirac and Majorana neutrinos have quite different observable effects is the spin-flavor precession in an external magnetic field discussed in Sec. VI.B. Neutrino electromagnetic properties are also probes of new physics beyond the standard model, because in the standard model neutrinos can have only a charge radius (see Secs. III.C and VII.B). The discovery of other neutrino electromagnetic properties would be a signal of new physics beyond the standard model (Bell et al., 2005, 2006; Bell, 2007; Novales-Sanchez et al., 2008). [nuElmagInt2015.pdf]
 
-As was describe in Sec.~\ref{sec:NeutrinoTheory}, neutrinos in the \gls{SM} are massless and electrically neutral particles. However, even \gls{SM} neutrinos can have electromagnetic interaction through loop diagrams involving charged leptons and the W boson, covered by the neutrino charge radius \cite{SnowmassNeutrinoFrontierReport.pdf}.
+As was described in Sec.~\ref{sec:NeutrinoTheory}, neutrinos in the \gls{SM} are massless and electrically neutral particles. However, even \gls{SM} neutrinos can have electromagnetic interaction through loop diagrams involving charged leptons and the W boson, covered by the neutrino charge radius \cite{SnowmassNeutrinoFrontierReport.pdf}.
 
 %But this is only the neutrino charge radius, not the neutrino electric or magnetic moment (maybe also the anapole moment) "Hence, in the standard model the form factor can be interpreted as a neutrino charge radius or as an anapole moment (or as a combination of both). The standard model theory of the neutrino charge radius has a long history, with some controversies which are shortly summarized in the following." [nuElmagInt2015.pdf - sec.VIIB]
 
@@ -255,7 +255,6 @@ The most sensitive method to measure neutrino magnetic moment is the low energy 
 \label{fig:NuoneDiagram}
 \end{figure}
 
-\note{Is this derivation too trivial to mention in a thesis? Should I just mention the results?}
 Since the \gls{nuone} interaction is governed by simple $2\rightarrow 2$ kinematics, it is possible to get
 \begin{equation}
 \left(P_{\nu}-P_{e^{\prime}}\right)^2=\left(P_{\nu^{\prime}}-P_e\right)^2,
@@ -435,7 +434,7 @@ where
 \end{equation}
 
 %Enhanced nuone sample
-Due to the relatively low cross section of the \gls{nuone} interaction, the nominal simulation sample contains very few \gls{nuone} events, which could result in a significant statistical uncertainty from simulation. To avoid this, we created a \gls{nuone}-enhanced simulation sample, which is mainly made up of \gls{nuone} events with a total exposure of $1.72\times10^{24}$~\gls{POT} \note{How should I say this? It was the ND group analysers that created this. Should i still say we, or should I say the ND group or something else?}. There is a few non-\gls{nuone} background events overlaid on top of the \gls{nuone} events to properly account for the possible reconstruction effects of the pileup of neutrino interactions in a single spill \cite{NOVA-doc-56383}, since in the real detector, the hits from the true \gls{nuone} interaction can be clustered together into another interaction, or additional hits can be clustered together into the \gls{nuone} event. To save up on unnecessary disk space and processing usage, the enhanced \gls{nuone} sample does not include any cross section related parameters and variables, as the \gls{nuone} interaction is assumed to be known exactly from theory. Therefore, we do not apply cross section weights or account for cross section systematic uncertainties for \gls{nuone} events.
+Due to the relatively low cross section of the \gls{nuone} interaction, the nominal simulation sample contains very few \gls{nuone} events, which could result in a significant statistical uncertainty from simulation. To avoid this, we created a \gls{nuone}-enhanced simulation sample, which is mainly made up of \gls{nuone} events with a total exposure of $1.72\times10^{24}$~\gls{POT}. There is a few non-\gls{nuone} background events overlaid on top of the \gls{nuone} events to properly account for the possible reconstruction effects of the pileup of neutrino interactions in a single spill \cite{NOVA-doc-56383}, since in the real detector, the hits from the true \gls{nuone} interaction can be clustered together into another interaction, or additional hits can be clustered together into the \gls{nuone} event. To save up on unnecessary disk space and processing usage, the enhanced \gls{nuone} sample does not include any cross section related parameters and variables, as the \gls{nuone} interaction is assumed to be known exactly from theory. Therefore, we do not apply cross section weights or account for cross section systematic uncertainties for \gls{nuone} events.
 
 %[ND group's technote] Because the cross section of the nuone elastic scattering is very low (approx. 1/2000 of the total charged-current cross section), the statistics of nuone elastic scattering is not enough in the inclusive sample. In order to optimize the signal selection criteria, we made a sample with only nuone elastic scattering events in the detector. The size of this nuone signal MC is 1.48E23 POT. However the pile-up of neutrino interactions in one spill impacts on the hit clustering in reconstruction, either hits from the nuone elastic scattering can be clustered to other interactions or extra hits can be clustered to the nuone elastic scattering.
 
@@ -459,7 +458,7 @@ NOvAReweight reference: J. Wolcott, “NOvARwgt software.” https://github.com/
 \fi
 
 
-A summary of the simulation samples and analysis weights for the four different types of signal and background components is shown in Tab.~\ref{tab:NuMMSamplesAndWeightsOverview}.
+A summary of the simulation samples and analysis weights for the four different types of signal and background components is shown in Tab.~\ref{tab:NuMMSamplesAndWeightsOverview}. In the following chapter, the $\nu_e$\gls{CC} \gls{MEC} background is added into the `Other background' sample, even though it is created from a separate simulation.
 
 \begin{table}[!ht]
 \centering
@@ -480,69 +479,73 @@ Other background       & Nominal \gls{ND}     & Flux \& Cross Sec.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Event selection}\label{sec:NuMMEventSelection}
 %Introduction:
-We are searching for \gls{nuone} elastic scattering events, characterised by a single very forward going electron shower, specifically focusing on low electron recoil energies. The main background for our analysis come from $\nu_e$\gls{CC} interactions, which produce electron with an additional activity, and interactions that produce $\pi^0$, which decays into two photons producing electromagnetic showers, where each can look similar to the \gls{nuone} signal. Additionally, there are $\nu_\mu$\gls{CC} interactions, which are generally easy to identify from our signal, however their very high abundance in the \gls{NOvA} \gls{ND} makes them a dominant background nevertheless.
+We are searching for \gls{nuone} elastic scattering events, characterised by a single very forward going electron shower, specifically focusing on low electron recoil energies. The main background for our analysis come from $\nu_e$\gls{CC} interactions, which produce an electron with an additional activity, and interactions that produce $\pi^0$, which decays into two photons producing electromagnetic showers, where each can look similar to the \gls{nuone} signal. Additionally, there are $\nu_\mu$\gls{CC} interactions, which are generally easy to distinguish from our signal, however, their very high abundance in the \gls{NOvA} \gls{ND} makes them a dominant background nevertheless.
 
 We explain the motivation behind each cut of the event selection and discuss their effect on the neutrino magnetic moment events below. We also consider possible improvements to the event selection for a future (re-)analysis.
 
-The strategy for event selection is as follows. First, we remove events that failed reconstruction or data collection. Then, we apply pre-selection cuts that remove obvious background. The exact cut is selected by limiting the reduction of the signal efficiency to about $\unit[0.25]{\%}$. Following this, we apply the containment cuts that remove events that are either not fully contained within the detector, or events that originate from outside of the detector, such are rock muons. Afterwards, we consider several variables that could be used for the signal selection and evaluate their combined performance for a signal selection. We choose cut values that result in the best statistical significance, based on a chosen \gls{FOM}. Given that we are searching for a very limited number of signal events on top of a large background, we chose a simple statistics-only \gls{FOM}
+The strategy for event selection is as follows. First, we remove events that failed reconstruction or data collection, described in Sec.~\ref{sec:NuMMEventSelSpillCuts} and \ref{sec:NuMMEventSelRecoQC}. Then, we apply pre-selection cuts that remove obvious background (Sec.~\ref{sec:NuMMEventSelectionPresel}), while limiting the reduction of the signal efficiency to about $\unit[0.25]{\%}$. Following this, we apply the containment cuts (Sec.~\ref{sec:NuMMEventSelFidCont}) that remove events that are either not fully contained within the detector, or events that originate from outside of the detector, such as rock muons. Afterwards, we perform a cut-based \gls{MVA} on a selection of variables useful for distinguishing the signal from the background, discussed in Sec.~\ref{sec:NuMMEventSelTMVA}, and evaluate their combined performance on the signal selection. We choose the cut values that result in the best statistical significance, based on a chosen \gls{FOM}. Given that we are searching for a very limited number of signal events on top of a large background, we chose a simple statistics-only \gls{FOM}
 \begin{equation}
 \textsf{\gls{FOM}} = \frac{\textsf{Signal}}{\sqrt{\textsf{Background}}}.
 \end{equation}
 
-The summary of the cut values for the event selection of neutrino magnetic moment signal is presented in Tab.~\ref{tab:EventSelectionSummary}, showing the label for the event selection variable, its description and the cut value chosen. These event selection in total reduces signal $\unit[44.51]{\%}$, \gls{nuone} background $\unit[70.40]{\%}$ and other background $\unit[99.97]{\%}$. After the full event selection, the predicted number of signal events for $\mu_\nu=10^{-9}\mu_B$ is $23.31$ and the total number of background events under the \gls{SM} hypothesis is $678.26$. The most likely improvement is in probing the low energetic events and making sure they make sense. Additionally, it is possible to use a specially designed control regions to mitigate the very high non-\gls{nuone} background.
-
-%[ND group's technote] Due to its small cross section, nuone elastic scattering contributes a small portion to the neutrino interactions happened in the detector. This section presents a thorough study regarding the features that can be utilized to differentiate nuone elastic scattering from other neutrino interactions. With the series of selection cuts, a sample with concentrated signals and strongly suppressed backgrounds is obtained in the ETh2 phase space.
+The summary of the cut values for the event selection of neutrino magnetic moment signal is presented in Tab.~\ref{tab:EventSelectionSummary}, showing the label for the event selection variable, its description and the cut value chosen. After the full event selection, the predicted number of signal events for $\mu_\nu=10^{-9}\mu_B$ is $56.80$ and the total number of background events under the \gls{SM} hypothesis is $700.33$.
 
 \begin{table}[!hb]
 \centering
-\caption[Event selection summary]{Summary of the cut values for the event selection of neutrino magnetic moment signal showing the label for the event selection variable, its description and the cut value chosen. \note{Should I include the loose cuts here even when they were made stricter during TMVA?}}
-\begin{tabular}{|m{0.2\textwidth} m{0.55\textwidth} m{0.15\textwidth}|}\hline
-\textbf{Label} & \textbf{Description} & \textbf{Cut} \\\hline
+\caption[Event selection summary]{Summary of the variables and their cut values for the event selection of neutrino magnetic moment signal. Showing the category of the event selection variable, its label, description and the cut value chosen.}
+\begin{tabular}{|m{2mm} m{0.175\textwidth} m{0.54\textwidth} m{0.145\textwidth}|}\hline
+& \textbf{Label} & \textbf{Description} & \textbf{Cut} \\\hline
+\parbox[t]{2mm}{\multirow{5}{*}{\rotatebox[origin=c]{90}{\textbf{Reco Qual.}}}} &
 \textbf{Valid Vtx} & Valid reconstructed vertex & $>0$\\
-\textbf{N$^o$ Prongs} & Number of reconstructed prongs & $>0$\\
-\textbf{Hits / Plane} & Number of hits per plane & $<5$\\\hline
-\textbf{Low $E_{Shower}$} & Low cut on calorimetric energy of the most energetic shower & $>\unit[0.5]{GeV}$\\
-\textbf{N$^o$ Hits Loose} & Preliminary cut on the total number of hits for all prongs in a slice & $<200$\\
-\textbf{Prong Length} & Length of the longest prong & $<\unit[540]{cm}$\\
-\textbf{$E\theta^2$ Loose} & Preliminary cut on the product of the calorimetric energy and angle squared of the leading shower & $<0.05$ $\unit{GeV\times rad^2}$\\
-\textbf{High $E_{Shower}$ Loose} & Preliminary upper cut on the calorimetric energy of the most energetic shower & $<\unit[5.5]{GeV}$\\\hline
-\multirow{6}{*}{\textbf{Fiducial}} & Vertex x position & $>\unit[-177]{cm}$ $<\unit[177]{cm}$\\
- & Vertex y position & $>\unit[-177]{cm}$ $<\unit[177]{cm}$\\
- & Vertex z position & $\unit[>50]{cm}$ $\unit[<1050]{cm}$\\\hline
-\multirow{6}{*}{\textbf{Containment}} & Minimum hit position in x & $>\unit[-177]{cm}$\\
- & Maximum hit position in x & $<\unit[177]{cm}$\\
- & Minimum hit position in y & $>\unit[-185]{cm}$\\
- & Maximum hit position in y & $<\unit[177]{cm}$\\
- & Minimum hit position in z & $>\unit[55]{cm}$\\
- & Maximum hit position in z & $<\unit[1270]{cm}$\\\hline
+& \textbf{N$^o$ Prongs} & Number of reconstructed prongs & $>0$\\
+& \textbf{Hits / Plane} & Number of hits per plane & $<6$\\
+& \textbf{Low $E_{Shower}$} & Low cut on calorimetric energy of the most energetic shower & $>\unit[0.5]{GeV}$\\\hline
+\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{\textbf{Pre-selection}}}} &
+\textbf{N$^o$~Hits Loose} & Preliminary cut on the total number of hits for all prongs in a slice & $<280$\\
+& \textbf{Prong Length} & Length of the longest prong & $<\unit[640]{cm}$\\
+& \textbf{$E\theta^2$ Loose} & Preliminary cut on the product of the calorimetric energy and angle squared of the leading shower & $<0.064$ $\unit{GeV\times rad^2}$\\\hline
+\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{\textbf{Fiducial}}}} &
+\multirow{6}{*}{\textbf{Vertex}} & \multirow{2}{*}{x position} & $>\unit[-177]{cm}$\\
+& & & $<\unit[177]{cm}$\\
+& & \multirow{2}{*}{y position} & $>\unit[-177]{cm}$\\
+& & & $<\unit[177]{cm}$\\
+& & \multirow{2}{*}{z position} & $\unit[>50]{cm}$\\
+& & & $<\unit[1170]{cm}$\\\hline
+\parbox[t]{2mm}{\multirow{6}{*}{\rotatebox[origin=c]{90}{\textbf{Containment}}}} &
+\multirow{6}{*}{\textbf{Prong}} & Minimum hit position in x & $>\unit[-177]{cm}$\\
+& & Maximum hit position in x & $<\unit[177]{cm}$\\
+& & Minimum hit position in y & $>\unit[-185]{cm}$\\
+& & Maximum hit position in y & $<\unit[177]{cm}$\\
+& & Minimum hit position in z & $>\unit[55]{cm}$\\
+& & Maximum hit position in z & $<\unit[1270]{cm}$\\\hline
+\parbox[t]{2mm}{\multirow{9}{*}{\rotatebox[origin=c]{90}{\textbf{Selection}}}} &
 \textbf{$E_{Shower}/E_{Tot}$} & Fraction of energy contained in the most energetic shower & $>0.91$\\
-\textbf{N$^o$ Hits} & Total number of hits for all prongs in a slice & $<116$\\
-\textbf{High $E_{Shower}$} & Calorimetric energy of the most energetic shower & $<\unit[1.4]{GeV}$\\
-\textbf{\gls{nuone} ID} & \gls{CVN}-based \gls{nuone} identifier & $>0.65$\\
-\textbf{$E\pi^0$ ID} & \gls{CVN}-based \gls{nuone} and $\pi^0$ identifier & $>0.63$\\
-\textbf{$E\theta^2$} & Product of the calorimetric energy and angle squared of the leading shower & $<0.0048$ $\unit{GeV\times rad^2}$\\\hline
+& \textbf{N$^o$ Hits} & Total number of hits for all prongs in a slice & $<116$\\
+& \textbf{High $E_{Shower}$} & Calorimetric energy of the most energetic shower & $<\unit[1.4]{GeV}$\\
+& \textbf{\gls{nuone} ID} & \gls{CVN}-based \gls{nuone} identifier & $>0.65$\\
+& \textbf{$E\pi^0$ ID} & \gls{CVN}-based \gls{nuone} and $\pi^0$ identifier & $>0.63$\\
+& \textbf{$E\theta^2$} & Product of the calorimetric energy and angle squared of the leading shower & $<0.0048$ $\unit{GeV\times rad^2}$\\\hline
 \end{tabular}
 \label{tab:EventSelectionSummary}
 \end{table}
 
-\subsection{Data Collection Quality}
-To ensure good data quality, we apply the following criteria to data only. These involve the the spill time cut, at least $2\time10^{12}$ \gls{POT} per spill, the current in the focusing horn within $\unit[-202]{kA}<I_{Horn}<\unit[-196.4]{kA}$, position of the beam is within $\pm\unit[2]{cm}$ in both x and y axis and that the width of the beam is within $0.57$ and $\unit[1.58]{cm}$. Additionally, we remove events that are incomplete, or with problems in one or more \glspl{DCM}. \todo{Reference the 3f data quality technote}
+\subsection{Data Collection Quality}\label{sec:NuMMEventSelSpillCuts}
+To ensure good data quality, we apply the following criteria to data (not applied to simulation) \cite{NOvA-doc-59876}. A cut on the time of each spill relative to other spills and on the exposure of each spill, where every spill is required to have at least $2\time10^{12}$ \gls{POT}. Additionally, the current in the focusing horn is required to be within $\unit[-202]{kA}<I_{Horn}<\unit[-196.4]{kA}$, the position of the beam to be within $\pm\unit[2]{cm}$ in both x and y axis, and that the width of the beam to be within $0.57$ and $\unit[1.58]{cm}$. Furthermore, incomplete events, or events with issues in one or more \glspl{DCM} are removed as well.
 
-\subsection{Reconstruction Quality}
+\subsection{Reconstruction Quality}\label{sec:NuMMEventSelRecoQC}
+As described in Sec.~\ref{sec:NOvAReconstruction}, electrons are reconstructed by slicing, then vertexing, then clustering into prongs. To identify electrons we require a valid reconstructed vertex and at least one reconstructed prong. Even though electrons only consist of a single shower, we don't reject events with more than one prong in a slice, as the reconstruction can wrongly assign noise hits as a separate prong. These false secondary prongs can be removed later in the event selection.
 
-Since electron are reconstructed by slicing, then vertexing, then reconstructing prongs. To identify electron we request that there is a valid reconstructed vertex and at least one reconstructed prong. Even though electrons only consist of a single shower, we don't reject events with more than one prongs in a slice, as the reconstruction can wrongly assign noise hits as a separate prong. We do not want to reject these events as we might still recover the true signal event from there.
-
-Figure~\ref{fig:NuMMCutsVertexIsValid} and Tab.~\ref{tab:CutflowTableBasicRecoQC} show that about $\unit[67]{\%}$ signal events do not have a valid reconstructed vertex. This is due to the concentration of the signal events at very low electron recoil energies, which can often consist of a single hit or only a few hits. As can be seen in the bottom plot of Fig.~\ref{fig:NuMMCutsVertexIsValid}, events with small true electron recoil energy have much smaller vertex reconstruction efficiency than higher energetic electrons. However, improving \gls{NOvA} vertex reconstruction at low energies might significantly aid the search for the neutrino magnetic moment. Ongoing work is improving the vertex reconstruction by using \gls{ML} approach instead of the currently used Hough transform together with Elastic Arms \cite{NOvA-doc-61190}.
+Figure~\ref{fig:NuMMCutsVertexIsValid} and Tab.~\ref{tab:CutflowTableBasicRecoQC} show that about $\unit[68]{\%}$ of signal events do not have a valid reconstructed vertex. This is due to the concentration of signal events at very low electron recoil energies, which results in events that can consist of a small number of hits, or even a single hit. As can be seen in the bottom plot in Fig.~\ref{fig:NuMMCutsVertexIsValid}, events with small true electron recoil energies have much smaller vertex reconstruction efficiency than the higher energetic electrons. However, ongoing work is improving the vertex reconstruction in the \gls{NOvA} detectors with a use of \gls{ML} instead of the currently used Hough transform combined with Elastic Arms \cite{NOvA-doc-61190}. Improving \gls{NOvA} vertex reconstruction at low energies can enhance our event selection in the future.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_vtxIsValid.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/VtxIsValidNuMM.pdf}
-\caption[Vertex reconstruction quality cut]{Top: Relative comparison of the signal (red), \acrshort{nuone} background (blue), and other background (green) events for the vertex reconstruction quality selection. Each histogram is area-normalised and the first bin corresponds to events without a valid vertex and second bin to events with correctly reconstructed vertex. The yellow line indicates the chosen cut value: all events have to have a valid reconstructed vertex. Bottom: profile histogram of the `vertex is valid' variable as a function of the true electron energy for the true signal events, showing the significant drop in vertex reconstruction efficiency at low electron recoil energies. No selection was applied prior to making these plots.}
+\caption[Vertex reconstruction quality cut]{Top: Relative comparison of the signal (red), \acrshort{nuone} background (blue), and other background (green) events for the vertex reconstruction quality selection. Each histogram is area-normalised and the first bin corresponds to events without a valid vertex and second bin to events with correctly reconstructed vertex. The yellow line indicates the chosen cut value, where all events have to have a valid reconstructed vertex. Bottom: profile histogram of the `vertex is valid' variable as a function of the true electron energy for the true signal events, showing the significant drop in vertex reconstruction efficiency at low electron recoil energies. No selection was applied prior to making these plots.}
 \label{fig:NuMMCutsVertexIsValid}
 \end{figure}
 
-Additionally, we're placing a cut on the number of hits per plane to $<5$. This is to remove the so-called `\gls{FEB} flashers', which are caused by a very high energy deposit in one cell, such that it affects all the other channel on the same \gls{APD} \cite{NOvA-doc-37668}. The cut value was chosen so that it removes $\leq\unit[0.25]{\%}$ signal events, which is the same criterion as is used for the basic event selection cuts described below. Relative comparisons between signal and background for the number of prongs and the number of hits per plane are shown in Fig.~\ref{fig:NuMMCutsRecoQuality}.
+Additionally, we limit the number of hits per plane to $<6$. This is to remove the so-called `\gls{FEB} flashers', which are caused by such a high energy deposit in one cell, that it affects all the other channels on the same \gls{APD} \cite{NOvA-doc-37668}. The cut value was chosen so that it removes approximately $\unit[0.25]{\%}$ signal events, which is the same criterion as is used for the pre-selection cuts described below. Relative comparisons between signal and background for the number of prongs and the number of hits per plane are shown in Fig.~\ref{fig:NuMMCutsRecoQuality}.
 
 %In pre-selection we also include a cut on the time difference between the mean times of the "current" slice and of the slice closest in time, which should be $>25\ \unit{ns}$. This ensures that ... \todo{This is to remove slicing failures that split the two gamma from a $\pi^0$ into two slices that resemble electron signal. Should we remove them now though?}.
 
@@ -557,26 +560,13 @@ Additionally, we're placing a cut on the number of hits per plane to $<5$. This 
 \end{figure}
 
 %%% Low CalE
-\note{Already applying the cut here to help reduce the events for TMVA. This cut is based purely on reco quality (we don't trust events below 0.5GeV, especially not for the CVN nuone ID variables}
-
-\todo{discuss the energy cut, should this be removed? What is the effect on the event count? Why was this included in the first place (the identifiers are not as strong for lower energies - is this true though? - also there are further unexplored backgrounds that would need to be further studied and explore. Maybe depends on where would we move the cut...)}
-
-The reconstructed calorimetric energy of the primary shower is required to be $E_{cal} > \unit[0.5]{GeV}$ as shown in Fig.~\ref{fig:NuMMCutsLowCalE}. This is to remove region in the parameter space with large backgrounds. However, due to the nature of the neutrino magnetic moment signal, this cut also removes a majority of our signal events (exactly how much?). 
-
-This is due to a presence of large background that has not been studied very well. No \gls{NOvA} analysis really uses events with such low energies. However, after further studies and validation, it is likely that these cut can be pushed to lower electron recoil energy, especially by using better event identifiers to remove the large background there. 
-
-NOvA is not super well suited for a low energy detection and there are troubles identifying very low energetic event. Majority of the analyses in NOvA only use events with energies above $\unit[0.5]{GeV}$.
-nueCCXSec only uses events above 1 GeV. The  numuCCpi0 XSec ana had a low E cutoff at 0.1GeV
-
-\note{How does the energy resolution and bias come into play here? 0.5GeV for us is not the same as for the 3fl or for some other ND analyses. This needs to be properly investigated in the future}
-
-Maybe also say that Test Beam will be crucial in improving the vertex and energy resolution within NOvA, including electrons.
+Furthermore, the reconstructed calorimetric energy of the primary shower is required to be $E_{cal} > \unit[0.5]{GeV}$ as shown in Fig.~\ref{fig:NuMMCutsLowCalE}. This is due to the limitations of the currently used \gls{CVN}-based \gls{nuone} identifiers described in Sec.~\ref{sec:NuMMEventSelTMVA}, which were developed and validated for \gls{nuone} events with energies above this limit, to avoid the large background at low energies. However, due to the nature of the neutrino magnetic moment signal, which is concentrated at low electron recoil energies, this cut also removes a majority of our signal events, specifically $\unit[66.8]{\%}$. This large reduction severely impacts the significance of our measurement. On the other hand, it also marks potentially the most impactful improvement available in a future re-analysis. There are other event identifying algorithms available in \gls{NOvA} that could be explored for \gls{nuone} events to leverage the low energy sample. Additionally, it is possible to develop a purpose-built \gls{nuone} identifier focusing on low electron recoil energies.\note{Can you please read this paragraph and tell me what you think about it?}
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calELow.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calELow_BkgDecomp.pdf}
-\caption[Low calorimetric energy cut for reconstruction quality]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the reconstructed calorimetric energy distribution. All histograms are area-normalised. Bottom: Decomposition of background into various sub-samples, normalised to the data \acrshort{POT} exposure. Events in both plots are required to have a valid reconstructed vertex, at least one reconstructed prong and at most $5$ hits per plane. Yellow lines indicate the cut value for the reconstructed calorimetric energy, with arrows pointing towards the preserved events.}
+\caption[Low calorimetric energy cut for reconstruction quality]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the reconstructed calorimetric energy distribution. All histograms are area-normalised. Bottom: Decomposition of background into various sub-samples, normalised to the data \acrshort{POT} exposure. Events in both plots are required to have a valid reconstructed vertex, at least one reconstructed prong and less than $6$ hits per plane. Yellow lines indicate the cut value for the reconstructed calorimetric energy, with arrows pointing towards the preserved events.}
 \label{fig:NuMMCutsLowCalE}
 \end{figure}
 
@@ -586,74 +576,69 @@ Maybe also say that Test Beam will be crucial in improving the vertex and energy
 \begin{tabular}{|l|cc|cc|cc|}\hline
 \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
 \multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
-\textbf{No Cut} & 269.77 & 100 & 3.43$\times 10^3$ & 100 & 2.96$\times 10^8$ & 100\\
-\textbf{Valid Vtx} & 180.58 & 66.94 & 3.33$\times 10^3$ & 96.94 & 2.34$\times 10^8$ & 79.10\\
-\textbf{N$^o$ Prongs} & 174.69 & 96.74 & 3.23$\times 10^3$ & 96.99 & 8.66$\times 10^7$ & 37.00\\
-\textbf{Hits / Plane} & 174.36 & 99.81 & 3.22$\times 10^3$ & 93.83 & 7.32$\times 10^7$ & 84.55\\
-\textbf{Low $E_{Shower}$} & 48.75 & 27.96 & 2.71$\times 10^3$ & 84.10 & 4.06$\times 10^7$ & 55.52\\\hline
+\textbf{No Cut} & 817.34 & 100 & 6.82$\times 10^3$ & 100 & 2.96$\times 10^8$ & 100\\
+\textbf{Valid Vtx} & 553.86 & 67.76 & 6.17$\times 10^3$ & 90.55 & 2.34$\times 10^8$ & 79.10\\
+\textbf{N$^o$ Prongs} & 472.90 & 85.38 & 5.08$\times 10^3$ & 82.25 & 8.66$\times 10^7$ & 37.00\\
+\textbf{Hits / Plane} & 471.14 & 99.63 & 4.97$\times 10^3$ & 97.85 & 7.32$\times 10^7$ & 89.56\\
+\textbf{Low $E_{Shower}$} & 156.37 & 33.19 & 3.53$\times 10^3$ & 71.09 & 4.06$\times 10^7$ & 55.12\\\hline
 \end{tabular}
 \label{tab:CutflowTableBasicRecoQC}
 \end{table}
 
-\subsection{Basic Event Selection}
+\subsection{Pre-Selection}\label{sec:NuMMEventSelectionPresel}
+Pre-selection aims to remove obvious background events without significantly affecting the signal. The criterion we chose for the selection of these cuts is determined by the reduction of the signal efficiency by approximately $\unit[0.25]{\%}$ with each cut. This results in the total pre-selection reduction of the signal efficiency by approximately $\unit[1]{\%}$.
 
-Basic event selection cuts aim to remove obvious background events without affecting the signal too much. The criterion for these cuts will be that each of them has to limit the signal efficiency by approximately $\unit[0.25]{\%}$. This means that in total the pre-selection cuts will lower the signal efficiency by only approximately $\unit[1]{\%}$. We are using the same variables for these cuts as were used in the event selection for the $\nu_e$ appearance \gls{ND} constraint for the three flavour neutrino oscillation measurements \cite{NOvAResults2021.pdf}. Additionally, we are also using a cut on the product of the reconstructed calorimetric energy and the square of the reconstructed angle between the recoil electron and the neutrino beam direction. The electron is assumed to be the most energetic reconstructed showers. The reconstructed showers are ordered based on their deposited energies, therefore the first reconstructed prong is assumed to be the most energetic. In case of the \gls{nuone} events, this should be the electron.
-
-They also remove the obvious $\nu_\mu$CC interactions by requiring that the summed number of cells for all prongs in the slice is $<200$ and the length of the longest prong is $<540\ \unit{cm}$. Relative comparison of signal, \gls{nuone} background, and other background distributions for the pre-selection variables is shown on Fig.~\ref{fig:PreSelectionCuts}.
-
-Additionally, as discussed in Sec.~\ref{sec:MeasuringNuMM}, from theory we know what the true recoil electron for the \gls{nuone} interaction is supposed to be limited by $E\theta^2<2m_e$. Due to reconstruction deficiencies, the reconstructed $E\theta^2$ will not have such a strict cut-off for \gls{nuone} events, this variable can however be used to distinguish them from the $\nu_e$\gls{CC} events, for which the electron has a much more isotropic distribution.
-
-On top of that, we are also placing a loose cut on the maximum calorimetric energy, as the signal is limited to low energies, as can be seen in Fig.~\ref{fig:NuMMCutsETh2CalEHighLoose}.
-
-Some of the signal events can be reconstructed with the opposite direction than the beam. These events might still be useful though and we want to keep them. For that reason, we are calculating the angle between the outgoing electron and the neutrino beam direction as $\textsf{acos}\left(\textsf{abs}\left(\cos\theta\right)\right)$, which gives the same value whether the shower is reconstructed forward or backwards.
+The first two variables used for our pre-selection are the same as were used in the event selection for the $\nu_e$ appearance \gls{ND} constraint for the three flavour neutrino oscillation measurements \cite{NOvAResults2021.pdf}. As we are searching for single electron showers, we can reduce backgrounds with multiple final state particles by limiting the total activity in the detector. Specifically, we require that the total number of hits assigned to all the reconstructed prongs is $<280$. This is shown in Fig.~\ref{fig:NuMMCutsNHitsLoose}. In general, the main background in \gls{NOvA} consists of the $\nu_\mu$\gls{CC} interactions, which are characterised by long muon tracks. We therefore limit the length of the longest reconstructed prong to be $<\unit[640]{cm}$, as shown in Fig.~\ref{fig:NuMMCutsLongestProng}. 
 
 \begin{figure}[hbtp]
 \centering
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHits.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_NHitsleft_Eff.pdf}
-\caption[Number of hits cut for basic event selection]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of total number of hits from all reconstructed prongs in the slice. All histograms are area-normalised. Bottom: Cumulative signal (red) and background (black) efficiency calculated as number of signal/background events left of the bin divided by the total number of signal/background events. Yellow lines indicate the cut value for the maximum number of hits, with arrows pointing towards the preserved events. The reconstruction quality cuts were applied before making these plots.}
-\label{fig:NuMMCutsNHits}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_NHitsLoose.pdf}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_NHitsLooseleft_Eff.pdf}
+\caption[Number of hits cut for pre-selection]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of total number of hits from all reconstructed prongs in the slice. All histograms are area-normalised. Bottom: Cumulative signal (red) and background (black) efficiency calculated as number of signal/background events left of the bin divided by the total number of signal/background events. Yellow lines indicate the cut value for the maximum number of hits, with arrows pointing towards the preserved events. The reconstruction quality cuts were applied before making these plots.}
+\label{fig:NuMMCutsNHitsLoose}
 \end{figure}
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_longestProng.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_longestProngleft_Eff.pdf}
-\caption[Length of the longest prong cut for basic event selection]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the length of the longest reconstructed prong in slice. All histograms are area-normalised. Bottom: Cumulative signal (red) and background (black) efficiency calculated as number of signal/background events left of the bin divided by the total number of signal/background events. Yellow lines indicate the cut value for the maximum length of the longest prong, with arrows pointing towards the preserved events. The reconstruction quality cuts and the number of hits cut were applied before making these plots.}
+\caption[Length of the longest prong cut for pre-selection]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the length of the longest reconstructed prong in slice. All histograms are area-normalised. Bottom: Cumulative signal (red) and background (black) efficiency calculated as number of signal/background events left of the bin divided by the total number of signal/background events. Yellow lines indicate the cut value for the maximum length of the longest prong, with arrows pointing towards the preserved events. The reconstruction quality cuts and the number of hits cut were applied before making these plots.}
 \label{fig:NuMMCutsLongestProng}
 \end{figure}
+
+Additionally, as discussed in Sec.~\ref{sec:MeasuringNuMM}, simple $2\rightarrow2$ kinematics dictate that the true electron recoil energy and angle for the \gls{nuone} interaction are limited by $E\theta^2<2m_e$. This can be used to distinguish the \gls{nuone} elastic scattering from $\nu_e$\gls{CC} interactions, which also have an electron in the final state. However, due to unavoidable reconstruction deficiencies, the reconstructed $E\theta^2$ does not have such a strict cut-off value, and we are placing the pre-selection cut at $E\theta^2<0.064$, as can be seen in Fig.~\ref{fig:NuMMCutsETh2Loose}. Furthermore, some of the signal events can be reconstructed with the opposite direction with respect to the beam, which would result in $\theta\approx\unit[\pi]{rad}$. However, this reconstruction failure likely does not impact other reconstructed qualities and these events should be preserved for the final sample. For that reason, we are calculating the angle between the outgoing electron and the neutrino beam direction as $\textsf{acos}\left(\textsf{abs}\left(\cos\theta\right)\right)$, which gives the same value whether the shower is reconstructed forward or backwards.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_eth2Loose.pdf}
-\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_calEHighLoose.pdf}
-\caption[$E\theta^2$ and high calorimetric energy cut for basic event selection]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the reconstructed energy of the leading shower multiplied by its angle from the incoming neutrino beam direction squared (top) and of the reconstructed energy of the leading shower (bottom). All histograms are area-normalised with logarithmic y axis. Yellow lines indicate the cut value for the corresponding variables, with arrows pointing towards the preserved events. The reconstruction quality cuts, the number of hits cut, and the length of the longest prong cuts were applied before making both of these plots, while the hits in the bottom plot are also required to pass the $E\theta^2$ cut.}
-\label{fig:NuMMCutsETh2CalEHighLoose}
+\includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/NuMM_N1Cut_eth2Looseleft_Eff.pdf}
+\caption[$E\theta^2$ cut for pre-selection]{Top: Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the reconstructed energy of the leading shower multiplied by its angle from the incoming neutrino beam direction squared. All histograms are area-normalised with logarithmic y axis. Bottom: Cumulative signal (red) and background (black) efficiency calculated as number of signal/background events left of the bin divided by the total number of signal/background events. Yellow lines indicate the cut value for the depicted variable, with arrows pointing towards the preserved events. The reconstruction quality cuts, the number of hits cut, and the length of the longest prong cuts were applied before making both of these plots.}
+\label{fig:NuMMCutsETh2Loose}
 \end{figure}
+
+The effect of the pre-selection cuts on the signal and background samples are summarised in Tab.~\ref{tab:CutflowTableBasicSelection}, where the first row lists the number of events after applying all the reconstruction quality cuts from Sec.~\ref{sec:NuMMEventSelRecoQC}. All three of the variables used for the pre-selection are employed again in the \gls{MVA}, as described in Sec.~\ref{sec:NuMMEventSelTMVA}.
 
 %\todo{Add the DeCAF cuts description here - might describe them already when introducing the decaf samples, not sure yet}
 
 \begin{table}[!hb]
 \centering
-\caption[Event selection cutflow table for the basic event selection]{Basic event selection cutflow table showing the number of events and the relative efficiency of each cut for each signal sample. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied. The top row corresponds to the sample after applying the reconstruction quality cuts.}
+\caption[Event selection cutflow table for the pre-selection]{Pre-selection cutflow table showing the number of events and the relative efficiency of each cut for each signal sample. The relative efficiency is calculated as number of events remaining after applying the corresponding cut divided by number of event for all the previous cuts. All the cuts are listed in sequence as they are applied. The top row corresponds to the sample after applying the reconstruction quality cuts.}
 \begin{tabular}{|l|cc|cc|cc|}\hline
 \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
 \multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
-\textbf{Reco Quality} & 48.75 & 100 & 2.71$\times 10^3$ & 100 & 4.06$\times 10^7$ & 100\\
-\textbf{N$^o$ Hits Loose} & 48.64 & 99.78 & 2.32$\times 10^3$ & 85.63 & 3.08$\times 10^7$ & 75.67\\
-\textbf{Prong Length} & 48.52 & 99.75 & 2.26$\times 10^3$ & 97.39 & 2.17$\times 10^7$ & 70.66\\
-\textbf{$E\theta^2$ Loose} & 48.39 & 99.73 & 2.25$\times 10^3$ & 99.71 & 6.00$\times 10^6$ & 27.62\\
-\textbf{High $E_{Shower}$ Loose} & 48.27 & 99.76 & 2.03$\times 10^3$ & 90.04 & 5.98$\times 10^6$ & 99.67\\\hline
+\textbf{Reco Quality} & 156.37 & 100 & 3.53$\times 10^3$ & 100 & 4.28$\times 10^7$ & 100\\
+\textbf{N$^o$ Hits Loose} & 156.05 & 99.79 & 3.41$\times 10^3$ & 96.46 & 3.61$\times 10^7$ & 84.35\\
+\textbf{Prong Length} & 155.7 & 99.78 & 3.37$\times 10^3$ & 98.85 & 2.61$\times 10^7$ & 72.36\\
+\textbf{$E\theta^2$ Loose} & 155.14 & 99.64 & 3.33$\times 10^3$ & 98.83 & 8.83$\times 10^6$ & 33.82\\\hline
 \end{tabular}
 \label{tab:CutflowTableBasicSelection}
 \end{table}
 
-\subsection{Fiducial and containment cuts}
-
+\subsection{Fiducial and containment cuts}\label{sec:NuMMEventSelFidCont}
 [nueXSec ana, docdb:37668] For both the X and Y vertices the distributions are asymmetric when comparing across the origin, in terms of vertex position. This is primarily due to particles coming from the +y and -x from events in the rock surrounding the detector. This corresponds to the direction of the NuMI target from the near detector. ...We require all activity from neutrino activity be deposited outside of the muon catcher.
 
 \todo{Describe what does the fiducial cut do}
-We require that the reconstructed vertex is contained within the following volume: $-175<\textsf{Vtx}_X<175,-175<\textsf{Vtx}_Y<175, 95<\textsf{Vtx}_Z<1095\ \unit{cm}$.
+We require that the reconstructed vertex is contained within the following volume: $-175<\textsf{Vtx}_X<175,-175<\textsf{Vtx}_Y<175, 95<\textsf{Vtx}_Z<1170\ \unit{cm}$.
 
 \begin{figure}[hbtp]
 \centering
@@ -738,14 +723,14 @@ To ensure all the energy is contained within the detector and to remove events o
 \begin{tabular}{|l|cc|cc|cc|}\hline
 \multicolumn{1}{|c|}{} & \multicolumn{2}{c|}{\textbf{Signal}} & \multicolumn{2}{c|}{\textbf{$\nu$-on-e bkg}} & \multicolumn{2}{c|}{\textbf{Other bkg}} \\
 \multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$} & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}  & \textbf{$N_{evt}$} & \textbf{$\epsilon_{rel}\left(\%\right)$}\\\hline
-\textbf{Basic selection} & 48.27 & 100 & 2.03$\times 10^3$ & 100 & 5.98$\times 10^6$ & 100\\
-\textbf{Fiducial} & 45.51 & 94.27 & 1.89$\times 10^3$ & 93.36 & 2.89$\times 10^6$ & 48.22\\
-\textbf{Containment} & 42.01 & 92.31 & 1.62$\times 10^3$ & 85.42 & 7.22$\times 10^5$ & 25.04\\\hline
+\textbf{Pre-selection} & 155.14 & 100 & 3.33$\times 10^3$ & 100 & 8.83$\times 10^6$ & 100\\
+\textbf{Fiducial} & 143.02 & 92.19 & 2.88$\times 10^3$ & 85.60 & 5.96$\times 10^6$ & 67.57\\
+\textbf{Containment} & 117.41 & 82.09 & 2.08$\times 10^3$ & 72.12 & 1.10$\times 10^6$ & 18.38\\\hline
 \end{tabular}
 \label{tab:CutflowTableFiducialContainmnet}
 \end{table}
 
-\subsection{Event Selection Optimization}
+\subsection{Event Selection Optimization}\label{sec:NuMMEventSelTMVA}
 \note{This is where I started the TMVA}
 
 \subsubsection*{Single Shower Requirement}
@@ -814,82 +799,15 @@ These event selection in total reduces signal $\unit[44.51]{\%}$, \gls{nuone} ba
 \end{table}
 
 
-\iffalse
-\todo{Describe the cutflow tables below}
-The final event count and efficiency of each of the cuts is shown on the table \ref{tab:CutflowTableSignal}. Table \ref{tab:CutflowTableBackground} shows the dissemination of background into the individual components.
-
-\begin{table}[!hb]
-\caption{Event selection cutflow table}
-\begin{tabular}{|l|ccc|ccc|ccc|}\hline
-\multicolumn{1}{|c|}{}                                     & \multicolumn{3}{c|}{\textbf{$\nu$ Mag. Moment signal}}          & \multicolumn{3}{c|}{\textbf{$\nu$-on-e background}}                      & \multicolumn{3}{c|}{\textbf{Other background}}                           \\
-\multicolumn{1}{|c|}{\multirow{-2}{*}{\textbf{Selection}}} & \multicolumn{1}{c}{\textbf{$N_{sig}$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} & \multicolumn{1}{c}{\textbf{$N_{IBkg}$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} & \multicolumn{1}{c}{\textbf{$N_{Bkg}$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} \\\hline
-\textbf{No Cut}      & 269.77            & 100 & 100 & 3.43$\times 10^3$           & 100 & 100                                     & 2.96$\times 10^8$          & 100                                                             & 100                                    \\
-\textbf{Vtx Is Valid}  & 180.58            & 66.94                                                              & 66.94                                     & 3.33$\times 10^3$               & 96.94                                                               & 96.94                                      & 2.34$\times 10^8$          & 79.09                                                              & 79.09                                     \\
-\textbf{N Prongs}        & 174.69            & 96.74                                                              & 64.76                                     & 3.23$\times 10^3$                             & 96.99                                                               & 94.02                                      & 8.66$\times 10^7$                     & 37.00                                                                 & 29.27                                     \\
-\textbf{Png Length}  & 174.67            & 99.99                                                              & 64.75                                     & 3.22$\times 10^3$                                          & 99.64                                                               & 93.68                                      & 7.67$\times 10^7$                              & 88.56                                                              & 25.92                                     \\
-\textbf{N Planes}      & 174.67            & 100                                                                & 64.75                                     & 3.22$\times 10^3$                                          & 99.98                                                               & 93.67                                      & 7.67$\times 10^7$          & 99.98                                                              & 25.92                                     \\
-\textbf{N Cells}       & 174.67            & 100                                                                & 64.75                                     & 3.22$\times 10^3$                                           & 99.98                                                               & 93.65                                      & 7.42$\times 10^7$          & 96.78                                                              & 25.08                                     \\
-\textbf{Closest Slc}  & 169.82            & 97.22                                                              & 62.95                                     & 3.14$\times 10^3$                                           & 97.54                                                               & 91.35                                      & 6.95$\times 10^7$          & 93.68                                                              & 23.49 \\
-\textbf{Fiducial}     & 167.72            & 98.76                                                              & 62.17                                     & 3.09$\times 10^3$           & 98.41                                                               & 89.89                                      & 3.59$\times 10^7$          & 51.71                                                              & 12.15                                     \\
-\textbf{Cont.}  & 159.37            & 95.02                                                              & 59.08                                     & 2.48$\times 10^3$           & 80.43                                                               & 72.30                                      & 1.38$\times 10^7$          & 38.35                                                              & 4.66                                      \\
-\textbf{ShwE Frac.}  & 150.37            & 94.35                                                              & 55.74                                     & 2.42$\times 10^3$           & 97.59                                                               & 70.56                                      & 8.82$\times 10^6$          & 63.97                                                              & 2.98                                      \\
-\textbf{Vtx E}         & 142.29            & 94.63                                                              & 52.74                                     & 2.18$\times 10^3$           & 90.16                                                               & 63.62                                      & 4.15$\times 10^6$          & 47.07                                                              & 1.40                                      \\
-\textbf{Shw Gap}          & 137.96            & 96.96                                                              & 51.14                                     & 2.09$\times 10^3$           & 95.58                                                               & 60.80                                      & 3.25$\times 10^6$          & 78.34                                                              & 1.10                                      \\
-\textbf{Shw E}      & 37.13             & 26.92                                                              & 13.76                                     & 1.36$\times 10^3$           & 65.10                                                               & 39.58                                      & 6.25$\times 10^5$          & 19.21                                                              & 0.21                                      \\
-\textbf{Nuoneid}      & 29.48             & 79.39                                                              & 10.93                                     & 940.21             & 69.18                                                               & 27.38                                      & 2.42$\times 10^4$ & 3.88                                                               & 8.19$\times 10^{-3}$                                  \\
-\textbf{Epi0id}       & 22.51             & 76.35                                                              & 8.34                                      & 749.93             & 79.76                                                               & 21.84                                      & 1.47$\times 10^4$ & 60.75                                                              & 4.97$\times 10^{-3}$                                  \\
-\rowcolor[HTML]{67FD9A}
-\textbf{$E\theta^2$}      & 19.74             & 87.73                                                              & 7.32                                      & 675.02             & 90.01                                                               & 19.66                                      & 84.15             & 0.57                                                               & 2.84$\times 10^{-5}$                                 \\\hline\hline
-\textbf{$E\theta^2$ (sb)}  & 2.74              & -                                                              & 1.01                                      & 74.30              & -                                                               & 2.16                                       & 1.01$\times 10^3$          & - & 3.43$\times 10^{-4}$                                  \\\hline\hline
-\textbf{No ShwE}  & 37.62             & -                                                           & 13.94                                     & 782.67             & -                                                            & 22.79                                      & 238.79            & -                                                              & 8.07E-05   \\\hline
-\end{tabular}
-\label{tab:CutflowTableSignal}
-\end{table}
-
-%\begin{landscape}
-\begin{sidewaysfigure}[!hb]
-\caption{Event selection cutflow table for background components}
-\begin{scriptsize}
-%\begin{table}[!hb]
-\begin{tabular}{|l|ccc|ccc|ccc|ccc|ccc|}\hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Selection}}} & \multicolumn{3}{c|}{\textbf{$\nu_e$CC MEC}} &
-\multicolumn{3}{c|}{\textbf{$\nu_e$CC Other}} &
-\multicolumn{3}{c|}{\textbf{$\nu_\mu$CC}} &
-\multicolumn{3}{c|}{\textbf{NC}} &
-\multicolumn{3}{c|}{\textbf{Other}} \\
-\multicolumn{1}{|c|}{}                                    & \multicolumn{1}{c}{\textbf{$N$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} & \multicolumn{1}{c}{\textbf{$N$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} & \multicolumn{1}{c}{\textbf{$N$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} & \multicolumn{1}{c}{\textbf{$N$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} & \multicolumn{1}{c}{\textbf{$N$}} & \textbf{$\epsilon^{N-1}$} & \textbf{$\epsilon \left(\%\right)$} \\\hline
-\textbf{No Cut}      & 3.50$\times 10^4$           & 100 & 100                                     & 3.23$\times 10^6$             & 100 & 100 & 2.24$\times 10^8$              & 100                                                                 & 100                                        & 3.40$\times 10^7$          & 100.                                                             & 100                                    & 3.49$\times 10^7$                      & 100 & 100                                       \\
-\textbf{Vtx Is Valid}  & 3.27$\times 10^4$           & 93.58                                                               & 93.58                                      & 2.62$\times 10^6$             & 81.14                                                                 & 81.14                                        & 1.99$\times 10^8$              & 89.02                                                                  & 89.02                                         & 2.57$\times 10^7$ & 75.55                                                              & 75.55                                     & 6.53$\times 10^6$             & 18.70                                                                 & 18.70                                        \\
-\textbf{N Prongs}        & 2.74$\times 10^4$           & 83.76                                                               & 78.39                                      & 1.39$\times 10^6$             & 53.05                                                                 & 43.05                                        & 6.75$\times 10^7$              & 33.89                                                                  & 30.17                                         & 1.51$\times 10^7$          & 58.57                                                              & 44.25                                     & 2.65$\times 10^6$ & 40.51                                                                 & 7.58                                         \\
-\textbf{Png Length}  & 2.73$\times 10^4$           & 99.79                                                               & 78.22                                      & 1.37$\times 10^6$             & 98.53                                                                 & 42.42                                        & 5.77$\times 10^7$ & 85.56                                                                  & 25.81                                         & 1.49$\times 10^7$          & 99.07                                                              & 43.84                                     & 2.64$\times 10^6$             & 99.87                                                                 & 7.57                                         \\
-\textbf{N Planes}      & 2.73$\times 10^4$           & 99.99                                                               & 78.22                                      & 1.37$\times 10^6$             & 99.99                                                                 & 42.41                                        & 5.77$\times 10^7$              & 99.98                                                                  & 25.81                                         & 1.49$\times 10^7$          & 100                                                             & 43.84                                     & 2.64$\times 10^6$ & 100                                                                & 7.57                                         \\
-\textbf{N Cells}       & 2.73$\times 10^4$           & 99.99                                                               & 78.21                                      & 1.28$\times 10^6$             & 93.49                                                                 & 39.65                                        & 5.59$\times 10^7$ & 96.82                                                                  & 24.98                                         & 1.44$\times 10^7$          & 96.34                                                              & 42.24                                     & 2.64$\times 10^6$             & 100                                                                & 7.57                                         \\
-\textbf{Closest Slc}  & 2.73$\times 10^4$           & 99.79                                                               & 78.05                                      & 1.21$\times 10^6$ & 94.25                                                                 & 37.37                                        & 5.33$\times 10^7$ & 95.40                                                                  & 23.84                                         & 1.35$\times 10^7$          & 94.17                                                              & 39.77                                     & 1.43$\times 10^6$ & 54.22                                                                 & 4.10 \\
-\textbf{Fiducial}     & 1.39$\times 10^4$           & 51.12                                                               & 39.90                                      & 6.30$\times 10^5$ & 52.10                                                                 & 19.47                                        & 2.60$\times 10^7$          & 48.77                                                                  & 11.62                                         & 8.25$\times 10^6$          & 60.99                                                              & 24.26                                     & 1.05$\times 10^6$             & 73.53                                                                 & 3.02                                         \\
-\textbf{Cont.}  & 9.32$\times 10^3$           & 66.82                                                               & 26.66                                      & 2.63$\times 10^5$             & 41.72                                                                 & 8.12                                         & 7.64$\times 10^6$              & 29.38                                                                  & 3.42                                          & 4.96$\times 10^6$          & 60.15                                                              & 14.59                                     & 9.12$\times 10^5$             & 86.62                                                                 & 2.61                                         \\
-\textbf{ShwE Frac.}  & 9.20$\times 10^3$           & 98.70                                                               & 26.32                                      & 1.95$\times 10^5$             & 74.39                                                                 & 6.04                                         & 4.82$\times 10^6$              & 63.10                                                                  & 2.15                                          & 2.97$\times 10^6$          & 59.78                                                              & 8.72                                      & 8.28$\times 10^5$             & 90.81                                                                 & 2.37                                         \\
-\textbf{Vtx E}         & 5.92$\times 10^3$           & 64.33                                                               & 16.93                                      & 6.05$\times 10^4$             & 30.96                                                                 & 1.87                                         & 1.97$\times 10^6$ & 40.79                                                                  & 0.88                                          & 1.36$\times 10^6$          & 45.75                                                              & 3.99                                      & 7.62$\times 10^5$             & 92.03                                                                 & 2.18                                         \\
-\textbf{Shw Gap}          & 5.50$\times 10^3$           & 92.91                                                               & 15.73                                      & 4.62$\times 10^4$             & 76.40                                                                 & 1.43                                         & 1.58$\times 10^6$ & 80.18                                                                  & 0.70                                          & 1.06$\times 10^6$          & 77.78                                                              & 3.10                                      & 5.69$\times 10^5$             & 74.61                                                                 & 1.63                                         \\
-\textbf{Shw E}      & 3.62$\times 10^3$           & 65.81                                                               & 10.35                                      & 1.12$\times 10^4$             & 24.15                                                                 & 0.35                                         & 4.38$\times 10^5$              & 27.80                                                                  & 0.20                                          & 1.71$\times 10^5$          & 16.15                                                              & 0.50                                      & 1.28$\times 10^3$             & 0.23                                                                  & 3.68$\times 10^{-3}$                                     \\
-\textbf{Nuoneid}      & 1.40$\times 10^3$           & 38.63                                                               & 4.00                                       & 2.11$\times 10^3$             & 18.89                                                                 & 0.065                                        & 1.17$\times 10^4$              & 2.66                                                                   & 5.21$\times 10^{-3}$                                      & 8.99$\times 10^3$          & 5.27                                                               & 0.026                                     & 66.43                & 5.17                                                                  & 1.90$\times 10^{-4}$                                     \\
-\textbf{Epi0id}       & 1.14$\times 10^3$           & 81.78                                                               & 3.27                                       & 1.61$\times 10^3$             & 76.40                                                                 & 0.050                                        & 7.17$\times 10^3$              & 61.52                                                                  & 3.20$\times 10^{-3}$                                      & 4.76$\times 10^3$          & 52.94                                                              & 0.014                                     & 29.47                & 44.36                                                                 & 8.44$\times 10^{-5}$                                     \\
-\rowcolor[HTML]{67FD9A}
-\textbf{$E\theta^2$}      & 15.13              & 1.32                                                                & 0.043                                      & 39.00                & 2.42                                                                  & 1.21$\times 10^{-3}$                                     & 8.62                  & 0.12                                                                   & 3.85$\times 10^{-6}$                                      & 20.91             & 0.44                                                               & 6.15$\times 10^{-5}$                                  & 0.50                 & 1.69                                                                  & 1.43$\times 10^{-6}$                                  \\\hline\hline
-\textbf{$E\theta^2$ (sb)}  & 386.16             & -                                                            & 1.10                                       & 306.55               & -                                                                & 9.48$\times 10^{-3}$                                     & 165.59                & -                                                               & 7.40$\times 10^{-5}$                                      & 149.93            & -                                                             & 4.41$\times 10^{-4}$                                  & 6.24                 & -                                                              & 1.79$\times 10^{-5}$                                     \\\hline\hline
-\textbf{No ShwE}  & 15.54              & -                                                                & 0.044                                      & 69.61                & -                                                                 & 2.15$\times 10^{-3}$                                     & 68.48                 & - & 3.06$\times 10^{-5}$                                      & 75.67             & - & 2.22$\times 10^{-4}$                                  & 9.49                 & -                                                                & 2.72E-05   \\\hline
-\end{tabular}
-
-\label{tab:CutflowTableBackground}
-%\end{table}
-\end{scriptsize}
-\end{sidewaysfigure}
-%\end{landscape}
-\fi
 
 \todo{Add a discussion of possible improvements on the event selection on its limitations - mostly for the analysis review committee}
 From here we can see that ... Maybe what can be improved is...
 This can likely be improved upon by specifically selection low energy events and removing the cut on the reconstructed shower energy. 
 
+
+The summary of the cut values for the event selection of neutrino magnetic moment signal is presented in Tab.~\ref{tab:EventSelectionSummary}, showing the label for the event selection variable, its description and the cut value chosen. This event selection in total reduces the signal by $\unit[44.51]{\%}$, \gls{nuone} background $\unit[70.40]{\%}$ and other background $\unit[99.97]{\%}$. After the full event selection, the predicted number of signal events for $\mu_\nu=10^{-9}\mu_B$ is $56.80$ and the total number of background events under the \gls{SM} hypothesis is $700.33$. This results in $\frac{\textsf{Signal}}{\sqrt{\textsf{Background}}}=2.15$ and $\textsf{\gls{FOM}} = \frac{\textsf{Signal}}{\sqrt{\textsf{Signal+Background}}}=2.06$.
+
+The most likely improvement is in probing the low energetic events and making sure they make sense. Additionally, it is possible to use specially designed control regions to mitigate the very high non-\gls{nuone} background.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                   RESOLUTION AND BINNING                      %%%
