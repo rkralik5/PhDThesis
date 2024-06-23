@@ -854,7 +854,9 @@ Maybe also mention that Test Beam will help with improving the dead materials co
 %%%                    SYSTEMATIC UNCERTAINTIES                   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systematic uncertainties}\label{sec:NuMMSystematics}
-\iffalse
+
+We considered all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}. For the neutrino flux systematic uncertainty, we used the 8 \gls{ND}-only principal components from the combined \gls{PPFX} and beam focusing \gls{PCA}. The principal components are ordered by the magnitude of their effect, with the first principal component having the largest effect. As can be seen in Fig.~\ref{fig:NuMMFluxSysts}, which combines all 8 principal components by summing their effect on each bin in quadrature, the neutrino flux systematic uncertainty does not have a significant shape in relation to the primary shower's calorimetric energy and is mostly just a normalization. The final effect of the neutrino flux systematic uncertainty on the total \gls{SM} background is $\pm\unit[8.16]{\%}$.
+
 \todo{Describe the main systematic uncertainties. Add plots showing their effect on the NuMM events. Possibly with different event selection variables as X axes. Also show the final table with the percentages summed}
 Plots showing combined uncertainties for signal and backgrounds. Maybe also some interpolations. Table of systematic uncertainties on the event count.
 
@@ -867,6 +869,9 @@ Should we include normalization systematics? Would that make any difference? The
 In the fitting experiment normalization uncertainties would probably not make any difference whatsoever, but in the counting experiment they might be important?
 
 \subsubsection*{Neutrino flux systematics}
+
+Systematic uncertainty on the neutrino flux on the background is symmetric and is $\pm\unit[8.16]{\%}$.
+
 \todo{Describe the flux uncertainties. Describe the PCA. Describe the difference between what the ND group is doing and what we're doing}
 Using the PCA vs using the PPFX universes+beam transport separately. Plots of energy showing shifts for signal and backgrounds separately
 
@@ -874,16 +879,61 @@ Using the PCA vs using the PPFX universes+beam transport separately. Plots of en
 
 This is mainly a normalization. Discuss how to use the fact that $\nu$-on-e events can be used (and are used) to constraint the beam uncertainty. Would the counting experiment still be valid then? Maybe if we made another sideband sample...
 
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMM/SystShifts_beamSysts_Full_Graph.pdf}
+\caption[Neutrino flux systematic uncertainty]{Effect of the total neutrino flux systematic uncertainty on the primary shower energy distribution of the \acrshort{SM} background.}
+\label{fig:NuMMFluxSysts}
+\end{figure}
+
+
 \subsubsection*{Detector systematics}
+
+The total detector systematic uncertainty is $^{+\unit[6.17]{\%}}_{-\unit[3.69]{\%}}$.
+
 \todo{Make plots of energy showing shifts for signal and backgrounds separately}
 Reference for the Prod5.1 detector systematics is docdb 53225
 
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMM/SystShifts_detSysts_Full_Graph.pdf}
+\caption[Detector systematic uncertainties]{Effect of the total detector systematic uncertainty on the primary shower energy distribution of the \acrshort{SM} background. The detector uncertainty consists of the absolute calibration, calibration shape, detector ageing, light level, and Cherenkov systematic uncertainties.}
+\label{fig:NuMMDetSysts}
+\end{figure}
+
+
 \subsubsection*{Cross section systematics}
+
+The total cross section uncertainty on the SM background is $^{+\unit[1.54]{\%}}_{-\unit[1.49]{\%}}$.
+
 \todo{Describe the XSec systs}
 Only for the non nu-on-e background. Assuming the nu-on-e events (including the signal events) are precisely known.
 
 Plots of energy showing shifts for signal and backgrounds separately
-\fi
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMM/SystShifts_xsecSysts_Full_Graph.pdf}
+\caption[Neutrino cross section systematic uncertainty]{Effect of the neutrino cross section systematic uncertainty on the primary shower energy distribution of the non-\acrshort{nuone} part of the \acrshort{SM} background.}
+\label{fig:NuMMXSecSysts}
+\end{figure}
+
+
+The total prediction with the systematic uncertainty is therefore
+\begin{equation}
+N_{\gls{SM}}=700.33 \pm \unit[3.78]{\%}\left(\textsf{stat.}\right) ^{\unit[+10.35]{\%}}_{\unit[-9.08]{\%}}\left(\textsf{syst.}\right)
+\end{equation}
+\begin{equation}
+N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
+\end{equation}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMM/RelativeErrorBarChart.pdf}
+\caption[Summary of systematic uncertainties]{Effect of the total neutrino flux systematic uncertainty on the primary shower energy distribution of the \acrshort{SM} background.}
+\label{fig:NuMMErrorBarChart}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                             RESULTS                           %%%
@@ -891,6 +941,16 @@ Plots of energy showing shifts for signal and backgrounds separately
 \section{Results}\label{sec:NuMMResults}
 
 Show the money plot - full prediction in the binned energy distribution, including the full statistical and systematic uncertainties
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=\textwidth]{Plots/NuMM/Stacked.pdf}
+\caption[Final prediction and data comparison]{comparison of the prediction to the observed data.}
+\label{fig:NuMMResults}
+\end{figure}
+
+
+
 
 Write out the total number of measured events and their corresponding uncertainties
 
@@ -908,6 +968,13 @@ What should be included here:
 \item Fit validation: Describe how the fit is validated, including any statistical tests used.
 \item Fake data studies: Explain the use of fake data or Monte Carlo simulations to test the robustness of the analysis.
 \end{itemize}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=\textwidth]{Plots/NuMM/NuMMLimit_FinalMoneyPlot.pdf}
+\caption[Fit results]{Results of the fit of the prediction to the observed data, with the neutrino magnetic moment as the sole fit parameter. We are profiling over the full range of systematic uncertainties.}
+\label{fig:NuMMResults}
+\end{figure}
 
 \iffalse
 Depends on what fits I'm going to end up using...
