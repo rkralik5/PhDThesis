@@ -136,6 +136,13 @@
 % An optional dedication: you can thank whomever you wish (your supervisor,
 % consultant, a person who lent the software, etc.)
 \def\Acknowledgements{%
+%Lily
+%First and foremost, I would like to acknowledge the impact and effect and to express my deepest gratitude to my dear supervisor Lily Asquith. I am eternally grateful that I got to spent the last almost four years under your wings.
+%Colleagues
+%Family
+%Closest friends
+%Other friends
+%Others? :D
 %In the introduction to your thesis, you should set out the sources of your information, such as particular libraries, archives, organisational records, private papers and department files
 %You should also set out the plan of your research procedures, indicating what general categories of persons you interviewed and you should indicate any special conditions of access to information.
 }
@@ -175,25 +182,20 @@ Measuring an enhanced neutrino magnetic moment would be a clear indication of ph
 
 %%% Each chapter is kept in a separate file
 %\include{title}
-%\include{ListOfAuthorsContributions}
+%\include{Preface}
 \openright
 \pagestyle{plain}
 \pagenumbering{arabic}
 \setcounter{page}{1}
-%\include{Introduction}
 %\include{NeutrinoTheory}
 \include{NOvAExperiment}
 %\include{TestBeamCalibration}
-\include{NeutrinoMagMoment}
+%\include{NeutrinoMagMoment}
 %\include{Conclusion}
-
-%\include{epilog}
-
 \printglossaries
-
-%%% Bibliography
 \include{bibliography}
-
+\appendix
+%\include{AppendixTBCalibValidation}
 %%% Attachments to the thesis, if any. Each attachment must be
 %%% referred to at least once from the text of the thesis. Attachments
 %%% are numbered.
@@ -205,10 +207,5 @@ Measuring an enhanced neutrino magnetic moment would be a clear indication of ph
 %%% source code, data files, interactive charts, etc.). Electronic attachments
 %%% should be uploaded to SIS and optionally also included in the thesis on a~CD/DVD.
 %%% Allowed file formats are specified in provision of the rector no. 72/2017.
-\appendix
-%\chapter{Attachments}
-
-\include{AppendixTBCalibValidation}
-
 \openright
 \end{document}
