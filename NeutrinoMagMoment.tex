@@ -911,6 +911,25 @@ Only for the non nu-on-e background. Assuming the nu-on-e events (including the 
 
 Plots of energy showing shifts for signal and backgrounds separately
 
+The largest systematic uncertainty for neutrino interaction comes from:
+MaNCRES (0.97\%, -0.90\%) axial mass for NC resonant neutrino production $\pm\unit[20]{\%}$ - from GENIE,
+MvNCRES (+0.41\%, -0.35\%) vector mass for NC resonant neutrino production $\pm\unit[10]{\%}$ - from GENIE,
+COHNCScale208 (+0.85\%, -0.85\%),
+ZNormCCQE (+0.31\%, -0.24\%) is the Z-expansion normalization and represents a $\unit[+20]{\%}/\unit[-15]{\%}$ QE normalization factor - GENIE,
+hNFSI\_MFP\_2024 (+0.30\%, -0.43\%) the mean free path (mean distance traveled by) of pions before they undergo an interaction
+
+Other notable $\left(>\pm\unit[0.1]{\%}\right)$ contributions are from (in no particular order)
+RPAShapesupp2020 (how well is the RPA understood, this one suppresses it at low $Q^2$),
+LowQ2RESSupp2020 (one sided uncertainty due to an observed discrepancy at low $Q^2$ of RES events in NOvA data),
+MECShape2024Nu (neutrino energy dependence of the MEC fit), DISvpNC2pi\_2020 (normalization uncertainty for transition-DIS events, starting at $\unit[50]{\%}$ at high $W\leq\unit[3]{GeV}$ to $\unit[5]{\%}$ at $\unit[5]{GeV}$ - implemented individually for different number of $\pi$ and CC and NC),
+DISvnNC1pi\_2020 (same as the previous one),
+DISNuHadronQ1Syst, FormZone2024 (distance that a parton travels before hadronization),
+MaNCEL (axial mass of NC elastic interactions $\pm\unit[25]{\%}$ - GENIE),
+MaCCRES (axial mass for CC resonant interactions $\pm\unit[20]{\%}$ - GENIE),
+RDecBR1gamma (branching ratio for radiative decays by $\pm\unit[50]{\%}$ - GENIE),
+RDecBR1eta (tweaks the branching ratio of single $\eta$ decay by 50\% - the decay $R\rightarrow X+\eta$ - GENIE),
+Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\rightarrow N+\pi$)
+
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMM/SystShifts_xsecSysts_Full_Graph.pdf}
