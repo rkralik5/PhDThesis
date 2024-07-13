@@ -855,29 +855,7 @@ Maybe also mention that Test Beam will help with improving the dead materials co
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systematic Uncertainties}\label{sec:NuMMSystematics}
 
-We considered all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}. For the neutrino flux systematic uncertainty, we used the 8 \gls{ND}-only principal components from the combined \gls{PPFX} and beam focusing \gls{PCA}. The principal components are ordered by the magnitude of their effect, with the first principal component having the largest effect. As can be seen in Fig.~\ref{fig:NuMMFluxSysts}, which combines all 8 principal components by summing their effect on each bin in quadrature, the neutrino flux systematic uncertainty does not have a significant shape in relation to the primary shower's calorimetric energy and is mostly just a normalization. The final effect of the neutrino flux systematic uncertainty on the total \gls{SM} background is $\pm\unit[8.16]{\%}$.
-
-\todo{Describe the main systematic uncertainties. Add plots showing their effect on the NuMM events. Possibly with different event selection variables as X axes. Also show the final table with the percentages summed}
-Plots showing combined uncertainties for signal and backgrounds. Maybe also some interpolations. Table of systematic uncertainties on the event count.
-
-Ideally should also talk about what measures were used to mitigate the systematic uncertainties, but there were none...
-
-\subsubsection*{Normalization systematics}
-\todo{Describe the normalization systematics (or just remove this if not using them in the end}
-Should we include normalization systematics? Would that make any difference? There's a POT scaling uncertainty which is very small (find out exactly how small).
-
-In the fitting experiment normalization uncertainties would probably not make any difference whatsoever, but in the counting experiment they might be important?
-
-\subsubsection*{Neutrino flux systematics}
-
-Systematic uncertainty on the neutrino flux on the background is symmetric and is $\pm\unit[8.16]{\%}$.
-
-\todo{Describe the flux uncertainties. Describe the PCA. Describe the difference between what the ND group is doing and what we're doing}
-Using the PCA vs using the PPFX universes+beam transport separately. Plots of energy showing shifts for signal and backgrounds separately
-
-\todo{understand differences with ND and 3F methods}
-
-This is mainly a normalization. Discuss how to use the fact that $\nu$-on-e events can be used (and are used) to constraint the beam uncertainty. Would the counting experiment still be valid then? Maybe if we made another sideband sample...
+We consider all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}. For the neutrino flux systematic uncertainty, we use 8 \gls{ND}-only principal components from the combined \gls{PPFX} and beam focusing \gls{PCA}. Figure~\ref{fig:NuMMFluxSysts} shows the combined effect of all 8 principal components on the predicted \gls{SM} background as a function of the primary shower's reconstructed energy. The total systematic uncertainty is derived by summing the effect of all the principal components on each bin in quadrature. It is clear that the neutrino flux systematic uncertainty does not have a significant shape in relation to the primary shower's calorimetric energy and can be represented by a normalization. The final effect of the neutrino flux systematic uncertainty on the total \gls{SM} background is symmetric around nominal and has a value of $\pm\unit[8.16]{\%}$.
 
 \begin{figure}[hbtp]
 \centering
@@ -887,12 +865,7 @@ This is mainly a normalization. Discuss how to use the fact that $\nu$-on-e even
 \end{figure}
 
 
-\subsubsection*{Detector systematics}
-
-The total detector systematic uncertainty is $^{+\unit[6.17]{\%}}_{-\unit[3.69]{\%}}$.
-
-\todo{Make plots of energy showing shifts for signal and backgrounds separately}
-Reference for the Prod5.1 detector systematics is docdb 53225
+The effect of the total detector systematic uncertainty, together with the calibration systematic uncertainties, is $^{+\unit[6.17]{\%}}_{-\unit[3.69]{\%}}$. This uncertainty is highly energy dependent, as can be seen in Fig.~\ref{fig:NuMMDetSysts}, and can significantly alter the shape of the energy distribution. The detector and calibration systematic uncertainties were combined due to their similar effect and origin. The largest systematic uncertainty in this group is the absolute energy scale uncertainty, which has a one-sided effect for our analysis and size $\unit[+5.72]{\%}$. Therefore, both the positive and the negative shift change the total number of events in the same direction. This is followed by the light level systematic uncertainty, which is $\unit[1.13]{\%}\unit[-3.39]{\%}$, and the Cherenkov systematic uncertainty, which is $\unit[1.82]{\%}\unit[-1.46]{\%}$. The detector ageing and calibration shape systematic uncertainties are by default only one sided and their effect on the \gls{SM} background is $\unit[+0.55]{\%}$ and $\unit[+0.69]{\%}$.
 
 \begin{figure}[hbtp]
 \centering
@@ -901,16 +874,9 @@ Reference for the Prod5.1 detector systematics is docdb 53225
 \label{fig:NuMMDetSysts}
 \end{figure}
 
+We assume that the \gls{nuone} interactions are known precisely in the predictions, therefore the dominant \gls{nuone} component of the \gls{SM} background has no systematic uncertainty from neutrino interaction prediction. Therefore, the total cross section uncertainty on the SM background is very small and has a value of $^{+\unit[1.54]{\%}}_{-\unit[1.49]{\%}}$. The most dominant neutrino interaction systematic uncertainties are from the axial and vector masses of the \gls{NC}\gls{Res} interaction ($^{\unit[+0.97]{\%}}_{\unit[-0.90]{\%}}$ for axial and $^{\unit[+0.41]{\%}}_{\unit[-0.35]{\%}}$ for vector mass). Also significant is the effect of the coherent \gls{NC} scaling ($^{\unit[+0.85]{\%}}_{\unit[-0.85]{\%}}$), of the \gls{QE} normalization factor ($^{\unit[+0.31]{\%}}_{\unit[-0.24]{\%}}$), or of the mean free path of pions before they undergo an interaction ($^{\unit[+0.30]{\%}}_{\unit[-0.43]{\%}}$). Other uncertainties have only a very small impact. The ones that have an effect of $\left(>\pm\unit[0.1]{\%}\right)$ are the suppression of long-range nuclear effect and \gls{Res} events at low energy transfers, shape of the \gls{MEC} tuning dependent on the neutrino energy, single $\pi$ \gls{NC}\gls{DIS} production, distance parton travels before hadronization, axial mass of \gls{NC} elastic and \gls{CC}\gls{Res} interactions, branching ratios of radiative and $\eta$-resonance decays, or the $\pi$ angular distribution in the $\Delta$ resonance decays.
 
-\subsubsection*{Cross section systematics}
-
-The total cross section uncertainty on the SM background is $^{+\unit[1.54]{\%}}_{-\unit[1.49]{\%}}$.
-
-\todo{Describe the XSec systs}
-Only for the non nu-on-e background. Assuming the nu-on-e events (including the signal events) are precisely known.
-
-Plots of energy showing shifts for signal and backgrounds separately
-
+\iffalse
 The largest systematic uncertainty for neutrino interaction comes from:
 MaNCRES (0.97\%, -0.90\%) axial mass for NC resonant neutrino production $\pm\unit[20]{\%}$ - from GENIE,
 MvNCRES (+0.41\%, -0.35\%) vector mass for NC resonant neutrino production $\pm\unit[10]{\%}$ - from GENIE,
@@ -929,21 +895,20 @@ MaCCRES (axial mass for CC resonant interactions $\pm\unit[20]{\%}$ - GENIE),
 RDecBR1gamma (branching ratio for radiative decays by $\pm\unit[50]{\%}$ - GENIE),
 RDecBR1eta (tweaks the branching ratio of single $\eta$ decay by 50\% - the decay $R\rightarrow X+\eta$ - GENIE),
 Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\rightarrow N+\pi$)
+\fi
 
+\iffalse
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMM/SystShifts_xsecSysts_Full_Graph.pdf}
 \caption[Neutrino cross section systematic uncertainty]{Effect of the neutrino cross section systematic uncertainty on the primary shower energy distribution of the non-\acrshort{nuone} part of the \acrshort{SM} background.}
 \label{fig:NuMMXSecSysts}
 \end{figure}
+\fi
 
-
-The total prediction with the systematic uncertainty is therefore
+Summary of the effect of systematic and statistical uncertainties on the predicted \gls{SM} background is illustrated in Fig.~\ref{fig:NuMMErrorBarChart}. The total prediction of the \gls{SM} background can be therefore expressed as
 \begin{equation}
-N_{\gls{SM}}=700.33 \pm \unit[3.78]{\%}\left(\textsf{stat.}\right) ^{\unit[+10.35]{\%}}_{\unit[-9.08]{\%}}\left(\textsf{syst.}\right)
-\end{equation}
-\begin{equation}
-N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
+N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right).
 \end{equation}
 
 \begin{figure}[hbtp]
