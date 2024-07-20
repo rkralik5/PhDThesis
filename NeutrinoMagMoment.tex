@@ -855,15 +855,26 @@ Maybe also mention that Test Beam will help with improving the dead materials co
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systematic Uncertainties}\label{sec:NuMMSystematics}
 
-We consider all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}. For the neutrino flux systematic uncertainty, we use 8 \gls{ND}-only principal components from the combined \gls{PPFX} and beam focusing \gls{PCA}. Figure~\ref{fig:NuMMFluxSysts} shows the combined effect of all 8 principal components on the predicted \gls{SM} background as a function of the primary shower's reconstructed energy. The total systematic uncertainty is derived by summing the effect of all the principal components on each bin in quadrature. It is clear that the neutrino flux systematic uncertainty does not have a significant shape in relation to the primary shower's calorimetric energy and can be represented by a normalization. The final effect of the neutrino flux systematic uncertainty on the total \gls{SM} background is symmetric around nominal and has a value of $\pm\unit[8.16]{\%}$.
+We consider all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}, grouped into four categories: neutrino flux, detector calibration, detector modelling, and neutrino cross section systematic uncertainties. Summary of the effect of both systematic and statistical uncertainties on the predicted number of \gls{SM} background events is depicted in Fig.~\ref{fig:NuMMErrorBarChart}. The four categories of systematic uncertainties are assumed to be uncorrelated between each other, allowing to calculate their combined effect by summing their individual contribution in quadrature. The total prediction of the number of \gls{SM} background events can be expressed as
+\begin{equation}
+N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right).
+\end{equation}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.9\textwidth]{Plots/NuMM/RelativeErrorBarChart.pdf}
+\caption[Summary of systematic uncertainties]{Relative effect of systematic and statistical uncertainties on the number of \acrshort{SM} background events. The total systematic uncertainty (blue bottom bar) is calculated as a square root of the sum of squares of the four categories of systematic uncertainties, shown ordered by the size of their effect. These are the neutrino flux, detector calibration, detector modelling, and neutrino cross section systematic uncertainties.}
+\label{fig:NuMMErrorBarChart}
+\end{figure}
+
+To assess the effect of the neutrino flux systematic uncertainty, we use 8 \gls{ND}-only principal components. Figure~\ref{fig:NuMMFluxSysts} shows their combined effect on the predicted \gls{SM} background as a function of the primary shower's (electron for true \gls{nuone} events) reconstructed energy. Since the principal components are uncorrelated by construction, the total systematic uncertainty for each bin is calculated by adding the effect of all the principal components in quadrature. The effect of the neutrino flux systematic uncertainty does not depend on the primary shower's calorimetric energy and altering the neutrino flux prediction can be represented by a normalization shift. The final effect of the neutrino flux systematic uncertainty on the total number of \gls{SM} background events is $\pm\unit[8.16]{\%}$ and is symmetric around the nominal prediction.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMM/SystShifts_beamSysts_Full_Graph.pdf}
-\caption[Neutrino flux systematic uncertainty]{Effect of the total neutrino flux systematic uncertainty on the primary shower energy distribution of the \acrshort{SM} background.}
+\caption[Neutrino flux systematic uncertainty]{Effect of the total neutrino flux systematic uncertainty on the primary shower energy distribution of the \acrshort{SM} background events.}
 \label{fig:NuMMFluxSysts}
 \end{figure}
-
 
 The effect of the total detector systematic uncertainty, together with the calibration systematic uncertainties, is $^{+\unit[6.17]{\%}}_{-\unit[3.69]{\%}}$. This uncertainty is highly energy dependent, as can be seen in Fig.~\ref{fig:NuMMDetSysts}, and can significantly alter the shape of the energy distribution. The detector and calibration systematic uncertainties were combined due to their similar effect and origin. The largest systematic uncertainty in this group is the absolute energy scale uncertainty, which has a one-sided effect for our analysis and size $\unit[+5.72]{\%}$. Therefore, both the positive and the negative shift change the total number of events in the same direction. This is followed by the light level systematic uncertainty, which is $\unit[1.13]{\%}\unit[-3.39]{\%}$, and the Cherenkov systematic uncertainty, which is $\unit[1.82]{\%}\unit[-1.46]{\%}$. The detector ageing and calibration shape systematic uncertainties are by default only one sided and their effect on the \gls{SM} background is $\unit[+0.55]{\%}$ and $\unit[+0.69]{\%}$.
 
@@ -906,17 +917,6 @@ Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\ri
 \end{figure}
 \fi
 
-Summary of the effect of systematic and statistical uncertainties on the predicted \gls{SM} background is illustrated in Fig.~\ref{fig:NuMMErrorBarChart}. The total prediction of the \gls{SM} background can be therefore expressed as
-\begin{equation}
-N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right).
-\end{equation}
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=.9\textwidth]{Plots/NuMM/RelativeErrorBarChart.pdf}
-\caption[Summary of systematic uncertainties]{Effect of the total neutrino flux systematic uncertainty on the primary shower energy distribution of the \acrshort{SM} background.}
-\label{fig:NuMMErrorBarChart}
-\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -924,13 +924,13 @@ N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:NuMMResults}
 
-The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults}. We do not use the energy distribution of events, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
+The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults_Distribution}. We do not use the energy distribution of events, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=\textwidth]{Plots/NuMM/Stacked.pdf}
 \caption[Final prediction and data comparison]{comparison of the prediction to the observed data.}
-\label{fig:NuMMResults}
+\label{fig:NuMMResults_Distribution}
 \end{figure}
 
 %Final numbers
@@ -969,7 +969,7 @@ What should be included here:
 \centering
 \includegraphics[width=\textwidth]{Plots/NuMM/NuMMLimit_FinalMoneyPlot.pdf}
 \caption[Fit results]{Results of the fit of the prediction to the observed data, with the neutrino magnetic moment as the sole fit parameter. We are profiling over the full range of systematic uncertainties.}
-\label{fig:NuMMResults}
+\label{fig:NuMMResults_ChisqLimit}
 \end{figure}
 
 Error on the best fit point - how to calculate?
