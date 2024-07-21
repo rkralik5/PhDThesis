@@ -814,7 +814,7 @@ E\pi^0\textsf{ID} &> 0.63.
 \label{tab:CutflowTableTMVA}
 \end{table}
 
-After the full event selection, the predicted number of signal events for $\mu_\nu~=~10^{-9}\mu_B$ is $56.80$, and the total number of background events under the \gls{SM} hypothesis is $700.33$. This results in
+After the full event selection, the predicted number of signal events for $\mu_\nu~=~10^{-9}\mu_B$ is $56.80$, and the total number of background events under the \gls{SM} hypothesis is $700.33$. The decomposition of background into interaction types is shown in Fig.~\ref{fig:NuMMBackgroundDecomposition} and listed in Tab.~\ref{tab:NuMMBackgroundContributions}. The event selection results in
 \begin{equation}
 \textsf{Signal Purity}=\frac{\textsf{Signal}}{\textsf{Signal+Background}}=\unit[7.50]{\%},
 \end{equation}
@@ -829,6 +829,31 @@ and
 \begin{equation}
 \textsf{\gls{FOM}}=\frac{\textsf{Signal}}{\sqrt{\textsf{Signal+Background}}}=2.06.
 \end{equation}
+
+\begin{table}[!hb]
+\centering
+\caption[Interactions contributing to the SM background]{Interaction types contributing to the \acrshort{SM} background after full event selection. Interactions with/without $\pi^0$ in the final state are specifically selected due to their significant contribution to the \acrshort{nuone} background.}
+\begin{tabularx}{.5\textwidth}{@{}X@{}}
+\textbf{Interaction} \hfill \textbf{Number of events}\\\hline
+\gls{nuone} \dotfill 519.09\\
+\gls{NC} w/$\pi^0$ \dotfill 72.96\\
+\gls{NC} w/o $\pi^0$ \dotfill 21.51\\
+$\nu_\mu$\gls{CC} w/$\pi^0$ \dotfill 28.07\\
+$\nu_\mu$\gls{CC} w/o $\pi^0$ \dotfill 25.67\\
+$\nu_e$\gls{CC}\gls{MEC} \dotfill 2.22\\
+Other $\nu_e$\gls{CC} \dotfill 9.83\\
+Other \dotfill 20.98\\\hline
+\textbf{Total} \dotfill 700.33\\
+\end{tabularx}
+\label{tab:NuMMBackgroundContributions}
+\end{table}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=\textwidth]{Plots/NuMMEventSelection/N1Cut_calESignal.pdf}
+\caption[Background composition of final selection]{Background composition of events passing the full event selection as a function of the reconstructed energy of the leading shower - electron for \acrshort{nuone} events. Events are scaled to the data exposure. Origin of the "Other" background events between $\unit[1.1-1.2]{GeV}$ is not known.}
+\label{fig:NuMMBackgroundDecomposition}
+\end{figure}
 
 %There are possible improvements in trying different \gls{MVA} methods, namely \gls{BDT} and so on. Since we are using the standard \gls{NOvA} simulation sample, implementation of new event identifiers into the workflow would be very complicated, unless done when updating the production. 
 
@@ -855,7 +880,7 @@ Maybe also mention that Test Beam will help with improving the dead materials co
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systematic Uncertainties}\label{sec:NuMMSystematics}
 
-We consider all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}, grouped into four categories: neutrino flux, detector calibration, detector modelling, and neutrino cross section systematic uncertainties. Summary of the effect of both systematic and statistical uncertainties on the predicted number of \gls{SM} background events is depicted in Fig.~\ref{fig:NuMMErrorBarChart}. The four categories of systematic uncertainties are assumed to be uncorrelated between each other, allowing to calculate their combined effect by summing their individual contribution in quadrature. The total prediction of the number of \gls{SM} background events can be expressed as
+We consider all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}, grouped into four categories: neutrino flux, detector calibration, detector modelling, and neutrino interaction systematic uncertainties. Summary of the effects of both systematic and statistical uncertainties on the predicted number of \gls{SM} background events is shown in Fig.~\ref{fig:NuMMErrorBarChart}. The four categories of systematic uncertainties are assumed to be uncorrelated between each other, allowing to calculate their combined effect by adding their individual contribution in quadrature. The total prediction of the number of \gls{SM} background events can be expressed as
 \begin{equation}
 N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right).
 \end{equation}
@@ -867,7 +892,7 @@ N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left
 \label{fig:NuMMErrorBarChart}
 \end{figure}
 
-To assess the effect of the neutrino flux systematic uncertainty, we use 8 \gls{ND}-only principal components. Figure~\ref{fig:NuMMFluxSysts} shows their combined effect on the predicted \gls{SM} background as a function of the primary shower's (electron for true \gls{nuone} events) reconstructed energy. Since the principal components are uncorrelated by construction, the total systematic uncertainty for each bin is calculated by adding the effect of all the principal components in quadrature. The effect of the neutrino flux systematic uncertainty does not depend on the primary shower's calorimetric energy and altering the neutrino flux prediction can be represented by a normalization shift. The final effect of the neutrino flux systematic uncertainty on the total number of \gls{SM} background events is $\pm\unit[8.16]{\%}$ and is symmetric around the nominal prediction.
+To assess the effect of the neutrino flux systematic uncertainty, we use 8 \gls{ND}-only principal components. Figure~\ref{fig:NuMMFluxSysts} shows their combined effect on the predicted \gls{SM} background as a function of the primary shower's reconstructed energy. Since the principal components are uncorrelated by construction, the total systematic uncertainty for each bin is calculated by adding the effect of all the principal components in quadrature. The effect of the neutrino flux systematic uncertainty does not depend on the primary shower's calorimetric energy and altering the neutrino flux prediction can be represented by a normalization shift. The final effect of the neutrino flux systematic uncertainty on the total number of \gls{SM} background events is $\pm\unit[8.16]{\%}$ and is symmetric around the nominal prediction.
 
 \begin{figure}[hbtp]
 \centering
@@ -876,7 +901,7 @@ To assess the effect of the neutrino flux systematic uncertainty, we use 8 \gls{
 \label{fig:NuMMFluxSysts}
 \end{figure}
 
-The effect of the total detector systematic uncertainty, together with the calibration systematic uncertainties, is $^{+\unit[6.17]{\%}}_{-\unit[3.69]{\%}}$. This uncertainty is highly energy dependent, as can be seen in Fig.~\ref{fig:NuMMDetSysts}, and can significantly alter the shape of the energy distribution. The detector and calibration systematic uncertainties were combined due to their similar effect and origin. The largest systematic uncertainty in this group is the absolute energy scale uncertainty, which has a one-sided effect for our analysis and size $\unit[+5.72]{\%}$. Therefore, both the positive and the negative shift change the total number of events in the same direction. This is followed by the light level systematic uncertainty, which is $\unit[1.13]{\%}\unit[-3.39]{\%}$, and the Cherenkov systematic uncertainty, which is $\unit[1.82]{\%}\unit[-1.46]{\%}$. The detector ageing and calibration shape systematic uncertainties are by default only one sided and their effect on the \gls{SM} background is $\unit[+0.55]{\%}$ and $\unit[+0.69]{\%}$.
+The effect of the total detector modelling and calibration systematic uncertainties on the number of \gls{SM} background events is asymmetrical, increasing the number of events by $+\unit[6.17]{\%}$ and decreasing by $\unit[3.69]{\%}$. The effect of these uncertainties dependents on the energy of the primary shower (which is the recoil electron for \gls{nuone} events), as can be seen in Fig.~\ref{fig:NuMMDetSysts}. This means that the energy distribution of the \gls{SM} background events can be significantly altered due to the detector uncertainties. The largest contribution comes from the absolute energy scale uncertainty, which has a one-sided effect of $\unit[+5.72]{\%}$. This is due to both the positive and the negative shift in the absolute energy scale increasing the total number of \gls{SM} background events. The light level and  Cherenkov systematic uncertainties are asymmetrical and alter the number of \gls{SM} background events in both directions by $^{+\unit[1.13]{\%}}_{\unit[-3.39]{\%}}$ and $^{\unit[+1.82]{\%}}_{\unit[-1.46]{\%}}$ respectively. The detector ageing and calibration shape systematic uncertainties are one sided by default and increase the number of the \gls{SM} background events by $\unit[+0.55]{\%}$ and $\unit[+0.69]{\%}$ respectively.
 
 \begin{figure}[hbtp]
 \centering
@@ -885,7 +910,13 @@ The effect of the total detector systematic uncertainty, together with the calib
 \label{fig:NuMMDetSysts}
 \end{figure}
 
-We assume that the \gls{nuone} interactions are known precisely in the predictions, therefore the dominant \gls{nuone} component of the \gls{SM} background has no systematic uncertainty from neutrino interaction prediction. Therefore, the total cross section uncertainty on the SM background is very small and has a value of $^{+\unit[1.54]{\%}}_{-\unit[1.49]{\%}}$. The most dominant neutrino interaction systematic uncertainties are from the axial and vector masses of the \gls{NC}\gls{Res} interaction ($^{\unit[+0.97]{\%}}_{\unit[-0.90]{\%}}$ for axial and $^{\unit[+0.41]{\%}}_{\unit[-0.35]{\%}}$ for vector mass). Also significant is the effect of the coherent \gls{NC} scaling ($^{\unit[+0.85]{\%}}_{\unit[-0.85]{\%}}$), of the \gls{QE} normalization factor ($^{\unit[+0.31]{\%}}_{\unit[-0.24]{\%}}$), or of the mean free path of pions before they undergo an interaction ($^{\unit[+0.30]{\%}}_{\unit[-0.43]{\%}}$). Other uncertainties have only a very small impact. The ones that have an effect of $\left(>\pm\unit[0.1]{\%}\right)$ are the suppression of long-range nuclear effect and \gls{Res} events at low energy transfers, shape of the \gls{MEC} tuning dependent on the neutrino energy, single $\pi$ \gls{NC}\gls{DIS} production, distance parton travels before hadronization, axial mass of \gls{NC} elastic and \gls{CC}\gls{Res} interactions, branching ratios of radiative and $\eta$-resonance decays, or the $\pi$ angular distribution in the $\Delta$ resonance decays.
+Since we assume that the \gls{nuone} interaction is known precisely, the dominant \gls{nuone} component of the \gls{SM} background has no systematic uncertainty from neutrino interactions. Therefore, the neutrino interaction systematic uncertainty affects only the $181$ "Other background" events, which make up $\unit[34.9]{\%}$ of the total \gls{SM} background. Consequently, the total neutrino interaction uncertainty on the \gls{SM} background is relatively small, with a combined effect on the number of \gls{SM} background events of $^{+\unit[1.54]{\%}}_{-\unit[1.49]{\%}}$.
+The most dominant neutrino interaction systematic uncertainties are related to interactions with $\pi^0$ in the final state,  such as the axial mass ($^{\unit[+0.97]{\%}}_{\unit[-0.90]{\%}}$) and the vector mass ($^{\unit[+0.41]{\%}}_{\unit[-0.35]{\%}}$) of the \gls{NC}\gls{Res} interactions, the scaling of the \gls{COHpi}\gls{NC} interactions ($^{\unit[+0.85]{\%}}_{\unit[-0.85]{\%}}$), or the mean free path of pions before they undergo an interaction ($^{\unit[+0.30]{\%}}_{\unit[-0.43]{\%}}$). Other neutrino interaction systematic uncertainties have only a marginal ($<\unit[0.3]{\%}$) effect on the number of \gls{SM} background events.
+
+%The most dominant neutrino interaction systematic uncertainties are from the axial and vector masses of the \gls{NC}\gls{Res} interaction ($^{\unit[+0.97]{\%}}_{\unit[-0.90]{\%}}$ for axial and $^{\unit[+0.41]{\%}}_{\unit[-0.35]{\%}}$ for vector mass). Also significant is the effect of the coherent \gls{NC} scaling ($^{\unit[+0.85]{\%}}_{\unit[-0.85]{\%}}$), of the \gls{QE} normalization factor ($^{\unit[+0.31]{\%}}_{\unit[-0.24]{\%}}$), or of the mean free path of pions before they undergo an interaction ($^{\unit[+0.30]{\%}}_{\unit[-0.43]{\%}}$).
+
+
+%Other uncertainties have only a very small impact. The ones that have an effect of $\left(>\pm\unit[0.1]{\%}\right)$ are the suppression of long-range nuclear effect and \gls{Res} events at low energy transfers, shape of the \gls{MEC} tuning dependent on the neutrino energy, single $\pi$ \gls{NC}\gls{DIS} production, distance parton travels before hadronization, axial mass of \gls{NC} elastic and \gls{CC}\gls{Res} interactions, branching ratios of radiative and $\eta$-resonance decays, or the $\pi$ angular distribution in the $\Delta$ resonance decays.
 
 \iffalse
 The largest systematic uncertainty for neutrino interaction comes from:
@@ -1062,8 +1093,11 @@ What should be included here:
 \end{itemize}
 \end{itemize}
 
+If we do an energy dependent fit, we would have to consider the energy dependency of the systematic uncertainties, which might substantially impact the results of this analysis. Same applies if we decide to extend the event selection to lower electron energies below 0.5GeV. 
+
 %For the energy deposition of electron in LArTPC might be a good source this https://iopscience.iop.org/article/10.1088/1748-0221/15/03/P03022/pdf
 
+ Due to the energy dependent contribution of the \gls{NC} interactions with a $\pi^0$ in the final state, it may be important to consider these uncertainties for an energy dependent analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                            CONCLUSION                         %%%
