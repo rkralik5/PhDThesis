@@ -955,6 +955,20 @@ Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\ri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:NuMMResults}
 
+First, repeat the prediction and state how we developed it - blinded analysis until now. Now unveil the result - full number. Then describe the energy distribution - first (and only?) cross check.
+
+%Prediction, blinded analysis, measured numbers - is it inside the uncertainty (yes)
+The total number of observed events passing our selection is
+\begin{equation}
+N_{Observed} = 773.
+\end{equation}
+The total number of predicted events for the \gls{SM} background (without neutrino magnetic moment) is
+\begin{equation}
+N_{Predicted}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
+\end{equation}
+If the neutrino magnetic moment is $\mu_{\nu}=10^{-9}\mu_B$, there would be $56.80$ additional observed events.
+
+% Cross check with energy distribution
 The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults_Distribution}. We do not use the energy distribution of events, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
 
 \begin{figure}[hbtp]
@@ -964,16 +978,7 @@ The final distribution of the predicted \gls{SM} background, the signal for $\mu
 \label{fig:NuMMResults_Distribution}
 \end{figure}
 
-%Final numbers
-The total number of observed events passing our selection is
-\begin{equation}
-N_{Observed} = 177.
-\end{equation}
-The total number of predicted events for the \gls{SM} background (without neutrino magnetic moment) is
-\begin{equation}
-N_{Predicted}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
-\end{equation}
-If the neutrino magnetic moment is $\mu_{\nu}=10^{-9}\mu_B$, there would be $56.80$ additional observed events.
+%Implication - can we deduct that we've seen neutrino magnetic moment from this number of events? - Hypothesis testing
 
 \subsection{Hypothesis Testing}
 %State the hypotheses again and their numbers
@@ -1033,6 +1038,19 @@ where for bins with $n_i=0$, the last term is zero. In our term $\mu_i\left(\the
 A smaller value of $-2\ln\lambda\left(\hat{\theta}\right)$ corresponds to better agreement between the data and the hypothesized form of $\mu\left(\theta\right)$. The value of $-2\ln\lambda\left(\hat{\theta}\right)$ can thus be translated into a \textbf{p-value as a measure of goodness-of-fit}. Assuming the model is correct, then according to \textbf{Wilk's theorem}, for \textbf{sufficiently large} $\mu_i$ and provided certain regularity conditions are met, \textbf{the minimum of $-2\ln\lambda$ follows a $\chi^2$ distribution.} If there are N bins and M fitter parameters, then the number of degrees of freedom for the $\chi^2$ distribution is $N-M$ if the data are threated as Poisson distributed - which they are for us.
 
 The method of least squares coincides with the method of maximum likelihood in a special case where the independent variables are Gaussian distributed - so I suppose this means that if I have enough events in each single bin, then I could equate the method of log likelihood and the method of least squares...
+
+
+[Nitish's thesis]
+This prediction is fit to the NuMI data using the traditional Poisson log-likelihood for binned spectra \cite{ExtendedMaximumLikelihood1990.pdf}. This is given as:
+\begin{equation}
+-2\ln\lambda\left(\theta,\overrightarrow{\eta}\right)=-2\sum_{i=1}^{N}\left[\mu_i\left(\theta,\overrightarrow{\eta}\right)-n_i+n_i\ln\frac{n_i}{\mu_i\left(\theta,\overrightarrow{\eta}\right)}\right] + \sum_{k=1}^M \eta_k^2,
+\end{equation}
+where $\mu_i$ denotes the predicted number of events in each analysis bin $i$ as a function of the neutrino magnetic moment $\theta$ and the nuisance parameters $\eta$, which for us are the systematic shifts. $n_i$ is the observed number of events in that bin.  The last term denotes the penalty given to favouring a non-zero systematic variation for M set of systematic uncertainties. The best-fit oscillation parameters are derived by minimizing this equation with respect to these parameters and is done using a MIGRAD based algorithm [125]. The likelihood takes into account the Poisson deviations of the prediction from data in each analysis bin (given by the ln term) as well as an overall Poisson fluctuation on the total number of predicted events. ...the penalty is calculated for the amount of $\sigma$ deviation favoured in the fit, i.e if the fit favours a $1.2\sigma$ deviation from the central value prediction then the penalty to $-2\ln\lambda$ is given by $1.2^2=1.44$. The parametrisation is derived by defining the variation in the prediction at specific $\sigma$ values, for example: $-2,-1,0,+1,+2 \sigma$ and interpolating the deviations in each analysis bin using a cubic spline-based method. This is sufficiently general for all the systematics considered in the analysis, including those with non-Gaussian uncertainties. For one-sided systematic shifts the interpolation parametrizes the overall deviation by fitting a flat line at 0 for the excluded shifts and only uses the included shifts.
+%[125] is R. Brun et al. TMinuit Class Reference. ROOT Documentation.
+
+The log-likelihood form also requires that individual systematic uncertainties are not correlated to each other. This is somewhat justifiable for uncertainties coming from completely separate parts of the simulation for example the flux vs cross-section. However, when dealing with uncertainties from just the flux model for example, one must take into account these correlations that could crop up within the errors in the hadron production cross-sections for different neutrino energies. This is done using a Principal Component Analysis (PCA) to decompose an ensemble of systematic possibilities in the model into individual uncorrelated pieces. \note{Should I have used PCA for neutrino interaction systematic uncertainties as well? This systematic uncertainty is not that important for us, so it probably doesn't matter...}
+
+\cite{ExtendedMaximumLikelihood1990.pdf} We are using the method of extended maximum likelihood, which was first proposed by Fermi, and two pages in Orear's unpublished but invaluable notes [1] have provided the authoritative description.
 
 \subsection{Nuisance Parameters}
 In general the model is not perfect, which is to say it cannot provide an accurate description of the data even at the most optimal point of its parameter space. As a result, the estimated parameters can have a systematic bias. One can improve the model by including in it additional parameters. That is, $P\left(x|\theta\right)$ is replaced by a more general model $P\left(x|\theta,\nu\right)$, which depends on parameters of interest $\theta$ and \textit{nuisance parameters} $\nu$. The additional parameters are not of intrinsic interest but must be included for the model to be sufficiently accurate for some point in the enlarged parameter space.
