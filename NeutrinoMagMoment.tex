@@ -1,5 +1,4 @@
 \chapter{Measuring the Muon Neutrino Magnetic Moment}\label{sec:NeutrinoMagMoment}
-
 %%% OBJECTIVE / GOAL
 In this analysis, I aim to detect a potential signal of the effective muon neutrino magnetic moment in the \gls{NOvA} \gls{ND}. This signal would manifest as an excess of \gls{nuone} elastic scattering interactions at low electron recoil energies, proportional to the value of the effective neutrino magnetic moment, over the \gls{SM} background. If no significant excess is observed, I will establish an upper limit on the effective muon neutrino magnetic moment.
 
@@ -955,18 +954,23 @@ Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\ri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:NuMMResults}
 
+
+
 First, repeat the prediction and state how we developed it - blinded analysis until now. Now unveil the result - full number. Then describe the energy distribution - first (and only?) cross check.
 
 %Prediction, blinded analysis, measured numbers - is it inside the uncertainty (yes)
 The total number of observed events passing our selection is
 \begin{equation}
-N_{Observed} = 773.
+O = 773.
 \end{equation}
-The total number of predicted events for the \gls{SM} background (without neutrino magnetic moment) is
+The total number of expected events for the \gls{SM} background (without neutrino magnetic moment) is
 \begin{equation}
-N_{Predicted}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
+E_B=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
 \end{equation}
-If the neutrino magnetic moment is $\mu_{\nu}=10^{-9}\mu_B$, there would be $56.80$ additional observed events.
+Additionally, the number of expected signal events dependent on the size of the neutrino magnetic moment is
+\begin{equation}\label{eq:NuMMExpectedNumberOfSignalEvents}
+E_S=56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
+\end{equation}
 
 % Cross check with energy distribution
 The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults_Distribution}. We do not use the energy distribution of events, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
@@ -978,11 +982,47 @@ The final distribution of the predicted \gls{SM} background, the signal for $\mu
 \label{fig:NuMMResults_Distribution}
 \end{figure}
 
-%Implication - can we deduct that we've seen neutrino magnetic moment from this number of events? - Hypothesis testing
+The \gls{BF} point for the number of signal events is simply 
+\begin{equation}
+\acrshort{BF}_S= O-E_B = 72.67
+\end{equation}
+and from Eq.~\ref{eq:NuMMExpectedNumberOfSignalEvents} we get the best fit for the neutrino magnetic moment
+\begin{equation}
+\mu_{\nu,\acrshort{BF}} = \sqrt{\frac{72.67}{56.80}} \times 10^{-9}\mu_B = 1.13\times 10^{-9}\mu_B
+\end{equation}
 
-\subsection{Hypothesis Testing}
+We want to test the (null) hypothesis that the observed number of events can be described by the \gls{SM} alone, without the neutrino magnetic moment $\left(\mu=0\right)$. For this we use the likelihood ratio test statistic, which is expressed as a ratio between the maximum likelihood of obtaining the observed data given the \gls{SM} only, and the maximum likelihood of obtaining the observed data given there the best fit value to the neutrino magnetic moment:
+\begin{equation}
+\lambda=\frac{\mathcal{L}\left(\mu_\nu=0\right)}{\mathcal{L}\left(\mu_\nu=\mu_{\nu,\acrshort{BF}}\right)}.
+\end{equation}
+
+Likelihood is the probability to observe $O$ events given a hypothesis H, which describes the number of expected events $E$. In case of the null hypothesis, which states that there is not neutrino magnetic moment and all the observed events are due to the \gls{SM}, the expected number of events is equivalent to $E_B$. The number of events recorded in a fixed time interval is described by the Poisson distribution, resulting in the likelihood
+\begin{equation}
+\mathcal{L}\left(N;\mu\right)=\frac{E\left(\mu\right)^{O}}{O!}e^{-E\left(\mu\right)}.
+\end{equation}
+For the null hypothesis, the expected number of events is $E_B$ and for the alternative hypothesis at the \gls{BF} point the expected number of events is equal ton $O$. Additionally, the likelihood ratio is expressed as the logarithm of the ratio, which according to the Wilk's theorem follows the $\chi^2$ distribution. It can be expressed as
+\begin{equation}
+-2\ln\lambda\left(\theta\right)=
+-2\ln\left(\frac{\frac{E_B^{O}}{O!}e^{-E_B}}{\frac{O^{O}}{O!}e^{-O}}\right)=
+2\left[E_B-O+O\ln\frac{O}{E_B}\right],
+\end{equation}
+
+This is without considering the systematic uncertainties. We can include the effect of systematic uncertainties as nuisance parameters into the likelihood function, which are depicted by a gaussian distribution centered around $0$, with $\sigma$ corresponding to the $1\sigma$ value of the systematic uncertainties. We assume all the systematic uncertainties are uncorrelated. This is possible, since the effect of the different categories of systematic uncertainties (detector, beam, and neutrino interaction) are uncorrelated between each other, and additionally the 
+
+The expected number of events can be expressed as
+$E=E_S\left(\mu\right) + E_B$,
+where $E_S$ is the expected number of signal events, which is taken from the \gls{MC} simulation and depends on the value of the neutrino magnetic moment, and $E_B$ is the expected number of \gls{SM} background events and is taken from the \gls{MC} prediction.
+
+We want to test the null hypothesis, which states that there is no neutrino magnetic moment and all the observed events are due to the \gls{SM} - $\mu=0$. If we reject the null hypothesis, we want to estimate the size of the neutrino magnetic moment, and if we fail to reject the null hypothesis, we want to place a limit on the size of the neutrino magnetic moment. For all these, we are using the likelihood ratio test statistics. The likelihood ratio test statistics is a ratio of the likelihood (probability) to observe the data given some hypothesis $H\left(\mu\right)$, over the likelyhood of the "alternate" hypothesis under the best fit point. 
+
+
 %State the hypotheses again and their numbers
 We are testing the validity of the null hypothesis, which is in our case that there is no neutrino magnetic moment and therefore all the observed events are purely due to the \gls{SM} processes.
+
+
+I need to calculate the -2lnLambda profiled over all systematics but without the signal turned on - the result should be the p value of my null hypothesis
+
+%[wikipedia on Wilk's theorem] The model with more parameters (here alternative) will always fit at least as well — i.e., have the same or greater log-likelihood — than the model with fewer parameters (here null). Whether the fit is significantly better and should thus be preferred is determined by deriving how likely (p-value) it is to observe such a difference D by chance alone, if the model with fewer parameters were true. Where the null hypothesis represents a special case of the alternative hypothesis, the probability distribution of the test statistic is approximately a chi-squared distribution with degrees of freedom equal to df alt − df null respectively the number of free parameters of models alternative and null.
 
 
 Write out the total number of measured events and their corresponding uncertainties
