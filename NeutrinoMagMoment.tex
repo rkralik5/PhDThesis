@@ -879,7 +879,7 @@ Maybe also mention that Test Beam will help with improving the dead materials co
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Systematic Uncertainties}\label{sec:NuMMSystematics}
 
-We consider all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}, grouped into four categories: neutrino flux, detector calibration, detector modelling, and neutrino interaction systematic uncertainties. Summary of the effects of both systematic and statistical uncertainties on the predicted number of \gls{SM} background events is shown in Fig.~\ref{fig:NuMMErrorBarChart}. The four categories of systematic uncertainties are assumed to be uncorrelated between each other, allowing to calculate their combined effect by adding their individual contribution in quadrature. The total prediction of the number of \gls{SM} background events can be expressed as
+We consider all the standard \gls{NOvA} systematic uncertainties described in Sec.~\ref{sec:NOvASystematics}, grouped into four categories: neutrino flux, detector calibration, detector modelling, and neutrino interaction systematic uncertainties. Summary of the effects of both systematic and statistical uncertainties on the predicted number of \gls{SM} background events is shown in Fig.~\ref{fig:NuMMErrorBarChart}. The four categories of systematic uncertainties are assumed to be uncorrelated between each other, allowing to calculate their combined effect by adding their individual contribution in quadrature. The statistical uncertainty is calculated as $\sqrt{N_{\gls{SM}}}$ since the number of predicted events follows the Poisson distribution. The total prediction of the number of \gls{SM} background events can be expressed as
 \begin{equation}
 N_{\gls{SM}}=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right).
 \end{equation}
@@ -954,6 +954,8 @@ Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\ri
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:NuMMResults}
 
+To avoid biasing our decisions based on the number and distribution of the observed data events, we performed the event selection, systematic uncertainty studies and decided on the statistical analysis methods prior to revealing the data samples in a blinded analysis. Therefore, in the following section, the methodology, the confidence level, and the hypothesis exclusion requirements have been fixed before we unveiled the data sample.
+
 As discussed in Sec.~\ref{sec:NuMMEventSelection} and Sec.~\ref{sec:NuMMSystematics}, the total number of the expected \gls{SM} background events scaled to the data exposure of $1.38\times 10^{21}$  \gls{POT} is
 \begin{equation}
 E_B=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
@@ -962,8 +964,6 @@ The number of expected signal events depends on the size of the neutrino magneti
 \begin{equation}\label{eq:NuMMExpectedNumberOfSignalEvents}
 E_S=56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
 \end{equation}
-
-To avoid biasing our decisions based on the observed number of data events and on their distribution, we performed the event selection, systematic uncertainty studies and decided on the statistical analysis methods prior to revealing the data samples in a blinded analysis. Therefore, in the following section, the methodology, the confidence level, and the hypothesis exclusion requirements have been fixed before we unveiled the data sample.
 
 %Prediction, blinded analysis, measured numbers - is it inside the uncertainty (yes)
 The total number of observed events passing our selection is
@@ -980,7 +980,7 @@ and from Eq.~\ref{eq:NuMMExpectedNumberOfSignalEvents} we get the best fit for t
 \end{equation}
 
 %Distribution of events
-The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults_Distribution}. We do not use the energy distribution of events, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
+The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults_Distribution}. We do not use this energy distribution of events for hypothesis testing or parameter estimation, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
 
 \begin{figure}[hbtp]
 \centering
@@ -990,7 +990,9 @@ The final distribution of the predicted \gls{SM} background, the signal for $\mu
 \end{figure}
 
 %Likelihood and log likelihood ratio
-Describe the likelihood ratio in general here
+Given the number of observed events we want to test whether we can describe the number of observed events only using the \gls{SM} prediction, or if we need a neutrino magnetic moment as well. To do this we test the null hypothesis, which states that the number of observed selected events is only due to the \gls{SM}. We've chosen to reject the null hypothesis, if our statistical test results in p-value below the critical value. We chose a significance level of 
+
+
 We want to maximize the likelihood as a function of the measured parameter. This is equivalent to minimizing the log likelihood ratio as prescribed by...
 
 Likelihood is the probability to observe $O$ events given a hypothesis $H$, which describes the number of expected events $E$. In case of the null hypothesis $\left(H_0\right)$, which states that there is not neutrino magnetic moment and all the observed events are due to the \gls{SM}, the expected number of events is equivalent to $E_B$. As we are counting the number of events recorded in a fixed time interval, the likelihood is described by the Poisson distribution
