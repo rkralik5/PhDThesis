@@ -947,50 +947,26 @@ Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\ri
 \end{figure}
 \fi
 
+\section{Statistical Analysis}\label{sec:NuMMStatisticalAnalysis}
 
+To measure the muon neutrino magnetic moment based on the number of the observed events compared to the prediction, we are using the Frequentist statistical analysis approach. In our case we consider the \textit{null hypothesis} $\left(H_0\right)$ the assumption that the observed number of events is purely due to \gls{SM} processes. This is a simple hypothesis independent of any parameters. Contrary to the null hypothesis, we test the \textit{alternative hypothesis} that assumes that some of the observed events are due to the neutrino magnetic moment interaction. The alternative hypothesis is a composite hypothesis and depends on the size of the neutrino magnetic moment: $H_I\left(\mu_\nu\right)$.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                             RESULTS                           %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}\label{sec:NuMMResults}
-
-To avoid biasing our decisions based on the number and distribution of the observed data events, we performed the event selection, systematic uncertainty studies and decided on the statistical analysis methods prior to revealing the data samples in a blinded analysis. Therefore, in the following section, the methodology, the confidence level, and the hypothesis exclusion requirements have been fixed before we unveiled the data sample.
-
-As discussed in Sec.~\ref{sec:NuMMEventSelection} and Sec.~\ref{sec:NuMMSystematics}, the total number of the expected \gls{SM} background events scaled to the data exposure of $1.38\times 10^{21}$  \gls{POT} is
+The number of recorded events in a fixed time interval follows the Poisson distribution and the probability to observe $O$ events, when we expect $E$ events given the specific hypothesis (and magnetic moment $\mu$) considered - also called the likelihood of the hypothesis, is determined by
 \begin{equation}
-E_B=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
-\end{equation}
-The number of expected signal events depends on the size of the neutrino magnetic moment and can be expressed as
-\begin{equation}\label{eq:NuMMExpectedNumberOfSignalEvents}
-E_S=56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
+L\left(O;E\left(\mu_\nu\right)\right)=\frac{E\left(\mu_\nu\right)^{O}}{O!}e^{-E\left(\mu_\nu\right)}.
 \end{equation}
 
-%Prediction, blinded analysis, measured numbers - is it inside the uncertainty (yes)
-The total number of observed events passing our selection is
+The value of the neutrino magnetic moment that maximises the likelihood given the observed number of events is referred to as the \gls{BF} point. In our case with a simple counting of the total signal and background events, the \gls{BF} value of the neutrino magnetic moment is simply the one for which $E=O$. Finding the maximum likelihood is equivalent to finding the minimum of the \textit{log likelihood ratio} test statistics, which is defined as the logarithm of the ratio of the tested likelihood and the maximum possible likelihood (and a factor and -2):
 \begin{equation}
-O = 773.
-\end{equation}
-The \gls{BF} point for the number of signal events can be calculated as
-\begin{equation}
-\acrshort{BF}_S= O-E_B = 72.67
-\end{equation}
-and from Eq.~\ref{eq:NuMMExpectedNumberOfSignalEvents} we get the best fit for the neutrino magnetic moment
-\begin{equation}
-\mu_{\nu,\acrshort{BF}} = \sqrt{\frac{72.67}{56.80}} \times 10^{-9}\mu_B = 1.13\times 10^{-9}\mu_B
+-2\ln\lambda\left(\mu_\nu\right)=
+-2\ln\left(\frac{L\left(O;E\left(\mu_\nu\right)\right)}{L\left(O;O\right)}\right)=
+2\left[E\left(\mu_\nu\right)-O+O\ln\frac{O}{E\left(\mu_\nu\right)}\right]
 \end{equation}
 
-%Distribution of events
-The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults_Distribution}. We do not use this energy distribution of events for hypothesis testing or parameter estimation, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
-
-\begin{figure}[hbtp]
-\centering
-\includegraphics[width=\textwidth]{Plots/NuMM/Stacked.pdf}
-\caption[Final prediction and data comparison]{Comparison of the observed data to the prediction of the $\nu$ magnetic moment signal for $\mu_\nu=10^{-9}\mu_B$ (red line) and the \acrshort{SM} background (filled area) as a function of the reconstructed calorimetric energy of the most energetic shower. The \acrshort{SM} background is divided into the \acrshort{nuone} component in blue and the rest in green, with the associated systematic uncertainty on the \acrshort{SM} background shown in shaded purple. Data is shown with statistical uncertainty based on Poisson distribution. All samples are scaled to the true data exposure $1.38\times 10^{21}$ \acrshort{POT}.}
-\label{fig:NuMMResults_Distribution}
-\end{figure}
+The log likelihood ratio is easier to implement and according to the Wilk's theorem, assuming the tested model is correct, that there are sufficient statistics and that the value of the neutrino magnetic moment is not on the edge of the parameter space, the minimum of $-2\ln\lambda$ follows the $\chi^2$ distribution.
 
 %Likelihood and log likelihood ratio
-Given the number of observed events we want to test whether we can describe the number of observed events only using the \gls{SM} prediction, or if we need a neutrino magnetic moment as well. To do this we test the null hypothesis, which states that the number of observed selected events is only due to the \gls{SM}. We've chosen to reject the null hypothesis, if our statistical test results in p-value below the critical value. We chose a significance level of 
+Given the number of observed events we want to test whether we can describe the number of observed events only using the \gls{SM} prediction, or if we need a neutrino magnetic moment as well. To do this we test the null hypothesis, which states that the number of observed selected events is only due to the \gls{SM}. We've chosen to reject the null hypothesis, if our statistical test results in p-value below the critical value. We chose a significance level $\alpha=0.10$, common in other measurements of the neutrino magnetic moment, as described in the introduction of this chapter.
 
 
 We want to maximize the likelihood as a function of the measured parameter. This is equivalent to minimizing the log likelihood ratio as prescribed by...
@@ -1050,6 +1026,56 @@ For the null hypothesis, the expected number of events is $E_B$ and for the alte
 \end{equation}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                             RESULTS                           %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}\label{sec:NuMMResults}
+
+To avoid biasing our decisions based on the number and distribution of the observed data events, we performed the event selection, systematic uncertainty studies and decided on the statistical analysis methods prior to revealing the data samples in a blinded analysis. Therefore, in the following section, the methodology, the confidence level, and the hypothesis exclusion requirements have been fixed before we unveiled the data sample.
+
+In case of the null hypothesis, the expected number of events is simply the expected number of the \gls{SM} background. For the used data exposure of $1.38\times 10^{21}$ \gls{POT}, this is
+\begin{equation}
+E_{H_0}=E_B=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
+\end{equation}
+
+For the alternative hypothesis, the expected number of events includes the signal events, which depend on the size of the neutrino magnetic moment and can be expressed as:
+\begin{equation}\label{eq:NuMMExpectedNumberOfSignalEvents}
+E_{H_I}=E_B+E_S=E_B+56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
+\end{equation}
+
+%As discussed in Sec.~\ref{sec:NuMMEventSelection} and Sec.~\ref{sec:NuMMSystematics}, the total number of the expected \gls{SM} background events scaled to the data exposure of $1.38\times 10^{21}$  \gls{POT} is
+%\begin{equation}
+%E_B=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
+%\end{equation}
+%The number of expected signal events depends on the size of the neutrino magnetic moment and can be expressed as
+%\begin{equation}\label{eq:NuMMExpectedNumberOfSignalEvents}
+%E_S=56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
+%\end{equation}
+
+%Prediction, blinded analysis, measured numbers - is it inside the uncertainty (yes)
+The total number of observed events passing our selection is
+\begin{equation}
+O = 773.
+\end{equation}
+The \gls{BF} point for the number of signal events can be calculated as
+\begin{equation}
+\acrshort{BF}_S= O-E_B = 72.67
+\end{equation}
+and from Eq.~\ref{eq:NuMMExpectedNumberOfSignalEvents} we get the best fit for the neutrino magnetic moment
+\begin{equation}
+\mu_{\nu,\acrshort{BF}} = \sqrt{\frac{72.67}{56.80}} \times 10^{-9}\mu_B = 1.13\times 10^{-9}\mu_B
+\end{equation}
+
+%Distribution of events
+The final distribution of the predicted \gls{SM} background, the signal for $\mu_{\nu}=10^{-9}\mu_B$ and the measured data in the primary shower reconstructed calorimetric energy is shown in Fig.~\ref{fig:NuMMResults_Distribution}. We do not use this energy distribution of events for hypothesis testing or parameter estimation, but we are using this distribution to cross check the validity of our analysis. It appears that everything is grand. The data appears to be within the systematic and statistical uncertainty for all the displayed bins. The only exception is the bin within $\left(\unit[0.9]{GeV},\unit[1.0]{GeV}\right)$, which is however still within two standard variations from the accepted values and therefore can be safely ignored.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=\textwidth]{Plots/NuMM/Stacked.pdf}
+\caption[Final prediction and data comparison]{Comparison of the observed data to the prediction of the $\nu$ magnetic moment signal for $\mu_\nu=10^{-9}\mu_B$ (red line) and the \acrshort{SM} background (filled area) as a function of the reconstructed calorimetric energy of the most energetic shower. The \acrshort{SM} background is divided into the \acrshort{nuone} component in blue and the rest in green, with the associated systematic uncertainty on the \acrshort{SM} background shown in shaded purple. Data is shown with statistical uncertainty based on Poisson distribution. All samples are scaled to the true data exposure $1.38\times 10^{21}$ \acrshort{POT}.}
+\label{fig:NuMMResults_Distribution}
+\end{figure}
+
 
 % Need to describe / cite where did I get the p value from - is there a function in ROOT
 % Also need to describe the minimization mechanism - is this minuit or migrad or are they the same thing?
@@ -1063,8 +1089,6 @@ The minimum log likelihood for our null hypothesis is $1.02964$, which correspon
 \caption[Fit results]{Results of the fit of the prediction to the observed data, with the neutrino magnetic moment as the sole fit parameter. We are profiling over the full range of systematic uncertainties.}
 \label{fig:NuMMResults_ChisqLimit}
 \end{figure}
-
-
 
 % Uncertainty on the best fit point
 %[NOvAResultsNuOnly2018.pdf] TABLE VI. Sources of uncertainty and their estimated average impact on the oscillation parameters in the joint fit. This impact is quantified using the increase in the one-dimensional 68\% C.L. interval, relative to the size of the interval when only statistical uncertainty is included in the fit. 
