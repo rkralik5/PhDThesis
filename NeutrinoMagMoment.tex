@@ -72,7 +72,7 @@ Additionally, \gls{nuone} elastic scattering interactions are used in various ot
 %Cosmology
 
 %%% OVERVIEW OF THIS CHAPTER
-In this chapter, I will provide an overview of the theory of neutrino electromagnetic interactions in Sec.~\ref{sec:NuMMTheory}, focusing on the effective neutrino magnetic moment and its implications for \gls{nuone} measurements and other theoretical considerations. In Sec.~\ref{sec:NuMMAnalysisOverview}, I will discuss the analysis strategy, the signal and background definition, as well as the data and simulation samples and the analysis weights. Following this, in Sec.~\ref{sec:NuMMEventSelection} I will explain the selection of events for this analysis, while in Sec.~\ref{sec:NuMMSystematics} I will address the relevant systematic uncertainties and in Sec.~\ref{sec:NuMMStatisticalAnalysis} the statistical methods employed to analyse the results. I will present the results of this analysis in Sec.~\ref{sec:NuMMResults} and discuss their implications in Sec.~\ref{sec:NuMMDiscussion}. Finally, section~\ref{sec:NuMMConclusion} will summarise the findings of this analysis.
+In this chapter, I will provide an overview of the theory of neutrino electromagnetic interactions in Sec.~\ref{sec:NuMMTheory}, focusing on the effective neutrino magnetic moment and its implications for \gls{nuone} measurements and other theoretical considerations. In Sec.~\ref{sec:NuMMAnalysisOverview}, I will discuss the analysis strategy, the signal and background definition, as well as the data and simulation samples and the analysis weights. Following this, in Sec.~\ref{sec:NuMMEventSelection} I will explain the selection of events for this analysis, while in Sec.~\ref{sec:NuMMSystematics} I will address the relevant systematic uncertainties and in Sec.~\ref{sec:NuMMStatisticalAnalysis} the statistical methods employed to analyse the results. I will present the results of this analysis in Sec.~\ref{sec:NuMMResults} and summarise them in Sec.~\ref{sec:NuMMConclusion}.
 
 \section{Theory of the Neutrino Magnetic Moment}\label{sec:NuMMTheory}
 %Neutrino electromagnetic properties have been proposed since the very beginning by Pauli to solve the discrepancies in the electron beta emission spectra. This was solved by discovering the neutron. Then again, neutrino magnetic moment was proposed as one of the solution to the solar neutrino problem 
@@ -950,98 +950,85 @@ Theta_Delta2Npi (distorts the $\pi$ angular distribution in the decay $\Delta\ri
 
 \section{Statistical Analysis}\label{sec:NuMMStatisticalAnalysis}
 
-To measure the muon neutrino magnetic moment based on the number of the observed events compared to the prediction, we are using the Frequentist statistical analysis approach. In our case we consider the \textit{null hypothesis} $\left(H_0\right)$ the assumption that the observed number of events is purely due to \gls{SM} processes. This is a simple hypothesis independent of any parameters. Contrary to the null hypothesis, we test the \textit{alternative hypothesis} that assumes that some of the observed events are due to the neutrino magnetic moment interaction. The alternative hypothesis is a composite hypothesis and depends on the size of the neutrino magnetic moment: $H_I\left(\mu_\nu\right)$.
-
-The number of recorded events in a fixed time interval follows the Poisson distribution and the probability to observe $O$ events, when we expect $E$ events given the specific hypothesis (and magnetic moment $\mu$) considered - also called the likelihood of the hypothesis, is determined by
-\begin{equation}
-L\left(O;E\left(\mu_\nu\right)\right)=\frac{E\left(\mu_\nu\right)^{O}}{O!}e^{-E\left(\mu_\nu\right)}.
+% Likelihood
+Our analysis compares the total observed number of events, $N_O$, with the expected (predicted) number of events, $N_E\left(\mu_\nu\right)$, which in general depends on the value of the effective neutrino magnetic moment, $\mu_\nu$ and is the sum of the expected signal events, $N_S\left(\mu_\nu\right)$, and the expected background events, $N_B$. The number of recorded events within a fixed time interval follows the Poisson distribution with a likelihood (probability) of observing $N_O$ events, given a hypothesis predicting $N_E$ events, is defined as:
+\begin{equation}\label{eq:Likelihood}
+L\left(N_O;N_E\left(\mu_\nu\right)\right)=\frac{N_E\left(\mu_\nu\right)^{N_O}}{N_O!}e^{-N_E\left(\mu_\nu\right)}.
 \end{equation}
 
-The value of the neutrino magnetic moment that maximises the likelihood given the observed number of events is referred to as the \gls{BF} point. In our case with a simple counting of the total signal and background events, the \gls{BF} value of the neutrino magnetic moment is simply the one for which $E=O$. Finding the maximum likelihood is equivalent to finding the minimum of the \textit{log likelihood ratio} test statistics, which is defined as the logarithm of the ratio of the tested likelihood and the maximum possible likelihood (and a factor and -2):
+%Log-likelihood ratio
+To estimate and constrain $\mu_\nu$, we employ a frequentist approach using the Poisson-distributed likelihood ratio \cite{ExtendedMaximumLikelihood1990.pdf}
 \begin{equation}
--2\ln\lambda\left(\mu_\nu\right)=
--2\ln\left(\frac{L\left(O;E\left(\mu_\nu\right)\right)}{L\left(O;O\right)}\right)=
-2\left[E\left(\mu_\nu\right)-O+O\ln\frac{O}{E\left(\mu_\nu\right)}\right]
+\lambda=\frac{L\left(N_O;N_E\left(\mu_\nu\right)\right)}{L_{sat}\left(N_O;N_O\right)}.
 \end{equation}
+Here, $L_{sat}$ is the so-called saturated model, for which $N_E=N_O$ \cite{PDG.pdf}. Maximising the likelihood with respect to $\mu_\nu$ is equivalent to minimising the \textit{`log-likelihood ratio'} described as:
+\begin{align}\label{eq:LogLikelihoodStatsOnly}
+-2\ln\lambda\left(\mu_\nu\right)&=
+-2\ln\left(\frac{L\left(N_O;N_E\left(\mu_\nu\right)\right)}{L\left(N_O;N_O\right)}\right)\\
+&=2\left[N_E\left(\mu_\nu\right)-N_O+N_O\ln\frac{N_O}{N_E\left(\mu_\nu\right)}\right].
+\end{align}
 
-The log likelihood ratio is easier to implement and according to the Wilk's theorem, assuming the tested model is correct, that there are sufficient statistics and that the value of the neutrino magnetic moment is not on the edge of the parameter space, the minimum of $-2\ln\lambda$ follows the $\chi^2$ distribution.
+According to Wilk's theorem \cite{WilksTheorem1938.pdf}, under the assumptions that the hypothesis is correct, the sample size is sufficiently large, and certain regularity conditions (which are met in our case) are satisfied, the log-likelihood ratio follows a chi-squared $\left(\chi^2\right)$ distribution. Therefore, the log-likelihood ratio serves not only to find the maximum likelihood estimators of $\mu_\nu$ but also to provide a statistic usable for a goodness-of-fit test \cite{PDG.pdf}.
 
-%Likelihood and log likelihood ratio
-Given the number of observed events we want to test whether we can describe the number of observed events only using the \gls{SM} prediction, or if we need a neutrino magnetic moment as well. To do this we test the null hypothesis, which states that the number of observed selected events is only due to the \gls{SM}. We've chosen to reject the null hypothesis, if our statistical test results in p-value below the critical value. We chose a significance level $\alpha=0.10$, common in other measurements of the neutrino magnetic moment, as described in the introduction of this chapter.
-
-
-We want to maximize the likelihood as a function of the measured parameter. This is equivalent to minimizing the log likelihood ratio as prescribed by...
-
-Likelihood is the probability to observe $O$ events given a hypothesis $H$, which describes the number of expected events $E$. In case of the null hypothesis $\left(H_0\right)$, which states that there is not neutrino magnetic moment and all the observed events are due to the \gls{SM}, the expected number of events is equivalent to $E_B$. As we are counting the number of events recorded in a fixed time interval, the likelihood is described by the Poisson distribution
-\begin{equation}
-\mathcal{L}\left(O;\mu\right)=\frac{E\left(\mu\right)^{O}}{O!}e^{-E\left(\mu\right)}.
-\end{equation}
-
-When using maximum likelihood [with binned data], one can find the maximum likelihood estimators and at the same time obtain a statistic usable for a test of goodness-of-fit. Maximizing the likelihood $L\left(\theta\right)=f_P\left(n;\theta\right)$ is equivalent to maximizing the likelihood ratio $\lambda\left(\theta\right)=f_P\left(n;\theta\right) / f\left(n;\hat{\mu}\right)$. Equivalently one often minimizes the quantity $-2\ln\lambda\left(\theta\right)$. \cite{PDG.pdf}
-
-A smaller value of $-2\ln\lambda\left(\hat{\theta}\right)$ corresponds to better agreement between the data and the hypothesized form of $\mu\left(\theta\right)$. The value of $-2\ln\lambda\left(\hat{\theta}\right)$ can thus be translated into a \textbf{p-value as a measure of goodness-of-fit}. Assuming the model is correct, then according to \textbf{Wilk's theorem}, for \textbf{sufficiently large} $\mu_i$ and provided certain regularity conditions are met, \textbf{the minimum of $-2\ln\lambda$ follows a $\chi^2$ distribution.} If there are N bins and M fitter parameters, then the number of degrees of freedom for the $\chi^2$ distribution is $N-M$ if the data are threated as Poisson distributed - which they are for us.
-
-Wilk's theorem \cite{WilksTheorem1938.pdf}
 %[wikipedia on Wilk's theorem] The model with more parameters (here alternative) will always fit at least as well — i.e., have the same or greater log-likelihood — than the model with fewer parameters (here null). Whether the fit is significantly better and should thus be preferred is determined by deriving how likely (p-value) it is to observe such a difference D by chance alone, if the model with fewer parameters were true. Where the null hypothesis represents a special case of the alternative hypothesis, the probability distribution of the test statistic is approximately a chi-squared distribution with degrees of freedom equal to df alt − df null respectively the number of free parameters of models alternative and null.
 
-
-
 % Systematic uncertainties as nuisance parameters
+\subsection{Treatment of Systematic Uncertainties}
 %Including systematic uncertainties in the likelihood ratio
-We can include the effect of systematic uncertainties as nuisance parameters into the likelihood function, which can be described by a normal distribution centred around $0$, with standard deviation corresponding to the $1\sigma$ value of the systematic uncertainty. As discussed above, we assume that systematic uncertainties are mutually uncorrelated.
+Systematic uncertainties are incorporated into the fitting framework as nuisance parameters that multiply the likelihood function in Eq.~\ref{eq:Likelihood}. Each systematic uncertainty is modelled according to the normal distribution centred at zero, with a standard deviation corresponding to its respective $1\sigma$ variation. Systematic uncertainties are treated as mutually uncorrelated, justifying their independent treatment.
+
+Incorporating the nuisance parameters into the log-likelihood ratio function in Eq.~\ref{eq:LogLikelihoodStatsOnly} results in so-called \textit{`penalty terms'}. These terms are proportional to the square of each systematic pull's variation in units of $\sigma$, thereby increasing the log-likelihood ratio for solutions that favour non-zero systematic shifts:
+\begin{equation}\label{eq:FullLogLikelihood}
+-2\ln\lambda\left(\mu_\nu,\overrightarrow{\eta}\right)=-2\left[E\left(\mu_\nu,\overrightarrow{\eta}\right)-O+O\ln\frac{O}{O\left(\mu_\nu,\overrightarrow{\eta}\right)}\right] + \sum_{i=1}^{M}\left(\frac{\eta_i}{\sigma}\right)^2.
+\end{equation}
+Here, $\overrightarrow{\eta}$ is a vector of $M$ nuisance parameters representing the effect of systematic uncertainties.
+
+In practice, the systematic variations are initially predicted at fixed integer $\sigma$ values. Due to the computationally expensive nature of reproducing the detector simulation, variations in detector and calibration systematic uncertainties are estimated only at $\pm 1\sigma$ values. However, for beam and cross section uncertainties, variations are estimated at $\pm 1\sigma$, $\pm 2\sigma$, and $\pm 3\sigma$ levels. These systematically shifted predictions are then interpolated using of cubic spline-based fit, which is fixed at zero for the excluded sides of one-sided systematic uncertainties, such as detector ageing and calibration shape \cite{NitishOscMeasuremetPCAStatisticalAna2021.pdf}.
+
+%[Nitish's thesis] The best-fit oscillation parameters are derived by minimizing this equation with respect to these parameters and is done using a MIGRAD based algorithm [125]. The parametrisation is derived by defining the variation in the prediction at specific $\sigma$ values, for example: $-2,-1,0,+1,+2 \sigma$ and interpolating the deviations in each analysis bin using a cubic spline-based method. This is sufficiently general for all the systematics considered in the analysis, including those with non-Gaussian uncertainties. For one-sided systematic shifts the interpolation parametrizes the overall deviation by fitting a flat line at 0 for the excluded shifts and only uses the included shifts.
 
 %[Nitish's thesis] pg 156: As mentioned before, the nuisance parameters in the likelihood fit are derived by interpolating between shifts at given numerical sigma values for the above uncertainties for each analysis bin.
 
+\iffalse
 [Nitish's thesis]
 This prediction is fit to the NuMI data using the traditional Poisson log-likelihood for binned spectra \cite{ExtendedMaximumLikelihood1990.pdf}. This is given as:
 \begin{equation}
 -2\ln\lambda\left(\theta,\overrightarrow{\eta}\right)=-2\sum_{i=1}^{N}\left[\mu_i\left(\theta,\overrightarrow{\eta}\right)-n_i+n_i\ln\frac{n_i}{\mu_i\left(\theta,\overrightarrow{\eta}\right)}\right] + \sum_{k=1}^M \eta_k^2,
 \end{equation}
-where $\mu_i$ denotes the predicted number of events in each analysis bin $i$ as a function of the neutrino magnetic moment $\theta$ and the nuisance parameters $\eta$, which for us are the systematic shifts. $n_i$ is the observed number of events in that bin.  The last term denotes the penalty given to favouring a non-zero systematic variation for M set of systematic uncertainties. The best-fit oscillation parameters are derived by minimizing this equation with respect to these parameters and is done using a MIGRAD based algorithm [125]. The likelihood takes into account the Poisson deviations of the prediction from data in each analysis bin (given by the ln term) as well as an overall Poisson fluctuation on the total number of predicted events. ...the penalty is calculated for the amount of $\sigma$ deviation favoured in the fit, i.e if the fit favours a $1.2\sigma$ deviation from the central value prediction then the penalty to $-2\ln\lambda$ is given by $1.2^2=1.44$. The parametrisation is derived by defining the variation in the prediction at specific $\sigma$ values, for example: $-2,-1,0,+1,+2 \sigma$ and interpolating the deviations in each analysis bin using a cubic spline-based method. This is sufficiently general for all the systematics considered in the analysis, including those with non-Gaussian uncertainties. For one-sided systematic shifts the interpolation parametrizes the overall deviation by fitting a flat line at 0 for the excluded shifts and only uses the included shifts.
+where $\mu_i$ denotes the predicted number of events in each analysis bin $i$ as a function of the neutrino magnetic moment $\theta$ and the nuisance parameters $\eta$, which for us are the systematic shifts. $n_i$ is the observed number of events in that bin. The last term denotes the penalty given to favouring a non-zero systematic variation for M set of systematic uncertainties. The best-fit oscillation parameters are derived by minimizing this equation with respect to these parameters and is done using a MIGRAD based algorithm [125]. The likelihood takes into account the Poisson deviations of the prediction from data in each analysis bin (given by the ln term) as well as an overall Poisson fluctuation on the total number of predicted events. ...the penalty is calculated for the amount of $\sigma$ deviation favoured in the fit, i.e if the fit favours a $1.2\sigma$ deviation from the central value prediction then the penalty to $-2\ln\lambda$ is given by $1.2^2=1.44$. The parametrisation is derived by defining the variation in the prediction at specific $\sigma$ values, for example: $-2,-1,0,+1,+2 \sigma$ and interpolating the deviations in each analysis bin using a cubic spline-based method. This is sufficiently general for all the systematics considered in the analysis, including those with non-Gaussian uncertainties. For one-sided systematic shifts the interpolation parametrizes the overall deviation by fitting a flat line at 0 for the excluded shifts and only uses the included shifts.
 %[125] is R. Brun et al. TMinuit Class Reference. ROOT Documentation.
-
-The log-likelihood form also requires that individual systematic uncertainties are not correlated to each other. This is somewhat justifiable for uncertainties coming from completely separate parts of the simulation for example the flux vs cross-section.
-
-Using all of the parameters $\left(\theta,\nu\right)$  to find the statistical errors in the parameters of interest $\theta$ is equivalent to using the \textit{profile likelihood}, which depends only on $\theta$. It is defined as
-\begin{equation}
-L_p\left(\theta\right)=L\left(\theta,\hat{\nu}\left(\theta\right)\right),
-\end{equation}
-This equation is supposed to have double hat for the neutrino on RHS but that throws an error when compiling...
-%L\left(\theta,\hat{\hat{\nu}}\left(\theta\right)\right),
-where the double-hat notation indicates the profiled values of the parameters $\nu$, defined as values that maximize $L$ for the specified $\theta$.
-
+\fi
 
 %Null hypothesis
-We want to test the (null) hypothesis that the observed number of events can be described by the \gls{SM} alone, without the presence of any neutrino magnetic moment $\left(\mu_\nu=0\right)$. For this we use the likelihood ratio test statistic, which is expressed as a ratio between the maximum likelihood of obtaining the observed data given the \gls{SM} only, and the maximum likelihood of obtaining the observed data given there the best fit value to the neutrino magnetic moment:
+\subsection{Hypothesis Testing and Confidence Limits}
+
+%Given the number of observed events we want to test whether we can describe the number of observed events only using the \gls{SM} prediction, or if we need a neutrino magnetic moment as well. To do this we test the null hypothesis, which states that the number of observed selected events is only due to the \gls{SM}. 
+
+To evaluate whether the observed number of events can be described solely using the \gls{SM} prediction, we test the \textit{`null hypothesis'}, for which $\mu_\nu=0$ and therefore the expected number of events is $N_E=N_B$. The log-likelihood ratio is in this case
 \begin{equation}
-\lambda=\frac{\mathcal{L}\left(\mu_\nu=0\right)}{\mathcal{L}\left(\mu_\nu=\mu_{\nu,\acrshort{BF}}\right)}.
+-2\ln\lambda\left(\theta\right)=
+2\left[N_B-N_O+N_O\ln\frac{N_O}{N_B}\right] + \sum_{k=1}^M \eta_k^2.
 \end{equation}
+The minimum of this log-likelihood ratio follows a $\chi^2$ distribution with one degree of freedom, which allows us to calculate the p-value of the goodness-of-fit of the null hypothesis. We reject the null hypothesis if the statistical test yields a p-value below a critical value - significance level. We set the significance level at $\alpha=0.10$, which is a common threshold in other measurements of the neutrino magnetic moment, as discussed in the introduction to this chapter.
 
 %We want to test the null hypothesis, which states that there is no neutrino magnetic moment and all the observed events are due to the \gls{SM} - $\mu=0$. If we reject the null hypothesis, we want to estimate the size of the neutrino magnetic moment, and if we fail to reject the null hypothesis, we want to place a limit on the size of the neutrino magnetic moment. For all these, we are using the likelihood ratio test statistics. The likelihood ratio test statistics is a ratio of the likelihood (probability) to observe the data given some hypothesis $H\left(\mu\right)$, over the likelihood of the "alternate" hypothesis under the best fit point.
 
-For the null hypothesis, the expected number of events is $E_B$ and for the alternative hypothesis at the \gls{BF} point the expected number of events is equal ton $O$. Additionally, the likelihood ratio is expressed as the logarithm of the ratio, which according to the Wilk's theorem follows the $\chi^2$ distribution. It can be expressed as
-\begin{equation}
--2\ln\lambda\left(\theta\right)=
--2\ln\left(\frac{\mathcal{L}\left(O;E=E_B\right)}{\mathcal{L}\left(O;E=O\right)}\right)=
-2\left[E_B-O+O\ln\frac{O}{E_B}\right]
-\end{equation}
-
+If we fail to reject the null hypothesis $\left(p>\alpha\right)$, we establish an upper limit on the effective muon neutrino magnetic moment. We consider our results to represent only the $\nu_\mu$ thanks their high purity in our neutrino beam, as described in Sec.~\ref{sec:NuMI}. The upper limit is calculated by iterating over a fixed range of neutrino magnetic moment values and profiling over the systematic shift variations. This means that at each iteration, the value of the neutrino magnetic moment is fixed, and the log-likelihood function is minimised only with respect to the systematic shifts. The minimisation of the log-likelihood ratio in Eq.~\ref{eq:FullLogLikelihood} is done using a MIGRAD-based algorithm in ROOT \cite{ROOT}. The minimum of the log-likelihood, as a function of the neutrino magnetic moment, follows a $\chi^2$ distribution with one degree of freedom.  Exclusion regions and limits are then derived based on integrating the tail of the $\chi^2$ distribution tables with one degree of freedom. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%                             RESULTS                           %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}\label{sec:NuMMResults}
-
 To avoid biasing our decisions based on the number and distribution of the observed data events, we performed the event selection, systematic uncertainty studies and decided on the statistical analysis methods prior to revealing the data samples in a blinded analysis. Therefore, in the following section, the methodology, the confidence level, and the hypothesis exclusion requirements have been fixed before we unveiled the data sample.
 
-In case of the null hypothesis, the expected number of events is simply the expected number of the \gls{SM} background. For the used data exposure of $1.38\times 10^{21}$ \gls{POT}, this is
+In case of the null hypothesis, $H_0$, the expected number of events is simply the expected number of the \gls{SM} background. For the used data exposure of $1.38\times 10^{21}$ \gls{POT}, this is
 \begin{equation}
-E_{H_0}=E_B=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
+N_{H_0}=N_B=700.33 \pm 26.46\left(\textsf{stat.}\right) ^{+72.48}_{-62.99}\left(\textsf{syst.}\right)
 \end{equation}
 
-For the alternative hypothesis, the expected number of events includes the signal events, which depend on the size of the neutrino magnetic moment and can be expressed as:
+For the alternative hypothesis, $H_I$, the expected number of events includes the signal events, which depend on the size of the neutrino magnetic moment and can be expressed as:
 \begin{equation}\label{eq:NuMMExpectedNumberOfSignalEvents}
-E_{H_I}=E_B+E_S=E_B+56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
+N_{H_I}=N_B+N_S=N_B+56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
 \end{equation}
 
 %As discussed in Sec.~\ref{sec:NuMMEventSelection} and Sec.~\ref{sec:NuMMSystematics}, the total number of the expected \gls{SM} background events scaled to the data exposure of $1.38\times 10^{21}$  \gls{POT} is
@@ -1056,7 +1043,7 @@ E_{H_I}=E_B+E_S=E_B+56.80\times\left(\frac{\mu_\nu}{10^{-9}\mu_B}\right)^2.
 %Prediction, blinded analysis, measured numbers - is it inside the uncertainty (yes)
 The total number of observed events passing our selection is
 \begin{equation}
-O = 773.
+N_O = 773.
 \end{equation}
 The \gls{BF} point for the number of signal events can be calculated as
 \begin{equation}
@@ -1082,12 +1069,12 @@ The final distribution of the predicted \gls{SM} background, the signal for $\mu
 % Also need to describe the minimization mechanism - is this minuit or migrad or are they the same thing?
 
 %%% Results of the hypothesis test
-The minimum log likelihood for our null hypothesis is $1.02964$, which corresponds to a double sided p-value of $0.31$, or one-sided p-value of $0.16$, which is larger than $0.1$, therefore we are not able to reject the null hypothesis. Therefore we are putting a limit on the neutrino magnetic moment parameter of $\mu_\nu<1.91\times10^{-9}\mu_B$ at $90\%$ C.L., as shown in Fig... This limit is stricter than the current world leading limit. However, there are several possible improvement that could improve our analysis. We can also estimate the systematic uncertainty on the best fit point by taking the $1\sigma$ range $\left(\chi^2=1\right)$ of the full systematic uncertainty distribution from Fig.~\ref{fig:NuMMResults_ChisqLimit}. The $1\sigma$ range for all systematics is $\left(0.14,1.63\right)\times 10^{-9}\mu_B$, which is equivalent to the best fit point having an uncertainty $\mu_{\nu,\acrshort{BF}}=\left(1.13^{+0.50}_{-0.99}\right)\times 10^{-9}\mu_B$.
+The minimum log likelihood for our null hypothesis is $1.02964$, which corresponds to the double sided p-value of $0.31$, or one-sided p-value of $0.16$ \note{To be honest, I am actually not sure if this is true or not. Calculating this using ROOT::Math::chisquared\_cdf\_c(1.02964,1) gives 0.31, and according to the documentation this should just be the upper tail of the chi squared distribution, which is I guess what I want. However, this website claims that this is the double sided p value and that I probably want one sided p value... https://www.graphpad.com/quickcalcs/pValue2/}, which is larger than $0.1$, therefore we are not able to reject the null hypothesis. Therefore we are putting a limit on the neutrino magnetic moment parameter of $\mu_\nu<1.91\times10^{-9}\mu_B$ at $90\%$ C.L., as shown in Fig.~\ref{fig:NuMMResults_ChisqLimit}. This limit is less strict than the current world-leading limit, or than the previous limit in \gls{NOvA}. However, there are several possible improvement that could improve our analysis. We can also estimate the systematic uncertainty on the best fit point by taking the $1\sigma$ range $\left(\chi^2=1\right)$ of the full systematic uncertainty distribution from Fig.~\ref{fig:NuMMResults_ChisqLimit}. The $1\sigma$ range for all systematics is $\left(0.14,1.63\right)\times 10^{-9}\mu_B$, which is equivalent to the best fit point having an uncertainty $\mu_{\nu,\acrshort{BF}}=\left(1.13^{+0.50}_{-0.99}\right)\times 10^{-9}\mu_B$.
 
 \begin{figure}[hbtp]
 \centering
 \includegraphics[width=\textwidth]{Plots/NuMM/NuMMLimit_FinalMoneyPlot.pdf}
-\caption[Fit results]{Results of the fit of the prediction to the observed data, with the neutrino magnetic moment as the sole fit parameter. We are profiling over the full range of systematic uncertainties.}
+\caption[Fit results]{Results of the fit of the prediction to the observed data, with the neutrino magnetic moment as the sole fit parameter. We are profiling over the full range of systematic uncertainties as explained in text. \todo{Finish this caption}}
 \label{fig:NuMMResults_ChisqLimit}
 \end{figure}
 
@@ -1096,11 +1083,10 @@ The minimum log likelihood for our null hypothesis is $1.02964$, which correspon
 
 %[Nitish's thesis]pg 156: As mentioned before, the nuisance parameters in the likelihood fit are derived by interpolating between shifts at given numerical sigma values for the above uncertainties for each analysis bin. One can then evaluate the size of the uncertainties in many ways. For the appearance channel, one can compare different systematics based on the effect it has on the total number of predicted signal and background events when varied by $\pm1\sigma$, as shown in Fig. 4.12. One can also estimate its effect by fitting to Asimov data using the central value prediction and varying the MC expectation based on the systematic variation. This takes the form of the effect of the systematic on the individual oscillation parameters [79], as shown in Figs. 4.13 and 4.14. All of these metrics show that the analysis is statistically limited, i.e the systematic error is smaller than the statistical error in the prediction. \cite{NitishOscMeasuremetPCAStatisticalAna2021.pdf}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                            DISCUSSION                         %%%
+%%%                            CONCLUSION                         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}\label{sec:NuMMDiscussion}
+\section{Summary}\label{sec:NuMMConclusion}
 
 What should be included here:
 \begin{itemize}
@@ -1126,11 +1112,6 @@ In the future, this analysis can be improved for example by improving the event 
 %For the energy deposition of electron in LArTPC might be a good source this https://iopscience.iop.org/article/10.1088/1748-0221/15/03/P03022/pdf
 
  Due to the energy dependent contribution of the \gls{NC} interactions with a $\pi^0$ in the final state, it may be important to consider these uncertainties for an energy dependent analysis.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                            CONCLUSION                         %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary}\label{sec:NuMMConclusion}
 
 Summarize the results and compare them to the introduction, including comparisons to other experiments and theory. Restate the significant of the measurement
 
