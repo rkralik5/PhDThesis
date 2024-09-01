@@ -1053,7 +1053,7 @@ N_{S,\acrshort{BF}}= N_O-N_B = 72.67.
 \end{equation}
 From Eq.~\ref{eq:NuMMExpectedNumberOfSignalEvents} we get the \gls{BF} for the neutrino magnetic moment as
 \begin{equation}
-\mu_{\nu,\acrshort{BF}} = \sqrt{\frac{72.67}{56.80}} \times 10^{-9}\mu_B = 1.13\times 10^{-9}\mu_B.
+\mu_{\nu_\mu,\acrshort{BF}} = \sqrt{\frac{72.67}{56.80}} \times 10^{-9}\mu_B = 1.13\times 10^{-9}\mu_B.
 \end{equation}
 
 %Distribution of events
@@ -1078,12 +1078,12 @@ which corresponds to the double sided p-value of $0.31$. Since this value is lar
 
 As described in Sec.~\ref{sec:HypothesisTesting}, we determine the limit on the value of the effective muon neutrino magnetic moment by calculating $\Delta\chi^2$ for a range of $\mu_\nu$ value as shown in Fig.~\ref{fig:NuMMResults_ChisqLimit}. From this distribution we calculate the limit as
 \begin{equation}\label{eq:NuMMLimit}
-\mu_\nu<1.91\times10^{-9}\mu_B\,\,\,\textsf{at}\,\,\,90\% \gls{CL}.
+\mu_{\nu_\mu}<1.91\times10^{-9}\mu_B\,\,\,\textsf{at}\,\,\,90\%\, \gls{CL}.
 \end{equation} 
 
 We can also estimate the systematic uncertainty on the best fit point from the $\Delta\chi^2$ distribution shown in  Fig.~\ref{fig:NuMMResults_ChisqLimit} by taking the $1\sigma$ range $\left(\Delta\chi^2=1\right)$ of the full systematic uncertainty distribution. The $1\sigma$ range for all systematics is $\left(0.14,1.63\right)\times 10^{-9}\mu_B$, which is equivalent to the best fit point having an uncertainty:
 \begin{equation}
-\mu_{\nu,\acrshort{BF}}=\left(1.13^{+0.50}_{-0.99}\right)\times 10^{-9}\mu_B.
+\mu_{\nu_\mu,\acrshort{BF}}=\left(1.13^{+0.50}_{-0.99}\right)\times 10^{-9}\mu_B.
 \end{equation}
 
 \begin{figure}[hbtp]
@@ -1103,33 +1103,32 @@ We can also estimate the systematic uncertainty on the best fit point from the $
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary}\label{sec:NuMMConclusion}
 
-The $90\%$\gls{CL} limit on the effective muon neutrino magnetic moment in Eq.~\ref{eq:NuMMLimit} is less strict than the current world-leading limit \cite{PDG.pdf} and than the (statistics-only) previous limit from \gls{NOvA} \cite{nuMM-thesis-biaow.pdf}. However, there are several possible improvement that could improve our analysis.
+We analysed the selection of \gls{nuone} events in the \gls{NOvA} \gls{ND} searching for a possible signal of the effective muon neutrino magnetic moment. We found the \gls{BF} point of $\mu_{\nu_\mu,\acrshort{BF}}=\left(1.13^{+0.50}_{-0.99}\right)\times 10^{-9}\mu_B$. We failed to reject the null hypothesis that the observed events can be described by \gls{SM} interactions only a placed an upper limit on the value of the effective muon neutrino magnetic moment of $\mu_{\nu_\mu}<19.1\times10^{-10}\mu_B$ at $90\%$ \gls{CL}.
+%Maybe also mention that I've only done a counting experiment and that my selection involved selecting events between 0.5-1.4 GeV
+%Also I need to mention the exposure and the data taking time in here
 
-What should be included here:
-\begin{itemize}
-\item Interpretation: Interpret the results in the context of the current understanding of neutrino physics.
-\item Implications: Explain the broader implications of your findings for the field of particle physics.
-\item Future work: Suggest directions for future research based on your results.
-\begin{itemize}
-\item Improvements in NOvA, more FHC data, including RHC data, better reconstruction, better simulation and calibration, better event selection, including sideband samples, more systematics studies, better fitting techniques...
-\item Future beyond NOvA - DUNE
-\begin{itemize}
-\item What are the possibilities for DUNE?
-\end{itemize}
-\end{itemize}
-\end{itemize}
+%Discuss the effect of statistical and systematic uncertainties
+The background prediction is dominated by systematic uncertainties, especially by the uncertainties related to the neutrino flux prediction. However, the number of neutrino magnetic moment signal events is much smaller than the \gls{SM} background and therefore there is a significant statistical uncertainty as well.
 
-If we do an energy dependent fit, we would have to consider the energy dependency of the systematic uncertainties, which might substantially impact the results of this analysis. Same applies if we decide to extend the event selection to lower electron energies below 0.5GeV. 
+Our $90\%$ \gls{CL} limit on the effective muon neutrino magnetic moment is less strict than the current world-leading \cite{PDG.pdf} limit for muon neutrinos of $\mu_{\nu_\mu}<6.8\times 10^{-10}\mu_B$  at $\unit[90]{\%}$ \gls{CL} \cite{LSNDLimits2001.pdf}. It is also less strict than the previous result from \gls{NOvA} of $\mu_{\nu_\mu}<15.8\times 10^{-10}\mu_B$ at $\unit[90]{\%}$ \gls{CL} \cite{nuMM-thesis-biaow.pdf}, which however does not take into account the effect of systematic uncertainties.
 
+%Improvements in statistics, adding RHC data and more data to follow
+There are several possibilities for improvements in future iterations of the analysis. The easiest improvement lies in increasing the number of events. The \gls{NOvA} experiment is scheduled to run until ... which would bring in more than double the \gls{FHC} data than were used in the current analysis. Additionally, it is possible to include the \gls{RHC} data as well, either by simply including them into the current data, or by analysing them separately. A separate analysis could mean a disentanglement of some of the backgrounds and systematic uncertainties that are different between the neutrino and antineutrinos, since the effect of the neutrino magnetic moment should be exactly the same for neutrinos as for antineutrinos.
 
+% Improved reconstruction, simulation and calibration - Test Beam plug
+Further improvements could come from an improved detector simulation, calibration, and event reconstruction, especially related to single electron events. These improvements will be made possible by analysing the data from the Test Beam detector and by the improvements in calibration that come from the Test Beam detector calibration, as mentioned in Sec...
 
-In the future, this analysis can be improved for example by improving the event selection, creating additional background samples, by including antineutrino events, or by using using a fit to the energy distribution, similarly to the LDM analysis.
+%Improved event selection - going below 0.5 GeV, creating control samples
+Another improvement lies in improving the event selection, where we were forced to place a low energy cut of $\unit[0.5]{GeV}$ as we did not have enough time to properly investigate the low energy backgrounds and the effect of systematic uncertainties at low energy \gls{nuone} events. In the future it might be possible to extend this low energy cut-off to lower energies and therefore significantly improve our signal-to-background ratio. As can be seen in Fig.~\ref{fig:NuMMBackgroundDecomposition}, there are significant background that rise at low energies with a similar shape to the signal, therefore it would be imperative to properly study these background before extending the low energy cut to lower energies.
 
+% Control samples
+It is also possible to extend the statistical analysis by including one or more control samples. Control samples would be regions containing a specific type of background, while not including any (or almost any) signal events. These control regions could then be fit simultaneously to the signal region, providing a constraint on the backgrounds as well as on their systematic uncertainties.
 
+%Improving the fitting - doing an energy dependent fit
+There is also a possibility to extend the fitting procedure from a single bin fit to multi-bin fitting, likely with bins distributed in the reconstructed calorimetric energy of the leading shower. This possibility could use a technique called \textit{template fitting}, which assumes that the prediction is capable of describing the shape of the signal sample, the \gls{SM} \gls{nuone} sample, and the other \gls{SM} background sample, while leaving their individual normalizations floating free in the fit. This reduced the amount of free parameters in the fit while preserving the benefit of the knowledge of the difference between the shapes of the signal and background samples. Especially since the neutrino magnetic moment signal has a starkly different shape in the reconstructed calorimetric energy of the leading shower, with a steep rise towards the lower energies. However, as mentioned previously, the energy dependence of the \gls{SM} background can resemble the energy dependence of the signal. Specifically, the energy dependent contribution of the \gls{NC} interactions with a $\pi^0$ in the final state make it important to consider these uncertainties for an energy dependent analysis.
+
+%Improving systematic uncertainties - utilising more results from NA61 into PPFX, especially NOvA replica target
+There is also a likely large improvement to the systematic uncertainties, especially to the largest systematic uncertainty of the neutrino beam prediction coming from the new results from NA61 and EMPHATIC experiments, as outlined in Sec....
+
+%Future in DUNE
 %For the energy deposition of electron in LArTPC might be a good source this https://iopscience.iop.org/article/10.1088/1748-0221/15/03/P03022/pdf
-
- Due to the energy dependent contribution of the \gls{NC} interactions with a $\pi^0$ in the final state, it may be important to consider these uncertainties for an energy dependent analysis.
-
-Summarize the results and compare them to the introduction, including comparisons to other experiments and theory. Restate the significant of the measurement
-
-Closing remarks
