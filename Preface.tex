@@ -1,24 +1,27 @@
 \chapwithtoc{Preface}\label{sec:Preface}
 
-In this Preface, I provide an overview of the research presented in this thesis, highlighting my personal contributions to the work presented in each chapter.
+This preface outlines the structure of this thesis and clarifies my specific contributions to the research presented in each chapter.
 
-In chapter~\ref{sec:NeutrinoTheory} I present an overview of the relevant literature of neutrinos and their place in the particle physics theory and experiments.
+%This Preface provides an overview of the structure of this thesis and introduces the research presented in this thesis, highlighting my personal contributions to the work presented herein. I am detailing the resources used in each chapter, with adequate citations provided in the text. Throughout the thesis I resorted to using private information available solely to members of the NOvA experiment. This is to adequately highlight the contribution and research developed by my colleagues in the NOvA experiments. However, the private documentation has been limited to the absolute minimum and all effort has been made to use publicly available resources to allow for correct validation of resources.
+
+Chapter~\ref{sec:NeutrinoTheory} provides a literature review of the current theoretical and experimental landscape of neutrino physics, with emphasis on neutrino interactions, oscillations, and mass generation.
+% relevant literature of neutrinos and their place in the particle physics theory and experiments. I am focusing on neutrino interactions and oscillations, as these are the main topics studied in the NOvA experiment and I provide the necessary theoretical foundation for the research presented in the subsequent chapters.
 %I talk about the various source (Sec.~\ref{sec:NeutrinoProduction}) and detection (Sec.~\ref{sec:NeutrinoInteractions}) possibilities. In Sec.~\ref{sec:NeutrinoOscillation} I discuss the neutrino oscillation phenomenology and the current state of its experimental measurements. Section~\ref{sec:NuMass} discusses the possibilities for introducing the neutrino mass into the Standard Model and talks about their implications.
 
-In chapter~\ref{sec:NOvA} I introduce the NOvA experiment, relying on publicly available information from published articles , theses, and presentations, as well as on internal \gls{NOvA} documentation when a higher detail is required. This chapter presents a complete overview of the experiment's technical aspects relevant to either the measurement of the effective muon neutrino magnetic moment, or to the calibration of the NOvA Test Beam detector. This chapter is mainly a collection of work of my NOvA collaborators, their technical design reports for the NOvA experiment and official results. My only contribution to this chapter lies in the addition of new external measurements from the NA61 experiment, to improve the neutrino beam prediction in NOvA.
+Chapter~\ref{sec:NOvA} introduces the NOvA experiment, primarily using publicly available sources, with internal NOvA documentation consulted only when greater technical detail was necessary. In doing so, I aimed to ensure proper attribution to my colleagues’ contributions while prioritizing publicly accessible resources whenever possible.% This chapter provides a comprehensive overview of the experimental setup technical aspects relevant to either the measurement of the effective muon neutrino magnetic moment, or to the calibration of the NOvA Test Beam detector. %This chapter is mainly a collection of work of my colleagues from the NOvA collaboration, their technical design reports for the NOvA experiment and official results.
 
-Chapter~\ref{sec:TestBeamCalibration} details the calibration of the NOvA Test Beam detector, divided into three main sections.
+Chapter~\ref{sec:TestBeamCalibration} discusses the calibration of the NOvA Test Beam detector, divided into three sections:
+\begin{enumerate}
+\item Section~\ref{sec:TBExperiment} describes the design and construction of the NOvA Test Beam detector, carried out by my colleagues within the NOvA Test Beam experiment.
+\item Section~\ref{sec:DataBasedSimulation} presents the data-based simulation of cosmic muons used for calibration, originally created by my colleague which I significantly improved. My contributions include enhancing event selection, implementing energy and charge assignment, and producing and validating the resulting simulation samples.
+\item Section~\ref{sec:TBCalibrationSection} focuses on the Test Beam detector calibration itself, based on the calibration framework used for the other NOvA detectors. I adapted the Test Beam detector calibration to work with fibre brightness bins and recreated the Test Beam fibre brightness map and the threshold and shielding corrections. Ultimately, I completed and validated the first full calibration of the NOvA Test Beam detector.
+\end{enumerate}
 
-Section~\ref{sec:TBExperiment} describes the Test Beam detector itself, as designed and constructed by my NOvA Test Beam experiment colleagues.
+Chapter~\ref{sec:NeutrinoMagMoment} details the measurement of the effective muon neutrino magnetic moment. This analysis was initially suggested to me by my colleague, Matt Strait. The data and simulation samples, including the enhanced and the systematically shifted simulation samples, were created by my colleagues, together with the radiative correction weight. My contributions include assisting in the development of the enhanced $\nu_e$CCMEC sample and the neutrino magnetic moment weight, eliminating the need for a dedicated simulation. I also developed the event selection and investigated the effect of systematic uncertainties using tools and methods adapted from other NOvA analyses. Additionally, I implemented statistical analysis, customizing a fitting framework originally developed for the NOvA light dark matter analysis.
 
-Section~\ref{sec:DataBasedSimulation} presents the data-based simulation of cosmic muons used for the calibration, which originates as a simpler version of the simulation by my colleague. I then improved the event selection, implemented the energy and charge assignment, and produced and validated the simulation and the corresponding calibration samples.
+Finally, chapter~\ref{sec:Conclusion} concludes with a summary of the findings of this thesis.
 
-Lastly, Sec.~\ref{sec:TBCalibrationSection} describes the Test Beam detector calibration itself, which uses the NOvA codebase for calibration. I fully implemented the NOvA calibration 
-
-Chapter~\ref{sec:NeutrinoMagMoment} describes the measurement of the effective muon neutrino magnetic moment. Introduces the experimental and theoretical context for the measurement, describes the details of the analysis, including the event selection and the systematic uncertainties and describes the results and discusses their implications.
-
-Finally, chapter~\ref{sec:Conclusion} concludes the findings of this thesis.
-
+\iffalse
 %%% PPFX
 %\section*{Reducing the Neutrino Flux Systematic Uncertainty}
 
@@ -52,3 +55,4 @@ I was just told its an interesting analysis, there was a previous NOvA thesis, b
 
 %What I worked on
 I have done the literature review of what is the neutrino magnetic moment and what are its current limits and state of the art measurements. I designed the neutrino magnetic moment weight and developed my own event selection, including using the TMVA, which is not used elsewhere, and the general analysis infrastructure for the neutrino magnetic moment ana. I helped (re)produce the systematic samples for the nueccmec enhanced sample. Technically I also investigated the nominal ND sample and whether it would be better to use the decaf sample, but this led nowhere... Technically I also analysed the electron recoil energy and angle resolution and decided on the binning (although not finished and talked about here). I did the systematics study and implemented the systematic shifts for the detector systematics for numm. I implemented the fitting framework for the neutrino magnetic moment analysis for both the template fit (not used here) and the counting experiment. I did the actual fit and got the final results.
+\fi
