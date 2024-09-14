@@ -1,4 +1,4 @@
-\chapter{The NOvA Experiment}\label{sec:NOvA}
+\chapter{The NOvA experiment}\label{sec:NOvA}
 
 %%% OVERVIEW OF THE NOvA EXPERIMENT %%%
 The \gls{NOvA} \cite{NOvAWebsite} experiment is a long-baseline neutrino oscillation experiment based at the \gls{Fermilab}
@@ -16,7 +16,7 @@ The capability to measure both $\nu_e$ and the $\overline{\nu}_e$ appearance, co
 %With the NOvA test beam effort underway and ongoing improvements to neutrino interaction measurements and modeling, the sensitivity of NOvA to three-flavor oscillation parameters will remain statistics-limited through the end of the experiment [77]. The expected total beam exposure will bring additional compelling milestones into reach. For the Mass Hierarchy, NOvA will achieve 95\% a priori sensitivity for 40-60\% of possible δCP values and 4-5$\sigma$ a priori sensitivity for the most favorable combinations of the true values of the oscillation parameters. For CP-violation, a median, a priori sensitivity of 2-sigma is projected for 20-30\% of the $\delta$CP range. The physics reach of NOvA will be complimented by a joint analysis effort underway between NOvA and T2K [78].
 %NOvA has already informed the design of the next generation of neutrino experiments from the insights gained from the performance of its beamline and detectors, and from its experience in operations and development of analysis techniques. NOvA has also informed the neutrino interaction and oscillation landscape with results from across its full portfolio of physics topics, and will continue to do so until the onset of the DUNE and T2HK era.
 
-\section{The Neutrino Beam}\label{sec:NuMI}
+\section{The neutrino beam for NOvA}\label{sec:NuMI}
 
 The neutrino beam for \gls{NOvA} comes from the \gls{Fermilab}-based \gls{NuMI} neutrino source \cite{NuMI.pdf}. The schematic description of \gls{NuMI} is shown in Fig.~\ref{fig:NOvANuMI}, starting on the left hand side with $\unit[120]{GeV}$ protons from the \gls{MI}, part of the \gls{Fermilab} accelerator complex. The proton beam is divided into $\unit[10]{\micro s}$ long pulses, with $\sim5\times10^{13}$ \gls{POT} per spill every $\sim\unit[1.3]{s}$ long cycle time, resulting in a proton beam power of $\sim\unit[800]{kW}$ (current record $\unit[959]{kW}$ \cite{FermilabRecordsWebpage}), with upgrades currently underway to surpass $\unit[1]{MW}$ \cite{NuMIUpgradeToMWProceedings2022.pdf}.
 
@@ -60,7 +60,7 @@ The resulting neutrino beam energy distribution is peaked at $\sim\unit[7]{GeV}$
  \label{fig:NOvAOffAxis}
 \end{figure}
 
-\section{The NOvA Detectors}\label{sec:NOvADetectors}
+\section{The NOvA detectors}\label{sec:NOvADetectors}
 
 The two main \gls{NOvA} detectors are the \gls{ND}, located in \gls{Fermilab} $\sim\unit[1]{km}$ from the \gls{NuMI} target and $\sim\unit[100]{m}$ under ground, and the \gls{FD}, located $\sim\unit[810]{km}$ from \gls{Fermilab} at Ash River in north Minnesota, partially underground with a rock overburden \cite{NOvATechreport.pdf}. \gls{NOvA} also operated a detector prototype called \gls{NDOS}, which was used for early research and development of detector components and analysis \cite{NOvAStatusAndOutlook.pdf}. Additionally, \gls{NOvA} operated a Test Beam detector, described in detail in Sec.~\ref{sec:TBExperiment}. The scales of the \gls{ND} and \gls{FD} are shown in Fig.~\ref{fig:NOvADetectors}.
 
@@ -91,7 +91,7 @@ We can calculate the minimum energy an electron needs to have to cross one cell 
 %We can calculate what is the minimum energy for any particle to be recorded in the \gls{NOvA} detector, by taking the density of \gls{NOvA} liquid scintillator as $\unit[0.86]{g/cm^3}$ \cite{NOvA-doc-11886} and looking up the particle range in the continuous slowing down approximation and approximating the liquid scintillator as polyethylene \cite{NOvA-doc-13579-FACalorimetricEnergyScale}. We take the depth of one \gls{NOvA} cell ($\unit[5.9]{cm}$) as the minimum distance particle needs to travel to be recorded in the \gls{NOvA} detector. For electrons we get that the minimum energy an electron needs to have to be recorded in \gls{NOvA} is $\sim\unit[15]{MeV}$ \cite{NISTParticleRangeTables}. 
 %The MIP energy loss for electrons (similarly to muons) can be found with a similar method as used in the AbsCal\_technote\_1stAna in TestBeam (page 2)
 
-\section{Readout and Data Acquisition}\label{sec:DAQ}
+\section{Readout and data acquisition}\label{sec:DAQ}
 
 The signal from the \gls{WLS} fibres is read out by an \gls{APD}, converting the scintillation light into electrical signal, with a high quantum efficiency of $\sim 85\%$ and a gain of $100$ \cite{NOvATechreport.pdf}. An example \gls{APD} is shown in Fig.~\ref{fig:NOvAAPD}. Both ends of each fibre correspond to a single readout channel and are connected to one of the 32 pixels on the \gls{APD}, organized in four rows of 8 pixels, with each \gls{APD} reading out signal from one module. To maximise the signal to noise ratio, the \glspl{APD} are cooled to $\unit[-15]{\degree C}$ by a thermoelectric cooler, with heat carried away by a water cooling system.
 
@@ -241,7 +241,7 @@ Due to the high neutrino rate in the \gls{ND}, there are neutrinos interacting i
 %%% Rock simulation and overlay
 %NuMIFlux.pdf: Due to the high beam intensity at the near detector, many neutrinos interact in the rock in front of the detector. Simulating these interactions requires allowing GEANT4 to propagate muons through a very large rock volume which is a slow process, and only a few of these muons will make it into our detector. To correctly account for this, we simulate many neutrino interactions with the mother volume including a large rock volume in front of the detector, and only keep those that leave energy in the detector. During normal simulation, with the mother volume only including the detector and the immediate detector hall, we overlay these rock ’singles’ at a rate determined during the generation of flux files after the GEANT4 stage.
 
-\section{Data Processing and Event Reconstruction}\label{sec:NOvAReconstruction}
+\section{Data processing and event reconstruction}\label{sec:NOvAReconstruction}
 Both data and simulation events for all \gls{NOvA} detectors are passed through the same event reconstruction and particle identification algorithms. The reconstruction was specifically developed with the $\nu_e$ appearance search in mind, focusing on identifying the $\nu_e$\gls{CC} signal against the $\nu_\mu$\gls{CC} and \gls{NC} backgrounds. Each \gls{NOvA} detector has to deal with different challenges, with multiple neutrinos interacting during one beam spill in the \gls{ND}, and a large cosmic background in the \gls{FD} \cite{NOvAReco.pdf}.
 
 The output from the \gls{DAQ} system for each channel is called a \textit{raw hit}. Hits are grouped into $\unit[550]{\micro s}$-long windows and passed to an offline reconstruction chain~\cite{NOvAReco.pdf}. Reconstruction starts by grouping hits into \textit{slices} based on their proximity to other hits in both time and space~\cite{DBSCAN.pdf}. Slices are designed to ideally contain only a single neutrino interaction event.
@@ -281,7 +281,7 @@ One of the \gls{ML} algorithms that NOvA employs is a \gls{CNN} based on the Goo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%                   Detector calibration                     %%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Detector Calibration}\label{sec:NOvACalibration}
+\section{Detector calibration}\label{sec:NOvACalibration}
 %%% General introduction to calibration - why do we do calibration? What do we get from the DAQ?
 The energy deposited within \gls{NOvA} detectors is represented by the peak \gls{ADC} values for each cell the particle passed through, obtained from the readout electronics, as described in Sec.~\ref{sec:DAQ}.
 The conversion of the peak \gls{ADC} values into physical units of energy requires calibrating the \gls{NOvA} detectors \cite{PrabhjotNOvAThesis_CalibrationAndOscResults2019.pdf}, while accounting for the attenuation of light along the \gls{WLS} fibres, or for differences between individual cells. The purpose of calibration is to calculate a conversion factor from $\unit{ADC}\rightarrow\unit{MeV}$ for every part of the detector, so that the same energy deposited anywhere and at any time, is recorded as the same value of the reconstructed energy.
@@ -376,7 +376,7 @@ where ADCScale is 217000 for FEBv4.1 and 204800 for FEBv5.2.
 
 %The PECorr scaling is 75.0 (NDOS), 37.51 (ND), 39.91 (FD) and 39.91 (TB)
 
-\subsection{Threshold and Shielding Correction}\label{sec:NOvACalibTSCorr}
+\subsection{Threshold and shielding correction}\label{sec:NOvACalibTSCorr}
 %[CalibrationFirstTechnote2014.pdf] There are three main assumptions for calibration: response is stable in time (drift), the energy spectrum of cosmic rays is uniform in space (shielding), the ADC response to arriving photons is linear
 The threshold and shielding correction accounts for two assumptions, which hold true in most cases in \gls{NOvA}, but fall short for some hits at the bottom of the detector, or far away from the readout, especially for the \gls{FD} \cite{PrabhjotNOvAThesis_CalibrationAndOscResults2019.pdf}.
 
@@ -400,7 +400,7 @@ To ensure that the correction changes smoothly across each cell position, the fi
 %\end{equation}
 %where $T$ is the combined “threshold and shielding” correction factor, $PE$ is the simulated photoelectrons recorded at the readout, $\lambda$ is the number of simulated photons which would be seen at the readout out in the absence of fluctuations, $E_{true}$ is the true energy deposited in the cell and $E_{mip}$ is the naive energy you would expect to be deposited based on the pathlength through the cell. In this way it encodes a threshold correction based on the simulated readout PE with and without the fluctuations, with $\lambda$ dependent on your simulated threshold, as well as a shielding correction based on the simulated energy deposition and a naive no shielding approximation. This equation gives us a cell by cell correction but we use an empirical polynomial fit to that distribution which removes statistical noise from the correction and well describes the initial distribution. This correction factor is applied to the cell by cell data and MC PE/cm distributions before the attenuation fits. [docdb:13579 - SA The Attenuation and Threshold Calibration of the NOvA detector, reference 8 is for docdb:7247, a talk by Backhouse]
 
-\subsection{Relative Calibration}\label{secRelativCalibration}
+\subsection{Relative calibration}\label{secRelativCalibration}
 
 %The \textbf{relative calibration} corrects for attenuation of scintillator light as it travels through the cell to the readout, as well as for differences between detector cells. This correction is calculated for each cell separately.
 
@@ -415,7 +415,7 @@ The first step to do the attenuation fit is to create `attenuation profiles' for
 \begin{figure}
     \centering
     \includegraphics[width=.7\textwidth]{Plots/NOvAExperiment/ExampleAttenuationFit.pdf}
-    \caption[Example attenuation fit for NOvA Relative calibration]{Example attenuation fit for a single cell in the \acrshort{NOvA} \acrshort{FD} across its full length, as shown by dashed vertical lines. The red line shows the initial exponential fit and the blue line shows the full fit after the \acrshort{LOWESS} correction, both described in text. Figure from \cite{totfit_fd_datafitX_049_091.pdf}.}
+    \caption[Example attenuation fit for NOvA relative calibration]{Example attenuation fit for a single cell in the \acrshort{NOvA} \acrshort{FD} across its full length, as shown by dashed vertical lines. The red line shows the initial exponential fit and the blue line shows the full fit after the \acrshort{LOWESS} correction, both described in text. Figure from \cite{totfit_fd_datafitX_049_091.pdf}.}
     \label{fig:NOvACalibrationAttenuationFit}
 \end{figure}
 
@@ -451,7 +451,7 @@ Even after applying the \gls{LOWESS} correction, there are sometimes large diffe
 
 %The current value of $\sigma$ in the code is $1.5\times\textsf{DetWidth}/20$
 
-\subsection{Absolute Calibration}
+\subsection{Absolute calibration}
 %Followed by the \textbf{absolute calibration}, which only uses stopping muons when they are minimum ionising particles. In the absolute calibration we calculate a scale between the measured energy deposition, corrected by the relative calibration, and the simulated energy deposition in physical units of $\unit{MeV}$. This scale is calculated for each time period and each detector separately, which ensures the energy deposition is directly comparable wherever or whenever it occurred.
 
 The absolute calibration only uses hits from muons stopping inside of the detector, in a track window $\unit[1-2]{m}$ from the end of their tracks. This is when they are approximately \gls{MIP} and their energy deposition is well understood. Additionally, hits at the edges of each cell are removed to mitigate the  effects at the end of the \gls{WLS} fibres and the lower number of events at the edge of the detector \cite{NOvA-doc-13579-FACalorimetricEnergyScale}.
@@ -481,14 +481,14 @@ The values of the absolute energy scales for each data period and simulation, as
 %\end{equation}
 %For stopping muons in NOvA it is also important to consider their decay. The muon has a vacuum lifetime of about 2.2 microseconds and favourably decays, with a branching ratio approx. 100\%, into an electron, an electron anti-neutrino and a muon neutrino. The electron produced in this decay is called a Michel electron and is used to select muons that stop within the NOvA detectors. The energy scale calibration is performed using cosmic ray muons. The calibration measures the detector response in data and MC in both near and far detectors and normalises them all by providing a conversion factor, for all four cases, that converts the detector response to energy in GeV. The energy loss rate (dE/dx) of stopping muons is well described by the Bethe-Bloch and is a function of the distance from the stopping point. A track window technique is used to minimise the variations in detector response that depend on the distance to the track end. Using this technique only hits within a region of distances from the track end are used. The position of the track window is chosen such that a mis-reconstruction of the track end point has the minimum effect on the mean detector response. The track window is currently set to be in the range from 100 cm to 200 cm from the track end.[docdb:13579 - FA\_Calorimetric\_energy\_scale]
 
-\section{Energy Estimation}\label{sec:NOvAEnergyEstimation}
+\section{Energy estimation}\label{sec:NOvAEnergyEstimation}
 The deposited energy from detector calibration (Sec.~\ref{sec:NOvACalibration}) is only the first step in estimating the neutrino energy $\left(E_\nu\right)$ required for the main \gls{NOvA} analyses.
 
 For the $\nu_\mu$ disappearance analysis, the $\nu_\mu$ energy is measured as the sum of the muon energy and the energy of the hadronic shower \cite{NOvAResults2021.pdf}. The muon energy is identified from the length of its track, without the need of the calibration results. The energy of the hadronic shower is estimated from simulation as a fit to the 2D distribution of the true $\nu_\mu$ energy minus the reconstructed muon energy, versus the visible (not corrected for the dead material) deposited energy of the hadronic system \cite{PsihasNOvAThesis_ProngCVN.pdf}.
 
 For the $\nu_e$ appearance analysis, the $\nu_e$ energy is calculated using a quartic fit to the 2D distribution of the electromagnetic versus the hadronic calorimetric energies, both corrected for the energy deposition in the dead material (\gls{PVC} cells) \cite{PsihasNOvAThesis_ProngCVN.pdf}. The dead material correction is currently just a simple scaling of the deposited energy from calibration for all particles and is calculated from the measurement of the $\pi^0$ mass peak in the \gls{NOvA} \gls{ND}. This correction is correct only for electromagnetic showers and is not directly applicable to hadronic showers. The fit to determine the $\nu_e$ energy keeps the normalization of both the electromagnetic and the hadronic energies free, so the exact value of the dead material correction is not important. It is however used in other, non-neutrino oscillation analyses.
 
-\section{Systematic Uncertainties}\label{sec:NOvASystematics}
+\section{Systematic uncertainties}\label{sec:NOvASystematics}
 %%% Introduction - what categories are there and which ones are significant
 There are several known unknowns that can affect the results of \gls{NOvA} measurements, represented by systematic shifts of predictions. The impact of systematic uncertainties is assessed by varying prediction independently for each systematic shift and passing all predictions through the same analysis procedures as the nominal (non-shifted) sample. The nominal and systematically shifted predictions are then compared to determine the systematic uncertainty on the measured parameters. This approach inherently accounts for the effects of systematic uncertainties on background composition, event selection, reconstruction, and other aspects of the analysis.
 
