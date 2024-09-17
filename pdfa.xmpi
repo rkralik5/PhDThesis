@@ -73,15 +73,25 @@
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
    <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool> 
+<<<<<<< HEAD
    <xmp:ModifyDate>2024-09-17T12:49:37+01:00</xmp:ModifyDate> 
    <xmp:CreateDate>2024-09-17T12:49:37+01:00</xmp:CreateDate> 
    <xmp:MetadataDate>2024-09-17T12:49:37+01:00</xmp:MetadataDate> 
+=======
+   <xmp:ModifyDate>2024-09-16T14:27:19+01:00</xmp:ModifyDate> 
+   <xmp:CreateDate>2024-09-16T14:27:19+01:00</xmp:CreateDate> 
+   <xmp:MetadataDate>2024-09-16T14:27:19+01:00</xmp:MetadataDate> 
+>>>>>>> refs/remotes/origin/main
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
    <xmpMM:DocumentID>uuid:C8CFC28F-88E1-7995-E9AD-F6D12EAD346B</xmpMM:DocumentID> 
+<<<<<<< HEAD
    <xmpMM:InstanceID>uuid:4E3E291B-428F-DB54-83E0-FF27356F9954</xmpMM:InstanceID> 
+=======
+   <xmpMM:InstanceID>uuid:54FE0D24-F140-D232-2682-96CEEC5F97F6</xmpMM:InstanceID> 
+>>>>>>> refs/remotes/origin/main
   </rdf:Description> 
  </rdf:RDF> 
 </x:xmpmeta> 
