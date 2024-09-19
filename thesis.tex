@@ -86,6 +86,20 @@
 
 %\usepackage[dvipsnames,table,xcdraw]{xcolor} % typesetting in color
 
+%% The hyperref package for clickable links in PDF and also for storing
+%% metadata to PDF (including the table of contents).
+%% Most settings are pre-set by the pdfx package.
+\hypersetup{unicode}
+\hypersetup{breaklinks=true}
+\hypersetup{hidelinks}        %hides those boxes around references
+\hypersetup{
+    colorlinks,
+    citecolor=sussexBlueCol,
+    filecolor=black,
+    linkcolor=sussexBlueCol,
+    urlcolor=sussexBlueCol
+}
+
 %\usepackage[xindy]{glossaries} % for automatic glossary
 \usepackage[acronym,toc,hyperfirst=false,nogroupskip]{glossaries} % for automatic glossary
 %\glossarystyle{list} % by order of appearance
@@ -136,24 +150,24 @@
 % An optional dedication: you can thank whomever you wish (your supervisor,
 % consultant, a person who lent the software, etc.)
 \def\Acknowledgements{%
-I would like to acknowledge the support and guidance I received during the course of my PhD. Over the past four years, I’ve been fortunate to work with many talented and generous individuals whose help has been invaluable in completing this thesis. I am very lucky to have a long list of colleagues and friends who helped and supported me.
+I would like to acknowledge the support and guidance I received during the course of my PhD. Over the past four years, I’ve been fortunate to work with many talented and generous people whose help has been invaluable in completing this thesis.
 
 %Lily and Jeff
-First and foremost, I would like to express my deepest thanks to my supervisor, Lily Asquith. I was incredibly lucky to have a mentor like Lily, someone I could turn to with any question, no matter how small, and always receive patient, thoughtful guidance. I am also grateful to my second supervisor, Jeff Hartnell, whose advice was particularly useful in the early stages of my PhD, helping to shape the direction of this thesis.
+First and foremost, I would like to express my deepest thanks to my supervisor, Lily Asquith. I was incredibly lucky to have a mentor like Lily, someone I could turn to with any question, no matter how small, and always receive patient, thoughtful guidance. Lily was always there to support me when I needed it. Thank you very much! I am also grateful to my second supervisor, Jeff Hartnell, whose advice was particularly useful in the early stages of my PhD, helping to shape the direction of this thesis.
 
 %Colleagues
-Particle physics is a highly collaborative field, where working with the right people can significantly improve the experience and the outcome. I feel privileged to have been part of the NOvA collaboration - a community filled with wonderful people who go above and beyond to support one another. In particular, I would like to thank those who provided crucial guidance, discussion, and assistance throughout my analyses. My work on the NOvA Test Beam detector calibration would not have been possible without the help of Anne Norick, Alex Sousa, Abhilash Dombara, David Duenas, Anna Hall, Teresa Lackey, Andrew Sutton, and Michael Wallbank. Likewise, my work on the neutrino magnetic moment analysis drew from the insight and support provided by Alec Habig, Matt Strait, Alex Himmel, Wei Mu, Wenjie Wu, Yibing Zhang, and Sarah Choate.
+Particle physics is a highly collaborative field, where working with the right people can significantly improve the experience and the outcome. I feel privileged to have been part of the NOvA collaboration - a community filled with wonderful people who go above and beyond to support one another. In particular, I would like to thank those who provided crucial guidance, discussion, and assistance throughout my analyses. My work on the NOvA Test Beam detector calibration would not have been possible without the help of Anne Norick, Alex Sousa, Abhilash Dombara, David Duenas, Anna Hall, Teresa Lackey, Andrew Sutton, and Michael Wallbank. Likewise, my work on the neutrino magnetic moment analysis drew from the insights and support provided by Alec Habig, Matt Strait, Alex Himmel, Wei Mu, Wenjie Wu, Yibing Zhang, and Sarah Choate.
 
 %University
 At the University of Sussex, I’m thankful for the camaraderie and support of my colleagues and friends, who made my time there so enjoyable. Special thanks to Jess Lock, Emerson Bannister, Ben Cattermole, Zoe Earnshaw, Robert Darby, Josh Porter, Iker de Ikaza, Nicolo Tuccori, James Page, Thiago Bazerra, and Wilf Shorrock.
 
 %LTA
-During my year at Fermilab, I had the privilege of working with incredible people who made the experience unforgettable. Thank you to Derek Doyle, Maria Martinez-Casales, Haejun Stella Oh, Barbara Yaeggy, Prabhjot Singh, Margot MacMahon, Veera Mikola, Lucy Biles, Tania Brown, Josh Barrow, Anezka Klustova, Anna Heggestuen, Henry Lay, Jamie Dyer, Livio Calivers, Alessandro Reineri, Daniel MacLean,  Mackenzie Devilbiss, and Noah Vaughan. Beyond Fermilab, I was fortunate enough to stumble upon an incredible group of people that formed my second family while in America. Thank you to Jackie Renee, Nate Luckmann, Savannah Pierce, Gina, Alexis Porfolio, and of course, Snoogy and Rusty.
+During my year at Fermilab, I had the privilege of working with incredible people who made the experience unforgettable. Thank you to Derek Doyle, Maria Martinez-Casales, Haejun Stella Oh, Barbara Yaeggy, Prabhjot Singh, Margot MacMahon, Veera Mikola, Lucy Biles, Tania Brown, Josh Barrow, Anezka Klustova, Anna Heggestuen, Jamie Dyer, Livio Calivers, Alessandro Reineri, Daniel MacLean,  Mackenzie Devilbiss, and Noah Vaughan. Beyond Fermilab, I was fortunate enough to stumble upon an incredible group of people that formed my second family while in America. Thank you to Jackie Renee, Nate Luckmann, Savannah Pierce, Gina, Alexis Porfolio, and of course, my beloved Snoogy and Rusty.
 
 %Closest friends
-Throughout my PhD, I’ve been extremely lucky to find friends for life. Karolina Wresilo and Liban Warsame, thank you for being the best friends anyone could ask for. Your love and support keep amazing me. Thank you to the amazing friends that need to live closer to me: Carlos Sarasty, Rowan Zaki, Lily Down. Thank you to Marvin Pfaff and Alie Craplet, finally moved closer to them.
+Throughout my PhD, I’ve been extremely lucky to find new friends I will cherish for life. Karolina Wresilo and Liban Warsame, thank you for being the best friends anyone could ask for. Your love and support keep amazing me and you will always be close to my heart. Thank you to the amazing friends that need to live closer to me - Carlos Sarasty, Rowan Zaki, and Lily Down and to the friends I finally moved closer to Marvin Pfaff and Alie Craplet.
 
-In Brighton, I found another home with Ayla Mir, Foni Raphael Lebrun, Ying Ni, Celeste Scaripini, Dominik Zawadzki, Libor, Michael Crompton, and Max Rufus McLean. You made Brighton unforgettable, and I’ll always cherish the memories we made together—whether it was dinners, trivia nights, volleyball games, or simply being there for each other. Special thanks to Shonosuke Adachi, Eduardo Lopez, and Dasol Shin for being my support system during the early Covid days.
+In Brighton, I found another home with Ayla Mir, Foni Raphael Lebrun, Ying Ni, Celeste Scarpini, Dominik Zawadzki, Libor, Michael Crompton, and Max McLean. You made Brighton unforgettable, and I’ll always cherish the memories we made together - whether it was the Wednesday dinners, the Tuesday trivia nights, the Monday volleyball games, or simply all the countless other times we spent together. Special thanks to Shonosuke Adachi, Eduardo Lopez, and Dasol Shin for being my support system during the early Covid days.
 
 I’m also grateful to the friends who stayed close, no matter the distance. Thank you, Ondra Kovanda, for leading the way to Sussex and for your unwavering friendship. To Linda Baranova, Katarina Zavacka, and Jakub Zavacky, thank you for always being there, no matter how far apart we are.
 
@@ -166,7 +180,7 @@ Finally, my deepest gratitude goes to my family. Thank you to my sister Karolina
 
 % Abstract (recommended length around 80-200 words; this is not a copy of your thesis assignment!)
 \def\Abstract{%
-Measuring an enhanced neutrino magnetic moment would be a clear indication of physics beyond the Standard Model (BSM), shedding light on the correct BSM theory or the potential Majorana nature of neutrinos. It would manifest in the NOvA near detector as an excess of neutrino-on-electron elastic scattering interactions at low electron recoil energies. Leveraging an intense and highly pure muon neutrino beam, along with the finely segmented liquid scintillator detector technology specifically designed for electromagnetic shower separation, enables NOvA to achieve a potentially world-leading sensitivity in probing the effective muon neutrino magnetic moment. This analysis, based on neutrino data collected between 2014 and 2021, corresponding to an exposure of $13.8\times10^{20}$ protons-on-target, yields a result consistent with the Standard Model-only hypothesis with a p-value of 0.31. An upper limit on the effective muon neutrino magnetic moment is set at $\mu_{\nu_\mu}<19.1\times 10^{-10}\mu_B$ at $90\%$ confidence level. Despite facing statistical limitations stemming from the low cross section of the signal process, systematic uncertainties have a significant impact on this result. To address these challenges, the NOvA Test Beam experiment focuses on mitigating some of the largest systematic uncertainties within NOvA by investigating particle interactions and energy deposition in a small-scale replica NOvA detector. This thesis describes the calibration of the NOvA Test Beam detector, which is a crucial step in analysing the Test Beam data before they can be utilised to reduce NOvA systematic uncertainties.
+Measuring an enhanced neutrino magnetic moment would be a clear indication of physics beyond the Standard Model, shedding light on the correct beyond Standard Model theory or the potential Majorana nature of neutrinos. It would manifest in the NOvA near detector as an excess of neutrino-on-electron elastic scattering interactions at low electron recoil energies. Leveraging an intense and highly pure muon neutrino beam, along with a finely segmented liquid scintillator detector technology specifically designed for electromagnetic shower separation, enables NOvA to achieve a potentially world-leading sensitivity in probing the effective muon neutrino magnetic moment. This analysis, based on neutrino data collected between 2014 and 2021, corresponding to an exposure of $13.8\times10^{20}$ protons-on-target, yields a result consistent with the Standard Model-only hypothesis with a p-value of 0.31. An upper limit on the effective muon neutrino magnetic moment is set at $\mu_{\nu_\mu}<19.1\times 10^{-10}\mu_B$ at $90\%$ confidence level. Despite facing statistical limitations stemming from low cross section of the signal process, systematic uncertainties have a significant impact on this result. To address these challenges, the NOvA Test Beam experiment focuses on mitigating some of the largest systematic uncertainties within NOvA by investigating particle interactions and energy deposition in a small-scale replica NOvA detector. This thesis describes the calibration of the NOvA Test Beam detector, which is a crucial step in analysing the Test Beam data before they can be utilised to reduce NOvA systematic uncertainties.
 }
 
 % 3 to 5 keywords (recommended), each enclosed in curly braces
@@ -174,19 +188,6 @@ Measuring an enhanced neutrino magnetic moment would be a clear indication of ph
 {neutrino} {NOvA} {electromagnetic} {testbeam} {calibration}
 }
 
-%% The hyperref package for clickable links in PDF and also for storing
-%% metadata to PDF (including the table of contents).
-%% Most settings are pre-set by the pdfx package.
-\hypersetup{unicode}
-\hypersetup{breaklinks=true}
-\hypersetup{hidelinks}        %hides those boxes around references
-\hypersetup{
-    colorlinks,
-    citecolor=sussexBlueCol,
-    filecolor=black,
-    linkcolor=sussexBlueCol,
-    urlcolor=sussexBlueCol
-}
 
 % Definitions of macros (see description inside)
 \input{macros}
