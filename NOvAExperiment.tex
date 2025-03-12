@@ -631,3 +631,162 @@ There are three systematic uncertainties arising from the calibration procedure:
 %Another source of systematic uncertainty is introduced by the variation in detector response with time. The FD response is stable to about 1\% during the period from October 2014 to March 2015. The ND response needs further study but there was no significant trend over 6 months at 5\%. 
 %As mentioned in Section 5, the version (7.1) of the calibration used for first analysis has been adjusted based on studies of muons from beam neutrinos interacting in the detector [8]. A shift of 3.6\% was introduced based on the average response of muons where large sections of the track were used. When only a track window of 100-200cm is used on the beam muons the difference is only 2.7\% [8]. Our best hypothesis for this residual 2.7\% difference is that it is caused by showery events that are present in ND data but not ND MC: it was shown in [9] that doing the calorimetric energy scale calibration using a truncated mean (or a median or a fit to the peak) gave a data/MC ratio that differed by 2.7\% compared to using the untruncated mean as described in this document. A comparison of various cross checks of the calorimetric energy scale was undertaken (in [10] and [11]) and concluded that the nearly 5\% difference between ND data and MC seen in a sample of Michele electrons [12] should be applied as both an absolute and relative shift to the calorimetric energy scale. The difference between the level of calorimetric energy resolution of stopping muons was studied and it was found that data and MC agreed best when an 8\% additional smearing was introduced. Studies for the NuMu analysis indicated that this was a negligible systematic uncertainty [13]. 
 %[docdb:13579 - FA\_Calorimetric\_energy\_scale]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%                       Test Beam detector description
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Test Beam detector}\label{sec:TestBeamCalibration}
+
+The \gls{NOvA} Test Beam experiment~\cite{NOvATestBeamWallbangProceedings2020.pdf} is a sub-experiment designed to enhance \gls{NOvA}'s sensitivity to neutrino oscillation measurements by improving the understanding of particle interactions and energy deposition within the \gls{NOvA} detectors. Initial studies~\cite{NOvA-doc-33012} showed that, only by improving the detector calibration, the Test Beam experiment has the potential to reduce the total systematic uncertainty in the measurement of the three flavour oscillation parameters by about 10\%.
+ 
+Using a test beam allows for the study of the response of tagged single particles with known momenta and positions within a \gls{NOvA} detector. Additionally, this setup enables the determination of the energy resolution and the absolute energy scale without the use of simulation. Furthermore, it permits the comparison of responses between beam muons and cosmic ray muons, study of fibre attenuation, and validation of the \gls{NOvA} calibration process. The Test Beam detector is equipped with a combination of the \gls{ND} and \gls{FD} readout electronics and filled with a range of \gls{NOvA} scintillator oils, enabling a comparison of their respective performance and particle responses \cite{NOvA-doc-15750}. All these advantages require, or benefit from, the calibration of the Test Beam detector, which follows the same calibration procedure as the standard \gls{NOvA} detectors (Sec.~\ref{sec:NOvACalibration}).
+
+%Here we present the differences from the calibration of the \gls{NOvA} \gls{ND} and \gls{FD}, as well as the results and their discussion and validation.
+
+%Only considering improvement in the calibration systematic uncertainty, the NOvA Test Beam program can reduce the overal systematic uncertainty for the main NOvA measurements by about 10\% [docdb:33012] (talk also contains a list of other talks on impact of TB in different NOvA areas). For DeltaM2: By increasing exposure, total syst. error decreases by (+) 18.5% (-) 25%; By increasing exposure and reducing calib systs., total syst. error decreases by: (+) 26% (-) 32%; Difference between the above (reducing calib systs. with large exposure): (+) 9.6% (-) 9.4%. For sin2Th23: Difference by reducing calib syst.: (+) 10.8% (-) 9.4%.
+%Statement: “The NOvA Test Beam will improve the total systema6c error on the final measurement of the oscilla6on parameters Dm232 and sin2Th23 by 10% from reduc6on of calibra6on systema6cs alone. Further, NOvA analyses will benefit from the detailed understanding of detector response to hadronic, electromagne6c, and muon energy provided by the Test Beam, which will be essen6al to solidify understanding of systema6cs, uncover poten6ally new uncertain6es, tune the simula6on modeling, and improve reconstruc6on and PID algorithms.”
+%Potential Test Beam impacts: Check modeling of hadronic interacOons in detector (check GEANT systemaOcs), Using Test Beam data as “single-parOcle MC” to train CVN prong-like algorithms, GeneraOve Adversarial Networks for MC improvements using Test Beam data, Check ND calibraOon procedure to try and understand causes of 3-5% discrepancy between data and MC for muons and protons  (Birks suppression measurement), Data/MC comparisons of observed and clustered visible energy to improve dead material correcOons and energy esOmators, Acquire beier understanding of gain and photon transport, aienuaOon, Cherenkov light modeling, [DifferenOal] charged pion and proton cross secOon measurements would be extremely useful!, CalibraOng with test beam muons vs. cosmic muons (differences between horizontal vs. verOcal muons? - possibly shed “light” on the calib shape uncertainty), Study path length inside cell, take beam data with non-orthogonal incidence, Cross-check pi0 invariant mass reconstrucOon and Michel tagging efficiency/spectra, Use neutron source to study modeling of neutron capture (I don't think this was done in the end...), Playing with different GEANT physics lists to boost our confidence in the MC (pions? neutrons?)
+
+%[docdb:15750 - NOvA Test Beam task force report]: The test beam program was included in the NOvA proposal [1] and was considered as an essential part of the experiment since its inception. Primary goals are oriented toward measurements of detector response to different particles with a range of momenta most relevant to NOvA beam physics studies, establishing of the absolute and relative energy scale of both NOvA detectors, and validating detailed and fast detector simulations code. [List all possible desired studies with Test Beam copied below] Two 31-layer 2 × 2 blocks, with approximate dimensions of 2.6 × 2.6 × 4 m3 were produced at the Minnesota factory before its shutdown (as a comparison, the 3 × 3 NOvA ND has 6 × 32 layers). In addition, 96 1 × 1 layers, with approximate total dimensions of 1.3 × 1.3 × 6.2 m3 were produced. Both 2 × 2 blocks and all the 1 × 1 layers were leak-tested. The 2 × 2 blocks are currently stored at the MINOS surface building, while the 1 × 1 layers are stored at the CDF building(?). The proposed detector to be deployed for the test beam run consists of the two 2 × 2 blocks. The NDOS decommissioning yielded 25000 gallons of scintillator. Since storage available is limited to 12000 gallons, it was decided to blend most of the 5000 gallons of existing ND/FD scintillator with the NDOS scintillator. 200 gallons of ND/FD scintillator, which has a slightly higher photon yield, are reserved for special studies. We also plan to reuse the NDOS secondary containment tub to provide oil+scintillator containment in case the test beam detector undergoes a catastrophic structural failure. Based on MINERvA’s experience, it is anticipated that two months of data taking would provide the necessary samples to carry out the test beam objectives.
+
+%Also use information from:
+%\begin{itemize}
+%\item NOvA Test Beam Technical Statement of Work
+%\item NOvA Test Beam program (paper for DOE) [docdb:25074]
+%\item NOvA Test Beam task force report [docdb:15750]
+%\item Overview presentation of NOvA Test Beam [docdb:20495]
+%\item Test Beam support document [docdb:22172]
+%\item NOvA Test Beam program proceedings [docdb:55808]
+%\end{itemize}
+
+
+%What is Test Beam, how does the detector and beamline look like.
+%Placed in MC7b together with a beamline instrumentation (no need to describe beamline).
+
+The \gls{NOvA} Test Beam experiment~\cite{NOvA-doc-22172} consists of a scaled down version of the \gls{NOvA} \gls{ND} and \gls{FD}, shown in Fig.~\ref{fig:TBDetector}, and a series of beamline detectors to measure and identify a range of particles from the MCenter beamline in the Fermilab Test Beam Facility~\cite{FTBFWebsite}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=.7\textwidth]{Plots/TBCalibration/TestBeamDetectorWithArrows.png}
+\caption[Comparison of Test Beam detector to the Near and Far Detectors]{Comparison of Test Beam detector scale to the \acrshort{NOvA} \acrshort{ND} and \acrshort{FD} (and a man, giraffe, or Mary Poppins). Also shown are the Test Beam beamline detectors and components (not to scale), with arrows showing the direction of the beam. An example of a detector cell with \acrshort{WLS} fibre looped inside it is also shown (not to scale). The three black arrows show the orientation of the detector coordinate system.}
+\label{fig:TBDetector}
+\end{figure}
+
+%Should I aslo talk about the beam halo? Could that have an influence on the calibration? Maybe it's the peaks in the cosz distribution?
+
+The operation of the Test Beam detector started with commissioning runs in June 2019 and ran, with an exception of regular summer shutdowns, until July 2022, after which it was decommissioned. The Test Beam data taking is divided into \textit{periods}, which are defined in Tab.~\ref{tab:TestBeamPeriods}. Period 1 only lasted for about a month and with only a half-filled detector, as explained below. It was therefore only used for detector commissioning and will not be used in any of the Test Beam physics analysis, or in the calibration.
+\begin{table}[!ht]
+\centering
+\caption{Test Beam detector data taking periods.}
+\def\arraystretch{1.4}
+\begin{tabular}{l@{\hskip 1in}lcl}
+Period 1 & June $3^{\textsf{rd}}$ 2019 & - & July $6^{\textsf{th}}$ 2019\\
+Period 2 & December $5^{\textsf{th}}$ 2019 & - & March $20^{\textsf{th}}$ 2020\\
+Period 3 & January $12^{\textsf{th}}$ 2021 & - & June $27^{\textsf{th}}$ 2021\\
+Period 4 & November $30^{\textsf{th}}$ 2021 & - & July $10^{\textsf{th}}$ 2022
+\end{tabular}
+\label{tab:TestBeamPeriods}
+\end{table}
+
+Majority of the Test Beam detector and its instrumentation is identical to the other \gls{NOvA} detectors, with a few exceptions that could have an impact on the calibration. We are going to identify and discuss these differences in this section.
+
+%[docdb:15750 - NOvA Test Beam task force report]: The test beam program was included in the NOvA proposal [1] and was considered as an essential part of the experiment since its inception. The main tangible result of these initial plans and later discussions was a production of special small extrusion modules, made at the end of the modules production stage, as possible components of a future test beam detector. In fact, this production followed and was based on initial simulations of a possible test beam experiment [5].
+
+\subsubsection*{Beamline}
+The beam for the Test Beam experiment originates from the same $\unit[120]{GeV}$ Main Injector protons used in \gls{NuMI}, extracted once a minute in a continuous $\unit[4.2]{s}$ spill~\cite{NOvATestBeamWallbangProceedings2020.pdf}. The protons are impinged on a copper target producing mostly protons and pions, which are then directed towards a second target, producing the tertiary beam of particles used in the Test Beam detector. As can be seen in Fig.~\ref{fig:TBDetector}, two collimators are used to direct the tertiary beam and a magnet to select the desired momentum. Particle tracking is done using the four \glspl{MWPC} and particle identification is done with a combination of \gls{ToF} detectors and a Cherenkov detector set for electron detection.
+
+\subsubsection*{Detector parameters}
+The \gls{NOvA} Test Beam detector consists of two 31-plane blocks, each beginning and ending with a vertical plane, with an additional horizontal plane glued in-between them to preserve the alternating pattern \cite{NOvA-doc-29543}. Each plane consists of 2 modules side-by-side, both made up of 32 cells. Each cell is $2.6\,\unit{m}$ long with an inner (without the PVC) depth and width of $5.9\,\unit{cm}$ and $3.8\,\unit{cm}$ respectively, same as for the other \gls{NOvA} detectors. This brings the final dimensions of the Test Beam detector to 63 planes $\times$ 64 cells, or $2.6\times 2.6\times 4.1\,\unit{m^3}$.
+
+The 63 planes are numbered from 0 to 62, with even numbers corresponding to vertical planes and odd numbers to horizontal planes. Cells are numbered 0 to 63, going from bottom to top for horizontal planes and left to right, when facing the front of the detector, for vertical planes.
+
+The detector coordinate system is illustrated in Fig.~\ref{fig:TBDetector}. It is centred with $\left(0,0,0\right)$ in the centre of the first plane \cite{NOvA-doc-58388}. The x axis runs left to right when facing the front of the detector, y axis from bottom to top, and z axis goes along the beam direction from front to the back of the detector. Position within each cell ($w$) is aligned with the x (y) axis for the horizontal (vertical) cells, with $w=0$ centred in the middle of each cell. The exact geometry of the Test Beam detector was measured in several alignment surveys and is saved in gdml files \cite{NOvA-doc-57955}.
+
+In the past we encountered an issue when trying to align the Test Beam detector with the beamline measurements by rotating the detector. This broke several assumptions within the Test Beam geometry \cite{NOvA-doc-58388} and manifested as uncalibrated cells in the back of the detector \cite{NOvA-doc-57516}. This was fixed by realigning both the detector and the beamline separately, based on the last alignment survey, measured during the decommissioning of the detector.
+
+%FD: maxPlane=900, maxCell=390. ND: maxPlane=220, maxCell=100. TB: maxPlane=63, maxCell=64
+
+\subsubsection*{Scintillator}
+%[TB task force report]: The NDOS decommissioning yielded 25000 gallons of scintillator. Since storage available is limited to 12000 gallons, it was decided to blend most of the 5000 gallons of existing ND/FD scintillator with the NDOS scintillator. 200 gallons of ND/FD scintillator, which has a slightly higher photon yield, are reserved for special studies. We also plan to reuse the NDOS secondary containment tub to provide oil+scintillator containment in case the test beam detector undergoes a catastrophic structural failure.
+
+Test Beam used a combination of the leftover \gls{ND} and \gls
+{FD} production scintillator oils and the oil drained from the \gls{NOvA} \gls{NDOS} test detector. The used scintillator oils also differ in the way they were stored since the \gls{ND} and \gls{FD} filling, or the \gls{NDOS} draining, which apparently impacted its quality. These factors have a significant effect on the energy deposition within them. The distribution of individual scintillator oils and the relative difference in their energy response can be seen in Fig.~\ref{fig:Scintillators}.
+
+%The Test Beam detector is filled with several different versions of the NOvA scintillator oil, which differ mainly in the way they were stored since the filling of the near and far detectors. This is illustrated on figure \ref{figScintillators}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{Plots/TBCalibration/TestBeamScintillatorOils.png}
+\caption[Scintillator oils used in the Test Beam detector]{Uncorrected energy response in the centre of cells across the Test Beam detector showing a clear distinction between different scintillator oils, labelled with coloured boxes and descriptions.}
+\label{fig:Scintillators}
+\end{figure}
+
+There are four distinct samples of \gls{NOvA} scintillator oil used in the Test Beam detector:
+\begin{enumerate}
+\item Mixed \gls{ND} production oil and \gls{NDOS}-drained oil stored in a tanker and four tanks outside in \gls{Fermilab} \cite{NOvA-doc-38349};
+\item Separate \gls{ND} production oil and \gls{NDOS}-drained oil stored underground in barells at the MiniBooNE\footnote{MiniBooNE~\cite{MiniBooNEWebsite} is a \gls{Fermilab} experiment located close to the \gls{NOvA} \gls{ND}} cavern \cite{NOvA-doc-33012};
+\item \gls{FD} production oil stored inside in Ash River in `totes' under several layers of black plastic \cite{NOvA-doc-34067};
+\item \gls{NDOS}-drained oil stored mainly inside at Texas A\&M University and University of Texas at Austin \cite{NOvA-doc-38740, NOvA-doc-39088}.
+\end{enumerate}
+
+%The original plan \cite{NOVA-doc-34196} was to use the tanker and tank scinitillator for the entire Test Beam detector. However, due to extreme cloudeness of the scintillaotr in the tanks 
+
+The original plan \cite{NOvA-doc-34196} was to only use the tanker/tank scintillator (sample \#1). First tests showed acceptable results and the tanker oil was used to fill out almost the entirety of the first block of the detector (first 32 planes) \cite{NOvA-doc-38349}. However, when the oil from tank \#2 was loaded into the tanker, it became extremely cloudy and unusable, possibly due to contamination with water accumulated at the bottom of the tanks. The rest of the first block was therefore topped up with high quality scintillator from \gls{NDOS} (sample \#2). This is labelled as `\gls{Fermilab} \gls{ND}+\gls{NDOS} oil' in Fig.~\ref{fig:Scintillators}.
+
+%NDOS+ND scin3llator were stored in MEast tank farm in translucent tanks open to the atmosphere in 2016 [docdb:41229]
+%docdb:41229 actually contains a pretty good description of the whole story
+
+%First Tanker (2730 gallons pumped) used to fill 97.5% of first block ... Missing ~2.5 gallon top-off... Decided to use reserved NDOS 55-gallon drums... Used 65 gallons for detector, 11 gallons to clean up fill lines
+
+%Even before the extreme cloudiness was discovered, it was known that the oil from the tanks has lost much of its original light yield properties. Reasons vary from water contamination to insects and dirt contamination \cite{NOVA-doc-34046-v2}. Yet it was still decided to use the tank 2 oil \cite{NOVA-doc-34196}. It was also decided not to mix the various oils (tanker/tank/NDOS/Ash River) as studying energy deposition in different types of oils could lead to some interesting insights \cite{NOVA-doc-34046-v2}.
+
+%"One of the promising studies we see coming out of this is to understand the differences in performance for different type of energy depositions of scintillator A vs B vs C. " [docdb:34046]
+
+The first 21 planes of the second block (planes 32 to 52) were filled with the \gls{FD} production scintillator shipped in from Ash River (sample \#3) \cite{NOvA-doc-41961}. These planes were again topped up with the \gls{ND}+\gls{NDOS} scintillator (sample \#2).
+
+The last 10 planes (planes 53 to 62) \cite{NOvA-doc-41961} were filled with the `Texas' scintillator (sample \#4), which has higher light yield than the one from the tanker, but lower than the Ash River one \cite{NOvA-doc-38740}.
+
+%[docdb:38349] 2730 gallons of scintillator transferred to detector from the tanker. On April 16, circulated 20 gallons from tanker, and took scintillator sample. Extreme cloudiness meant 0\% light transmission (>=95\% required). Strongly suspect problem due to water accumulated at the bofom of tankers vented to the atmosphere since 2016, mixed with oil by pump. Used 2/4 reserved NDOS 55-gallon drums for top-off...  completed top-off of all Block 0 modules
+
+In total, the Test Beam detector is filled with 5418 gallons of scintillator oil with a weight of approximately 28.6 tons \cite{NOvA-doc-29543}.
+
+\subsubsection*{Readout}
+The Test Beam detector uses in total 126 \glspl{FEB}, each reading out signal from 32 cells \cite{NOvA-doc-29543}. The readout is located on the top and right side (when looking at the front) of the detector. 118 \glspl{FEB} are version 4.1, same as in the \gls{FD}, and 8 \glspl{FEB}, located in pairs on planes 16, 17, 48 and 49, are version 5.2, same as in the \gls{ND}. As was described in Sec.~\ref{sec:DAQ}, the \gls{ND} \glspl{FEB} are designed to read out data at a faster rate than the \gls{FD} \glspl{FEB} and using a mix of \gls{FEB} types allows us to study the difference in their response and to validate both versions in the same environment~\cite{LackeyThesisNOvATBProtons2022.pdf}.
+
+%The Near and Far Detectors use different front-end electronics since they handle different data volumes; the Test Beam Detector is instrumented with both types to facilitate a complete characterization of both NOvA neutrino detectors. [NOvATestBeam.pdf - Mike's proceedings]
+
+\subsubsection*{Environment}
+The enclosure that housed the Test Beam detector was made up of a concrete platform covered by a metal semi-cylindrical roof. Therefore, unlike the \gls{ND} and \gls{FD}, the Test Beam detector did not have any overburden to shield it from cosmic particles, affecting their rate and energies inside the detector. The temperature and humidity were controlled by a humidity, ventilation and air conditioning control system and monitored by a range of sensors. The temperature was kept to around $\unit[20]{^{\circ}C}$ and within the range of $\unit[18-22]{^{\circ}C}$, except for about three months in the beginning of Period 3 data taking, when it was kept to within $\unit[16-20]{^{\circ}C}$.
+
+%Is the HVAC the only systema that is controling the environment at MC7b?
+
+%From docdb:29543
+%Temperature very stable during winter months (heaCng is installed at MC7). However, dew point went over 10C ND shutdown threshold several times.
+%Alex'es summary in docdb:30750:
+%Ordered HVAC unit with electric reheat and dewpoint control, in essence over-cooling to maintain dewpoint then reheat to maintain temperature.
+
+%Can I describe what is the shielding in MC7b? What is the white stuff from? It's basically the only thing shielding the detector from the cosmics and temperatures. Also need to say there is an HVAC system
+
+%Placed in the Fermilab Test Beam Facility with no overburden. Describe environmental controls, temperature dependence etc. Maybe add plots from environmental control (temperature differences etc.) with descriptions of where were the readings taken.
+
+\subsubsection*{Underfilled cells issue}
+The Test Beam detector is slightly tilted around the z axis by about $0.7^{\circ}$ towards the readout (top of the detector is tilted right when facing the front of the detector). This caused the top cells of both modules of all the horizontal planes (cells 31 and 63) to be underfilled, creating an air bubble on the left side of the detector and severely affecting the energy response in those cells \cite{LackeyThesisNOvATBProtons2022.pdf}. This was fixed \cite{NOvA-doc-49439} during the period 3 running by adding extensions to the filling ports and overfilling the horizontal cells with the \gls{ND}+\gls{NDOS} scintillator (sample \#2 from the scintillator description). More details on this issue and its effects and on how it was handled in calibration are detailed in Sec.~\ref{sec:TBCalibration_period3}.
+%This scintillator was also used in the first half of the detector (Fermilab ND+NDOS oil on figure \ref{figScintillators}), but is different from the "Ash River oil" used in part of the second half of the detector (bright part of figure \ref{figScintillators}). The overfilling was done in April 2021 in 3 stages in between the full operation of the Test Beam detector.
+
+%The detector is tilted around z axis towards the readout by about 0.7 degrees (the largest tilt is for the 11th plane of 0.79330 degrees. The ND has an oposite tilt of -0.2515 degrees on average (but also the readout is on the opposite side, so is it actually the same tilt?). Correcting this by 8 degrees would require lifting the east edge by at least 3.66cm, or to correct it to the ND tilt by lifting the east edge by 4.17cm. [docdb:47491 - this is the original talk by Teresa explaining the tilt on 21st Sep 2020]
+
+%Also need to mention that the detector was then overfilled [docdb:49439 or 49827] but with a scintillator from the NDOS drums, causing the discrepancy between the high quality Ash River scintillator and the NDOS scintillator. But need to mention this after the scintillator part.
+%The overfilling was done in three stages:
+%\begin{enumerate}
+%\item Overfilling the back 9 horizontal and the 7th horizontal from the front by April 21st
+%\item Overfilling of the 15 front cells (except the 7th, which was already done, and the 14th, %with problems drilling vent hole) by April 27th
+%\item Overfilling of the remaining 8 horizontals by April 30th
+%\end{enumerate}
+
+%From Teresa's thesis:
+%The pitch and yaw of the detector was 2.464◦ around x and 0.487◦ around z. Roll (around beam direction) of each plane. Unfortunately, the direction of the roll means the east side of the detector is slightly lower than the west side. The east side is where the readout and fill ports for the scintillator are. As a result, the top cell in each horizontal module is underfilled, with an air bubble on the west side.
