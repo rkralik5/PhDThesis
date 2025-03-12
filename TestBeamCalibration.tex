@@ -38,7 +38,7 @@ The \gls{NOvA} Test Beam experiment~\cite{NOvA-doc-22172} consists of a scaled d
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=.7\textwidth]{Plots/TBCalibration/TestBeamDetectorWithArrows.png}
-\caption[Comparison of Test Beam detector to the Near and Far Detectors]{Comparison of Test Beam detector scale to the \acrshort{NOvA} \acrshort{ND} and \acrshort{FD} (and a man, giraffe, or Mary Poppins). Also shown are the Test Beam beamline detectors and components (not to scale), with arrows showing the direction of the beam. The three black arrows show the orientation of the detector coordinate system.}
+\caption[Comparison of Test Beam detector to the Near and Far Detectors]{Comparison of Test Beam detector scale to the \acrshort{NOvA} \acrshort{ND} and \acrshort{FD} (and a man, giraffe, or Mary Poppins). Also shown are the Test Beam beamline detectors and components (not to scale), with arrows showing the direction of the beam. An example of a detector cell with \acrshort{WLS} fibre looped inside it is also shown (not to scale). The three black arrows show the orientation of the detector coordinate system.}
 \label{fig:TBDetector}
 \end{figure}
 
@@ -195,12 +195,12 @@ To use data events in simulation, we need to reconstruct their vertex positions 
 After the reconstruction process, we proceed to select events based on their slice and \gls{BPF} track properties. The overview of all selection criteria and their corresponding cut values are listed in Tab.~\ref{tab:DataBasedSimEventSelection}. In detail, the following conditions are used to select cosmic muon events for the data-based simulation:
 \begin{enumerate}
 \item We only use successfully reconstructed 3D \gls{BPF} tracks with the muon assumption;
-\item As we aim to select cosmic events originating outside the detector, we apply a cut based on the distance of each track's start position from the edges of the detector. This cut has a negligible impact on the \gls{BPF} tracks, as indicated by the minimal difference between the red and the dotted azure lines in Fig. \ref{fig:DataBasedSimCosZSelectionComparison};
+\item As we aim to select cosmic events originating outside the detector, we apply a cut based on the distance of each track's start position from the edges of the detector. This cut has a negligible impact on the \gls{BPF} tracks;
 
 \begin{figure}[!ht]
 \includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SelectionComparisonCosZCut_CosY.pdf}
 \includegraphics[width=\textwidth]{Plots/TBCalibration/DBSim_SelectionComparisonCosZCut_TotLength.pdf}
-\caption[Track start and $\textsf{Cos}_Z$ cut for data-based simulation selection]{Impact of the cuts on the track start and on the maximum track angle from the z axis ($\textsf{Cos}_Z$) on the Test Beam data for the data-based simulation of cosmic muons. Top plot shows distribution of the angle from the y axis and bottom of the total track length, both made from the period 4 Test Beam data.}
+\caption[$\textsf{Cos}_Z$ cut for data-based simulation selection]{Impact of the cut on the maximum track angle from the z axis ($\textsf{Cos}_Z$) on the Test Beam data for the data-based simulation of cosmic muons. Top plot shows distribution of the angle from the y axis and bottom of the total track length, both made from the period 4 Test Beam data.}
 \label{fig:DataBasedSimCosZSelectionComparison}
 \end{figure}
 
@@ -1186,7 +1186,7 @@ The distributions of energy deposition across cells in Fig. \ref{fig:AbsCalibPla
 \end{figure}
 
 % Cell distribution in Y view - what is up with that middle cells - underfilled?
-The distribution of corrected energy across cells in the Y view (bottom right of Fig.~\ref{fig:AbsCalibCell1}) additionally shows two cells with a noticeably lower energy response ($\sim\unit[2-4]{\%}$) for period 2 and epochs 3a+3b+3c compared to the rest of the samples. Specifically, this is the cell 31, which was underfilled during period 2 and epoch 3a, and its neighbouring cell 32. The variation for the underfilled cell is expected. However, it is unclear why one of the neighbouring cells to the underfilled cells is miscalibrated.
+The distribution of corrected energy across cells in the Y view (bottom right of Fig.~\ref{fig:AbsCalibCell1}) additionally shows two cells with a noticeably lower energy response (\mbox{$\sim\unit[2-4]{\%}$}) for period 2 and epochs 3a+3b+3c compared to the rest of the samples. Specifically, this is the cell 31, which was underfilled during period 2 and epoch 3a, and its neighbouring cell 32. The variation for the underfilled cell is expected. However, it is unclear why one of the neighbouring cells to the underfilled cells is miscalibrated.
 
 % Uncorrected energy response for different sammples - seems like the old scintillator is ageing the most, the Ash river the least and the Texas oil is somewhere in the middle
 The relative differences in the uncorrected energy response across planes (top of Fig.~\ref{fig:AbsCalibPlane1}) between the three different data taking periods demonstrate that the decrease in energy deposition over time varies between planes. This variation is especially noticeable in the X view plot, but is equally present in the Y view planes. This effect is attributed to the differences in the quality of the scintillator oil used to fill the detector, as explained in Sec.~\ref{sec:TBExperiment}. Additionally, it indicates scintillator ageing, which results in a decrease of the scintillation light produced per deposited energy over time. Specifically, the \texttt{ND+NDOS} scintillator oil (planes 0-31) appears to have aged the most between periods 2 and 4, followed by the Texas \texttt{NDOS} oil (planes 53-62), while the Ash River oil (planes 32-52) aged the least. However, more quantitative studies are necessary to assess the ageing of the \gls{NOvA} scintillator, as its details are currently not well understood.
