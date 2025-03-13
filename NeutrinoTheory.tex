@@ -52,7 +52,7 @@ Some of the most common neutrino and antineutrino production channels include nu
 \begin{equation}
 n\rightarrow p+e^-+\overline{\nu}_e.
 \end{equation}
-The study of the electron spectrum from $\beta^-$ decay was the reason Pauli proposed the existence of the neutrino \cite{PauliNeutrinoProposalLetter.pdf}. Additionally, this channel is an abundant source of $\overline{\nu}_e$ from nuclear reactors, which were the first artificial sources of neutrinos, significantly increasing the flux of high energy neutrinos compared to the naturally occurring sources, thus enabling the first ever detection of a neutrino \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf, NeutrinoPhysicsCowanReines.pdf}.
+The study of the electron spectrum from $\beta^-$ decay was the reason Pauli proposed the existence of the neutrino \cite{PauliNeutrinoProposalLetter.pdf}. Additionally, this channel is an abundant source of $\overline{\nu}_e$ from nuclear reactors, which were the first artificial sources of neutrinos, significantly increasing the flux of high energy neutrinos compared to the naturally occurring sources, thus enabling the first ever detection of a neutrino by Cowan and Reines \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf, NeutrinoPhysicsCowanReines.pdf}.
 
 Similarly, the production of an electron neutrino together with a positron via the transition of a proton into a neutron can occur inside the nucleus either as the $\beta^+$ decay:
 \begin{equation}
@@ -66,7 +66,7 @@ This channel occurs in stars and in the first phase of supernovae \cite{Fundamen
 \begin{equation}
 e^-+e^+\rightarrow\nu_\alpha+\overline{\nu}_\alpha
 \end{equation}
-producing neutrinos and antineutrinos of all flavours. Neutrino pair production via the decay of $Z^0$ was studied in great detail \cite{ZDecay.pdf}, since the magnitude of the $Z^0$ decay width depends on the number of neutrino flavours ($N_\nu$) that can couple to $Z^0$, with the current best fit $N_\nu=2.9840\pm 0082$ \cite{ZDecayPrecise.pdf}. Therefore, there should be exactly three light active neutrino flavours.
+producing neutrinos and antineutrinos of all flavours. Neutrino pair production via the decay of $Z^0$ was studied in great detail at the Large Electron Positron collider at CERN \cite{ZDecay.pdf}, since the magnitude of the $Z^0$ decay width depends on the number of neutrino flavours ($N_\nu$) that can couple to $Z^0$, with the current best fit $N_\nu=2.9840\pm 0082$ \cite{ZDecayPrecise.pdf}. Therefore, there should be exactly three light active neutrino flavours.
 %Similar interactions produced the currently unobservable relic neutrinos, which were produced during the Big Bang and have extremely low energies.
 
 %In 1990 the L3 Collaboration studied properties of the $Z^0$ boson and fitted to its peak cross-section and decay width to determine the total number of active (interacting with $Z^0$) light ($m_{\nu}<m_{Z}/2$) neutrino flavours ($N_{\nu}$). They found the best fit integer value to be 3 and ruled out the possibility of four or more active light neutrino flavours at $4\sigma$ \cite{ZDecay.pdf}. Latest most precise results put the fitted value to $N_{\nu}=2.9840\pm 0.0082$ \cite{ZDecayPrecise.pdf}.
@@ -87,7 +87,18 @@ Heavier hadrons, such as kaons and charmed particles, can be produced from accel
 \section{Neutrino interactions}\label{sec:NeutrinoInteractions}
 The interaction of neutrinos with matter can either be categorized based on the target, which is generally either an atomic electron or a nucleus, or the neutrino energy.
 
-Neutrino-electron interactions occur either via elastic scattering, which result in a neutrino and an electron, or via the inverse muon (or tau) decay, which contains a muon (or tau) in the final state. Both of these interactions at the lowest order involve only free leptons and are very well understood theoretically. The elastic scattering has no energy threshold and can occur for any neutrino. On the other hand, due to the large difference between $m_e$ and $m_\mu/m_\tau$, the inverse muon decay has an energy threshold of $E_{\nu_\mu}>\unit[10.92]{GeV}$, and the inverse tau decay $E_{\nu_\tau}>\unit[3]{TeV}$ \cite{FundamentalsOfNeutrinoPhysics.pdf, NeutrinoOnElectronElScatteringTheory2003.pdf}.
+Neutrino-electron interactions occur either via elastic scattering, which result in a neutrino and an electron, or via the inverse muon (or tau) decay, which contains a muon (or tau) in the final state. Both of these interactions at the lowest order involve only free leptons and are very well understood theoretically. The feynman diagrams for these interactions are shown in Fig.~\ref{fig:FeynmanNuOnEIntVertices}. The elastic scattering has no energy threshold and can occur for any neutrino. On the other hand, due to the large difference between $m_e$ and $m_\mu/m_\tau$, the inverse muon decay has an energy threshold of $E_{\nu_\mu}>\unit[10.92]{GeV}$, and the inverse tau decay $E_{\nu_\tau}>\unit[3]{TeV}$ \cite{FundamentalsOfNeutrinoPhysics.pdf, NeutrinoOnElectronElScatteringTheory2003.pdf}.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=.25\linewidth]{Plots/Theory/NeutrinoOnElectronZ.png}
+\hspace{0.05\linewidth}
+\includegraphics[width=.25\linewidth]{Plots/Theory/NeutrinoOnElectronW.png}
+\hspace{0.05\linewidth}
+\includegraphics[width=.3\linewidth]{Plots/Theory/NeutrinoOnElectronWOnShell.png}
+\caption[Neutrino-on-electron interaction vertices in the SM]{Neutrino-on-electron interaction vertices in the \acrshort{SM} via the weak neutral currents (left) and the charged currents (middle and right).}
+\label{fig:FeynmanNuOnEIntVertices}
+\end{figure}
 
 %Interaction with nucleons
 %By increasing their energy, neutrinos can interact with the individual nucleons bound inside the nucleus above a certain threshold \note{But this threshold doesn't really exist tbh} we can start describing the nucleus as a collection of individual, quasi-free nucleons and we can consider interaction of neutrinos on free nucleons \cite{NeutrinoIntOverview2012.pdf}. 
@@ -106,11 +117,37 @@ At lower energies, neutrino-nucleon interactions result in the production of eit
 \begin{equation}\label{eq:InvBetaDecay}
 \overline{\nu}_\alpha +p\rightarrow n+\alpha^+
 \end{equation}
-is called the inverse $\beta$ decay and was used for the first ever detection of neutrinos (specifically $\overline{\nu}_e$ from a nuclear reactor) \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf}. Together with the interaction of a neutrino on a neutron
+is called the inverse $\beta$ decay and was used for the first ever detection of neutrinos (specifically $\overline{\nu}_e$ from a nuclear reactor) by Cowan and Reines \cite{CowanReinesFirstAttempt.pdf, CowanReinesConfirmation.pdf}. Together with the interaction of a neutrino on a neutron (depicted in Fig.~\ref{fig:FeynmanNuCCQE})
 \begin{equation}
 \nu_\alpha+n\rightarrow p+\alpha^-
 \end{equation}
 they serve as fundamental processes for neutrino detection \cite{Homestake1968.pdf, MuonNeutrinoDetection.pdf, ObservationOfTauNeutrino.pdf}. There is no low energy threshold for the $\nu_e$ \gls{CC}\gls{QE} interaction, however, there is a threshold for $\overline{\nu}_e$: $E_{\overline{\nu}_e}\gtrsim\unit[1.8]{MeV}$ and for the other neutrino and antineutrino flavours: $E_{\nu_\mu}\gtrsim\unit[110]{MeV}$ and $E_{\nu_\tau}\gtrsim\unit[3.5]{GeV}$.
+
+\begin{figure}[hbtp]
+\centering
+\begin{subfigure}{.245\linewidth}
+\includegraphics[width=\linewidth]{Plots/Theory/NeutrinoCCQE.png}
+\caption{\acrshort{CC}\acrshort{QE}}
+\label{fig:FeynmanNuCCQE}
+\end{subfigure}
+\begin{subfigure}{.245\linewidth}
+\includegraphics[width=\linewidth]{Plots/Theory/NeutrinoCCRes.png}
+\caption{\acrshort{CC}\acrshort{Res}}
+\label{fig:FeynmanNuCCRes}
+\end{subfigure}
+\begin{subfigure}{.245\linewidth}
+\includegraphics[width=\linewidth]{Plots/Theory/NeutrinoCCDIS.png}
+\caption{\acrshort{CC}\acrshort{DIS}}
+\label{fig:FeynmanNuCCDIS}
+\end{subfigure}
+\begin{subfigure}{.245\linewidth}
+\includegraphics[width=\linewidth]{Plots/Theory/NeutrinoCCCoh.png}
+\caption{\acrshort{CC}\acrshort{COHpi}}
+\label{fig:FeynmanNuCCCoh}
+\end{subfigure}
+\caption[Neutrino-nucleus CC interaction vertices in the SM]{Various types of the neutrino-nucleus interactions via the weak charged currents producing a negatively charged lepton ($l$) and different hadronic products. A in (c) and (d) marks the entire nucleus, represented by the circle diagram and $X$ in (c) marks a hadronic jet. Each interaction can be also drawn for anti-neutrinos, with $W^+\rightarrow W^-$, $n\leftrightarrow p$, and all leptons ($l$) having a positive charge. Explanation of each type of interaction is in text.}
+\label{fig:FeynmanNuCCIntVertices}
+\end{figure}
 
 \iffalse
 At lower energies neutrinos interact either via elastic interactions in the \gls{NC} channel (not shown in Fig.~\ref{fig:NuCCCrossSection}), simply knocking the nucleon out of the nucleus, or via the \gls{QE} interactions in the \gls{CC} channel, transforming the neutron or proton into its nucleon counterpart. For example, the \gls{CC}\gls{QE} interaction of an antineutrino on a proton
@@ -125,7 +162,7 @@ is often used for the detection of neutrinos. It has no energy threshold for $\n
 \fi
 
 %%% Resonance production and DIS
-At higher energies, neutrinos can transfer enough energy to the outgoing nucleon to excite it into a resonant baryon, which then decays back into the original nucleon and into one or more additional particles. This \gls{Res} has a threshold of about $\unit[270]{MeV}$ for $\nu_\mu$ and can be distinguished by the presence of an additional $\pi$ on top of the \gls{CC}\gls{QE} products, or, at higher energies, even of multiple additional $\pi$'s or other hadrons. Increasing the neutrino incident energy even higher means that neutrinos can start probing the quark contents of the individual nucleons in the \gls{DIS}, as can be seen in Fig.~\ref{fig:NuCCCrossSection}.
+At higher energies, neutrinos can transfer enough energy to the outgoing nucleon to excite it into a resonant baryon, which then decays back into the original nucleon and into one or more additional particles. This \gls{Res} has a threshold of about $\unit[270]{MeV}$ for $\nu_\mu$ and can be distinguished by the presence of an additional $\pi$ on top of the \gls{CC}\gls{QE} products as is shown in Fig.~\ref{fig:FeynmanNuCCRes}. At higher energies, \gls{Res} can produce multiple additional $\pi$'s or other hadrons. Increasing the neutrino incident energy even higher means that neutrinos can start probing the quark contents of the individual nucleons in the \gls{DIS}, as can be seen in Fig.~\ref{fig:NuCCCrossSection} and Fig.~\ref{fig:FeynmanNuCCDIS}.
 
 %With an increase in neutrino energy above a certain threshold (about $\unit[270]{MeV}$ for $\nu_\mu$), neutrinos start the \gls{Res}. These baryons then commonly decay into a nucleon, same as for the \gls{QE} interaction, however now with additional hadrons. These hadrons are initially single pions at lower neutrino energies, but become multiple pions and other hadrons at higher energies. With even higher incident energies, neutrinos start probing the quark contents of the individual nucleons in the \gls{DIS} interaction, as can be seen in Fig.~\ref{fig:NuCCCrossSection}.
 
@@ -149,7 +186,7 @@ Even though the approximation of nuclei as collections of quasi-free nucleons is
 
 %For neutrinos interacting on the nuclei, we distinguish between different types of interactions based on what happens to the nucleus. If it's an interaction with a single proton or neutron, we call this \gls{QE} interaction. If this proton gets excited into a $\Delta$ resonance (which then generally decays into a $\pi$), we call this Resonant production, if neutrino penetrates through the nucleon and interacts directly with a quark inside it, we call this \gls{DIS} interaction. This is shown on Fig.~\ref{fig:NuCCCrossSection}. There can be additional subtypes due to nuclear effects, namely the 2p2h interaction \todo{Find a reference for the 2p2h} also called \gls{MEC}, or possible \gls{FSI}.
 
-Additionally, if the total energy transferred to the nucleus is small neutrinos can interact with the entire nucleus coherently, where the contributions from each individual nucleon are added together. At low energies, neutrinos can interact via the coherent elastic $\nu$-Nucleus scattering \cite{CEvENSFirstObservation2017.pdf}, which results in the excitation of the nucleus. At higher energies, neutrinos can interact via the \gls{COHpi} production, which produces a single $\pi$ without transferring much momentum to the nucleus. In case of the \gls{NC}\gls{COHpi} production the produced $\pi$ is neutral and for the \gls{CC}\gls{COHpi} there is an additional charged lepton and the produced $\pi$ is positive (negative) for (anti)neutrinos. As the produced $\pi$ receives most of the transferred momentum from the neutrinos, it generally travels in the same direction as the initial neutrino and, in the case of $\pi^0$, can be difficult to distinguish from $e$ and $\gamma$ signals in a detector \cite{NeutrinoIntOverview2022.pdf}.
+Additionally, if the total energy transferred to the nucleus is small neutrinos can interact with the entire nucleus coherently, where the contributions from each individual nucleon are added together. At low energies, neutrinos can interact via the coherent elastic $\nu$-Nucleus scattering \cite{CEvENSFirstObservation2017.pdf}, which results in the excitation of the nucleus. At higher energies, neutrinos can interact via the \gls{COHpi} production, which produces a single $\pi$ without transferring much momentum to the nucleus, as is depicted in Fig.~\ref{fig:FeynmanNuCCCoh}. In case of the \gls{NC}\gls{COHpi} production the produced $\pi$ is neutral and for the \gls{CC}\gls{COHpi} there is an additional charged lepton and the produced $\pi$ is positive (negative) for (anti)neutrinos. As the produced $\pi$ receives most of the transferred momentum from the neutrinos, it generally travels in the same direction as the initial neutrino and, in the case of $\pi^0$, can be difficult to distinguish from $e$ and $\gamma$ signals in a detector \cite{NeutrinoIntOverview2022.pdf}.
 
 %\cite{NeutrinoIntOverview2022.pdf} Also coherent meson production, in which neutrino scatters from the nucleus producing mesons but the nucleus stays in the ground state, possible via both CC and NC. The momentum transferred to the nuclear target is very small and almost all the transferred momentum is taken by the outgoing meson. The coherence condition $Q\ll 1/R$ is satisfied and the individual amplitudes for the pion production from each nucleon in the nucleus add coherently. Most of the $\pi^\pm,\pi^0$ produced (through the electromagnetic shower as their decay products) in the forward direction through the coherent reactions mimic the real $\mu^\pm$ or $e^-$ signal.
 
@@ -344,7 +381,7 @@ where
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Experimental evidence that lead to neutrino oscillations
-The first experimental signs of neutrino oscillations appeared as an apparent deficit of solar neutrinos compared to their predicted flux \cite{Homestake1968.pdf}. However, due to low confidence in the prediction of the solar neutrino flux, no conclusion could have been drawn. Similarly, experiments measuring atmospheric neutrinos \cite{NUSEX89.pdf, Frejus95.pdf, IMP92.pdf, Kamiokande94.pdf} saw a disagreement between the measurement and the prediction for the $\nu_\mu : \nu_e$ fraction of the atmospheric neutrino flux. This \textit{atmospheric neutrino anomaly} was finally resolved by the Super-Kamiokande experiment \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}, reporting the first experimental evidence for neutrino oscillations. The \textit{solar neutrino anomaly} was resolved shortly after by the \gls{SNO} experiment \cite{NCOscInSNOSecondOscResult.pdf}, which compared the \gls{NC} rate, unaffected by neutrino oscillations, to the rate of \gls{CC} neutrino interactions. This was proof that solar neutrinos oscillate without reliance on the model of the Sun. This result also confirmed the importance of accounting for the matter effect in neutrino oscillations, especially for the oscillation of solar neutrinos, due to the large matter density in the Sun.
+The first experimental signs of neutrino oscillations appeared at the Brookhaven Solar Neutrino Experiment at the Homestake mine as an apparent deficit of solar neutrinos compared to their predicted flux \cite{Homestake1968.pdf}. However, due to low confidence in the prediction of the solar neutrino flux, no conclusion could have been drawn. Similarly, experiments measuring atmospheric neutrinos \cite{NUSEX89.pdf, Frejus95.pdf, IMP92.pdf, Kamiokande94.pdf} saw a disagreement between the measurement and the prediction for the $\nu_\mu : \nu_e$ fraction of the atmospheric neutrino flux. This \textit{atmospheric neutrino anomaly} was finally resolved by the Super-Kamiokande experiment \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}, which measured a deficit of muon neutrinos inconsistent with the calculated atmospheric neutrino flux, reporting the first experimental evidence for neutrino oscillations. The \textit{solar neutrino anomaly} was resolved shortly after by the \gls{SNO} experiment \cite{NCOscInSNOSecondOscResult.pdf}, which compared the \gls{NC} rate, unaffected by neutrino oscillations, to the rate of \gls{CC} neutrino interactions. This was proof that solar neutrinos oscillate without reliance on the model of the Sun. This result also confirmed the importance of accounting for the matter effect in neutrino oscillations, especially for the oscillation of solar neutrinos, due to the large matter density in the Sun.
 
 %Neutrino oscillations were suggested as an explanation for the observed deficit of solar neutrinos \cite{Homestake1968.pdf} and for the disagreement between the measurement and the prediction for the $\nu_\mu : \nu_e$ fraction of the atmospheric neutrinos \cite{NUSEX89.pdf, Frejus95.pdf, IMP92.pdf, Kamiokande94.pdf}. The so-called atmospheric neutrino anomaly was resolved by the \gls{SK} experiment \cite{EvidenceForAtmoOscFirstEverOscRes.pdf}, which reported the first evidence for neutrino oscillations. The solar neutrino anomaly was resolved by the \gls{SNO} experiment \cite{NCOscInSNOSecondOscResult.pdf}, which compared the rate of the \gls{CC} interaction, which are affected by neutrino oscillations, and of the \gls{NC} interaction, which can't determine between neutrino flavours and are therefore unaffected by neutrino oscillations. The results from \gls{SNO} also confirmed that we need to account for the \gls{MSW} effects, especially for solar neutrinos, due to the large $N_e$ in the Sun.
 
