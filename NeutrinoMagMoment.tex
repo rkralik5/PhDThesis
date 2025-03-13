@@ -1,13 +1,13 @@
 \chapter{Measuring the muon neutrino magnetic moment}\label{sec:NeutrinoMagMoment}
 
 %%% OBJECTIVE / GOAL
-In this analysis, I aim to detect a potential signal of the effective muon neutrino magnetic moment in the \gls{NOvA} \gls{ND}. This signal would manifest as an excess of \gls{nuone} elastic scattering interactions at low electron recoil energies, proportional to the value of the effective neutrino magnetic moment, over the \gls{SM} background. If no significant excess is observed, I will establish an upper limit on the effective muon neutrino magnetic moment.
+In this analysis, I aim to detect a potential signal of the effective muon neutrino magnetic moment in the \gls{NOvA} \gls{ND}. As described in Sec.~\ref{sec:NuMMTheory}, this signal would manifest as an excess of \gls{nuone} elastic scattering interactions at low electron recoil energies, proportional to the value of the effective neutrino magnetic moment, over the \gls{SM} background. If no significant excess is observed, I will establish an upper limit on the effective muon neutrino magnetic moment.
 
 %What are we trying to achieve? We are trying to see the low energy excess of very forward neutrino-on-electron ($\nu$-on-e) events. We can either do this via a counting experiment (possibly with various control samples/regions to control backgrounds and systematics), or with a fit to the energy spectrum of well-selected $\nu$-on-electron events.
 
 
 %%% WHY - BSM theories, Majorana nature of neutrinos
-Detecting the neutrino magnetic moment $\left(\mu_\nu\right)$ would provide definitive evidence of new \gls{BSM} physics, and measuring its value would help identify the appropriate \gls{BSM} theory. As current and planned experiments can only detect an anomalously large neutrino magnetic moment, observing such a signature would strongly suggest that neutrinos are Majorana particles and would have significant implications for astrophysics and cosmology \cite{SnowmassNeutrinoFrontierReport.pdf}.
+Detecting a neutrino magnetic moment $\left(\mu_\nu\right)$ would provide definitive evidence of new physics \gls{BSM} and measuring its value would help identify the appropriate \gls{BSM} theory. The \gls{SM} predicts no $\mu_\nu$ and the minimally extended \gls{SM} constrains its value to $\mu_\nu<10^{-19}\mu_B$ - well below current experimental reach (Sec.~\ref{sec:NuMMTheory}). Any observed signal is therefore considered an `anomalous' magnetic moment. Given the connection between neutrino mass and magnetic moment, measuring a value above $10^{-15}\mu_B$ would strongly suggest that neutrinos are Majorana particles, with significant implications for astrophysics and cosmology \cite{SnowmassNeutrinoFrontierReport.pdf}.
 
 %"The same types of experimental measurements are also sensitive to more exotic neutrino electromagnetic properties: magnetic moments and millicharges, which would be certainly due to new BSM physics. The discovery of millicharges or anomalously large neutrino magnetic moments would have also important implications for astrophysics and cosmology."\cite{SnowmassNeutrinoFrontierReport.pdf}
 
@@ -28,22 +28,42 @@ Detecting the neutrino magnetic moment $\left(\mu_\nu\right)$ would provide defi
 %[7] is: M.B. Voloshin,M.I. Vysotskiiand L.B. Okun, Yad. Fiz. 44 (1986) 677.
 
 %Current best overall measurements - XENONnT, XENON1T, LZ
-The best model-independent experimental results on the neutrino magnetic moment come from experiments searching for dark matter using xenon-based detectors. These highly sensitive detectors detect solar neutrinos, which are part of the background in dark matter searches but can be reanalysed for other purposes. In 2020, the XENON1T experiment observed \cite{XENON1TExcessNuOnE2020.pdf} a low energy excess of solar neutrinos, which could correspond to a signal from an anomalously large effective magnetic moment within $\mu_{\nu_\odot}\in \left(0.14, 0.29\right)\times 10^{-10} \mu_B$ at $\unit[90]{\%}$ \gls{CL}, where $\nu_\odot$ marks solar neutrinos. However, this result was disfavoured by the follow-up XENONnT experiment in 2022 \cite{XENONnTFirstResults2022.pdf}, which saw no excess and set the current world-leading limit on neutrino magnetic moment at $\mu_{\nu_\odot}<0.063\times 10^{-10}\mu_B$ at $\unit[90]{\%}$ \gls{CL}. Other solar neutrino experiments also reported null results regarding neutrino magnetic moment \cite{LZNuMMResults2022.pdf,BorexinoLimit2017.pdf}, placing less stringent limits on its value. Given some basic assumptions \cite{BorexinoLimit2017.pdf, NuElmagInXENONnTKhan2023.pdf} this limit for solar neutrinos would correspond to a limit on muon neutrino effective magnetic moment of $\mu_{\nu_\mu}<0.137\times 10^{-10}\mu_B$. However, the relationship between effective magnetic moments of different neutrino flavours may be non-trivial, especially in the context of possible new \gls{BSM} physics, and studying muon neutrinos remains an important endeavour \cite{LargeNuMMJointFit2022.pdf}.
+The best model-independent experimental results on the neutrino magnetic moment come from experiments searching for dark matter using xenon-based detectors. These highly sensitive detectors detect solar neutrinos, which are part of the background in dark matter searches but can be reanalysed for other purposes. Since the relationship between  results for the effective magnetic moment of solar neutrinos and of muon neutrinos depends on neutrino oscillations, which in case of \gls{BSM} physics can be non-trivial, these results are not directly comparable \cite{LargeNuMMJointFit2022.pdf}.
 
+In 2020, the XENON1T experiment observed \cite{XENON1TExcessNuOnE2020.pdf} a low energy excess of solar neutrinos, which could correspond to a signal from an anomalously large effective magnetic moment within $\mu_{\nu_\odot}\in \left(0.14, 0.29\right)\times 10^{-10} \mu_B$ at $\unit[90]{\%}$ \gls{CL}, where $\nu_\odot$ marks solar neutrinos. XENON1T experiment studied energy-dependent electronic recoil signals in a low-background xenon detector, with sensitivity to much smaller electron recoil energies than what is achievable at the \gls{NOvA} experiment: between $\unit[1-210]{keV}$. However, this result was disfavoured by the follow-up XENONnT experiment in 2022 \cite{XENONnTFirstResults2022.pdf}, which saw no excess and set the current world-leading limit on neutrino magnetic moment at $\mu_{\nu_\odot}<0.063\times 10^{-10}\mu_B$ at $\unit[90]{\%}$ \gls{CL}. XENONnT experiment was able to further reduce backgrounds compared to the XENON1T experiment - by about five times, studying the same electronic recoil interactions, focusing on energies between $\unit[1-140]{keV}$. Other solar neutrino experiments, such as LUX-ZEPLIN and Borexino, also reported null results regarding neutrino magnetic moment \cite{LZNuMMResults2022.pdf,BorexinoLimit2017.pdf}, placing less stringent limits on its value. Given some basic assumptions \cite{BorexinoLimit2017.pdf, NuElmagInXENONnTKhan2023.pdf} this limit for solar neutrinos would correspond to a limit on muon neutrino effective magnetic moment of $\mu_{\nu_\mu}<0.137\times 10^{-10}\mu_B$.
 
 %[Progression review 3] The XENON1T experiment published a paper \cite{XENON1TExcessNuOnE2020.pdf} in 2020 showing an excess of neutrino-on-electron events, This was later in 2022 disfavoured by the XENONnT \cite{XENONnTFirstResults2022.pdf} and the LUX-ZEPLIN \cite{LZNuMMResults2022.pdf} experiments, which provided strict constraints of $\mu_{\nu_\odot}<0.64\times 10^{-11}\mu_B$ and $\mu_{\nu_\odot}<1.1\times 10^{-11}\mu_B$ respectively. Given some basic assumptions \cite{BorexinoLimit2017.pdf, NuElmagInXENONnTKhan2023.pdf} this would correspond to more than an order of magnitude stricter limit on muon neutrino effective magnetic moment than NOvA could possibly deliver, but the relationship between effective magnetic moments of different neutrino flavours may be non-trivial (depends on the new physics introduced) and studying muon neutrinos remains an important endeavour \cite{LargeNuMMJointFit2022.pdf}.
 
 
 %Current best muon mag. moment measurement - LSND
 
-The best results for $\nu_\mu$ and $\overline{\nu}_\mu$ come from accelerator-based stopped pion neutrino sources \cite{LSNDLimits2001.pdf,LAMPFAMuNuMM1990.pdf}, which also do not observe any low energy excess and provide an upper limit on the effective muon neutrino magnetic moment of $\mu_{\nu_\mu}<6.8\times 10^{-10}\mu_B$  at $\unit[90]{\%}$ \gls{CL} \cite{LSNDLimits2001.pdf}. Stopped pion neutrino sources provide well-understood beams made up of $\nu_\mu$, $\overline{\nu}_\mu$ and $\nu_e$ with energies up to $\unit[52.8]{MeV}$. Slightly looser limits come from pion decay-in-flight accelerator-based measurements (similar to \gls{NOvA})\cite{NuoneForEMProp1990.pdf, Charm2MuonNuMM1995.pdf}, which provide a limit of $\mu_{\nu_\mu}<8.5\times 10^{-10}\mu_B$ at $\unit[90]{\%}$ \gls{CL}.
+The best results for $\nu_\mu$ and $\overline{\nu}_\mu$ come from accelerator-based experiments such as LSND \cite{LSNDLimits2001.pdf,LAMPFAMuNuMM1990.pdf}, using stopped pion neutrino source, which also do not observe any low energy excess and provide an upper limit on the effective muon neutrino magnetic moment of $\mu_{\nu_\mu}<6.8\times 10^{-10}\mu_B$  at $\unit[90]{\%}$ \gls{CL} \cite{LSNDLimits2001.pdf}. Stopped pion neutrino sources provide well-understood beams made up of $\nu_\mu$, $\overline{\nu}_\mu$ and $\nu_e$ with energies up to $\unit[52.8]{MeV}$. LSND counted the number of the reconstructed \gls{nuone} elastic scattering interactions in a liquid scintillator detector with recoil electron energies between $18<E_e<\unit[50]{MeV}$. Slightly looser limits come from pion decay-in-flight accelerator-based measurements (similar to \gls{NOvA})\cite{NuoneForEMProp1990.pdf, Charm2MuonNuMM1995.pdf}, which provide a limit of $\mu_{\nu_\mu}<8.5\times 10^{-10}\mu_B$ at $\unit[90]{\%}$ \gls{CL}.
+
 
 %[Progression review 3] Best limits \cite{PDG.pdf} for this parameter come from the LSND experiment \cite{LSNDLimits2001.pdf} at $\mu_{\nu_\mu}<6.8\times 10^{-10}\mu_B$.
 
 
 %%% WHY NOvA IS SPECIAL / USEFUL
 
-Thanks to the very intense and highly pure beam of muon neutrinos and antineutrinos, and a detector designed for the reconstruction and identification of events with electrons in the final state, \gls{NOvA} is well-positioned to provide a highly competitive, and possibly even world-leading, measurement (or limit) of the effective muon neutrino magnetic moment. A previous analysis of \gls{NOvA} \gls{ND} data for a measurement of the effective muon neutrino magnetic moment was presented in a thesis \cite{nuMM-thesis-biaow.pdf}, providing a (statistics-only) limit of $\mu_{\nu_\mu}<15.8\times 10^{-10}\mu_B$ at $\unit[90]{\%}$ \gls{CL}.
+Thanks to the very intense and highly pure beam of muon neutrinos and antineutrinos, and a detector designed for the reconstruction and identification of events with electrons in the final state, \gls{NOvA} is well-positioned to provide a highly competitive, and possibly even world-leading, measurement (or limit) of the effective muon neutrino magnetic moment. A previous analysis of \gls{NOvA} \gls{ND} data for a measurement of the effective muon neutrino magnetic moment was presented in a thesis \cite{nuMM-thesis-biaow.pdf}, providing a (statistics-only) limit of $\mu_{\nu_\mu}<15.8\times 10^{-10}\mu_B$ at $\unit[90]{\%}$ \gls{CL}. Comparison of this result to the results from the other experiments is shown in Tab.~\ref{tab:NuMMExperimentalOverview}.
+
+\begin{table}[!ht]
+\centering
+\caption[Summary of experimental limits and theoretical predictions for the effective neutrino magnetic moment]{Summary of experimental limits and theoretical predictions for the effective neutrino magnetic moment. The first five rows list the current world’s best experimental limits at $\unit[90]{\%}$ \gls{CL}, alongside the limit achieved in \acrshort{NOvA}. The last three rows present theoretical predictions from the minimally extended \acrshort{SM} and considerations for \gls{BSM} theories, for both Dirac or Majorana neutrinos. Details on experimental limits are provided in the text and theoretical predictions are discussed in Sec.~\ref{sec:NuMMTheory}.}
+\def\arraystretch{1.4}
+\begin{tabular}{lll}
+Experiment & Value & Comment\\\hline
+XENONnT    & $\mu_{\nu_\odot}<0.063\times 10^{-10}\mu_B$ & Solar neutrinos\\
+XENONnT    & $\mu_{\nu_\,u}<0.173\times 10^{-10}\mu_B$ & Extrapolated to $\nu_\mu$\\
+XENON1T    & $\mu_{\nu_\odot}\in \left(0.14, 0.29\right)\times 10^{-10} \mu_B$ & Solar neutrinos\\
+LSND       & $\mu_{\nu_\mu}<6.8\times 10^{-10}\mu_B$ & Stopped pion $\nu_\mu$\\
+NOvA       & $\mu_{\nu_\mu}<15.8\times 10^{-10}\mu_B$ & Statistics-only\\\hline \hline
+Minimally ext. \gls{SM} & $\mu_\nu\simeq 10^{-19}$ & Dirac/Majorana neutrinos\\
+\gls{BSM} & $\mu_\nu\lesssim 10^{-15}$ & Dirac neutrinos\\
+\gls{BSM} & $\mu_\nu\lesssim 10^{-9}$ & Majorana neutrinos\\\hline
+\end{tabular}
+\label{tab:NuMMExperimentalOverview}
+\end{table}
 
 %If neutrinos are Dirac particles, their magnetic moment would be too small to be measured in the NOvA near detector. However if neutrinos are Majorana particles, NOvA should be able to measure the neutrino magnetic moment, especially the muon component, by studying scattering of muon neutrino off a free electron. The purity of the NuMI beam would allow NOvA to provide world leading measurement of this component.
 
@@ -72,7 +92,7 @@ Additionally, \gls{nuone} elastic scattering interactions are used in various ot
 %Cosmology
 
 %%% OVERVIEW OF THIS CHAPTER
-In this chapter, I will provide an overview of the theory of neutrino electromagnetic interactions in Sec.~\ref{sec:NuMMTheory}, focusing on the effective neutrino magnetic moment and its implications for \gls{nuone} measurements and other theoretical considerations. In Sec.~\ref{sec:NuMMAnalysisOverview}, I will discuss the analysis strategy, the signal and background definition, as well as the data and simulation samples and the analysis weights. Following this, in Sec.~\ref{sec:NuMMEventSelection} I will explain the selection of events for this analysis, while in Sec.~\ref{sec:NuMMSystematics} I will address the relevant systematic uncertainties and in Sec.~\ref{sec:NuMMStatisticalAnalysis} the statistical methods employed to analyse the results. I will present the results of this analysis in Sec.~\ref{sec:NuMMResults} and summarise them in Sec.~\ref{sec:NuMMConclusion}.
+In this chapter, I will discuss the analysis strategy in Sec.~\ref{sec:NuMMAnalysisOverview}, focusing on the signal and background definition, as well as on the data and simulation samples and the analysis weights. Following this, in Sec.~\ref{sec:NuMMEventSelection} I will explain the selection of events for this analysis, while in Sec.~\ref{sec:NuMMSystematics} I will address the relevant systematic uncertainties and in Sec.~\ref{sec:NuMMStatisticalAnalysis} the statistical methods employed to analyse the results. I will present the results of this analysis in Sec.~\ref{sec:NuMMResults} and summarise them in Sec.~\ref{sec:NuMMConclusion}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \iffalse
@@ -352,8 +372,8 @@ The summary of the cut values for the event selection of neutrino magnetic momen
 \textbf{$E_{Shower}/E_{Tot}$} & Fraction of energy contained in the most energetic shower & $>0.91$\\
 & \textbf{N$^o$ Hits} & Total number of hits for all prongs in a slice & $<116$\\
 & \textbf{High $E_{Shower}$} & Calorimetric energy of the most energetic shower & $<\unit[1.4]{GeV}$\\
-& \textbf{\gls{nuone} ID} & \gls{CVN}-based \gls{nuone} identifier & $>0.65$\\
-& \textbf{$E\pi^0$ ID} & \gls{CVN}-based \gls{nuone} and $\pi^0$ identifier & $>0.63$\\
+& \textbf{\acrshort{nuoneID}} & \gls{CVN}-based \gls{nuone} identifier & $>0.65$\\
+& \textbf{\acrshort{EPi0ID}} & \gls{CVN}-based \gls{nuone} and $\pi^0$ identifier & $>0.63$\\
 & \textbf{$E\theta^2$} & Product of the calorimetric energy and angle squared of the leading shower & $<0.0048$ $\unit{GeV\times rad^2}$\\\hline
 \end{tabular}
 \label{tab:EventSelectionSummary}
@@ -588,7 +608,7 @@ The variables considered include those already used in the pre-selection: the to
 
 Additionally, we considered all the variables used for the \gls{NOvA} \gls{nuone} analysis for the neutrino flux constraint \cite{NOVA-doc-56383}. The first is the fraction of the reconstructed energy of the most energetic shower $\left(E_{Shower}\right)$ to the total energy of all the reconstructed prongs in the entire slice $\left(E_{Tot}\right)$. This variable distinguished our signal events, which only have a single shower, from events with multiple showers or additional activity. The second is the gap between the vertex and the most energetic shower, which can distinguish between electron and $\pi^0$ events, as the latter should have a characteristic gap several cells long. Additionally, we examined the amount of energy contained within $\pm8$ planes away from the vertex, besides the energy associated with the most energetic prong, which should distinguish the purely leptonic signal from backgrounds with significant hadronic activity. However, the gap and the vertex energy variables underperformed compared to others and were ultimately not used within the \gls{TMVA}.
 
-We also utilised two \gls{CNN}-based event classifiers developed for the \gls{NOvA} \gls{nuone} analysis for the neutrino flux constraint \cite{NOVA-doc-56383, Nuone_Neutrino2022Poster}. These classifiers are specifically designed to identify \gls{nuone} interactions. The first, named \gls{nuone}\texttt{ID}, is trained to select \gls{nuone} events from the primary $\nu_\mu$\gls{CC} background, while the second, named $E\pi^0$\texttt{ID}, is trained on events passing the \gls{nuone}\texttt{ID} selection to reject the remaining background with a $\pi^0$. These classifiers use a pixel map of the entire slice as input and are designed with the same \gls{CNN} architecture as ProngCVN and EventCVN described in Sec.~\ref{sec:NOvAReconstruction}.
+We also utilised two \gls{CNN}-based event classifiers developed for the \gls{NOvA} \gls{nuone} analysis for the neutrino flux constraint \cite{NOVA-doc-56383, Nuone_Neutrino2022Poster}. These classifiers are specifically designed to identify \gls{nuone} interactions. The first, named \acrshort{nuoneID}, is trained to select \gls{nuone} events from the primary $\nu_\mu$\gls{CC} background, while the second, named \acrshort{EPi0ID}, is trained on events passing the \acrshort{nuoneID} selection to reject the remaining background with a $\pi^0$. These classifiers use a pixel map of the entire slice as input and are designed with the same \gls{CNN} architecture as ProngCVN and EventCVN described in Sec.~\ref{sec:NOvAReconstruction}.
 
 %[ND group's technote] Two event classifiers (NuoneID and Epi0ID) based on convolutional neural network (CNN) are trained to identify nuone elastic scattering events (NuoneID) and to further reject background with pi0 in the final state (Epi0ID). The CNN architecture adopted for this analysis is the one used for NOvA CVN [12]. It takes the pixel map of a slice as the input and has deeper and more complicated neural networks than the ANNs used in the previous round of analysis [11]. The training for both classifiers (NuoneID and Epi0ID) were done with single electron samples as the signal in order to mitigate the model dependence. A nuone elastic scattering has an electron in the final state which could deposit energy in the detector. Single electron events share this feature with nuone elastic scattering, but have more uniform distribution of energy, angle between the shower direction and the beam direction. This additional feature could prevent CNN models from overfitting the feature of the very small scattering angle.  To make comparisons, test samples of signal and background are normalized to 1.1E21. The output categories are \gls{nuone}, $\pi^0$, $\nu_e$\gls{CC} and other. The \gls{nuone} and $\pi^0$ outputs are used for the training of the Epi0ID. The pre-selection applied is: ND group's preselection ($L<\unit[800]{cm}$, $N_{plane}<120$, $N_{cell}<600$), loose containment ($-190<X<190$, $-190<Y<190$, $50<Z<1500$ $\unit{cm}$), loose single particle cut ($E_{vtx}<\unit[0.05]{GeV}$, $gap<\unit[20]{cm}$, $E_{shower}/E_{tot} > 0.9$ \note{These are quite strict actually}. The training accuracy for NuoneID is about 85\% and for Epi0ID is about 96\%. After each round of training, the trained model is saved to make predictions on the test sample so we know how the actual performance of the classifiers evolves over different epochs.
 
@@ -599,8 +619,8 @@ E_{Shower}/E_{Tot} &> 0.91,\\
 \textsf{Total N}^o\textsf{ hits for all prongs} &< 116,\\
 E_{Shower} &< \unit[1.4]{GeV},\\
 E\theta^2 &< \unit[0.0048]{GeV\times rad^2},\\
-\gls{nuone}\textsf{ID} &> 0.65,\\
-E\pi^0\textsf{ID} &> 0.63.
+\acrshort{nuoneID} &> 0.65,\\
+\acrshort{EPi0ID} &> 0.63.
 \end{align}
 
 \begin{figure}[hbtp]
@@ -615,7 +635,7 @@ E\pi^0\textsf{ID} &> 0.63.
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_calEHighPre.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/N1Cut_eth2Pre.pdf}
-\caption[Reconstructed energy and $E\theta^2$ cuts]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the reconstructed energy of the primary shower (top) and of the reconstructed energy multiplied by the angle from the incoming neutrino beam direction squared.(bottom). All histograms are area-normalized. The reconstruction quality, pre-selection, fiducial and containment cuts were applied prior to making these plots. Yellow lines show the cut values on the depicted variables, with arrows pointing towards the preserved events.}
+\caption[Reconstructed energy and $E\theta^2$ cuts]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the reconstructed energy of the primary shower (top) and of the reconstructed energy multiplied by the angle from the incoming neutrino beam direction squared (bottom). All histograms are area-normalized. The reconstruction quality, pre-selection, fiducial and containment cuts were applied prior to making these plots. Yellow lines show the cut values on the depicted variables, with arrows pointing towards the preserved events.}
 \label{fig:NuMMCutsTMVA2}
 \end{figure}
 
@@ -623,7 +643,7 @@ E\pi^0\textsf{ID} &> 0.63.
 \centering
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_nuoneidPre.pdf}
 \includegraphics[width=.9\textwidth]{Plots/NuMMEventSelection/LogY_N1Cut_epi0idPre.pdf}
-\caption[NuoneID and EPi0ID cuts]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the NuoneID (top) and EPi0ID (bottom) event identifiers. All histograms are area-normalized and logarithmic in the y axis. The reconstruction quality, pre-selection, fiducial and containment cuts were applied prior to making these plots. Yellow lines show the cut values on the depicted variables, with arrows pointing towards the preserved events.}
+\caption[NuoneID and EPi0ID cuts]{Relative comparison of signal (red), \acrshort{nuone} background (blue), and other background (green) events in the distribution of the \acrshort{nuoneID} (top) and \acrshort{EPi0ID} (bottom) event identifiers. All histograms are area-normalized and logarithmic in the y axis. The reconstruction quality, pre-selection, fiducial and containment cuts were applied prior to making these plots. Yellow lines show the cut values on the depicted variables, with arrows pointing towards the preserved events.}
 \label{fig:NuMMCutsTMVA3}
 \end{figure}
 
@@ -637,8 +657,8 @@ E\pi^0\textsf{ID} &> 0.63.
 \textbf{$E_{Shower}/E_{Tot}$} & 113.03 & 96.28 & 2.02$\times 10^3$ & 97.32 & 4.53$\times 10^5$ & 41.30\\
 \textbf{N$^o$ Hits} & 106.48 & 94.20 & 1.45$\times 10^3$ & 71.53 & 4.02$\times 10^5$ & 88.78\\
 \textbf{High $E_{Shower}$} & 85.51 & 80.31 & 777.91 & 53.76 & 3.01$\times 10^5$ & 74.84\\
-\textbf{\gls{nuone} ID} & 72.23 & 84.47 & 652.32 & 83.86 & 4.40$\times 10^3$ & 1.46\\
-\textbf{$E\pi^0$ ID} & 67.35 & 93.24 & 608.19 & 93.23 & 2.83$\times 10^3$ & 64.34\\
+\textbf{\acrshort{nuoneID}} & 72.23 & 84.47 & 652.32 & 83.86 & 4.40$\times 10^3$ & 1.46\\
+\textbf{\acrshort{EPi0ID}} & 67.35 & 93.24 & 608.19 & 93.23 & 2.83$\times 10^3$ & 64.34\\
 \textbf{$E\theta^2$} & 56.80 & 84.33 & 519.09 & 85.35 & 181.24 & 6.40\\\hline
 \end{tabular}
 \label{tab:CutflowTableTMVA}
